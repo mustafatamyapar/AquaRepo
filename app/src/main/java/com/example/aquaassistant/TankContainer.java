@@ -9,10 +9,10 @@ public class TankContainer implements Serializable
 {
     //properties
     final ArrayList<Tank> tanks = new  ArrayList <Tank>();
-    CreatureContainer creatureContainer;
+    //CreatureContainer creatureContainer;
     //constructor
     public TankContainer(){
-        creatureContainer = new CreatureContainer();
+       // creatureContainer = new CreatureContainer();
     }
     //methods
     public void addTank( Tank newTank){
