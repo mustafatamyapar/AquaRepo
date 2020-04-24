@@ -4,7 +4,7 @@ import android.text.Editable;
 
 import java.io.Serializable;
 import java.util.Calendar;
-public class Tank extends CreatureContainer implements Serializable
+public class Tank implements Serializable
 {
     //properties
     private String name;

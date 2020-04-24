@@ -24,7 +24,7 @@ public class TanksAdapter extends ArrayAdapter<Tank> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView( int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater layoutInflater = context.getLayoutInflater();
         View tanksView = layoutInflater.inflate(R.layout.tanks_view,null,true);

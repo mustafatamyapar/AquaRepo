@@ -52,7 +52,6 @@ public class TanksPageActivity extends AppCompatActivity {
                 intent.putExtra("selectedTank", tankContainer.getTanks().get(i));
                 intent.putExtra("tanks", tankContainer.getTanks());
                 startActivity(intent);
-
             }
         });
 
@@ -103,8 +102,6 @@ public class TanksPageActivity extends AppCompatActivity {
                 });
 
                 alert.show();
-                //tankContainer.addTan
-                //(new Tank());
             }
         });
     }
