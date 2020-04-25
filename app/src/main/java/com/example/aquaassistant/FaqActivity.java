@@ -41,7 +41,7 @@ protected void onCreate(Bundle savedInstanceState) {
      content.add("A good guide for keeping fish in your tank is about 1” of fish per 1 gallon of water. For larger fish it is recommended only 1” of fish for every 3 gallons of water. Larger fish often have a higher strain on the tanks biological bacteria and filter media.");
     content.add("Algae problems are infuriating and generally exist due to a number of reasons. There may be an unbalance of nutrients in the water, you might have too much lighting and not enough co2 and fertilizers, the plants can only consume these three in an equal ratio so having an off balance on one will lead to an algae outbreak.");
      //listView
-     arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,questions);
+     arrayAdapter = new ArrayAdapter(FaqActivity.this, android.R.layout.simple_list_item_1,questions);
      listView.setAdapter(arrayAdapter);
 
      listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
