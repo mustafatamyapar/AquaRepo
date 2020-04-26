@@ -24,7 +24,7 @@ protected void onCreate(Bundle savedInstanceState) {
     Faq selectedContent = (Faq) intent.getSerializableExtra("selectedContent");
     //add them to activity
     content.setText(selectedContent.textContent);
-    questionPanel.setText(selectedContent.headQuestion);
+    questionPanel.setText(selectedContent.headQuestion)
 
 }
 }
