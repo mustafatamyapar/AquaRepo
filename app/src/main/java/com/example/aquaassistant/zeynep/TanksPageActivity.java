@@ -19,88 +19,100 @@ import com.example.aquaassistant.zulal.AquariumContainer;
 
 public class TanksPageActivity extends AppCompatActivity {
     Intent intent = getIntent();
+    ListView listView;
+    AllContainers allContainers;
+    AquariumContainer firstTank;
+    TanksAdapter tanksAdapter;
+    Button addTank;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tankspage);
-
         TextView myTanks = findViewById(R.id.myTanks);
-        final ListView listView = findViewById(R.id.tankList);
-        final AllContainers allContainers = new AllContainers();
-        AquariumContainer firstTank = new AquariumContainer();
-        firstTank.setName("Hellooo");
-        firstTank.setSize(400);
+        myTanks.setText("My Tanks");
+
+        addTank = findViewById(R.id.addTank);
+        allContainers = new AllContainers();
+
+        firstTank = new AquariumContainer( "Helloo", 150 , R.drawable.aquarium );
         allContainers.addTank(firstTank);
 
-
-        TanksAdapter tanksAdapter;
-        tanksAdapter = new TanksAdapter( allContainers.getAllTanks(), TanksPageActivity.this);
+        //create a list view
+        listView = findViewById(R.id.tankList);
+        //put the tank list into the list view
+        tanksAdapter = new TanksAdapter(allContainers.getAllTanks(), TanksPageActivity.this);
         listView.setAdapter(tanksAdapter);
-        //tanksAdapter.notifyDataSetChanged();
-        // listView.updateViewLayout( listView, listView.getLayoutParams());
+        //adjust the changes
+        tanksAdapter.notifyDataSetChanged();
 
+        //if the user click on the tank
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(TanksPageActivity.this, TankPageActivity.class);
+                //put the tank as extra
                 intent.putExtra("selectedTank", allContainers.getAllTanks().get(i));
-               // intent.putExtra("tanks", allContainers.getAllTanks());
+                //put the tank list as extra
+                intent.putExtra("tanks", allContainers.getAllTanks());
                 startActivity(intent);
             }
         });
-
-        //button
-        Button addTank = findViewById(R.id.addTank);
-        addTank.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(TanksPageActivity.this);
-                alert.setTitle("New Tank");
-                alert.setMessage("Please enter a tank name.");
-                final EditText name = new EditText(TanksPageActivity.this);
-                // Specify the type of input expected;
-                name.setInputType(InputType.TYPE_CLASS_TEXT);
-                alert.setView(name);
-
-                // Set up the buttons
-                alert.setPositiveButton("NEXT", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        final String tName = name.getText().toString();
-                        AlertDialog.Builder secondAlert = new AlertDialog.Builder(TanksPageActivity.this);
-                        secondAlert.setTitle("Size?");
-                        secondAlert.setMessage(" What is the size of the tank?");
-                        final EditText size = new EditText((TanksPageActivity.this));
-                        size.setInputType(InputType.TYPE_CLASS_NUMBER);
-                        secondAlert.setView(size);
-                        secondAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                int tSize = Integer.parseInt(String.valueOf(size.getText()));
-                                AquariumContainer newTank = new AquariumContainer();
-                                newTank.setSize(tSize);
-                                newTank.setName(tName);
-                                allContainers.addTank(newTank);
-                            }
-                        });
-                        secondAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-                        secondAlert.show();
-                    }
-                });
-                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                alert.show();
-            }
-        });
     }
+
+        public void addTankBut (View view){
+            AlertDialog.Builder alert = new AlertDialog.Builder(TanksPageActivity.this);
+            alert.setTitle("New Tank");
+            alert.setMessage("Please enter a tank name.");
+            final EditText name = new EditText(TanksPageActivity.this);
+            // Specify the type of input expected;
+            name.setInputType(InputType.TYPE_CLASS_TEXT);
+            alert.setView(name);
+
+            // Set up the buttons
+            alert.setPositiveButton("NEXT", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //the name of the tank
+                    final String tName = name.getText().toString();
+                    //second alert to determine the size of the tank
+                    AlertDialog.Builder secondAlert = new AlertDialog.Builder(TanksPageActivity.this);
+                    secondAlert.setTitle("Size?");
+                    secondAlert.setMessage(" What is the size of the tank?");
+                    // get the liter of the tank from the user
+                    final EditText size = new EditText((TanksPageActivity.this));
+                    size.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    //put a hint in the edit text
+                    size.setHint("Please enter the maximum liter!");
+                    secondAlert.setView(size);
+                    secondAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //the size of the tank
+                            int tSize = Integer.parseInt(String.valueOf(size.getText()));
+                            //add a tank with specified name and size
+                            allContainers.addTank(new AquariumContainer(tName , tSize, R.drawable.aquarium));
+                        }
+                    });
+                    secondAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    //show the alert
+                    secondAlert.show();
+                }
+            });
+            alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            //show the first alert
+            alert.show();
+        }
 }
+
+
 

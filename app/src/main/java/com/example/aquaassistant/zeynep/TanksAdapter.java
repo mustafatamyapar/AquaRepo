@@ -27,23 +27,24 @@ public class TanksAdapter extends ArrayAdapter<AquariumContainer> {
     @NonNull
     @Override
     public View getView( int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
+        //get the tanks view
         LayoutInflater layoutInflater = context.getLayoutInflater();
         View tanksView = layoutInflater.inflate(R.layout.tanks_view,null,true);
 
-        TextView nameOfTank =  tanksView.findViewById(R.id.textView);
-        TextView timeCond = tanksView.findViewById(R.id.timeCond);
+        //find the layout components and set their texts
+        TextView nameOfTank =  tanksView.findViewById(R.id.nameOfTank);
+        TextView timeFeed = tanksView.findViewById(R.id.timeFeed);
         TextView timeWater= tanksView.findViewById(R.id.timeWater);
         TextView numOfFish = tanksView.findViewById(R.id.numOfFishes);
-        TextView numOfSnail = tanksView.findViewById(R.id.numOfSnail);
+        TextView numOfOthers = tanksView.findViewById(R.id.numOfOthers);
         TextView numOfPlant = tanksView.findViewById(R.id.numOfPlants);
 
-        nameOfTank.setText(tankContainer.get(position).getName());
-        timeCond.setText( "Time until feeding: " + tankContainer.get(position).getTimeToFeed()) ;
+        nameOfTank.setText(tankContainer.get(position).getTankName());
+        timeFeed.setText( "Time until feeding: " + tankContainer.get(position).getTimeToFeed()) ;
         timeWater.setText("Time until water check: " + tankContainer.get(position).getWaterCheck());
         numOfFish.setText("Fish Count: " + tankContainer.get(position).allFishes());
         numOfPlant.setText("Plant Count: " + tankContainer.get(position).allPlants());
-        numOfSnail.setText("Other Creatures Count: " + tankContainer.get(position).allOthers());
+        numOfOthers.setText("Other Creatures Count: " + tankContainer.get(position).allOthers());
 
         return tanksView;
     }
