@@ -1,4 +1,4 @@
-package com.example.aquaassistant;
+package com.example.aquaassistant.zeynep;
 
 import android.text.Editable;
 

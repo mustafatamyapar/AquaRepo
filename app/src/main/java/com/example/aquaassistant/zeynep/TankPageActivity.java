@@ -1,4 +1,4 @@
-package com.example.aquaassistant;
+package com.example.aquaassistant.zeynep;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,14 +8,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.io.Serializable;
+import com.example.aquaassistant.R;
+
 import java.util.ArrayList;
 
 public class TankPageActivity extends AppCompatActivity {

@@ -1,6 +1,6 @@
-package com.example.aquaassistant;
+package com.example.aquaassistant.zeynep;
 
-import android.os.Parcelable;
+import com.example.aquaassistant.zeynep.Tank;
 
 import java.io.Serializable;
 import java.util.ArrayList;

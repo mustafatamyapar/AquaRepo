@@ -1,10 +1,12 @@
-package com.example.aquaassistant;
+package com.example.aquaassistant.zulal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.aquaassistant.R;
 
 public class FaqActivity2 extends AppCompatActivity {
 

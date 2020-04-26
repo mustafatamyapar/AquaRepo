@@ -1,4 +1,4 @@
-package com.example.aquaassistant;
+package com.example.aquaassistant.zeynep;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.LinearLayoutCompat;
+
+import com.example.aquaassistant.R;
+import com.example.aquaassistant.zeynep.Tank;
 
 import java.util.ArrayList;
 
