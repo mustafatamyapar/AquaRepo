@@ -1,4 +1,5 @@
 package com.example.aquaassistant.zulal;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -6,7 +7,7 @@ import java.util.Iterator;
  * Zülal Nur Hıdıroğlu
  * 26.04.2020
  */
-public class AquariumContainer extends Animal implements Iterable<Animal> {
+public class AquariumContainer extends Animal implements Serializable {
 
     //Properties
     private ArrayList<Animal> oneTank;
@@ -17,15 +18,15 @@ public AquariumContainer() {
     iterator = oneTank.iterator();
 }
 //methods
-public void addAnimal( Animal animal)
+public void addPlant( Plant plant)
 {
-    oneTank.add(animal);
+    oneTank.add(plant);
 }
-
-@Override
-public Iterator<Animal> iterator()
-{
-    return oneTank.iterator();
+public void addFish( Fish fish){
+    oneTank.add(fish);
+}
+public void addOther(  OtherCreatures other){
+    oneTank.add(other);
 }
 
 public int size()
@@ -61,6 +62,19 @@ public String typeOfCreature() {
        list += oneTank.get(i).toString() + " ,";
     }
     return list;
+}
+
+@Override
+public int getId() {
+    Selectable temp;
+    int id = 0;
+    for ( int i = 0; i < oneTank.size(); i++){
+        temp = (Selectable) oneTank.get(i);
+        if ( temp.getSelected() == true){
+           id =  oneTank.get(i).getId();
+        }
+    }
+    return id;
 }
 
 public void removeAll ()

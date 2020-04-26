@@ -14,7 +14,7 @@ public class Faq implements Serializable {
         return headQuestion;
     }
 
-    public String getTextContent()
+    public String getTextContent() {
         return textContent;
-
+    }
 }

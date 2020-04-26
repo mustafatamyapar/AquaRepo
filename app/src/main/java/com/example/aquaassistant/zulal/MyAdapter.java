@@ -20,7 +20,7 @@ private ArrayList<Faq> listFaq;
 private Activity activity;
 public MyAdapter(ArrayList<Faq> listfaq, Activity activity)
 {
-    super(activity, R.layout.activity_faq,listfaq)
+    super(activity, R.layout.activity_faq,listfaq);
     this.listFaq= listfaq;
     this.activity = activity;
 }

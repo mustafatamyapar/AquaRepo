@@ -7,13 +7,15 @@ public class Plant extends Animal implements Selectable {
     //properties
     private String plantName;
     private boolean selected;
-    String type;
+    private String type;
+    private int id;
 
 //constructer
-public Plant(String plantName) {
+public Plant(String plantName, int id) {
     this.plantName = plantName;
     selected = false;
     type = "Plant";
+    this.id = id;
 }
 //methods
 @Override
@@ -30,6 +32,11 @@ public void setName(String name) {
 @Override
 public String typeOfCreature() {
     return type;
+}
+
+@Override
+public int getId() {
+    return id;
 }
 
 @Override

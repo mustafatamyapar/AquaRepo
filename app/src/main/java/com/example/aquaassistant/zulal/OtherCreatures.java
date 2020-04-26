@@ -9,13 +9,15 @@ public class OtherCreatures extends Animal implements Selectable {
     private String nameOfCreature;
     private boolean selected ;
     private String type;
+    private int id;
 
 //constructer
-public OtherCreatures(String nameOfCreature)
+public OtherCreatures(String nameOfCreature, int id)
 {
     this.nameOfCreature = nameOfCreature;
     selected = false;
     type = "other";
+    this.id = id;
 }
 //methods
 @Override
@@ -31,6 +33,11 @@ this.nameOfCreature = name;
 @Override
 public String typeOfCreature() {
     return type;
+}
+
+@Override
+public int getId() {
+    return id;
 }
 
 @Override

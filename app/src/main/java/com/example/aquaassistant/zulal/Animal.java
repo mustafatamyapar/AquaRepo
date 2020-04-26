@@ -7,4 +7,5 @@ public abstract class Animal {
     public abstract String getName();
     public abstract void setName( String name);
     public abstract String typeOfCreature();
+    public abstract int getId();
 }

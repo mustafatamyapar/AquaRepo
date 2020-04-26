@@ -7,12 +7,14 @@ public class Fish extends Animal implements Selectable {
     private String nameOfFish;
     private boolean selected;
     private String type;
+    private int id;
 //constructr
-public Fish(String name)
+public Fish(String name,int id )
 {
     this.nameOfFish = name;
     this.selected = false;
     type = "fish";
+    this.id = id;
 }
 //methods
 @Override
@@ -28,6 +30,11 @@ public void setName(String name) {
 @Override
 public String typeOfCreature() {
     return type;
+}
+
+@Override
+public int getId() {
+    return id;
 }
 
 @Override
