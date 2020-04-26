@@ -39,7 +39,7 @@ public class TanksAdapter extends ArrayAdapter<AquariumContainer> {
         TextView numOfPlant = tanksView.findViewById(R.id.numOfPlants);
 
         nameOfTank.setText(tankContainer.get(position).getName());
-        timeCond.setText( "Time until feed: " + tankContainer.get(position).getTimeToFeed()) ;
+        timeCond.setText( "Time until feeding: " + tankContainer.get(position).getTimeToFeed()) ;
         timeWater.setText("Time until water check: " + tankContainer.get(position).getWaterCheck());
         numOfFish.setText("Fish Count: " + tankContainer.get(position).allFishes());
         numOfPlant.setText("Plant Count: " + tankContainer.get(position).allPlants());
