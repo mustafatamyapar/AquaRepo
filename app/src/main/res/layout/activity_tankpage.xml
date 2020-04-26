@@ -25,7 +25,6 @@
         android:layout_height="215dp"
         android:layout_marginTop="56dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tankName"
         app:srcCompat="@drawable/ic_launcher_background" />

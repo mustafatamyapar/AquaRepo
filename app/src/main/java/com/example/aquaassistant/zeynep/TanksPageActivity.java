@@ -14,30 +14,27 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.aquaassistant.R;
+import com.example.aquaassistant.zulal.AllContainers;
+import com.example.aquaassistant.zulal.AquariumContainer;
 
 public class TanksPageActivity extends AppCompatActivity {
-
+    Intent intent = getIntent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tankspage);
+
         TextView myTanks = findViewById(R.id.myTanks);
         final ListView listView = findViewById(R.id.tankList);
-        final TankContainer tankContainer = new TankContainer();
-        Tank firstTank = new Tank("First Tank", 1000, R.drawable.aquarium);
-        tankContainer.addTank(new Tank("My Tank", 1000, R.drawable.aquarium));
-        tankContainer.addTank(firstTank);
-        //tankContainer.addTank( new Tank ( "New Tank" , 1000 , R.drawable.aquarium));
-        //tankContainer.addTank( new Tank ( "New Tank" , 1000 , R.drawable.aquarium));
-        //tankContainer.addTank( new Tank ( "New Tank" , 1000 , R.drawable.aquarium));
-        // tankContainer.addTank( new Tank ( "New Tank" , 1000 , R.drawable.aquarium));
-        //tankContainer.addTank( new Tank ( "New Tank" , 1000 , R.drawable.aquarium));
-        firstTank.setCondCheck(2);
+        final AllContainers allContainers = new AllContainers();
+        AquariumContainer firstTank = new AquariumContainer();
         firstTank.setName("Hellooo");
-        firstTank.setWaterCheck(1);
+        firstTank.setSize(400);
+        allContainers.addTank(firstTank);
+
 
         TanksAdapter tanksAdapter;
-        tanksAdapter = new TanksAdapter(tankContainer.getTanks(), TanksPageActivity.this);
+        tanksAdapter = new TanksAdapter( allContainers.getAllTanks(), TanksPageActivity.this);
         listView.setAdapter(tanksAdapter);
         //tanksAdapter.notifyDataSetChanged();
         // listView.updateViewLayout( listView, listView.getLayoutParams());
@@ -46,8 +43,8 @@ public class TanksPageActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(TanksPageActivity.this, TankPageActivity.class);
-                intent.putExtra("selectedTank", tankContainer.getTanks().get(i));
-                intent.putExtra("tanks", tankContainer.getTanks());
+                intent.putExtra("selectedTank", allContainers.getAllTanks().get(i));
+               // intent.putExtra("tanks", allContainers.getAllTanks());
                 startActivity(intent);
             }
         });
@@ -60,7 +57,7 @@ public class TanksPageActivity extends AppCompatActivity {
                 alert.setTitle("New Tank");
                 alert.setMessage("Please enter a tank name.");
                 final EditText name = new EditText(TanksPageActivity.this);
-                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                // Specify the type of input expected;
                 name.setInputType(InputType.TYPE_CLASS_TEXT);
                 alert.setView(name);
 
@@ -79,7 +76,10 @@ public class TanksPageActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 int tSize = Integer.parseInt(String.valueOf(size.getText()));
-                                tankContainer.addTank(new Tank(tName, tSize, R.drawable.aquarium));
+                                AquariumContainer newTank = new AquariumContainer();
+                                newTank.setSize(tSize);
+                                newTank.setName(tName);
+                                allContainers.addTank(newTank);
                             }
                         });
                         secondAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

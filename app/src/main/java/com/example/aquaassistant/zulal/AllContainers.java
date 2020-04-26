@@ -30,7 +30,7 @@ public void addTank( AquariumContainer container){
 public int numberOfAllCreatures(){
     int allCreatures = 0;
     for ( int i = 0; i< allTanks.size(); i++) {
-        allCreatures += allTanks.get(i).size();
+        allCreatures += allTanks.get(i).allFishes()+ allTanks.get(i).allOthers() + allTanks.get(i).allPlants();
     }
     return allCreatures;
 }
@@ -46,5 +46,8 @@ public int getId() {
         ids+= allTanks.get(i).getId();
     }
     return ids;
+}
+public ArrayList<AquariumContainer> getAllTanks(){
+    return allTanks;
 }
 }

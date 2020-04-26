@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.aquaassistant.R;
+import com.example.aquaassistant.zulal.AquariumContainer;
 
 import java.util.ArrayList;
 
@@ -35,14 +36,14 @@ public class TankPageActivity extends AppCompatActivity {
         ProgressBar progressBar = findViewById(R.id.progressBar);
 
         final Intent intent = getIntent();
-        final Tank selectedTank = (Tank) intent.getSerializableExtra("selectedTank");
-        final ArrayList<Tank> tanks = (ArrayList<Tank>) intent.getSerializableExtra("tanks");
+        final AquariumContainer selectedTank = (AquariumContainer) intent.getSerializableExtra("selectedTank");
+        //final ArrayList<AquariumContainer> tanks = (ArrayList<AquariumContainer>) intent.getParcelableArrayListExtra("tanks");
         Bitmap bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(),selectedTank.getPictureInteger());
         tankImage.setImageBitmap(bitmap);
 
         tankName.setText(selectedTank.getName());
 
-        condCheck.setText("Time until condition check: " + selectedTank.getCondCheck());
+        condCheck.setText("Time until feeding: " + selectedTank.getTimeToFeed());
         waterCheck.setText("Time until water check: " + selectedTank.getWaterCheck());
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +54,7 @@ public class TankPageActivity extends AppCompatActivity {
                 sureDialog.setPositiveButton( "YES" , new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        tanks.remove(selectedTank);
+                       // tanks.remove(selectedTank);
                         finish();
                     }
                 });
