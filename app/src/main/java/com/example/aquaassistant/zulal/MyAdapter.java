@@ -20,7 +20,7 @@ private ArrayList<Faq> listFaq;
 private Activity activity;
 public MyAdapter(ArrayList<Faq> listfaq, Activity activity)
 {
-    super(activity, R.layout.custom_view,listfaq)
+    super(activity, R.layout.activity_faq,listfaq)
     this.listFaq= listfaq;
     this.activity = activity;
 }
@@ -29,8 +29,8 @@ public MyAdapter(ArrayList<Faq> listfaq, Activity activity)
 @Override
 public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
     LayoutInflater layoutInflater = activity.getLayoutInflater();
-    View customView =layoutInflater.inflate(R.layout.custom_view,null,true);
-    TextView question = customView.findViewById(R.id.textView2);
+    View customView =layoutInflater.inflate(R.layout.activity_faq,null,true);
+    TextView question = customView.findViewById(R.id.listView);
     question.setText(listFaq.get(position).getQuestion());
     return customView;
 }

@@ -13,7 +13,6 @@ public class FaqActivity2 extends AppCompatActivity {
     TextView content ;
     TextView questionPanel;
     Intent intent;
-    String question;
     String content1;
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +21,10 @@ protected void onCreate(Bundle savedInstanceState) {
     content = findViewById(R.id.infor);
     questionPanel = findViewById(R.id.questionPanel);
     intent= getIntent();
-    question =intent.getStringExtra("question");
-    content1 = intent.getStringExtra("content");
+    Faq selectedContent = (Faq) intent.getSerializableExtra("selectedContent");
     //add them to activity
-    questionPanel.setText(question);
-    content.setText(content1);
-
+    content.setText(selectedContent.textContent);
+    questionPanel.setText(selectedContent.headQuestion);
 
 }
 }

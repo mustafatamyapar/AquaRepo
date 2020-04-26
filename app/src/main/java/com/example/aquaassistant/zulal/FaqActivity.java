@@ -47,13 +47,14 @@ protected void onCreate(Bundle savedInstanceState) {
     faqArrayList.add(q5);
      //listView
     MyAdapter listAdapter = new MyAdapter(faqArrayList,FaqActivity.this);
+    listView.setAdapter(listAdapter);
 
 
      listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
          @Override
          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
              Intent intent = new Intent(getApplicationContext(), FaqActivity2.class);
-             intent.putExtra("selectedQuestion",faqArrayList.get(position));
+             intent.putExtra("selectedContent",faqArrayList.get(position));
              startActivity(intent);
          }
      });
