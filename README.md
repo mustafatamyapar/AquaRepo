@@ -21,10 +21,10 @@ _Include a concise description of your project here. Be sure to include the prop
 #### Group Members
 - [member1](group/member1_log.md)    _(full name & link to personal log file)_
 - [member2](group/member2_log.md)
-- [member3]
-- [member4]
-- [member5]
-- [member6]
+- [member3](group/member3_log.md)
+- [member4](group/member4_log.md)
+- [member5](group/member5_log.md)
+- [member6](group/member6_log.md)
 
 ****
 **Instructor:** _(name)_   **TA:**  _(name)_
