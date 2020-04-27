@@ -19,13 +19,13 @@ _Include a concise description of your project here. Be sure to include the prop
 
 [Group Meetings Log](group/meetingslog.md)
 #### Group Members
-- [member1](group/zulal_log.md)    _(full name & link to personal log file)_
-- [member2](group/sena_log.md)
-- [member3](group/zeynep_log.md)
-- [member4](group/mustafa_log.md)
-- [member5](group/kaan_log.md)
-- [member6](group/kerem_log.md)
+- [zulal](group/zulal_log.md)    _(full name & link to personal log file)_
+- [sena](group/sena_log.md)
+- [zeynep](group/zeynep_log.md)
+- [mustafa](group/mustafa_log.md)
+- [kaan](group/kaan_log.md)
+- [kerem](group/kerem_log.md)
 
 ****
-**Instructor:** _(name)_   **TA:**  _(name)_
+**Instructor:** David Davenport   **TA:** Sevil Çalışkan
 ****
