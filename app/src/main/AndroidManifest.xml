@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mustafa.DiseasesPage"></activity>
+        <activity android:name=".zeynep.EditTankActivity"></activity>
+        <activity android:name=".mustafa.DiseasesPage" />
         <activity android:name=".mustafa.PlantsPage" />
         <activity android:name=".mustafa.SnailPage" />
         <activity android:name=".mustafa.FishPage" />
@@ -23,8 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".zeynep.TanksPageActivity"></activity>
-        <activity android:name=".zeynep.TankPageActivity"></activity>
+        <activity android:name=".zeynep.TanksPageActivity" />
+        <activity android:name=".zeynep.TankPageActivity" />
     </application>
 
 </manifest>

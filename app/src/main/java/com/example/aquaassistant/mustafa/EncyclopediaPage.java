@@ -16,7 +16,7 @@ private  Button FishButton;
         setContentView(R.layout.activity_encyclopedia_page);
 
         FishButton = (Button)findViewById(R.id.FishButton);
-        FishButton.setOnClickListener(openFishPage(); );
+        //FishButton.setOnClickListener(openFishPage(); );
 
     }
     public void openFishPage(){

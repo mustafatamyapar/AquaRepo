@@ -84,7 +84,10 @@ public class TankPageActivity extends AppCompatActivity {
 
     //edit the tank when the user click on the edit button
     public void editTankBut(View view){
-
+        Intent intent2 = new Intent(TankPageActivity.this , EditTankActivity.class);
+        intent2.putExtra("tank", selectedTank);
+        startActivity(intent2);
+        tankName.invalidate();
     }
 
 

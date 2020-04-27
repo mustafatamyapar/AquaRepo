@@ -84,6 +84,7 @@ public class TanksPageActivity extends AppCompatActivity {
                     //put a hint in the edit text
                     size.setHint("Please enter the maximum liter!");
                     secondAlert.setView(size);
+                    //set up the buttons
                     secondAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
