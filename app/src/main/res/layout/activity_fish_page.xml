@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".mustafa.FishPage">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="187dp"
+        android:layout_height="65dp"
+        android:text="Wilkommen zür Fish Page"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="103dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
