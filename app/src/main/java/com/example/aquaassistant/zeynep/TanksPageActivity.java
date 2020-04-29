@@ -43,22 +43,16 @@ public class TanksPageActivity extends AppCompatActivity {
         allContainers = new AllContainers();
         idArray = new ArrayList<String>();
         //allContainers.addTank(firstTank);
-
+        tanksDatabase = TanksPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);
+        tanksDatabase.execSQL("CREATE TABLE IF NOT EXISTS tanks (id INTEGER PRIMARY KEY, tankname VARCHAR, tanksize VARCHAR, numoffish VARCHAR," +
+                "numofplant VARCHAR , numofother VARCHAR , watercheck VARCHAR , timetofeed VARCHAR , pictureint VARCHAR)");
         //create a list view
         listView = findViewById(R.id.tankList);
         //put the tank list into the list view
         tanksAdapter = new TanksAdapter(idArray, TanksPageActivity.this);
         listView.setAdapter(tanksAdapter);
-        if (idArray.size() != 0) {
 
 
-            getData();
-            //adjust the changes
-            //tanksAdapter.notifyDataSetChanged();
-        }
-        else{
-          listView.setVisibility(View.INVISIBLE);
-        }
         //tanksDatabase = TanksPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);
         //tanksDatabase.execSQL("CREATE TABLE IF NOT EXISTS tanks (id INTEGER PRIMARY KEY, tankname VARCHAR, tanksize VARCHAR, numOffish VARCHAR," +
           //      "numofplant VARCHAR , numofother VARCHAR , watercheck VARCHAR , timetofeed VARCHAR , pictureint VARCHAR)");
@@ -76,15 +70,14 @@ public class TanksPageActivity extends AppCompatActivity {
             }
         });
 
-
+        getData();
     }
 
     public void addTankBut(View view) {
         try {
             //open or crate a tanks database
-            tanksDatabase = TanksPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);
-            tanksDatabase.execSQL("CREATE TABLE IF NOT EXISTS tanks (id INTEGER PRIMARY KEY, tankname VARCHAR, tanksize VARCHAR, numOffish VARCHAR," +
-                    "numofplant VARCHAR , numofother VARCHAR , watercheck VARCHAR , timetofeed VARCHAR , pictureint VARCHAR)");
+
+
             AlertDialog.Builder alert = new AlertDialog.Builder(TanksPageActivity.this);
             alert.setTitle("New Tank");
             alert.setMessage("Please enter a tank name.");
@@ -126,12 +119,12 @@ public class TanksPageActivity extends AppCompatActivity {
                             sqLiteStatement.bindString(4, "0");
                             sqLiteStatement.bindString(5, "0");
                             AquariumContainer newTank = new AquariumContainer(tName, Integer.parseInt(tSize), R.drawable.aquarium);
-                            sqLiteStatement.bindString(6, String.valueOf(newTank.getWaterCheck()));
-                            sqLiteStatement.bindString(7, String.valueOf(newTank.getTimeToFeed()));
-                            sqLiteStatement.bindString(8, String.valueOf(newTank.getPictureInteger()));
+                            sqLiteStatement.bindString(6, "0");
+                            sqLiteStatement.bindString(7, "0");
+                            sqLiteStatement.bindString(8, "0");
                             sqLiteStatement.execute();
-
                             tanksAdapter.notifyDataSetChanged();
+                            //System.out.println(idArray.size());
 
                         }
                     });
@@ -161,11 +154,16 @@ public class TanksPageActivity extends AppCompatActivity {
 
     public void getData() {
         try {
-            tanksDatabase = TanksPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);
+            SQLiteDatabase tanksDatabase = TanksPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);
             Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks", null);
             int idIndex = cursor.getColumnIndex("id");
-            while (cursor.moveToNext()) {
-                idArray.add(String.valueOf(cursor.getInt(idIndex)));
+            System.out.println(cursor.getColumnName(idIndex));
+            if ( !cursor.isNull(cursor.getInt(idIndex)))
+            {
+                //while (cursor.moveToNext()) {
+                    cursor.moveToFirst();
+                   idArray.add(String.valueOf(cursor.getInt(idIndex)));
+                //}
             }
             tanksAdapter.notifyDataSetChanged();
             cursor.close();
@@ -175,6 +173,3 @@ public class TanksPageActivity extends AppCompatActivity {
         }
     }
 }
-
-
-
