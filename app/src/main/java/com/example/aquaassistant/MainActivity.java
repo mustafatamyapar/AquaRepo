@@ -12,7 +12,7 @@ import com.example.aquaassistant.zeynep.TanksPageActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button goTanks;
-    //Button settingsTest;
+    //Button settingsTest; - it is still here
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
