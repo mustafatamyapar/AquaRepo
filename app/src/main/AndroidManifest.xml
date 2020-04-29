@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".sena.ChangeProfilePicture"></activity>
+        <activity android:name=".sena.ChangeEmailPhone" />
+        <activity android:name=".sena.ChangePassword" />
+        <activity android:name=".sena.ChangeUsername" />
         <activity android:name=".zeynep.EditTankActivity" />
         <activity android:name=".mustafa.DiseasesPage" />
         <activity android:name=".mustafa.PlantsPage" />
