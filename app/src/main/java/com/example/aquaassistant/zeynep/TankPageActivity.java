@@ -24,11 +24,8 @@ public class TankPageActivity extends AppCompatActivity {
     AquariumContainer selectedTank;
     ArrayList<AquariumContainer> tanks;
     Bitmap bitmap;
-    TextView tankName;
-    TextView condCheck;
-    TextView waterCheck;
-    Button deleteButton;
-    Button editButton;
+    TextView tankName , condCheck, waterCheck;
+    Button deleteButton, editButton;
     ImageView tankImage;
 
     @Override
@@ -48,8 +45,8 @@ public class TankPageActivity extends AppCompatActivity {
         //get the intent from the tankspageactivity
         Intent intent = getIntent();
         //get the tank
-        selectedTank = (AquariumContainer) intent.getSerializableExtra("selectedTank");
-        tanks = (ArrayList<AquariumContainer>) intent.getSerializableExtra("tanks");
+        //selectedTank = (AquariumContainer) intent.getSerializableExtra("selectedTank");
+        //tanks = (ArrayList<AquariumContainer>) intent.getSerializableExtra("tanks");
         //find the image of the tank
         bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(),selectedTank.getPictureInteger());
 
