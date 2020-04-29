@@ -14,7 +14,7 @@ _Include a concise description of your project here. Be sure to include the prop
 + **Requirements:** completed (9/03/2020)
 + **UI Design:** completed (31/03/2020)
 + **Detailed Design:** in progress
-+ **Implementation:** not started!
++ **Implementation:** started
 + **Reflections:** not yet!
 
 [Group Meetings Log](group/meetingslog.md)
