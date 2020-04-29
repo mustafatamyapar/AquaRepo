@@ -12,5 +12,5 @@ Together with the group members, I bought an Android Studio course on Udemy. I s
 I created a Settings project on Android Studio and completed the basic navigation & design parts.
 
 ### April 29, 2020
-Today, I transfered my Settings file into the project we all collaborate on (AquaRepo) so that all files are in one project. I am still watching the videos from the Udemy course, I am planning to finish that course this week.
+Today, I transfered my Settings file into the project we all collaborate on (AquaRepo) so that all files are in one project. There is a problem about navigating to my settings page, I will discuss this with my fellow members tomorrow. I am still watching the videos from the Udemy course and planning to finish that course this week.
 ****
