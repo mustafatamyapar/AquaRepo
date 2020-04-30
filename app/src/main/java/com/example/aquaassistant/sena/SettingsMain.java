@@ -18,19 +18,19 @@ public class SettingsMain extends AppCompatActivity {
     }
 
     public void changeUsernamePage(View view) {
-        Intent intent = new Intent(SettingsMain.this, ChangeUsername.class);
+        Intent intent = new Intent(getApplicationContext(), ChangeUsername.class);
         startActivity(intent);
     }
     public void changePasswordPage(View view) {
-        Intent intent = new Intent(SettingsMain.this, ChangePassword.class);
+        Intent intent = new Intent(getApplicationContext(), ChangePassword.class);
         startActivity(intent);
     }
     public void changeEmailPhoneNumberPage(View view) {
-        Intent intent = new Intent(SettingsMain.this, ChangeEmailPhone.class);
+        Intent intent = new Intent(getApplicationContext(), ChangeEmailPhone.class);
         startActivity(intent);
     }
     public void changeProfilePicturePage(View view) {
-        Intent intent = new Intent(SettingsMain.this, ChangeProfilePicture.class);
+        Intent intent = new Intent(getApplicationContext(), ChangeProfilePicture.class);
         startActivity(intent);
     }
 }

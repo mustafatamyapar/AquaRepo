@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".sena.ChangeProfilePicture"></activity>
+        <activity android:name=".sena.SettingsMain" />
         <activity android:name=".sena.ChangeEmailPhone" />
         <activity android:name=".sena.ChangePassword" />
         <activity android:name=".sena.ChangeUsername" />
