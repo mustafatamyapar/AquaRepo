@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sena.ChangeProfilePicture"></activity>
+        <activity android:name=".zulal.FaqActivity"></activity>
+        <activity android:name=".sena.ChangeProfilePicture" />
         <activity android:name=".sena.SettingsMain" />
         <activity android:name=".sena.ChangeEmailPhone" />
         <activity android:name=".sena.ChangePassword" />
@@ -20,8 +21,6 @@
         <activity android:name=".mustafa.SnailPage" />
         <activity android:name=".mustafa.FishPage" />
         <activity android:name=".mustafa.EncyclopediaPage" />
-        <activity android:name=".zulal.FaqActivity2" />
-        <activity android:name=".zulal.FaqActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
