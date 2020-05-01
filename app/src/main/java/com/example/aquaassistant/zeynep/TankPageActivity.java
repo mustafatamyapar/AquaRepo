@@ -3,8 +3,12 @@ package com.example.aquaassistant.zeynep;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -27,7 +31,10 @@ public class TankPageActivity extends AppCompatActivity {
     TextView tankName , condCheck, waterCheck;
     Button deleteButton, editButton;
     ImageView tankImage;
+    String tankId;
+    SQLiteDatabase tanksDatabase;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,19 +49,34 @@ public class TankPageActivity extends AppCompatActivity {
 
         editButton.setText("Edit Tank");
         deleteButton.setText("Delete Tank");
-        //get the intent from the tankspageactivity
-        Intent intent = getIntent();
-        //get the tank
-        //selectedTank = (AquariumContainer) intent.getSerializableExtra("selectedTank");
-        //tanks = (ArrayList<AquariumContainer>) intent.getSerializableExtra("tanks");
-        //find the image of the tank
-        bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(),selectedTank.getPictureInteger());
 
-        tankImage.setImageBitmap(bitmap);
-        tankName.setText(selectedTank.getTankName());
-        condCheck.setText("Time until feeding: " + selectedTank.getTimeToFeed());
-        waterCheck.setText("Time until water check: " + selectedTank.getWaterCheck());
+        //get the tank id
+        Intent intent =getIntent();
+        tankId = intent.getStringExtra("tankId");
+        try {
+            tanksDatabase = TankPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);
+            //get the info of tank with the tankId
+            Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
 
+            //get the column indexes of the info
+            int tankNameIndex = cursor.getColumnIndex("tankname");
+            int condCheckIndex = cursor.getColumnIndex("timetofeed");
+            int waterCheckIndex = cursor.getColumnIndex("watercheck");
+            int tankImageIndex = cursor.getColumnIndex("pictureint");
+
+            while (cursor.moveToNext()) {
+                //find the image of the tank
+                bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(), Integer.parseInt(cursor.getString(tankImageIndex)));
+
+                //get the info and put them into text views
+                tankImage.setImageBitmap(bitmap);
+                tankName.setText(cursor.getString(tankNameIndex));
+                condCheck.setText("Time until feeding: " + cursor.getString(condCheckIndex));
+                waterCheck.setText("Time until water check: " + cursor.getString(waterCheckIndex));
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
     //delete the tank when the user click o the delete button
@@ -66,8 +88,14 @@ public class TankPageActivity extends AppCompatActivity {
         sureDialog.setPositiveButton( "YES" , new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                tanks.remove( selectedTank );
-                finish();
+                //delete the tank from database
+                String deleteString = "DELETE FROM tanks WHERE id = " + tankId;
+                SQLiteStatement deleteStatement = tanksDatabase.compileStatement(deleteString);
+                deleteStatement.execute();
+                //go back from the tanks page
+                Intent intent = new Intent (TankPageActivity.this , TanksPageActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
         sureDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -81,10 +109,12 @@ public class TankPageActivity extends AppCompatActivity {
 
     //edit the tank when the user click on the edit button
     public void editTankBut(View view){
+        Intent intent = getIntent();
+        String tankId = intent.getStringExtra("tankId");
         Intent intent2 = new Intent(TankPageActivity.this , EditTankActivity.class);
-        intent2.putExtra("tank", selectedTank);
+        //put the tank id as extra
+        intent2.putExtra("tankId", tankId);
         startActivity(intent2);
-        tankName.invalidate();
     }
 
 

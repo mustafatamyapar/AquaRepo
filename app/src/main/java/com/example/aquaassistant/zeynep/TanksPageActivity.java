@@ -26,7 +26,6 @@ public class TanksPageActivity extends AppCompatActivity {
     Intent intent = getIntent();
     ListView listView;
     AllContainers allContainers;
-    AquariumContainer firstTank;
     TanksAdapter tanksAdapter;
     Button addTank;
     SQLiteDatabase tanksDatabase;
@@ -42,42 +41,34 @@ public class TanksPageActivity extends AppCompatActivity {
         addTank = findViewById(R.id.addTank);
         allContainers = new AllContainers();
         idArray = new ArrayList<String>();
-        //allContainers.addTank(firstTank);
+
+        // a database to store the tanks that have been created by user
         tanksDatabase = TanksPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);
         tanksDatabase.execSQL("CREATE TABLE IF NOT EXISTS tanks (id INTEGER PRIMARY KEY, tankname VARCHAR, tanksize VARCHAR, numoffish VARCHAR," +
-                "numofplant VARCHAR , numofother VARCHAR , watercheck VARCHAR , timetofeed VARCHAR , pictureint VARCHAR)");
+                "numofplant VARCHAR , numofother VARCHAR , watercheck VARCHAR ,timetofeed VARCHAR ,pictureint VARCHAR)");
         //create a list view
         listView = findViewById(R.id.tankList);
         //put the tank list into the list view
         tanksAdapter = new TanksAdapter(idArray, TanksPageActivity.this);
         listView.setAdapter(tanksAdapter);
 
-
-        //tanksDatabase = TanksPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);
-        //tanksDatabase.execSQL("CREATE TABLE IF NOT EXISTS tanks (id INTEGER PRIMARY KEY, tankname VARCHAR, tanksize VARCHAR, numOffish VARCHAR," +
-          //      "numofplant VARCHAR , numofother VARCHAR , watercheck VARCHAR , timetofeed VARCHAR , pictureint VARCHAR)");
         //if the user click on the tank
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(TanksPageActivity.this, TankPageActivity.class);
-                //put the tank as extra
-                //intent.putExtra("selectedTank", allContainers.getAllTanks().get(i));
-                //put the tank list as extra
-                // intent.putExtra("tanks", allContainers.getAllTanks());
+                //put the id arraylist as extra
                 intent.putExtra("tankId", idArray.get(i));
                 startActivity(intent);
             }
         });
 
+        //get the id numbers and put them into arraylist
         getData();
     }
 
     public void addTankBut(View view) {
         try {
-            //open or crate a tanks database
-
-
             AlertDialog.Builder alert = new AlertDialog.Builder(TanksPageActivity.this);
             alert.setTitle("New Tank");
             alert.setMessage("Please enter a tank name.");
@@ -108,8 +99,7 @@ public class TanksPageActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             //the size of the tank
                             String tSize = size.getText().toString();
-                            //add a tank with specified name and size
-                            //allContainers.addTank(new AquariumContainer(tName , tSize, R.drawable.aquarium));
+                            //insert the name and size and other info into the database
                             String sqlString = "INSERT INTO tanks (tankname, tanksize, numoffish , " +
                                     "numofplant , numofother ,watercheck , timetofeed , pictureint) VALUES (?,?,?,?,?,?,?,?)";
                             SQLiteStatement sqLiteStatement = tanksDatabase.compileStatement(sqlString);
@@ -118,14 +108,17 @@ public class TanksPageActivity extends AppCompatActivity {
                             sqLiteStatement.bindString(3, "0");
                             sqLiteStatement.bindString(4, "0");
                             sqLiteStatement.bindString(5, "0");
+                            // a temporary tank to get the water check, time to feed and picture integer variables
+                            // according to the tank size
                             AquariumContainer newTank = new AquariumContainer(tName, Integer.parseInt(tSize), R.drawable.aquarium);
-                            sqLiteStatement.bindString(6, "0");
-                            sqLiteStatement.bindString(7, "0");
-                            sqLiteStatement.bindString(8, "0");
+                            sqLiteStatement.bindString(6, String.valueOf(newTank.getWaterCheck()));
+                            sqLiteStatement.bindString(7, String.valueOf(newTank.getTimeToFeed()));
+                            sqLiteStatement.bindString(8, String.valueOf(newTank.getPictureInteger()));
                             sqLiteStatement.execute();
                             tanksAdapter.notifyDataSetChanged();
-                            //System.out.println(idArray.size());
-
+                            Intent intent = new Intent(TanksPageActivity.this , TanksPageActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
                         }
                     });
                     secondAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -146,7 +139,6 @@ public class TanksPageActivity extends AppCompatActivity {
             });
             //show the first alert
             alert.show();
-            //tanksAdapter.notifyDataSetChanged();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -156,20 +148,17 @@ public class TanksPageActivity extends AppCompatActivity {
         try {
             SQLiteDatabase tanksDatabase = TanksPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);
             Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks", null);
+            //get the column index of id numbers
             int idIndex = cursor.getColumnIndex("id");
-            System.out.println(cursor.getColumnName(idIndex));
-            if ( !cursor.isNull(cursor.getInt(idIndex)))
-            {
-                //while (cursor.moveToNext()) {
-                    cursor.moveToFirst();
+            if ( cursor.getCount() != 0) {
+                while (cursor.moveToNext()) {
+                    //insert the id numbers in the arraylist by getting the id numbers from id column
                    idArray.add(String.valueOf(cursor.getInt(idIndex)));
-                //}
+                }
             }
-            tanksAdapter.notifyDataSetChanged();
             cursor.close();
-
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("The erroor is " + e);
         }
     }
 }

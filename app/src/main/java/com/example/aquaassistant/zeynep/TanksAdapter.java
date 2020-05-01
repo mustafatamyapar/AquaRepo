@@ -1,5 +1,6 @@
 package com.example.aquaassistant.zeynep;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
@@ -31,9 +32,11 @@ public class TanksAdapter extends ArrayAdapter<String> {
         super(context, R.layout.tanks_view, (ArrayList<String>) idArray);
         this.idArray = idArray;
         this.context = context;
+        //open the database of tanks
         tanksDatabase = context.openOrCreateDatabase("Tanks" , Context.MODE_PRIVATE, null);
     }
 
+    @SuppressLint("SetTextI18n")
     @NonNull
     @Override
     public View getView( int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -48,30 +51,27 @@ public class TanksAdapter extends ArrayAdapter<String> {
         TextView numOfFish = tanksView.findViewById(R.id.numOfFishes);
         TextView numOfOthers = tanksView.findViewById(R.id.numOfOthers);
         TextView numOfPlant = tanksView.findViewById(R.id.numOfPlants);
-        //open the tanks database
-        //tanksDatabase = openOrCreateDatabase("Tanks" , null);
-        //get the data
+
+        //get the data where id is specified by the position of listview
         Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{String.valueOf(idArray.get(position))});
 
-            //get the indexes
-
-            int tankNameIndex = cursor.getColumnIndex("tankname");
-            int timeFeedIndex = cursor.getColumnIndex("timetofeed");
-            int timeWaterIndex = cursor.getColumnIndex("watercheck");
-            int numOfFishIndex = cursor.getColumnIndex("numoffish");
-            int numOfPlantIndex = cursor.getColumnIndex("numofplant");
-            int numOfOtherIndex = cursor.getColumnIndex("numofother");
-            while(cursor.moveToNext()) {
+        //get the column indexes of the info
+        int tankNameIndex = cursor.getColumnIndex("tankname");
+        int timeFeedIndex = cursor.getColumnIndex("timetofeed");
+        int timeWaterIndex = cursor.getColumnIndex("watercheck");
+        int numOfFishIndex = cursor.getColumnIndex("numoffish");
+        int numOfPlantIndex = cursor.getColumnIndex("numofplant");
+        int numOfOtherIndex = cursor.getColumnIndex("numofother");
+        while(cursor.moveToNext()) {
             //set the texts by getting the data from tanks database
-                nameOfTank.setText(cursor.getString(tankNameIndex));
-                timeFeed.setText("Time until feeding: " + cursor.getString(timeFeedIndex));
-                timeWater.setText("Time until water check: " + cursor.getString(timeWaterIndex));
-                numOfFish.setText("Fish Count: " + cursor.getString(numOfFishIndex));
-                numOfPlant.setText("Plant Count: " + cursor.getString(numOfPlantIndex));
-                numOfOthers.setText("Other Creatures Count: " + cursor.getString(numOfOtherIndex));
+            nameOfTank.setText(cursor.getString(tankNameIndex));
+            timeFeed.setText("Time until feeding: " + cursor.getString(timeFeedIndex));
+            timeWater.setText("Time until water check: " + cursor.getString(timeWaterIndex));
+            numOfFish.setText("Fish Count: " + cursor.getString(numOfFishIndex));
+            numOfPlant.setText("Plant Count: " + cursor.getString(numOfPlantIndex));
+            numOfOthers.setText("Other Creatures Count: " + cursor.getString(numOfOtherIndex));
         }
         cursor.close();
-        //notifyDataSetChanged();
         return tanksView;
     }
 }
