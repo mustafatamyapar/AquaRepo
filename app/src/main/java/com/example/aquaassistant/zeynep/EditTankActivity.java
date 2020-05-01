@@ -78,7 +78,7 @@ public class EditTankActivity extends AppCompatActivity {
                     //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                     //startActivity(intent);
-                }catch (Exception e){
+                } catch (Exception e){
                     System.out.println( "Error = " + e);
                 }
             }
