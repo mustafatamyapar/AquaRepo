@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void encyclopedia(View view){
-        Intent intent = new Intent(getApplicationContext(), EncyclopediaPage.class);
+        Intent intent = new Intent(getApplicationContext(),EncyclopediaPage.class);
         startActivity(intent);
     }
 
