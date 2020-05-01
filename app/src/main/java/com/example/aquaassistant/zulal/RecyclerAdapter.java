@@ -53,5 +53,6 @@ class PostHolder extends RecyclerView.ViewHolder {
         questionText = itemView.findViewById(R.id.recycler_view_question);
         contentText = itemView.findViewById(R.id.recycler_view_content);
     }
+    //Zulal
 }
 }
