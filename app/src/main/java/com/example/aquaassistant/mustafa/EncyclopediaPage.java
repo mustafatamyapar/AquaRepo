@@ -20,11 +20,11 @@ private Button faqButton;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_encyclopedia_page);
-        fishButton.findViewById(R.id.fishButton);
-        snailButton.findViewById(R.id.snailButton);
-        plantsButton.findViewById(R.id.plantsButton);
-        diseasesButton.findViewById(R.id.diseasesButton);
-        faqButton.findViewById(R.id.faqButton);
+        fishButton = findViewById(R.id.fishButton);
+        snailButton = findViewById(R.id.snailButton);
+        plantsButton = findViewById(R.id.plantsButton);
+        diseasesButton = findViewById(R.id.diseasesButton);
+        faqButton = findViewById(R.id.faqButton);
     }
     public void openFishPage(View view){
         Intent intent = new Intent( this, FishPage.class);
