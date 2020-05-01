@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/otherButton"
+        android:layout_width="84dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="25dp"
+        android:onClick="addOtherBut"
+        app:layout_constraintStart_toEndOf="@+id/plantButton"
+        app:layout_constraintTop_toTopOf="@+id/plantButton"
+        app:srcCompat="@drawable/snail" />
+
+    <ImageButton
+        android:id="@+id/fishButton"
+        android:layout_width="83dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="40dp"
+        android:onClick="addFishBut"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fish" />
+
+    <ImageButton
+        android:id="@+id/plantButton"
+        android:layout_width="84dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="25dp"
+        android:onClick="addPlantBut"
+        app:layout_constraintBottom_toBottomOf="@+id/fishButton"
+        app:layout_constraintStart_toEndOf="@+id/fishButton"
+        app:srcCompat="@drawable/plant" />
+
+    <TextView
+        android:id="@+id/fishText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:text="Fish"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/fishButton"
+        app:layout_constraintEnd_toEndOf="@+id/fishButton" />
+
+    <TextView
+        android:id="@+id/plantText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="Plant"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/plantButton"
+        app:layout_constraintEnd_toEndOf="@+id/plantButton" />
+
+    <TextView
+        android:id="@+id/otherText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="Other "
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/otherButton"
+        app:layout_constraintEnd_toEndOf="@+id/otherButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.aquaassistant.R;
@@ -51,6 +52,8 @@ public class EditTankActivity extends AppCompatActivity {
         removeCreature.setText("Remove a Creature From the Tank");
 
         tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);
+
+
     }
 
     public void changeTankName(View view){
@@ -71,13 +74,12 @@ public class EditTankActivity extends AppCompatActivity {
                     SQLiteStatement changeStatement = tanksDatabase.compileStatement(changeName);
                     changeStatement.bindString(1, tName);
                     changeStatement.execute();
-                   // Intent intent = new Intent(EditTankActivity.this, TankPageActivity.class);
-                   // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    Intent intent = new Intent(EditTankActivity.this, TanksPageActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                    // intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                    // intent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                    //startActivity(intent);
+                   // intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                 } catch (Exception e){
                     System.out.println( "Error = " + e);
                 }
@@ -93,9 +95,51 @@ public class EditTankActivity extends AppCompatActivity {
     }
     public void removeCreature(View view){
 
-    }
-    public void addCreature(View view){
 
+    }
+    @SuppressLint("SetTextI18n")
+    public void addCreature(View view){
+        AlertDialog.Builder chooseCreature = new AlertDialog.Builder(EditTankActivity.this);
+        chooseCreature.setTitle("Choose Creature");
+        chooseCreature.setView(R.layout.activity_choosecreature);
+        chooseCreature.show();
+
+    }
+    public void addFishBut(View view){
+
+        final SQLiteDatabase fishDatabase = EditTankActivity.this.openOrCreateDatabase("Fish", MODE_PRIVATE,null);
+        fishDatabase.execSQL("CREATE TABLE IF NOT EXISTS fish (id INTEGER PRIMARY KEY , fishname VARCHAR, tankname VARCHAR , image BLOB)");
+        AlertDialog.Builder setName = new AlertDialog.Builder(EditTankActivity.this);
+        setName.setTitle("Fish Name");
+        setName.setMessage("Please enter the fish name");
+
+        final EditText fName = new EditText( EditTankActivity.this);
+        fName.setInputType(InputType.TYPE_CLASS_TEXT);
+        setName.setView(fName);
+        setName.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String fishName = fName.getText().toString();
+                AlertDialog.Builder setImage = new AlertDialog.Builder(EditTankActivity.this);
+                setImage.setTitle("Fish Image");
+                setImage.setMessage("Do you want to add picture of fish?");
+                setImage.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String sqlString = "INSERT INTO fish ( fishname , tankname , image) VALUES ( ?,?,?) ";
+                        SQLiteStatement addStatement = fishDatabase.compileStatement(sqlString);
+                    }
+                });
+
+            }
+        });
+        setName.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        setName.show();
     }
 
 }
