@@ -10,23 +10,40 @@ import android.widget.Button;
 import com.example.aquaassistant.R;
 
 public class EncyclopediaPage extends AppCompatActivity {
-private  Button FishButton;
+private Button fishButton;
+private Button snailButton;
+private Button plantsButton;
+private Button diseasesButton;
+private Button faqButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_encyclopedia_page);
-
-        FishButton = (Button)findViewById(R.id.FishButton);
-        FishButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFishPage();
-            }
-        });
-
+        fishButton.findViewById(R.id.fishButton);
+        snailButton.findViewById(R.id.snailButton);
+        plantsButton.findViewById(R.id.plantsButton);
+        diseasesButton.findViewById(R.id.diseasesButton);
+        faqButton.findViewById(R.id.faqButton);
     }
     public void openFishPage(){
         Intent intent = new Intent( this, FishPage.class);
         startActivity(intent);
     }
+    public void openSnailPage(){
+        Intent intent = new Intent( this, SnailPage.class);
+        startActivity(intent);
+    }
+    public void openPlantsPage(){
+        Intent intent = new Intent( this, PlantsPage.class);
+        startActivity(intent);
+    }
+    public void openDiseases(){
+        Intent intent = new Intent( this, DiseasesPage.class);
+        startActivity(intent);
+    }
+    //public void openFaq(){
+    //    Intent intent = new Intent( this, .class);
+    //    startActivity(intent);
+    //}
 }

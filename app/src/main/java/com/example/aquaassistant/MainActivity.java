@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.aquaassistant.mustafa.EncyclopediaPage;
 import com.example.aquaassistant.sena.SettingsMain;
 import com.example.aquaassistant.zeynep.TanksPageActivity;
 
@@ -29,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void settingsTest(View view) {
         Intent intent = new Intent(getApplicationContext(), SettingsMain.class);
+        startActivity(intent);
+    }
+
+    public void encyclopedia(View view){
+        Intent intent = new Intent(getApplicationContext(), EncyclopediaPage.class);
         startActivity(intent);
     }
 
