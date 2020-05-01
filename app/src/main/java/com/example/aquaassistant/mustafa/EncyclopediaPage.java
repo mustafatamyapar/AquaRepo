@@ -26,19 +26,19 @@ private Button faqButton;
         diseasesButton.findViewById(R.id.diseasesButton);
         faqButton.findViewById(R.id.faqButton);
     }
-    public void openFishPage(){
+    public void openFishPage(View view){
         Intent intent = new Intent( this, FishPage.class);
         startActivity(intent);
     }
-    public void openSnailPage(){
+    public void openSnailPage(View view){
         Intent intent = new Intent( this, SnailPage.class);
         startActivity(intent);
     }
-    public void openPlantsPage(){
+    public void openPlantsPage(View view){
         Intent intent = new Intent( this, PlantsPage.class);
         startActivity(intent);
     }
-    public void openDiseases(){
+    public void openDiseases(View view){
         Intent intent = new Intent( this, DiseasesPage.class);
         startActivity(intent);
     }
