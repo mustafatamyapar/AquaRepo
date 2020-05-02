@@ -25,10 +25,10 @@ import java.util.List;
 
 public class DiseasesPage extends AppCompatActivity {
 
-    private final String JSON_URL = "https://gist.githubusercontent.com/mustafatamyapar/e9f87d0be83918469c7ed111bcb766bd/raw/0a1d404a036a7a88dc34d3e1ba30e4d67ad3f6a7/gistfile1.txt";
+    private String JSON_URL = "https://gist.githubusercontent.com/mustafatamyapar/e9f87d0be83918469c7ed111bcb766bd/raw/e429ebc0dbc4904fe25bf2963986c6c3f3cda358/Disease.json";
     private JsonArrayRequest request;
     private RequestQueue requestQueue;
-    private List<Disease> listDisease;
+    private List<Disease> listDisease = new ArrayList<>();
     private RecyclerView recyclerView;
 
     @Override
@@ -36,24 +36,25 @@ public class DiseasesPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diseases_page);
 
-        listDisease = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerwiewid);
         jsonrequest();
 
 
     }
     private void jsonrequest() {
+
         request = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 
-                JSONObject jsonObject = null;
+                JSONObject jsonObject;
 
                 for ( int i = 0; i < response.length(); i++)
                 {
                     try {
                         jsonObject = response.getJSONObject(i);
                         Disease disease = new Disease();
+
                         disease.setName(jsonObject.getString("name"));
                         disease.setDescription(jsonObject.getString("description"));
                         disease.setSymptoms(jsonObject.getString("symptoms"));

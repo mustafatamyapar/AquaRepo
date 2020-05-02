@@ -6,7 +6,8 @@
     android:layout_height="150dp"
     android:layout_marginTop="5dp"
     android:padding="8dp"
-    android:background="#fff">
+    android:background="#fff"
+    >
 
     <ImageView
         android:layout_width="100dp"
@@ -14,26 +15,27 @@
         android:background="@drawable/shape_diseases"
         android:id="@+id/thumbnail"
         />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="130dp"
-    android:orientation="vertical"
-    android:layout_margin="8dp"
-    >
 
-    <TextView
-        android:id="@+id/disease_name"
-        android:layout_width="135dp"
-        android:layout_height="42dp"
-        android:text="Disease Title"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="282dp"
+        android:layout_height="150dp"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/Symptoms"
-        android:layout_width="269dp"
-        android:layout_height="80dp"
-        android:text="Symptoms" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/disease_name"
+            android:layout_width="135dp"
+            android:layout_height="42dp"
+            android:text="Disease Title"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Symptoms"
+            android:layout_width="269dp"
+            android:layout_height="80dp"
+            android:text="Symptoms" />
+
+    </LinearLayout>
 
 </LinearLayout>
