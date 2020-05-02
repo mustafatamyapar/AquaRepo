@@ -26,15 +26,13 @@
         android:layout_width="135dp"
         android:layout_height="42dp"
         android:text="Disease Title"
-        android:TextStyle="bold"
-        android:TextSize="45sp"
-         />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/Symptoms"
         android:layout_width="269dp"
         android:layout_height="80dp"
-        android:Textsize="32sp"
         android:text="Symptoms" />
 </LinearLayout>
 
