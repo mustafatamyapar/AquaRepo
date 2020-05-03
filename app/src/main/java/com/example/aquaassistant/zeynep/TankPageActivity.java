@@ -74,6 +74,7 @@ public class TankPageActivity extends AppCompatActivity {
                 condCheck.setText("Time until feeding: " + cursor.getString(condCheckIndex));
                 waterCheck.setText("Time until water check: " + cursor.getString(waterCheckIndex));
             }
+            cursor.close();
         } catch (Exception e){
             e.printStackTrace();
         }
