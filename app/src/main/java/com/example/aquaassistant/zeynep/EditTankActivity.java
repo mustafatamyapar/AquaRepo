@@ -6,7 +6,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -25,19 +24,11 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.zulal.AquariumContainer;
-import com.example.aquaassistant.zulal.Fish;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
-
-import static android.icu.text.MessagePattern.ArgType.SELECT;
 
 public class EditTankActivity extends AppCompatActivity {
     TextView editTank;
@@ -50,8 +41,10 @@ public class EditTankActivity extends AppCompatActivity {
     String tName;
     String tankId;
     Bitmap selectedImage;
-    AlertDialog.Builder chooseCreature;
-    Boolean fishAdded;
+    String currentFishNum;
+    AlertDialog choose;
+    String currentPlantNum;
+    String currentOtherCreNum;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +62,6 @@ public class EditTankActivity extends AppCompatActivity {
         changeName.setText("Change The Tank Name");
         addCreature.setText("Add a New Creature to Tank");
         removeCreature.setText("Remove a Creature From the Tank");
-        fishAdded = false;
 
     }
 
@@ -115,16 +107,21 @@ public class EditTankActivity extends AppCompatActivity {
     }
     public void removeCreature(View view){
 
-
     }
     @SuppressLint("SetTextI18n")
     public void addCreature(View view){
-        chooseCreature = new AlertDialog.Builder(EditTankActivity.this);
+        AlertDialog.Builder chooseCreature = new AlertDialog.Builder(EditTankActivity.this);
         chooseCreature.setTitle("Choose Creature");
         chooseCreature.setView(R.layout.activity_choosecreature);
-        chooseCreature.show();
-
+        choose = chooseCreature.create();
+        if (!EditTankActivity.this.isFinishing()) {
+            choose.show();
+        }
+        else{
+            choose.dismiss();
+        }
     }
+
     public void addFishBut(View view){
 
         final SQLiteDatabase fishDatabase = EditTankActivity.this.openOrCreateDatabase("Fish", MODE_PRIVATE,null);
@@ -133,79 +130,378 @@ public class EditTankActivity extends AppCompatActivity {
         setName.setTitle("Fish Name");
         setName.setMessage("Please enter the fish name");
 
-
-
         final EditText fName = new EditText( EditTankActivity.this);
         fName.setInputType(InputType.TYPE_CLASS_TEXT);
         setName.setView(fName);
         setName.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                //get the fish name
                 final String fishName = fName.getText().toString();
+                //set a builder to get image
                 AlertDialog.Builder setImage = new AlertDialog.Builder(EditTankActivity.this);
                 setImage.setTitle("Fish Image");
                 setImage.setMessage("Do you want to add picture of fish?");
                 setImage.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        try {
                             // get the gallery permission from the user
                             if (ContextCompat.checkSelfPermission(EditTankActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                                 ActivityCompat.requestPermissions(EditTankActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
                             } else {
                                 Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                                 startActivityForResult(intentToGallery, 2);
-                            }
+                                //set another alert builder to show the informing message and insert the fish into database
+                                AlertDialog.Builder inform = new AlertDialog.Builder(EditTankActivity.this);
+                                inform.setTitle("Done!");
+                                inform.setMessage("Picture is added.");
+                                inform.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //put the image into the byteArray to save in the database
+                                        Bitmap smallImage = makeSmallerImage(selectedImage,300);
+                                        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                                        smallImage.compress(Bitmap.CompressFormat.PNG,50,outputStream);
+                                        byte[] byteArray = outputStream.toByteArray();
+                                        try {
+                                            //get the tankname and fish number that fish belongs to
+                                            tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks" , MODE_PRIVATE ,null);
+                                            Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
+                                            while (cursor.moveToNext()) {
+                                                tankName = cursor.getString(cursor.getColumnIndex("tankname"));
+                                                currentFishNum = cursor.getString(cursor.getColumnIndex("numoffish"));
+                                            }
+                                            cursor.close();
 
+                                            //put the info into the fish database
+                                            String sqlString = "INSERT INTO fish ( fishname , tankname , image) VALUES ( ?,?,?) ";
+                                            SQLiteStatement addStatement = fishDatabase.compileStatement(sqlString);
+                                            addStatement.bindString(1, fishName);
+                                            addStatement.bindString(2, tankName);
+                                            addStatement.bindBlob(3, byteArray);
+                                            addStatement.execute();
+
+                                            //update the number of fish in the tank
+                                            String addFish = "UPDATE tanks SET numoffish= ? WHERE id = "  + tankId ;
+                                            SQLiteStatement addFishStatement = tanksDatabase.compileStatement(addFish);
+                                            final String newFishNum = String.valueOf(Integer.parseInt(currentFishNum)+1);
+                                            addFishStatement.bindString(1 , newFishNum);
+                                            addFishStatement.execute();
+
+                                            //return the tanks page
+
+                                            choose.dismiss();
+                                            EditTankActivity.this.finish();
+                                            Intent intent = new Intent(EditTankActivity.this, TanksPageActivity.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(intent);
+
+                                        } catch(Exception e){
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                                inform.show();
+                            }
+                    }
+                });
+                setImage.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
                             //get the tankname that fish belongs to
                             tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks" , MODE_PRIVATE ,null);
-                            Cursor cursor = tanksDatabase.rawQuery("SELECT tankname FROM tanks WHERE id = ?", new String[]{tankId});
+                            Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
                             while (cursor.moveToNext()) {
                                 tankName = cursor.getString(cursor.getColumnIndex("tankname"));
+                                currentFishNum = cursor.getString(cursor.getColumnIndex("numoffish"));
                             }
                             cursor.close();
 
-                            //put the image into the byteArray to save in the database
-                            Bitmap smallImage = makeSmallerImage(selectedImage,300);
-                            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                            smallImage.compress(Bitmap.CompressFormat.PNG,50,outputStream);
-                            byte[] byteArray = outputStream.toByteArray();
-
                             //put the info into the fish database
-                            String sqlString = "INSERT INTO fish ( fishname , tankname , image) VALUES ( ?,?,?) ";
+                            String sqlString = "INSERT INTO fish ( fishname , tankname ) VALUES ( ?,? ) ";
                             SQLiteStatement addStatement = fishDatabase.compileStatement(sqlString);
                             addStatement.bindString(1, fishName);
                             addStatement.bindString(2, tankName);
-                            addStatement.bindBlob(3, byteArray);
                             addStatement.execute();
 
                             //update the number of fish in the tank
                             String addFish = "UPDATE tanks SET numoffish= ? WHERE id = "  + tankId ;
                             SQLiteStatement addFishStatement = tanksDatabase.compileStatement(addFish);
-                            addFishStatement.bindString(1 , "1");
+                            final String newFishNum = String.valueOf( Integer.parseInt(currentFishNum) + 1 );
+                            addFishStatement.bindString(1 , newFishNum);
                             addFishStatement.execute();
-
 
                             //return the tanks page
                             Intent intent = new Intent(EditTankActivity.this, TanksPageActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
 
-
                         } catch(Exception e){
                             e.printStackTrace();
+                        }
+                        dialog.cancel();
+                    }
+                });
+                setImage.show();
+            }
+        });
+        setName.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        setName.show();
+    }
+    public void addPlantBut(View view){
+        //create a plant database
+        final SQLiteDatabase plantsDatabase = EditTankActivity.this.openOrCreateDatabase("Plants", MODE_PRIVATE,null);
+        plantsDatabase.execSQL("CREATE TABLE IF NOT EXISTS plants (id INTEGER PRIMARY KEY , plantname VARCHAR, tankname VARCHAR , image BLOB)");
+        AlertDialog.Builder setName = new AlertDialog.Builder(EditTankActivity.this);
+        setName.setTitle("Plant Name");
+        setName.setMessage("Please enter the plant name");
+
+        final EditText pName = new EditText( EditTankActivity.this);
+        pName.setInputType(InputType.TYPE_CLASS_TEXT);
+        setName.setView(pName);
+        setName.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //get the plant name
+                final String plantName = pName.getText().toString();
+                //set a builder to get image
+                AlertDialog.Builder setImage = new AlertDialog.Builder(EditTankActivity.this);
+                setImage.setTitle("Plant Image");
+                setImage.setMessage("Do you want to add picture of plant?");
+                setImage.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // get the gallery permission from the user
+                        if (ContextCompat.checkSelfPermission(EditTankActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(EditTankActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                        } else {
+                            Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            startActivityForResult(intentToGallery, 2);
+                            //set another alert builder to show the informing message and insert the plant into database
+                            AlertDialog.Builder inform = new AlertDialog.Builder(EditTankActivity.this);
+                            inform.setTitle("Done!");
+                            inform.setMessage("Picture is added.");
+                            inform.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //put the image into the byteArray to save in the database
+                                    Bitmap smallImage = makeSmallerImage(selectedImage,300);
+                                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                                    smallImage.compress(Bitmap.CompressFormat.PNG,50,outputStream);
+                                    byte[] byteArray = outputStream.toByteArray();
+                                    try {
+                                        //get the tankname and plant number that plant belongs to
+                                        tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks" , MODE_PRIVATE ,null);
+                                        Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
+                                        while (cursor.moveToNext()) {
+                                            tankName = cursor.getString(cursor.getColumnIndex("tankname"));
+                                            currentPlantNum = cursor.getString(cursor.getColumnIndex("numofplant"));
+                                        }
+                                        cursor.close();
+
+                                        //put the info into the plant database
+                                        String sqlString = "INSERT INTO plants ( plantname , tankname , image) VALUES ( ?,?,?) ";
+                                        SQLiteStatement addStatement = plantsDatabase.compileStatement(sqlString);
+                                        addStatement.bindString(1, plantName);
+                                        addStatement.bindString(2, tankName);
+                                        addStatement.bindBlob(3, byteArray);
+                                        addStatement.execute();
+
+                                        //update the number of plant in the tank
+                                        String addPlant = "UPDATE tanks SET numofplant= ? WHERE id = "  + tankId ;
+                                        SQLiteStatement addPlantStatement = tanksDatabase.compileStatement(addPlant);
+                                        final String newPlantNum = String.valueOf(Integer.parseInt(currentPlantNum) + 1);
+                                        addPlantStatement.bindString(1 , newPlantNum);
+                                        addPlantStatement.execute();
+
+                                        //return the tanks page
+                                        choose.dismiss();
+                                        EditTankActivity.this.finish();
+                                        Intent intent = new Intent(EditTankActivity.this, TanksPageActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(intent);
+
+                                    } catch(Exception e){
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            inform.show();
                         }
                     }
                 });
                 setImage.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String sqlString = "INSERT INTO fish ( fishname , tankname , image) VALUES ( ?,?,?) ";
-                        SQLiteStatement addStatement = fishDatabase.compileStatement(sqlString);
-                        addStatement.bindString(1, fishName);
-                        addStatement.bindString(2, tankName);
-                        addStatement.bindBlob(3, null);
-                        addStatement.execute();
+                        try {
+                            //get the tankname that plant belongs to
+                            tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks" , MODE_PRIVATE ,null);
+                            Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
+                            while (cursor.moveToNext()) {
+                                tankName = cursor.getString(cursor.getColumnIndex("tankname"));
+                                currentPlantNum = cursor.getString(cursor.getColumnIndex("numofplant"));
+                            }
+                            cursor.close();
+
+                            //put the info into the plant database
+                            String sqlString = "INSERT INTO plants ( plantname , tankname ) VALUES ( ?,? ) ";
+                            SQLiteStatement addStatement = plantsDatabase.compileStatement(sqlString);
+                            addStatement.bindString(1, plantName);
+                            addStatement.bindString(2, tankName);
+                            addStatement.execute();
+
+                            //update the number of plant in the tank
+                            String addPlant = "UPDATE tanks SET numofplant= ? WHERE id = "  + tankId ;
+                            SQLiteStatement addPlantStatement = tanksDatabase.compileStatement(addPlant);
+                            final String newPlantNum = String.valueOf( Integer.parseInt(currentPlantNum) + 1 );
+                            addPlantStatement.bindString(1 , newPlantNum);
+                            addPlantStatement.execute();
+
+                            //return the tanks page
+                            Intent intent = new Intent(EditTankActivity.this, TanksPageActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+
+                        } catch(Exception e){
+                            e.printStackTrace();
+                        }
+                        dialog.cancel();
+                    }
+                });
+                setImage.show();
+            }
+        });
+        setName.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        setName.show();
+    }
+    public void addOtherBut(View view){
+        //create other creatures database
+        final SQLiteDatabase othersDatabase = EditTankActivity.this.openOrCreateDatabase("Others", MODE_PRIVATE,null);
+        othersDatabase.execSQL("CREATE TABLE IF NOT EXISTS others (id INTEGER PRIMARY KEY , othername VARCHAR, tankname VARCHAR , image BLOB)");
+        AlertDialog.Builder setName = new AlertDialog.Builder(EditTankActivity.this);
+        setName.setTitle("Creature Name");
+        setName.setMessage("Please enter the creature name");
+
+        final EditText oName = new EditText( EditTankActivity.this);
+        oName.setInputType(InputType.TYPE_CLASS_TEXT);
+        setName.setView(oName);
+        setName.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //get the creature name
+                final String otherName = oName.getText().toString();
+                //set a builder to get image
+                AlertDialog.Builder setImage = new AlertDialog.Builder(EditTankActivity.this);
+                setImage.setTitle("Creature Image");
+                setImage.setMessage("Do you want to add picture of creature?");
+                setImage.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // get the gallery permission from the user
+                        if (ContextCompat.checkSelfPermission(EditTankActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(EditTankActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                        } else {
+                            Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            startActivityForResult(intentToGallery, 2);
+                            //set another alert builder to show the informing message and insert the other creature into database
+                            AlertDialog.Builder inform = new AlertDialog.Builder(EditTankActivity.this);
+                            inform.setTitle("Done!");
+                            inform.setMessage("Picture is added.");
+                            inform.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //put the image into the byteArray to save in the database
+                                    Bitmap smallImage = makeSmallerImage(selectedImage,300);
+                                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                                    smallImage.compress(Bitmap.CompressFormat.PNG,50,outputStream);
+                                    byte[] byteArray = outputStream.toByteArray();
+                                    try {
+                                        //get the tankname and other creatures number that creature belongs to
+                                        tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks" , MODE_PRIVATE ,null);
+                                        Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
+                                        while (cursor.moveToNext()) {
+                                            tankName = cursor.getString(cursor.getColumnIndex("tankname"));
+                                            currentOtherCreNum = cursor.getString(cursor.getColumnIndex("numofother"));
+                                        }
+                                        cursor.close();
+
+                                        //put the info into the others database
+                                        String sqlString = "INSERT INTO others ( othername , tankname , image) VALUES ( ?,?,?) ";
+                                        SQLiteStatement addStatement = othersDatabase.compileStatement(sqlString);
+                                        addStatement.bindString(1, otherName);
+                                        addStatement.bindString(2, tankName);
+                                        addStatement.bindBlob(3, byteArray);
+                                        addStatement.execute();
+
+                                        //update the number of other creatures in the tank
+                                        String addOther = "UPDATE tanks SET numofother= ? WHERE id = "  + tankId ;
+                                        SQLiteStatement addOtherStatement = tanksDatabase.compileStatement(addOther);
+                                        final String newOtherNum = String.valueOf(Integer.parseInt(currentOtherCreNum) + 1);
+                                        addOtherStatement.bindString(1 , newOtherNum);
+                                        addOtherStatement.execute();
+
+                                        //return the tanks page
+                                        choose.dismiss();
+                                        EditTankActivity.this.finish();
+                                        Intent intent = new Intent(EditTankActivity.this, TanksPageActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(intent);
+
+                                    } catch(Exception e){
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            inform.show();
+                        }
+                    }
+                });
+                setImage.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+                            //get the tankname that creature belongs to
+                            tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks" , MODE_PRIVATE ,null);
+                            Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
+                            while (cursor.moveToNext()) {
+                                tankName = cursor.getString(cursor.getColumnIndex("tankname"));
+                                currentOtherCreNum = cursor.getString(cursor.getColumnIndex("numofother"));
+                            }
+                            cursor.close();
+
+                            //put the info into the others database
+                            String sqlString = "INSERT INTO others ( othername , tankname ) VALUES ( ?,? ) ";
+                            SQLiteStatement addStatement = othersDatabase.compileStatement(sqlString);
+                            addStatement.bindString(1, otherName);
+                            addStatement.bindString(2, tankName);
+                            addStatement.execute();
+
+                            //update the number of other creature in the tank
+                            String addOther = "UPDATE tanks SET numofother= ? WHERE id = "  + tankId ;
+                            SQLiteStatement addOtherStatement = tanksDatabase.compileStatement(addOther);
+                            final String newOtherNum = String.valueOf( Integer.parseInt(currentOtherCreNum) + 1 );
+                            addOtherStatement.bindString(1 , newOtherNum);
+                            addOtherStatement.execute();
+
+                            //return the tanks page
+                            Intent intent = new Intent(EditTankActivity.this, TanksPageActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+
+                        } catch(Exception e){
+                            e.printStackTrace();
+                        }
                         dialog.cancel();
                     }
                 });
@@ -238,7 +534,6 @@ public class EditTankActivity extends AppCompatActivity {
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
             Uri imageData = data.getData();
             try {
-                if ( imageData == null ){System.out.println("NULLL");}
                 if (Build.VERSION.SDK_INT >= 28) {
                     ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(),imageData);
                     selectedImage = ImageDecoder.decodeBitmap(source);
@@ -269,4 +564,5 @@ public class EditTankActivity extends AppCompatActivity {
 
         return Bitmap.createScaledBitmap(image,width,height,true);
     }
+
 }
