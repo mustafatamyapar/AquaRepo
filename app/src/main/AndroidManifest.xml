@@ -12,8 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".zulal.Main2Activity"></activity>
-        <activity android:name=".zulal.FaqActivity" />
+        <activity android:name=".zulal.Faqactivity"></activity>
         <activity android:name=".sena.ChangeProfilePicture" />
         <activity android:name=".sena.SettingsMain" />
         <activity android:name=".sena.ChangeEmailPhone" />
