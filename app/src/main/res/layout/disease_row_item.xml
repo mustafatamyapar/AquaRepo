@@ -12,13 +12,12 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:background="@drawable/shape_diseases"
         android:id="@+id/thumbnail"
         />
 
     <LinearLayout
-        android:layout_width="282dp"
-        android:layout_height="150dp"
+        android:layout_width="292dp"
+        android:layout_height="127dp"
         android:layout_margin="8dp"
         android:orientation="vertical">
 

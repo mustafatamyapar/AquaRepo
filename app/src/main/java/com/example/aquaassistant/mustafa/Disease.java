@@ -4,16 +4,16 @@ public class Disease {
     private String name;
     private String description;
     private String symptoms;
-    private String imageUrl;
+    private int image;
 
     public Disease() {
     }
 
-    public Disease(String name, String description, String symptoms, String imageUrl) {
+    public Disease(String name, String description, String symptoms, int image) {
         this.name = name;
         this.description = description;
         this.symptoms = symptoms;
-        this.imageUrl = imageUrl;
+        this.image = image;
     }
 
     public String getName() {
@@ -28,8 +28,8 @@ public class Disease {
         return symptoms;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public int getImage() {
+        return image;
     }
 
     public void setName(String name) {
@@ -44,8 +44,8 @@ public class Disease {
         this.symptoms = symptoms;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageUrl(int imageUrl) {
+        this.image = image;
     }
 
 }
