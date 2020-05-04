@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.aquaassistant.mustafa.Disease;
+import com.example.aquaassistant.mustafa.Disease; 
 import com.example.aquaassistant.R;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
