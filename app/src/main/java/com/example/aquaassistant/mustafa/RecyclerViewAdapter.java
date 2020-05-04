@@ -2,6 +2,7 @@ package com.example.aquaassistant.mustafa;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.text.Layout;
@@ -40,22 +41,31 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         View view;
         view = LayoutInflater.from(mContext).inflate(R.layout.disease_row_item,parent,false);
         final MyViewHolder myViewH = new MyViewHolder(view);
-        myViewH.rowItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext,"Hope Your fish is okay. Aquassitant Team",Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
         return myViewH;
     }
 
     @Override
-    public void onBindViewHolder( MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         holder.diseaseName.setText(mData.get(position).getName());
         holder.symptoms.setText(mData.get(position).getSymptoms());
         holder.img.setImageResource(mData.get(position).getImage());
+
+        holder.rowItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,DetailsActivity.class);
+
+                intent.putExtra("Title",mData.get(position).getName());
+                intent.putExtra("Description",mData.get(position).getDescription());
+                intent.putExtra("Image",mData.get(position).getImage());
+
+                mContext.startActivity(intent);
+                Toast.makeText(mContext,"Hope Your fish is okay. Aquassitant Team",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
