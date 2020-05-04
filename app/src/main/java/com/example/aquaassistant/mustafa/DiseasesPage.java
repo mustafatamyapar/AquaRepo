@@ -41,7 +41,7 @@ public class DiseasesPage extends AppCompatActivity {
         recyclerView.setAdapter(recyclerViewAdapter);
 
 
-        listDisease.add(new Disease("Cotton Mouth","The bacteria of columnaris usually infect fish that are stressed by bad water, bad diet or stress from handling and shipping.  Lesions develop gradually in chronic cases, which took several days to culminate in the death of fish. The lesions propagate rapidly in acute situations, frequently wiping out entire fish populations within few hours. The ","ost of the columnaris infections are external and present first as white or grayish spots or patches on the head and around the fins or gills. ",R.drawable.disease1));
+        listDisease.add(new Disease("Cotton Mouth","he ","ost of the columnaris infections are external and present first as white or grayish spots or patches on the head and around the fins or gills. ",R.drawable.disease1));
         listDisease.add(new Disease("Dropsy","descriptionnnnnnnnnnnnnnnnnnnnnnn","Symptommomomss",R.drawable.disease2));
         listDisease.add(new Disease("Fin/Tail Rot","descriptiiiiiiiiinnnnn","Symptommms",R.drawable.disease3));
         listDisease.add(new Disease("Hole in the Head","description","symptom",R.drawable.disease4));

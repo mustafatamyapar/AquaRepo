@@ -1,12 +1,17 @@
 package com.example.aquaassistant.mustafa;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -22,6 +27,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
      Context mContext;
      List<Disease> mData;
+     Dialog myDialog;
 
     public RecyclerViewAdapter(Context mContext, List<Disease> mData) {
         this.mContext = mContext;
@@ -33,10 +39,28 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view;
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        view = inflater.inflate(R.layout.disease_row_item,parent,false);
+        view = LayoutInflater.from(mContext).inflate(R.layout.disease_row_item,parent,false);
+        final MyViewHolder myViewH = new MyViewHolder(view);
 
-        return new MyViewHolder(view);
+        myDialog = new Dialog(mContext);
+        myDialog.setContentView(R.layout.disease_details);
+
+
+        myViewH.rowItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView dName = myDialog.findViewById(R.id.DiseaseNameBig);
+                TextView dInfo = myDialog.findViewById(R.id.DetailedInfo);
+                ImageView dPic = myDialog.findViewById(R.id.bigDiseasePic);
+                dName.setText(mData.get(myViewH.getAdapterPosition()).getName());
+                dInfo.setText(mData.get(myViewH.getAdapterPosition()).getDescription());
+                dPic.setImageResource(mData.get(myViewH.getAdapterPosition()).getImage());
+                Toast.makeText(mContext,"Hope Your fish is okay. Aquaassitant Team",Toast.LENGTH_SHORT).show();
+                myDialog.show();
+            }
+        });
+
+        return myViewH;
     }
 
     @Override
@@ -54,15 +78,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-       private TextView diseaseName;
-       private TextView symptoms;
-       private ImageView img;
+        private LinearLayout rowItem;
+        private TextView diseaseName;
+        private TextView symptoms;
+        private ImageView img;
 
 
         public MyViewHolder(View itemView){
 
             super(itemView);
 
+            rowItem = itemView.findViewById(R.id.row_item);
             diseaseName = itemView.findViewById(R.id.disease_name);
             symptoms = itemView.findViewById(R.id.Symptoms);
             img = itemView.findViewById(R.id.thumbnail);
