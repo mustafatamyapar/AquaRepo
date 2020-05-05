@@ -21,6 +21,7 @@ import com.example.aquaassistant.R;
 import com.example.aquaassistant.zulal.AquariumContainer;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
@@ -28,6 +29,12 @@ public class TanksAdapter extends ArrayAdapter<String> {
     private ArrayList <String> idArray;
     private Activity context;
     SQLiteDatabase tanksDatabase;
+    Calendar calendar = Calendar.getInstance();
+    private int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+    private int minute = calendar.get(Calendar.MINUTE);
+    String currentWaterCheck;
+    String currentTimeToFeed;
+
     public TanksAdapter (ArrayList <String> idArray, Activity context) {
         super(context, R.layout.tanks_view, (ArrayList<String>) idArray);
         this.idArray = idArray;
@@ -70,6 +77,22 @@ public class TanksAdapter extends ArrayAdapter<String> {
             numOfFish.setText("Fish Count: " + cursor.getString(numOfFishIndex));
             numOfPlant.setText("Plant Count: " + cursor.getString(numOfPlantIndex));
             numOfOthers.setText("Other Creatures Count: " + cursor.getString(numOfOtherIndex));
+        }
+
+        //update the database day by day
+        if (hourOfDay == 23 && minute == 59) {
+            currentTimeToFeed = cursor.getString(timeWaterIndex);
+            currentWaterCheck = cursor.getString(timeFeedIndex);
+            String updateWater = "UPDATE tanks SET watercheck = ? WHERE id = "  + String.valueOf(idArray.get(position)) ;
+            SQLiteStatement updateWaterT = tanksDatabase.compileStatement(updateWater);
+            String newWaterTime = String.valueOf(Integer.parseInt(currentWaterCheck) + 1);
+            updateWaterT.bindString(1, newWaterTime);
+            updateWaterT.execute();
+            String updateFeed = "UPDATE tanks SET timetofeed = ? WHERE id = "  + String.valueOf(idArray.get(position)) ;
+            SQLiteStatement updateFeedT = tanksDatabase.compileStatement(updateFeed);
+            String newFeedTime = String.valueOf(Integer.parseInt(currentTimeToFeed) + 1);
+            updateFeedT.bindString(1,newFeedTime);
+            updateWaterT.execute();
         }
         cursor.close();
         return tanksView;
