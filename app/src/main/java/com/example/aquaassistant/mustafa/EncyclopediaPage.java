@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.aquaassistant.R;
+import com.example.aquaassistant.zulal.Faqactivity;
 
 public class EncyclopediaPage extends AppCompatActivity {
 private Button fishButton;
@@ -42,8 +43,8 @@ private Button faqButton;
         Intent intent = new Intent( this, DiseasesPage.class);
         startActivity(intent);
     }
-    //public void openFaq(){
-    //    Intent intent = new Intent( this, .class);
-    //    startActivity(intent);
-    //}
+    public void openFaq(View view){
+        Intent intent = new Intent( this, Faqactivity.class);
+        startActivity(intent);
+    }
 }

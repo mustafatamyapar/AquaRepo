@@ -56,13 +56,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.rowItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext,DetailsActivity.class);
+                Intent i = new Intent(mContext, DetailsActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                intent.putExtra("Title",mData.get(position).getName());
-                intent.putExtra("Description",mData.get(position).getDescription());
-                intent.putExtra("Image",mData.get(position).getImage());
+                i.putExtra("Title",mData.get(position).getName());
+                i.putExtra("Description",mData.get(position).getDescription());
+                i.putExtra("Image",mData.get(position).getImage());
 
-                mContext.startActivity(intent);
+                mContext.startActivity(i);
                 Toast.makeText(mContext,"Hope Your fish is okay. Aquassitant Team",Toast.LENGTH_SHORT).show();
             }
         });
