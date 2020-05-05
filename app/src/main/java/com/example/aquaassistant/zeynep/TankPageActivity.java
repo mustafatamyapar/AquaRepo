@@ -23,6 +23,7 @@ import com.example.aquaassistant.zulal.AquariumContainer;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class TankPageActivity extends AppCompatActivity {
     AquariumContainer selectedTank;
@@ -33,6 +34,11 @@ public class TankPageActivity extends AppCompatActivity {
     ImageView tankImage;
     String tankId;
     SQLiteDatabase tanksDatabase;
+    Calendar calendar = Calendar.getInstance();
+    private int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+    private int minute = calendar.get(Calendar.MINUTE);
+    String currentWaterCheck;
+    String currentTimeToFeed;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -73,6 +79,21 @@ public class TankPageActivity extends AppCompatActivity {
                 tankName.setText(cursor.getString(tankNameIndex));
                 condCheck.setText("Time until feeding: " + cursor.getString(condCheckIndex));
                 waterCheck.setText("Time until water check: " + cursor.getString(waterCheckIndex));
+            }
+            //update the database day by day
+            if (hourOfDay == 23 && minute == 59) {
+                currentTimeToFeed = cursor.getString(waterCheckIndex);
+                currentWaterCheck = cursor.getString(condCheckIndex);
+                String updateWater = "UPDATE tanks SET watercheck = ? WHERE id = " + tankId;
+                SQLiteStatement updateWaterT = tanksDatabase.compileStatement(updateWater);
+                String newWaterTime = String.valueOf(Integer.parseInt(currentWaterCheck) + 1);
+                updateWaterT.bindString(1, newWaterTime);
+                updateWaterT.execute();
+                String updateFeed = "UPDATE tanks SET timetofeed = ? WHERE id = "  + tankId ;
+                SQLiteStatement updateFeedT = tanksDatabase.compileStatement(updateFeed);
+                String newFeedTime = String.valueOf(Integer.parseInt(currentTimeToFeed) + 1);
+                updateFeedT.bindString(1,newFeedTime);
+                updateWaterT.execute();
             }
             cursor.close();
         } catch (Exception e){

@@ -37,4 +37,21 @@ We met up with our TA during the lab session and discussed our plans together. S
 This meeting was to tell each other about our progress. We showed each other what we have done, and also made sure that our shared repository is working well (our member Zülal created it that day). It took multiple tries, but eventually we managed to do it. We all were continuing to watch the course and learn. We decided to keep our pace steady, contribute little by little but continuously.
 
 **ToDo:** Keep watching the Udemy course videos and update code accordingly.
+
+****
+### Meeting ~ May 3,2020 (about 25 minutes)
+****
+**Present:** Everyone
+Like the previous meeting, we talked to each other about what we are working. We did not have any recent problems with the repository, there were a couple times when some of us had problems with committing and updating, but after they were solved we did not have anything else. Our member had a small problem with Android Studio, her layout component was missing but with rebuilding the project she solved it. Overall, we are constantly updating our code and making progress.
+
+**ToDo:** Keep watching the Udemy course videos and update code accordingly.
+
+****
+### Meeting ~ May 5,2020 (about 20 minutes)
+****
+**Present:** Everyone
+Our meeting was with our TA during the lab session. We talked to her about our progress, showed some sections of our code and how it works. We are aiming to complete our project until next week. Also, if we can have time we will be working on our application's design.
+
+**ToDo:** Profile creation and signing in pages, comments
+
 ****
