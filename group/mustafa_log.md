@@ -9,7 +9,10 @@ On this page I will keep a weekly record of what I have done for the CS102 group
 This week I started to work on android studio. I learned basics of it such as adding buttons, constrains et cetera. 
 
 ### ~ 02.05.2020 ~
-This week i moved on learned more from android studio. I learned little bit SQLite, how to create a dataBase and get data from it. I worked on my part and created main page of the Encyclopedia.Also i am trying to make diseases and other pages.I looked at some techniques for storing data such as retrofit,JSON,pare ... and i think JSOUP is the fit for me. Now i am trying to learn it.
+This week i moved on learned more from android studio. I learned little bit SQLite, how to create a dataBase and get data from it. I worked on my part and created main page of the Encyclopedia.Also i am trying to make diseases and other pages.I looked at some techniques for storing data such as retrofit,JSON... and i think JSOUP is the fit for me. Now i am trying to learn it.
+
+### ~ 05.05.2020 ~
+At the weekend i tried jsoup and json. They were complicated and i could not implement them into my part. So i decided to do data process with lists and recycclerwievs, as zülal recommended to me. Now i am trying to solve problems with detailed info page in diseases.
 
 ### ~ date ~
 blah, blah, blah...
