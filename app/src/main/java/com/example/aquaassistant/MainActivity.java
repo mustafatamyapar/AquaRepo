@@ -38,4 +38,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //minik bir şey deniyorum boşverin
+
 }
