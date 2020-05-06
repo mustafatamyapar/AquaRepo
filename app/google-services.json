@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "703368462183",
+    "firebase_url": "https://aquarepo.firebaseio.com",
+    "project_id": "aquarepo",
+    "storage_bucket": "aquarepo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703368462183:android:fc8c9749f1660b410079c2",
+        "android_client_info": {
+          "package_name": "com.example.aquaassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703368462183-89fnohsi6sib7f3m1rqquq9jjn99cdbd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcO5AaljcK9SrzBDu_OF7LaL1ynWMRBD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703368462183-89fnohsi6sib7f3m1rqquq9jjn99cdbd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
