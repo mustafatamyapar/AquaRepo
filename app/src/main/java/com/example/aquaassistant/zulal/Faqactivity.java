@@ -43,7 +43,7 @@ protected void onCreate(Bundle savedInstanceState) {
     questions.add("Why there are algea in my tank?");
 
     //RecyclerView
-     recyclerView = findViewById(R.id.recyclerView);
+     recyclerView = findViewById(R.id.recycler_view1);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
     myAdapter = new RecyclerAdapter(questions, faqArrayList);
     recyclerView.setAdapter(myAdapter);
