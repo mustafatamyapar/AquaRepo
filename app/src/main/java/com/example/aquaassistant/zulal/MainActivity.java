@@ -1,21 +1,23 @@
-package com.example.aquaassistant.zulal;
+package com.example.aquaassistant;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.aquaassistant.R;
 import com.example.aquaassistant.kerem.MainPage;
+import com.example.aquaassistant.kerem.ProfilePage;
+import com.example.aquaassistant.mustafa.EncyclopediaPage;
+import com.example.aquaassistant.sena.SettingsMain;
+import com.example.aquaassistant.zeynep.TanksPageActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,14 +29,12 @@ public class MainActivity extends AppCompatActivity {
     EditText user_password;
     private FirebaseAuth firebaseauth;
     FirebaseUser firebaseuser;
-    ImageView imageView;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FirebaseApp.initializeApp(MainActivity.this);
         setContentView(R.layout.activity_main);
         sign_in = findViewById(R.id.sign_in);
         sign_up = findViewById(R.id.sign_up);
@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         user_password = findViewById(R.id.user_password);
         firebaseauth = FirebaseAuth.getInstance();
         firebaseuser = firebaseauth.getCurrentUser();
-        imageView =findViewById(R.id.logo);
         if (firebaseuser != null){
             Intent intent = new Intent(MainActivity.this,MainPage.class);
             startActivity(intent);

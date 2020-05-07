@@ -1,12 +1,14 @@
 package com.example.aquaassistant.mustafa;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +18,7 @@ import com.example.aquaassistant.zulal.Fish;
 
 import java.util.List;
 
-public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.MyViewHolder2> {
 
     Context mContext;
     List<Fish> mData;
@@ -29,40 +31,57 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
 
     @NonNull
     @Override
-    public RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerViewAdapter2.MyViewHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view;
         view = LayoutInflater.from(mContext).inflate(R.layout.fish_encyclopedia_item,parent,false);
-        final RecyclerViewAdapter.MyViewHolder myViewH = new RecyclerViewAdapter.MyViewHolder(view);
+        final RecyclerViewAdapter2.MyViewHolder2 myViewH = new RecyclerViewAdapter2.MyViewHolder2(view);
 
         return myViewH;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewAdapter2.MyViewHolder2 holder, final int position) {
+        holder.fishName.setText(mData.get(position).getName());
+        holder.difficulty.setText(mData.get(position).getDifficulty());
+        holder.img.setImageResource(mData.get(position).getId());
 
+        holder.Item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mContext, DetailsActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                i.putExtra("Name",mData.get(position).getName());
+                i.putExtra("Descriptionn",mData.get(position).getDescription());
+                i.putExtra("Images",mData.get(position).getId());
+
+                mContext.startActivity(i);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
+
         return mData.size();
     }
 
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder2 extends RecyclerView.ViewHolder{
         private LinearLayout Item;
         private TextView fishName;
         private TextView difficulty;
         private ImageView img;
 
 
-        public MyViewHolder(View itemView){
+        public MyViewHolder2(View itemView){
 
             super(itemView);
 
             Item = itemView.findViewById(R.id.fish_item);
             fishName = itemView.findViewById(R.id.titleOf);
-            difficulty = itemView.findViewById(R.id.Symptoms);
+            difficulty = itemView.findViewById(R.id.difficulty);
             img = itemView.findViewById(R.id.fish_image);
         }
     }
