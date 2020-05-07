@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_light_background"
-    tools:context=".MainActivity">
+    android:background="#5BAADF"
+    android:backgroundTint="#5BAADF"
+    tools:context=".zulal.MainActivity">
 
     <EditText
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="234dp"
+        android:layout_marginTop="340dp"
         android:ems="10"
         android:hint="E-mail address"
         android:inputType="textPersonName"
-        android:textColorHint="#0BD6BB"
+        android:textColorHint="#000B09"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,11 +25,11 @@
         android:id="@+id/user_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColorHint="#0BD6BB"
+        android:textColorHint="#000E0C"
         app:layout_constraintStart_toStartOf="@+id/user_name"
         app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
@@ -37,8 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
-        android:layout_marginBottom="113dp"
-        android:background="#00B8D4"
+        android:layout_marginBottom="72dp"
+        android:background="#CD1A5988"
         android:onClick="signIn"
         android:text="SIGN IN"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -50,10 +51,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="65dp"
-        android:background="#00B8D4"
+        android:background="#CD1A5988"
         android:onClick="signUp"
         android:text="SIGN UP"
         app:layout_constraintBottom_toBottomOf="@+id/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/sign_in" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

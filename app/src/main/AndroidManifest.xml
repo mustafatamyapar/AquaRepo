@@ -29,7 +29,7 @@
         <activity android:name=".mustafa.FishPage" />
         <activity android:name=".mustafa.EncyclopediaPage" />
         <activity android:name=".mustafa.DetailsActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".zulal.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

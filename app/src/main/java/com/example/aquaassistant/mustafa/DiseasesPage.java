@@ -6,24 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.request.RequestOptions;
-import com.example.aquaassistant.MainActivity;
 import com.example.aquaassistant.R;
-import com.example.aquaassistant.mustafa.RecyclerViewAdapter;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.security.AccessController.getContext;
 
 public class DiseasesPage extends AppCompatActivity {
 
