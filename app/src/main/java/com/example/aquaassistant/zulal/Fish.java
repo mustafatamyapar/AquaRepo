@@ -8,13 +8,17 @@ public class Fish extends Animal implements Selectable {
     private boolean selected;
     private String type;
     private int id;
+    private String description;
+    private String difficulty;
 //constructr
-public Fish(String name,int id )
+public Fish(String name,String description,String difficulty,int id )
 {
     this.nameOfFish = name;
     this.selected = false;
     type = "fish";
     this.id = id;
+    this.description = description;
+    this.difficulty = difficulty;
 }
 //methods
 @Override
@@ -27,7 +31,23 @@ public void setName(String name) {
 
 }
 
-@Override
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    @Override
 public String typeOfCreature() {
     return type;
 }
