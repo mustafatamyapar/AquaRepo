@@ -538,6 +538,7 @@ public class EditTankActivity extends AppCompatActivity {
             Uri imageData = data.getData();
             try {
                 if (Build.VERSION.SDK_INT >= 28) {
+                    assert imageData != null;
                     ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(),imageData);
                     selectedImage = ImageDecoder.decodeBitmap(source);
                 }

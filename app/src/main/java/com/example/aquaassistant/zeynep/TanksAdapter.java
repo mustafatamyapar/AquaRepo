@@ -11,39 +11,29 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.database.sqlite.SQLiteStatement;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.example.aquaassistant.R;
-import com.example.aquaassistant.zulal.AquariumContainer;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-
-import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
 public class TanksAdapter extends ArrayAdapter<Integer> {
     private ArrayList <Integer> idArray;
     private Activity context;
-    SQLiteDatabase tanksDatabase;
-    Calendar calendar = Calendar.getInstance();
+    private SQLiteDatabase tanksDatabase;
+    private Calendar calendar = Calendar.getInstance();
     private int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
     private int minute = calendar.get(Calendar.MINUTE);
-    String currentWaterCheck;
-    String currentTimeToFeed;
 
-    public TanksAdapter (ArrayList <Integer> idArray, Activity context) {
-        super(context, R.layout.tanks_view, (ArrayList<Integer>) idArray);
+    TanksAdapter(ArrayList<Integer> idArray, Activity context) {
+        super(context, R.layout.tanks_view, idArray);
         this.idArray = idArray;
         this.context = context;
         //open the database of tanks
         tanksDatabase = context.openOrCreateDatabase("Tanks" , Context.MODE_PRIVATE, null);
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"ViewHolder", "SetTextI18n"})
     @NonNull
     @Override
     public View getView( int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -81,8 +71,8 @@ public class TanksAdapter extends ArrayAdapter<Integer> {
 
         //update the database day by day
         if (hourOfDay == 23 && minute == 59) {
-            currentTimeToFeed = cursor.getString(timeWaterIndex);
-            currentWaterCheck = cursor.getString(timeFeedIndex);
+            String currentWaterCheck = cursor.getString(timeWaterIndex);
+            String currentTimeToFeed = cursor.getString(timeFeedIndex);
             String updateWater = "UPDATE tanks SET watercheck = ? WHERE id = "  + idArray.get(position) ;
             SQLiteStatement updateWaterT = tanksDatabase.compileStatement(updateWater);
             String newWaterTime = String.valueOf(Integer.parseInt(currentWaterCheck) + 1);

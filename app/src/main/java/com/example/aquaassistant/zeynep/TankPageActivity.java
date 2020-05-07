@@ -15,19 +15,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.example.aquaassistant.R;
-import com.example.aquaassistant.zulal.AquariumContainer;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class TankPageActivity extends AppCompatActivity {
-    AquariumContainer selectedTank;
-    ArrayList<AquariumContainer> tanks;
     Bitmap bitmap;
     TextView tankName , condCheck, waterCheck;
     Button deleteButton, editButton;

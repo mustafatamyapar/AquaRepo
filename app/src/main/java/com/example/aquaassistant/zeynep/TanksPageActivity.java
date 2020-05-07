@@ -2,6 +2,7 @@ package com.example.aquaassistant.zeynep;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -23,7 +24,6 @@ import com.example.aquaassistant.zulal.AquariumContainer;
 import java.util.ArrayList;
 
 public class TanksPageActivity extends AppCompatActivity {
-    Intent intent = getIntent();
     ListView listView;
     AllContainers allContainers;
     TanksAdapter tanksAdapter;
@@ -31,6 +31,7 @@ public class TanksPageActivity extends AppCompatActivity {
     SQLiteDatabase tanksDatabase;
     ArrayList<Integer> idArray;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class TanksPageActivity extends AppCompatActivity {
 
         addTank = findViewById(R.id.addTank);
         allContainers = new AllContainers();
-        idArray = new ArrayList<Integer>();
+        idArray = new ArrayList<>();
 
         // a database to store the tanks that have been created by user
         tanksDatabase = TanksPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);

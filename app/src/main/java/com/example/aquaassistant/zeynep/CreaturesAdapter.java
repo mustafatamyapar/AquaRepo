@@ -1,6 +1,5 @@
 package com.example.aquaassistant.zeynep;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -17,17 +16,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.example.aquaassistant.R;
-
 import java.util.ArrayList;
-
-import static android.content.Intent.getIntent;
 import static androidx.core.content.ContextCompat.startActivities;
-import static androidx.core.content.ContextCompat.startActivity;
 
 public class CreaturesAdapter extends ArrayAdapter<Integer> {
     private ArrayList<Integer> creatureIdArray;
@@ -36,7 +29,7 @@ public class CreaturesAdapter extends ArrayAdapter<Integer> {
     private String tankId, numOfFish, numOFPlant, numOfOther;
 
 
-    public CreaturesAdapter(ArrayList<Integer> creatureIdArray, Activity context) {
+    CreaturesAdapter(ArrayList<Integer> creatureIdArray, Activity context) {
         super(context, R.layout.tanks_view, creatureIdArray);
         this.context = context;
         this.creatureIdArray = creatureIdArray;
