@@ -1,4 +1,4 @@
-package com.example.aquaassistant;
+package com.example.aquaassistant.zulal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.aquaassistant.R;
 import com.example.aquaassistant.kerem.MainPage;
 import com.example.aquaassistant.kerem.ProfilePage;
 import com.example.aquaassistant.mustafa.EncyclopediaPage;
@@ -18,6 +19,7 @@ import com.example.aquaassistant.sena.SettingsMain;
 import com.example.aquaassistant.zeynep.TanksPageActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseApp.initializeApp(MainActivity.this);
         sign_in = findViewById(R.id.sign_in);
         sign_up = findViewById(R.id.sign_up);
         user_name = findViewById(R.id.user_name);
