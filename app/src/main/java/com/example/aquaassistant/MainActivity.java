@@ -1,9 +1,8 @@
-package com.example.aquaassistant.zulal;
+package com.example.aquaassistant;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,12 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.aquaassistant.R;
 import com.example.aquaassistant.kerem.MainPage;
-import com.example.aquaassistant.kerem.ProfilePage;
-import com.example.aquaassistant.mustafa.EncyclopediaPage;
-import com.example.aquaassistant.sena.SettingsMain;
-import com.example.aquaassistant.zeynep.TanksPageActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
