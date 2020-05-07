@@ -13,34 +13,15 @@ import com.example.aquaassistant.sena.SettingsMain;
 import com.example.aquaassistant.zeynep.TanksPageActivity;
 
 public class MainActivity extends AppCompatActivity {
-    Button goTanks;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        goTanks = findViewById(R.id.button);
 
-        goTanks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TanksPageActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-    public void settingsTest(View view) {
-        Intent intent = new Intent(getApplicationContext(), SettingsMain.class);
-        startActivity(intent);
+
     }
 
-    public void encyclopedia(View view) {
-        Intent intent = new Intent(getApplicationContext(), EncyclopediaPage.class);
-        startActivity(intent);
-    }
-    public void profilePage(View view){
-        Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
-        startActivity(intent);
-    }
 
 }
