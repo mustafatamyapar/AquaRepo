@@ -23,11 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    //trying some tests
-    public void encyclopedia(View view)
-    {
-        Intent intent = new Intent(getApplicationContext(), EncyclopediaPage.class);
-        startActivity(intent);
-    }
+
 
 }
