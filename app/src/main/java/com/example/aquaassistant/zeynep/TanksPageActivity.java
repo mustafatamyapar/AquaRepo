@@ -29,7 +29,7 @@ public class TanksPageActivity extends AppCompatActivity {
     TanksAdapter tanksAdapter;
     Button addTank;
     SQLiteDatabase tanksDatabase;
-    ArrayList<String> idArray;
+    ArrayList<Integer> idArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class TanksPageActivity extends AppCompatActivity {
 
         addTank = findViewById(R.id.addTank);
         allContainers = new AllContainers();
-        idArray = new ArrayList<String>();
+        idArray = new ArrayList<Integer>();
 
         // a database to store the tanks that have been created by user
         tanksDatabase = TanksPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);
@@ -58,7 +58,7 @@ public class TanksPageActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(TanksPageActivity.this, TankPageActivity.class);
                 //put the id arraylist as extra
-                intent.putExtra("tankId", idArray.get(i));
+                intent.putExtra("tankId", String.valueOf(idArray.get(i)));
                 startActivity(intent);
             }
         });
@@ -153,7 +153,7 @@ public class TanksPageActivity extends AppCompatActivity {
             if ( cursor.getCount() != 0) {
                 while (cursor.moveToNext()) {
                     //insert the id numbers in the arraylist by getting the id numbers from id column
-                   idArray.add(String.valueOf(cursor.getInt(idIndex)));
+                   idArray.add(cursor.getInt(idIndex));
                 }
             }
             cursor.close();

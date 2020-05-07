@@ -45,6 +45,7 @@ public class EditTankActivity extends AppCompatActivity {
     AlertDialog choose;
     String currentPlantNum;
     String currentOtherCreNum;
+    SQLiteDatabase creaturesDatabase;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,8 @@ public class EditTankActivity extends AppCompatActivity {
         addCreature.setText("Add a New Creature to Tank");
         removeCreature.setText("Remove a Creature From the Tank");
 
+        creaturesDatabase = EditTankActivity.this.openOrCreateDatabase("Creatures" ,MODE_PRIVATE, null);
+        creaturesDatabase.execSQL("CREATE TABLE IF NOT EXISTS creatures (id INTEGER PRIMARY KEY , type VARCHAR , creaturename VARCHAR, tankname VARCHAR , image BLOB)");
     }
 
     public void changeTankName(View view){
@@ -106,7 +109,9 @@ public class EditTankActivity extends AppCompatActivity {
         changeName.show();
     }
     public void removeCreature(View view){
-
+        Intent intent = new Intent(EditTankActivity.this , RemoveCreatureActivity.class);
+        intent.putExtra("tankId", tankId);
+        startActivity(intent);
     }
     @SuppressLint("SetTextI18n")
     public void addCreature(View view){
@@ -123,9 +128,6 @@ public class EditTankActivity extends AppCompatActivity {
     }
 
     public void addFishBut(View view){
-
-        final SQLiteDatabase fishDatabase = EditTankActivity.this.openOrCreateDatabase("Fish", MODE_PRIVATE,null);
-        fishDatabase.execSQL("CREATE TABLE IF NOT EXISTS fish (id INTEGER PRIMARY KEY , fishname VARCHAR, tankname VARCHAR , image BLOB)");
         AlertDialog.Builder setName = new AlertDialog.Builder(EditTankActivity.this);
         setName.setTitle("Fish Name");
         setName.setMessage("Please enter the fish name");
@@ -151,6 +153,7 @@ public class EditTankActivity extends AppCompatActivity {
                             } else {
                                 Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                                 startActivityForResult(intentToGallery, 2);
+                            }
                                 //set another alert builder to show the informing message and insert the fish into database
                                 AlertDialog.Builder inform = new AlertDialog.Builder(EditTankActivity.this);
                                 inform.setTitle("Done!");
@@ -174,11 +177,12 @@ public class EditTankActivity extends AppCompatActivity {
                                             cursor.close();
 
                                             //put the info into the fish database
-                                            String sqlString = "INSERT INTO fish ( fishname , tankname , image) VALUES ( ?,?,?) ";
-                                            SQLiteStatement addStatement = fishDatabase.compileStatement(sqlString);
-                                            addStatement.bindString(1, fishName);
-                                            addStatement.bindString(2, tankName);
-                                            addStatement.bindBlob(3, byteArray);
+                                            String sqlString = "INSERT INTO creatures ( type , creaturename , tankname , image) VALUES (?, ?,?, ?) ";
+                                            SQLiteStatement addStatement = creaturesDatabase.compileStatement(sqlString);
+                                            addStatement.bindString(1,"fish");
+                                            addStatement.bindString(2, fishName);
+                                            addStatement.bindString(3, tankName);
+                                            addStatement.bindBlob(4, byteArray);
                                             addStatement.execute();
 
                                             //update the number of fish in the tank
@@ -202,7 +206,7 @@ public class EditTankActivity extends AppCompatActivity {
                                     }
                                 });
                                 inform.show();
-                            }
+
                     }
                 });
                 setImage.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -219,10 +223,11 @@ public class EditTankActivity extends AppCompatActivity {
                             cursor.close();
 
                             //put the info into the fish database
-                            String sqlString = "INSERT INTO fish ( fishname , tankname ) VALUES ( ?,? ) ";
-                            SQLiteStatement addStatement = fishDatabase.compileStatement(sqlString);
-                            addStatement.bindString(1, fishName);
-                            addStatement.bindString(2, tankName);
+                            String sqlString = "INSERT INTO creatures ( type, creaturename , tankname ) VALUES (?, ?,? ) ";
+                            SQLiteStatement addStatement = creaturesDatabase.compileStatement(sqlString);
+                            addStatement.bindString(1,"fish");
+                            addStatement.bindString(2, fishName);
+                            addStatement.bindString(3, tankName);
                             addStatement.execute();
 
                             //update the number of fish in the tank
@@ -255,9 +260,6 @@ public class EditTankActivity extends AppCompatActivity {
         setName.show();
     }
     public void addPlantBut(View view){
-        //create a plant database
-        final SQLiteDatabase plantsDatabase = EditTankActivity.this.openOrCreateDatabase("Plants", MODE_PRIVATE,null);
-        plantsDatabase.execSQL("CREATE TABLE IF NOT EXISTS plants (id INTEGER PRIMARY KEY , plantname VARCHAR, tankname VARCHAR , image BLOB)");
         AlertDialog.Builder setName = new AlertDialog.Builder(EditTankActivity.this);
         setName.setTitle("Plant Name");
         setName.setMessage("Please enter the plant name");
@@ -306,11 +308,12 @@ public class EditTankActivity extends AppCompatActivity {
                                         cursor.close();
 
                                         //put the info into the plant database
-                                        String sqlString = "INSERT INTO plants ( plantname , tankname , image) VALUES ( ?,?,?) ";
-                                        SQLiteStatement addStatement = plantsDatabase.compileStatement(sqlString);
-                                        addStatement.bindString(1, plantName);
-                                        addStatement.bindString(2, tankName);
-                                        addStatement.bindBlob(3, byteArray);
+                                        String sqlString = "INSERT INTO creatures ( type, creaturename , tankname , image) VALUES (?, ?,?,?) ";
+                                        SQLiteStatement addStatement = creaturesDatabase.compileStatement(sqlString);
+                                        addStatement.bindString(1,"plant");
+                                        addStatement.bindString(2, plantName);
+                                        addStatement.bindString(3, tankName);
+                                        addStatement.bindBlob(4, byteArray);
                                         addStatement.execute();
 
                                         //update the number of plant in the tank
@@ -350,10 +353,11 @@ public class EditTankActivity extends AppCompatActivity {
                             cursor.close();
 
                             //put the info into the plant database
-                            String sqlString = "INSERT INTO plants ( plantname , tankname ) VALUES ( ?,? ) ";
-                            SQLiteStatement addStatement = plantsDatabase.compileStatement(sqlString);
-                            addStatement.bindString(1, plantName);
-                            addStatement.bindString(2, tankName);
+                            String sqlString = "INSERT INTO creatures ( type,  creaturename , tankname ) VALUES ( ?,?,? ) ";
+                            SQLiteStatement addStatement = creaturesDatabase.compileStatement(sqlString);
+                            addStatement.bindString(1,"plant");
+                            addStatement.bindString(2, plantName);
+                            addStatement.bindString(3, tankName);
                             addStatement.execute();
 
                             //update the number of plant in the tank
@@ -386,9 +390,6 @@ public class EditTankActivity extends AppCompatActivity {
         setName.show();
     }
     public void addOtherBut(View view){
-        //create other creatures database
-        final SQLiteDatabase othersDatabase = EditTankActivity.this.openOrCreateDatabase("Others", MODE_PRIVATE,null);
-        othersDatabase.execSQL("CREATE TABLE IF NOT EXISTS others (id INTEGER PRIMARY KEY , othername VARCHAR, tankname VARCHAR , image BLOB)");
         AlertDialog.Builder setName = new AlertDialog.Builder(EditTankActivity.this);
         setName.setTitle("Creature Name");
         setName.setMessage("Please enter the creature name");
@@ -437,11 +438,12 @@ public class EditTankActivity extends AppCompatActivity {
                                         cursor.close();
 
                                         //put the info into the others database
-                                        String sqlString = "INSERT INTO others ( othername , tankname , image) VALUES ( ?,?,?) ";
-                                        SQLiteStatement addStatement = othersDatabase.compileStatement(sqlString);
-                                        addStatement.bindString(1, otherName);
-                                        addStatement.bindString(2, tankName);
-                                        addStatement.bindBlob(3, byteArray);
+                                        String sqlString = "INSERT INTO creatures (type, creaturename , tankname , image) VALUES (?, ?,?,?) ";
+                                        SQLiteStatement addStatement = creaturesDatabase.compileStatement(sqlString);
+                                        addStatement.bindString(1,"other");
+                                        addStatement.bindString(2, otherName);
+                                        addStatement.bindString(3, tankName);
+                                        addStatement.bindBlob(4, byteArray);
                                         addStatement.execute();
 
                                         //update the number of other creatures in the tank
@@ -481,10 +483,11 @@ public class EditTankActivity extends AppCompatActivity {
                             cursor.close();
 
                             //put the info into the others database
-                            String sqlString = "INSERT INTO others ( othername , tankname ) VALUES ( ?,? ) ";
-                            SQLiteStatement addStatement = othersDatabase.compileStatement(sqlString);
-                            addStatement.bindString(1, otherName);
-                            addStatement.bindString(2, tankName);
+                            String sqlString = "INSERT INTO creatures ( type, creaturename , tankname ) VALUES ( ?,?,? ) ";
+                            SQLiteStatement addStatement = creaturesDatabase.compileStatement(sqlString);
+                            addStatement.bindString(1, "other");
+                            addStatement.bindString(2, otherName);
+                            addStatement.bindString(3, tankName);
                             addStatement.execute();
 
                             //update the number of other creature in the tank

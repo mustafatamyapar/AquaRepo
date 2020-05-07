@@ -25,8 +25,8 @@ import java.util.Calendar;
 
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
-public class TanksAdapter extends ArrayAdapter<String> {
-    private ArrayList <String> idArray;
+public class TanksAdapter extends ArrayAdapter<Integer> {
+    private ArrayList <Integer> idArray;
     private Activity context;
     SQLiteDatabase tanksDatabase;
     Calendar calendar = Calendar.getInstance();
@@ -35,8 +35,8 @@ public class TanksAdapter extends ArrayAdapter<String> {
     String currentWaterCheck;
     String currentTimeToFeed;
 
-    public TanksAdapter (ArrayList <String> idArray, Activity context) {
-        super(context, R.layout.tanks_view, (ArrayList<String>) idArray);
+    public TanksAdapter (ArrayList <Integer> idArray, Activity context) {
+        super(context, R.layout.tanks_view, (ArrayList<Integer>) idArray);
         this.idArray = idArray;
         this.context = context;
         //open the database of tanks
@@ -83,12 +83,12 @@ public class TanksAdapter extends ArrayAdapter<String> {
         if (hourOfDay == 23 && minute == 59) {
             currentTimeToFeed = cursor.getString(timeWaterIndex);
             currentWaterCheck = cursor.getString(timeFeedIndex);
-            String updateWater = "UPDATE tanks SET watercheck = ? WHERE id = "  + String.valueOf(idArray.get(position)) ;
+            String updateWater = "UPDATE tanks SET watercheck = ? WHERE id = "  + idArray.get(position) ;
             SQLiteStatement updateWaterT = tanksDatabase.compileStatement(updateWater);
             String newWaterTime = String.valueOf(Integer.parseInt(currentWaterCheck) + 1);
             updateWaterT.bindString(1, newWaterTime);
             updateWaterT.execute();
-            String updateFeed = "UPDATE tanks SET timetofeed = ? WHERE id = "  + String.valueOf(idArray.get(position)) ;
+            String updateFeed = "UPDATE tanks SET timetofeed = ? WHERE id = "  + idArray.get(position) ;
             SQLiteStatement updateFeedT = tanksDatabase.compileStatement(updateFeed);
             String newFeedTime = String.valueOf(Integer.parseInt(currentTimeToFeed) + 1);
             updateFeedT.bindString(1,newFeedTime);
