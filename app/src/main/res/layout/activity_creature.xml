@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="searchCreature"
+    tools:context=".zulal.Creature">
+
+    <ImageView
+        android:id="@+id/header_creature"
+        android:layout_width="174dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/serachBox"
+        app:layout_constraintEnd_toEndOf="@+id/serachBox"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/CREATURES" />
+
+    <EditText
+        android:id="@+id/serachBox"
+        android:layout_width="290dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="14dp"
+        android:ems="10"
+        android:hint="Name Of The Creature"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/grid_creatures"
+        app:layout_constraintEnd_toStartOf="@+id/searchButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_creature" />
+
+    <ImageButton
+        android:id="@+id/searchButton"
+        android:layout_width="71dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="searchCreature"
+        app:layout_constraintBottom_toTopOf="@+id/grid_creatures"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/serachBox"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@android:drawable/ic_search_category_default" />
+
+    <GridView
+        android:id="@+id/grid_creatures"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="54dp"
+        android:background="#e5e5e5"
+        android:horizontalSpacing="1dp"
+        android:numColumns="3"
+        android:verticalSpacing="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/serachBox" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseauth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                Toast.makeText(MainActivity.this,"User Creates",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,"User Created",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainActivity.this, MainPage.class);
                 startActivity(intent);
                 finish();
