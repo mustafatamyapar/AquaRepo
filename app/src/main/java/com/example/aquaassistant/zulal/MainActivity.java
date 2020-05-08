@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     Button sign_up;
     EditText user_name;
     EditText user_password;
+    String email;
+    String password;
     private FirebaseAuth firebaseauth;
     FirebaseUser firebaseuser;
 
@@ -51,11 +53,15 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
+        password = user_password.getText().toString();
+        email = user_name.getText().toString();
+
+
     }
+
     public void signIn(View view){
         String email = user_name.getText().toString();
         String password = user_password.getText().toString();
-
         firebaseauth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
@@ -75,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
     public void signUp(View view){
         String email = user_name.getText().toString();
         String password = user_password.getText().toString();
-
         firebaseauth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
