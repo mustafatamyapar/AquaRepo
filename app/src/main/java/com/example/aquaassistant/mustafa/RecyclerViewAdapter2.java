@@ -2,6 +2,7 @@ package com.example.aquaassistant.mustafa;
 
 import android.content.Context;
 import android.content.Intent;
+import android.nfc.cardemulation.CardEmulation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aquaassistant.R;
@@ -42,6 +44,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter2.MyViewHolder2 holder, final int position) {
+
         holder.fishName.setText(mData.get(position).getName());
         holder.difficulty.setText(mData.get(position).getDifficulty());
         holder.img.setImageResource(mData.get(position).getId());
@@ -69,7 +72,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
 
 
     public static class MyViewHolder2 extends RecyclerView.ViewHolder{
-        private LinearLayout Item;
+        private CardView Item;
         private TextView fishName;
         private TextView difficulty;
         private ImageView img;

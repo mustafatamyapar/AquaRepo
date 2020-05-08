@@ -1,6 +1,7 @@
 package com.example.aquaassistant.mustafa;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,7 +24,7 @@ public class FishPage extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerwiew2id);
         RecyclerViewAdapter2 recyclerViewAdapter2 = new RecyclerViewAdapter2(getApplicationContext(),listFish);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         recyclerView.setAdapter(recyclerViewAdapter2);
 
         listFish.add(new Fish("beta","hahahahahah","Difficulty: 5.00",R.drawable.disease8));

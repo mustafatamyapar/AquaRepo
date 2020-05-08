@@ -27,14 +27,14 @@ public class DiseasesPage extends AppCompatActivity {
         recyclerView.setAdapter(recyclerViewAdapter);
 
 
-        listDisease.add(new Disease("Cotton Mouth","he ","ost of the columnaris infections are external and present first as white or grayish spots or patches on the head and around the fins or gills. ",R.drawable.disease1));
-        listDisease.add(new Disease("Dropsy","descriptionnnnnnnnnnnnnnnnnnnnnnn","Symptommomomss",R.drawable.disease2));
-        listDisease.add(new Disease("Fin/Tail Rot","descriptiiiiiiiiinnnnn","Symptommms",R.drawable.disease3));
-        listDisease.add(new Disease("Hole in the Head","description","symptom",R.drawable.disease4));
-        listDisease.add(new Disease("Fish Fungus","description","symptom",R.drawable.disease5));
-        listDisease.add(new Disease("Camallanus Worms","description","symptom",R.drawable.disease6));
-        listDisease.add(new Disease("Ammonia Poisoning","description","symptom",R.drawable.disease7));
-        listDisease.add(new Disease("Vorticella","description","symptom",R.drawable.disease8));
+        listDisease.add(new Disease("Cotton Mouth","","Cottony growth near jaws and loss of appetite",R.drawable.disease1));
+        listDisease.add(new Disease("Dropsy","","Bloat, scales stick out",R.drawable.disease2));
+        listDisease.add(new Disease("Fin/Tail Rot","","Erosion at edges of fins",R.drawable.disease3));
+        listDisease.add(new Disease("Hole in the Head","","Pale ulcerated area around head",R.drawable.disease4));
+        listDisease.add(new Disease("Fish Fungus","","Whitish, fur-like growths\t",R.drawable.disease5));
+        listDisease.add(new Disease("Camallanus Worms","","Red or pink worm protruding from the anus, fish may become listless and bloated, fish refuse to eat",R.drawable.disease6));
+        listDisease.add(new Disease("Ammonia Poisoning","","Red or inflamed gills, fish are gasping for air at the surface",R.drawable.disease7));
+        listDisease.add(new Disease("Vorticella","","Cilia like white organisms on mouth of the shrimp",R.drawable.disease8));
 
 
 
