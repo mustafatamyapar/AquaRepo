@@ -34,7 +34,7 @@ public class MainPage extends AppCompatActivity {
         encyclopediaButton = findViewById(R.id.encyclopedia);
         remindersButton = findViewById(R.id.button7);
         Slidr.attach(this);
-
+//deneme commiti
     }
     public void openSettings(View view){
         Intent intent = new Intent( this, SettingsMain.class);
