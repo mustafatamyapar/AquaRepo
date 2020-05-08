@@ -35,8 +35,7 @@
             android:name=".zeynep.MapsActivity"
             android:label="@string/title_activity_maps" >
         </activity>
-        <activity android:name=".kerem.MainPage" />
-        android:theme="@style/AppTheme">
+
         <activity android:name=".kerem.MainPage"
             android:theme="@style/AppTheme.SlidrActivityTheme"/>
         <activity android:name=".kerem.sha1" />
