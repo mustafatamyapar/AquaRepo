@@ -11,6 +11,7 @@ import com.example.aquaassistant.R;
 import com.example.aquaassistant.mustafa.EncyclopediaPage;
 import com.example.aquaassistant.sena.SettingsMain;
 import com.example.aquaassistant.zeynep.TankPageActivity;
+import com.example.aquaassistant.zeynep.TanksPageActivity;
 import com.example.aquaassistant.zulal.Faqactivity;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
@@ -41,7 +42,7 @@ public class MainPage extends AppCompatActivity {
         startActivity(intent);
     }
     public void openTanks(View view){
-        Intent intent = new Intent( this, TankPageActivity.class);
+        Intent intent = new Intent( this, TanksPageActivity.class);
         startActivity(intent);
     }
     public void openEncyclopedia(View view){
