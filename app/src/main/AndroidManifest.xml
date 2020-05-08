@@ -17,6 +17,7 @@
         <activity android:name=".kerem.ProfilePage" />
         <activity android:name=".zeynep.RemoveCreatureActivity" />
         <activity android:name=".zulal.Faqactivity" />
+        <activity android:name=".zulal.Creature"/>
         <activity android:name=".sena.ChangeProfilePicture" />
         <activity android:name=".sena.SettingsMain" />
         <activity android:name=".sena.ChangeEmailPhone" />
