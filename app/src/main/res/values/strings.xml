@@ -2,4 +2,5 @@
     <string name="app_name">AquaAssistant</string>
     <string name="my_tanks">my tanks</string>
     <string name="add_a_new_tank">Add a new tank</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

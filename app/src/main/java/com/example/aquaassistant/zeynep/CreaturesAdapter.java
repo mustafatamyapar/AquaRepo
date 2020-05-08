@@ -30,7 +30,7 @@ public class CreaturesAdapter extends ArrayAdapter<Integer> {
 
 
     CreaturesAdapter(ArrayList<Integer> creatureIdArray, Activity context) {
-        super(context, R.layout.tanks_view, creatureIdArray);
+        super(context, R.layout.creatures_remove_view, creatureIdArray);
         this.context = context;
         this.creatureIdArray = creatureIdArray;
     }
