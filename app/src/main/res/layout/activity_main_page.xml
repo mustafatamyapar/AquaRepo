@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg1"
-    tools:context=".MainActivity">
+    tools:context=".kerem.MainPage">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/tankButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#CDDC39"
+        android:onClick="openTanks"
         android:text="go tanks"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/profileButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#CDDC39"
-        android:onClick="settingsTest"
+        android:onClick="openSettings"
         android:text="Settings Test"
         app:layout_constraintBottom_toTopOf="@+id/encyclopedia"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,18 +37,18 @@
         android:layout_width="183dp"
         android:layout_height="50dp"
         android:backgroundTint="#CDDC39"
-        android:onClick="encyclopedia"
+        android:onClick="openEncyclopedia"
         android:text="encyclopedia test"
         app:layout_constraintBottom_toTopOf="@+id/button7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/profileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#CDDC39"
-        android:onClick="profilePage"
+        android:onClick="openProfile"
         android:text="PROFILE PAGE"
         app:layout_constraintBottom_toTopOf="@+id/settingsTest"
         app:layout_constraintEnd_toEndOf="parent"
