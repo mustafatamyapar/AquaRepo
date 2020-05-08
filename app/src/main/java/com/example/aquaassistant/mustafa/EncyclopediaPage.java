@@ -9,6 +9,8 @@ import android.widget.Button;
 
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.zulal.Faqactivity;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrInterface;
 
 public class EncyclopediaPage extends AppCompatActivity {
 private Button fishButton;
@@ -16,6 +18,7 @@ private Button snailButton;
 private Button plantsButton;
 private Button diseasesButton;
 private Button faqButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ private Button faqButton;
         plantsButton = findViewById(R.id.plantsButton);
         diseasesButton = findViewById(R.id.diseasesButton);
         faqButton = findViewById(R.id.faqButton);
+        Slidr.attach(this);
     }
     public void openFishPage(View view){
         Intent intent = new Intent( this, FishPage.class);

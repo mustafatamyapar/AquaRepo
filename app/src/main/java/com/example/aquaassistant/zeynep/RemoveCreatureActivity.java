@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.GridView;
 
 import com.example.aquaassistant.R;
+import com.r0adkll.slidr.Slidr;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class RemoveCreatureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Slidr.attach(this);
         setContentView(R.layout.activity_remove_creature);
         final GridView gridView = findViewById(R.id.gridView);
         creaturesId = new ArrayList<>();

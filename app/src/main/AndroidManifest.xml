@@ -36,6 +36,9 @@
             android:label="@string/title_activity_maps" >
         </activity>
         <activity android:name=".kerem.MainPage" />
+        android:theme="@style/AppTheme">
+        <activity android:name=".kerem.MainPage"
+            android:theme="@style/AppTheme.SlidrActivityTheme"/>
         <activity android:name=".kerem.sha1" />
         <activity android:name=".kerem.ProfilePage" />
         <activity android:name=".zeynep.RemoveCreatureActivity" />

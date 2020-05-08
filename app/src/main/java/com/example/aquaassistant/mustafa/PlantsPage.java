@@ -11,6 +11,8 @@ import com.example.aquaassistant.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.r0adkll.slidr.Slidr;
+
 public class PlantsPage extends AppCompatActivity {
     private List<Disease> listPlants = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -25,5 +27,7 @@ public class PlantsPage extends AppCompatActivity {
         recyclerView.setAdapter(recyclerViewAdapter);
 
         listPlants.add(new Disease("Rose","description","redredred",R.drawable.disease5));
+        Slidr.attach(this);
+        //setContentView(R.layout.activity_plants_page);
     }
 }

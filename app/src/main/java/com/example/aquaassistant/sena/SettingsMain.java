@@ -10,10 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.aquaassistant.MainActivity;
 import com.example.aquaassistant.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrInterface;
 
 public class SettingsMain extends AppCompatActivity {
     Button sign_out;
     private FirebaseAuth firebaseAuth;
+    private SlidrInterface slidr;
 
 
     @Override
@@ -22,6 +25,7 @@ public class SettingsMain extends AppCompatActivity {
         setContentView(R.layout.activity_settingsmain);
         sign_out = findViewById(R.id.sign_out);
         firebaseAuth = FirebaseAuth.getInstance();
+        slidr = Slidr.attach(this);
     }
     public void signOutClicked(View view){
         firebaseAuth.signOut();
@@ -45,5 +49,13 @@ public class SettingsMain extends AppCompatActivity {
     public void changeProfilePicturePage(View view) {
         Intent intent = new Intent(getApplicationContext(), ChangeProfilePicture.class);
         startActivity(intent);
+    }
+
+    public void lockSlide(View v) {
+        slidr.lock();
+    }
+
+    public void unlockSlide(View v) {
+        slidr.unlock();
     }
 }

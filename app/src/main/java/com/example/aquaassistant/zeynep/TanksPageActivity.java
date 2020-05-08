@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.zulal.AllContainers;
 import com.example.aquaassistant.zulal.AquariumContainer;
+import com.r0adkll.slidr.Slidr;
 
 import java.util.ArrayList;
 
@@ -35,6 +36,7 @@ public class TanksPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Slidr.attach(this);
         setContentView(R.layout.activity_tankspage);
         TextView myTanks = findViewById(R.id.myTanks);
         myTanks.setText("My Tanks");

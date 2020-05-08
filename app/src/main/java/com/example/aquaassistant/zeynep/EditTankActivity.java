@@ -27,6 +27,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.zulal.AquariumContainer;
+import com.r0adkll.slidr.Slidr;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
@@ -50,6 +52,7 @@ public class EditTankActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Slidr.attach(this);
         setContentView(R.layout.activity_edit_tank);
         Intent intent = getIntent();
         tankId = intent.getStringExtra("tankId");

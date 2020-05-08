@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.aquaassistant.R;
+import com.r0adkll.slidr.Slidr;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ RecyclerView recyclerView;
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    Slidr.attach(this);
     setContentView(R.layout.activity_faqactivity);
     faqArrayList = new ArrayList<>();
     questions = new ArrayList<>();

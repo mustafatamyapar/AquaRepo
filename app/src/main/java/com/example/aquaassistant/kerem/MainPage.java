@@ -12,6 +12,8 @@ import com.example.aquaassistant.mustafa.EncyclopediaPage;
 import com.example.aquaassistant.sena.SettingsMain;
 import com.example.aquaassistant.zeynep.TankPageActivity;
 import com.example.aquaassistant.zulal.Faqactivity;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrInterface;
 
 
 public class MainPage extends AppCompatActivity {
@@ -22,7 +24,6 @@ public class MainPage extends AppCompatActivity {
     private Button encyclopediaButton;
     private Button remindersButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public class MainPage extends AppCompatActivity {
         settingButton = findViewById(R.id.settingsButton);
         encyclopediaButton = findViewById(R.id.encyclopedia);
         remindersButton = findViewById(R.id.button7);
+        Slidr.attach(this);
 
     }
     public void openSettings(View view){

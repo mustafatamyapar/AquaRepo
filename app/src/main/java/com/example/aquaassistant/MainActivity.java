@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +19,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.r0adkll.slidr.Slidr;
 
 public class MainActivity extends AppCompatActivity {
     Button sign_in;
@@ -29,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser firebaseuser;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Slidr.attach(this);
         setContentView(R.layout.activity_main);
         FirebaseApp.initializeApp(MainActivity.this);
         sign_in = findViewById(R.id.sign_in);
@@ -41,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
         user_password = findViewById(R.id.user_password);
         firebaseauth = FirebaseAuth.getInstance();
         firebaseuser = firebaseauth.getCurrentUser();
-        if (firebaseuser != null){
-            Intent intent = new Intent(MainActivity.this,MainPage.class);
+        user_name.addTextChangedListener(buttonTextWatcher);
+        user_password.addTextChangedListener(buttonTextWatcher);
+        if (firebaseuser != null) {
+            Intent intent = new Intent(MainActivity.this, MainPage.class);
             startActivity(intent);
             finish();
         }
@@ -53,10 +58,32 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void signIn(View view){
+    private TextWatcher buttonTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String usernameInput = user_name.getText().toString().trim();
+            String passwordInput = user_password.getText().toString().trim();
+
+            sign_in.setEnabled(!usernameInput.isEmpty()&& !passwordInput.isEmpty());
+            sign_up.setEnabled(!usernameInput.isEmpty()&& !passwordInput.isEmpty());
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
+
+    public void signIn(View view) {
         String email = user_name.getText().toString();
         String password = user_password.getText().toString();
-        firebaseauth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+        firebaseauth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
                 Intent intent = new Intent(MainActivity.this, MainPage.class);
@@ -67,17 +94,19 @@ public class MainActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MainActivity.this,e.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, e.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
             }
         });
 
     }
-    public void signUp(View view){
+
+    public void signUp(View view) {
         String email = user_name.getText().toString();
         String password = user_password.getText().toString();
-        firebaseauth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+        firebaseauth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
+                Toast.makeText(MainActivity.this, "User Creates", Toast.LENGTH_LONG).show();
                 Toast.makeText(MainActivity.this,"User Created",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainActivity.this, MainPage.class);
                 startActivity(intent);
@@ -86,10 +115,11 @@ public class MainActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MainActivity.this,e.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, e.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
             }
         });
 
     }
-
 }
+
+

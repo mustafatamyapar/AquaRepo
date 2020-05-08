@@ -42,6 +42,7 @@
         android:background="#CD1A5988"
         android:onClick="signIn"
         android:text="SIGN IN"
+        android:enabled="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -54,6 +55,7 @@
         android:background="#CD1A5988"
         android:onClick="signUp"
         android:text="SIGN UP"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="@+id/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/sign_in" />

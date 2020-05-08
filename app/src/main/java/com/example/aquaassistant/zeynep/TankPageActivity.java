@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.aquaassistant.R;
+import com.r0adkll.slidr.Slidr;
+
 import java.util.Calendar;
 
 public class TankPageActivity extends AppCompatActivity {
@@ -36,6 +38,7 @@ public class TankPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Slidr.attach(this);
         setContentView(R.layout.activity_tankpage);
         //find the layout components
         tankName = findViewById(R.id.tankName);

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.aquaassistant.R;
+import com.r0adkll.slidr.Slidr;
 
 public class ChangeEmailPhone extends AppCompatActivity {
 
@@ -13,6 +14,7 @@ public class ChangeEmailPhone extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_email_phone);
+        Slidr.attach(this);
     }
 
     public void saveNewEmailPhoneNumber(View view) {

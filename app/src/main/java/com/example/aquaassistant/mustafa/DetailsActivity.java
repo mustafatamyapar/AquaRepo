@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aquaassistant.R;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrInterface;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -19,6 +21,7 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.disease_details);
+        Slidr.attach(this);
 
         diseaseTitle = (TextView) findViewById(R.id.DiseaseNameBig);
         diseaseInfo = (TextView) findViewById(R.id.DetailedInfo);
