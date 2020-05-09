@@ -7,16 +7,7 @@
     android:onClick="searchCreature"
     tools:context=".zulal.Creature">
 
-    <ImageView
-        android:id="@+id/header_creature"
-        android:layout_width="174dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/serachBox"
-        app:layout_constraintEnd_toEndOf="@+id/serachBox"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
         android:id="@+id/serachBox"
