@@ -26,7 +26,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.aquaassistant.R;
-import com.example.aquaassistant.zulal.AquariumContainer;
 import com.r0adkll.slidr.Slidr;
 
 import java.io.ByteArrayOutputStream;
@@ -34,19 +33,11 @@ import java.io.IOException;
 
 public class EditTankActivity extends AppCompatActivity {
     TextView editTank;
-    Button changeName ;
-    Button addCreature;
-    Button removeCreature;
-    AquariumContainer aquariumContainer;
-    String tankName;
+    Button changeName, addCreature ,removeCreature ;
+    String tankName ,tName ,tankId ,currentFishNum ,currentPlantNum , currentOtherCreNum;
     SQLiteDatabase tanksDatabase;
-    String tName;
-    String tankId;
     Bitmap selectedImage;
-    String currentFishNum;
     AlertDialog choose;
-    String currentPlantNum;
-    String currentOtherCreNum;
     SQLiteDatabase creaturesDatabase;
     AlertDialog.Builder inform;
     @SuppressLint("SetTextI18n")
@@ -57,7 +48,6 @@ public class EditTankActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_tank);
         Intent intent = getIntent();
         tankId = intent.getStringExtra("tankId");
-        aquariumContainer = (AquariumContainer) intent.getSerializableExtra("tank");
         editTank = findViewById(R.id.editTankText);
         changeName = findViewById(R.id.changeName);
         addCreature = findViewById(R.id.addCreature);

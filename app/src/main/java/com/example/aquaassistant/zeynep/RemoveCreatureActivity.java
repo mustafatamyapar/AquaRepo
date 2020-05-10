@@ -14,8 +14,7 @@ import com.r0adkll.slidr.Slidr;
 import java.util.ArrayList;
 
 public class RemoveCreatureActivity extends AppCompatActivity {
-    String tankId;
-    String tankName;
+    String tankId , tankName;
     ArrayList<Integer> creaturesId;
     CreaturesAdapter creaturesAdapter;
     @Override

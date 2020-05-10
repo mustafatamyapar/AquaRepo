@@ -56,13 +56,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapLongClickListener(this);
-        mMap.setMyLocationEnabled(true);
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-            }
-            @Override
+            }@Override
             public void onStatusChanged(String provider, int status, Bundle extras) {
             }
             @Override
