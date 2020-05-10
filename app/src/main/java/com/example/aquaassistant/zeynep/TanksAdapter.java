@@ -33,7 +33,7 @@ public class TanksAdapter extends ArrayAdapter<Integer> {
         tanksDatabase = context.openOrCreateDatabase("Tanks" , Context.MODE_PRIVATE, null);
     }
 
-    @SuppressLint({"ViewHolder", "SetTextI18n"})
+    @SuppressLint({"ViewHolder", "SetTextI18n","InflateParams"})
     @NonNull
     @Override
     public View getView( int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -72,16 +72,10 @@ public class TanksAdapter extends ArrayAdapter<Integer> {
         //update the database day by day
         if (hourOfDay == 23 && minute == 59) {
             String currentWaterCheck = cursor.getString(timeWaterIndex);
-            String currentTimeToFeed = cursor.getString(timeFeedIndex);
             String updateWater = "UPDATE tanks SET watercheck = ? WHERE id = "  + idArray.get(position) ;
             SQLiteStatement updateWaterT = tanksDatabase.compileStatement(updateWater);
             String newWaterTime = String.valueOf(Integer.parseInt(currentWaterCheck) - 1);
             updateWaterT.bindString(1, newWaterTime);
-            updateWaterT.execute();
-            String updateFeed = "UPDATE tanks SET timetofeed = ? WHERE id = "  + idArray.get(position) ;
-            SQLiteStatement updateFeedT = tanksDatabase.compileStatement(updateFeed);
-            String newFeedTime = String.valueOf(Integer.parseInt(currentTimeToFeed) - 1);
-            updateFeedT.bindString(1,newFeedTime);
             updateWaterT.execute();
         }
         cursor.close();

@@ -62,6 +62,7 @@ public class CreaturesAdapter extends ArrayAdapter<Integer> {
             }
             tanksCursor.close();
 
+            //set the view components by getting info from creatures database
             final Cursor creaturesCursor = creaturesDatabase.rawQuery("SELECT * FROM creatures WHERE id = ? ", new String[]{String.valueOf(creatureIdArray.get(position))});
             int creatureNameIndex = creaturesCursor.getColumnIndex("creaturename");
             int creatureImageIndex = creaturesCursor.getColumnIndex("image");
@@ -77,6 +78,7 @@ public class CreaturesAdapter extends ArrayAdapter<Integer> {
         }catch(Exception e) {
             e.printStackTrace();
         }
+        //if the user click on a creature
         creatureImageBut.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -89,9 +91,11 @@ public class CreaturesAdapter extends ArrayAdapter<Integer> {
                             try {
                                 creaturesDatabase = context.openOrCreateDatabase("Creatures", Context.MODE_PRIVATE, null);
                                 tanksDatabase = context.openOrCreateDatabase("Tanks", Context.MODE_PRIVATE, null);
+
                                 Cursor cursor = creaturesDatabase.rawQuery("SELECT * FROM creatures WHERE id = ? ", new String[]{String.valueOf(creatureIdArray.get(position))});
                                 int typeIndex = cursor.getColumnIndex("type");
                                 while (cursor.moveToNext()) {
+                                    //if creature is a fish
                                     if (cursor.getString(typeIndex).matches("fish")) {
                                         //decrease the number of fish in the tank
                                         String decrease = "UPDATE tanks SET numoffish= ? WHERE id = " + tankId;
@@ -99,14 +103,18 @@ public class CreaturesAdapter extends ArrayAdapter<Integer> {
                                         final String newFishNum = String.valueOf(Integer.parseInt(numOfFish) - 1);
                                         decreaseFishNum.bindString(1, newFishNum);
                                         decreaseFishNum.execute();
-                                    } else if (cursor.getString(typeIndex).matches("plant")) {
+                                    }
+                                    //if creature is a plant
+                                    else if (cursor.getString(typeIndex).matches("plant")) {
                                         //decrease the number of plant in the tank
                                         String decrease = "UPDATE tanks SET numofplant= ? WHERE id =" + tankId;
                                         SQLiteStatement decreasePlantNum = tanksDatabase.compileStatement(decrease);
                                         final String newPlantNum = String.valueOf(Integer.parseInt(numOFPlant) - 1);
                                         decreasePlantNum.bindString(1, newPlantNum);
                                         decreasePlantNum.execute();
-                                    } else if (cursor.getString(typeIndex).matches("other")) {
+                                    }
+                                    //if creature is one of the others
+                                    else if (cursor.getString(typeIndex).matches("other")) {
                                         //decrease the number of fish in the tank
                                         String decrease = "UPDATE tanks SET numofother= ? WHERE id = " + tankId;
                                         SQLiteStatement decreaseOtherNum = tanksDatabase.compileStatement(decrease);
@@ -117,11 +125,13 @@ public class CreaturesAdapter extends ArrayAdapter<Integer> {
                                 }
                                 cursor.close();
 
+                                //delete the selected creauture from creatures database
                                 String delete = "DELETE FROM creatures WHERE id = " + creatureIdArray.get(position);
                                 SQLiteStatement deleteStatement = creaturesDatabase.compileStatement(delete);
                                 deleteStatement.execute();
 
                                 creatureIdArray.remove(creatureIdArray.get(position));
+
                                 //go back to tanks page
                                 Intent intent1 = new Intent(context, TanksPageActivity.class);
                                 intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -141,7 +151,5 @@ public class CreaturesAdapter extends ArrayAdapter<Integer> {
                 }
             });
         return creatureRemoveView;
-
     }
 }
-

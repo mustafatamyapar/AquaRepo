@@ -47,19 +47,17 @@
             numOfOthers = 0;
             //according to the size of the tank, times to feed and water change
             if (liter <= 120 ) {
-                timeToFeed = 4;
                 waterCheck = 14;
             } else if (liter <= 200 && liter > 120) {
-                timeToFeed = 3;
                 waterCheck = 7;
             } else if (liter > 200) {
-                timeToFeed = 2;
                 waterCheck = 7;
             }
             if (hourOfDay == 23 && minute == 59) {
                 waterCheck--;
                 timeToFeed--;
             }
+            timeToFeed = 1;
             selected = false;
         }
 

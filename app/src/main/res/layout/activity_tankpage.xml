@@ -7,8 +7,8 @@
 
     <Button
         android:id="@+id/editButton"
-        android:layout_width="100dp"
-        android:layout_height="58dp"
+        android:layout_width="117dp"
+        android:layout_height="72dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="50dp"
@@ -16,9 +16,10 @@
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.659"
         app:layout_constraintStart_toEndOf="@+id/deleteButton"
         app:layout_constraintTop_toBottomOf="@+id/tankImage"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <TextView
         android:id="@+id/tankName"
@@ -33,21 +34,21 @@
 
     <ImageView
         android:id="@+id/tankImage"
-        android:layout_width="215dp"
-        android:layout_height="215dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="355dp"
+        android:layout_height="264dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tankName"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/aquarium" />
 
     <TextView
         android:id="@+id/waterCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:text="TextView"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tankImage" />
@@ -56,23 +57,24 @@
         android:id="@+id/timeCond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="15dp"
         android:text="TextView"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/waterCheck" />
 
     <Button
         android:id="@+id/deleteButton"
-        android:layout_width="100dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="55dp"
+        android:layout_width="117dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="150dp"
         android:onClick="deleteTankBut"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tankImage" />
+        app:layout_constraintTop_toBottomOf="@+id/tankImage"
+        app:layout_constraintVertical_bias="0.09" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

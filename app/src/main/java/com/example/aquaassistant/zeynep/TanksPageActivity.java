@@ -112,12 +112,11 @@ public class TanksPageActivity extends AppCompatActivity {
                             sqLiteStatement.bindString(3, "0");
                             sqLiteStatement.bindString(4, "0");
                             sqLiteStatement.bindString(5, "0");
-                            // a temporary tank to get the water check, time to feed and picture integer variables
-                            // according to the tank size
+                            // a temporary tank to get the water check according to the tank size
                             AquariumContainer newTank = new AquariumContainer(tName, Integer.parseInt(tSize), R.drawable.aquarium);
                             sqLiteStatement.bindString(6, String.valueOf(newTank.getWaterCheck()));
                             sqLiteStatement.bindString(7, "1");
-                            sqLiteStatement.bindString(8, String.valueOf(newTank.getPictureInteger()));
+                            sqLiteStatement.bindString(8, String.valueOf(R.drawable.aquarium));
                             sqLiteStatement.execute();
                             tanksAdapter.notifyDataSetChanged();
                             NotificationsPage.notifArray.add("Time to feed your creatures in " + tName);

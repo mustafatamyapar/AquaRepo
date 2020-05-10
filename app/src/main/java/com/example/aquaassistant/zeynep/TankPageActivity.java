@@ -84,11 +84,6 @@ public class TankPageActivity extends AppCompatActivity {
                 String newWaterTime = String.valueOf(Integer.parseInt(currentWaterCheck) - 1);
                 updateWaterT.bindString(1, newWaterTime);
                 updateWaterT.execute();
-                String updateFeed = "UPDATE tanks SET timetofeed = ? WHERE id = "  + tankId ;
-                SQLiteStatement updateFeedT = tanksDatabase.compileStatement(updateFeed);
-                String newFeedTime = String.valueOf(Integer.parseInt(currentTimeToFeed) - 1);
-                updateFeedT.bindString(1,newFeedTime);
-                updateWaterT.execute();
             }
             cursor.close();
         } catch (Exception e){

@@ -118,6 +118,7 @@ public class EditTankActivity extends AppCompatActivity {
     }
     @SuppressLint("SetTextI18n")
     public void addCreature(View view){
+        //show the window to choose a creature to be added
         AlertDialog.Builder chooseCreature = new AlertDialog.Builder(EditTankActivity.this);
         chooseCreature.setTitle("Choose Creature");
         chooseCreature.setView(R.layout.activity_choosecreature);
@@ -196,7 +197,6 @@ public class EditTankActivity extends AppCompatActivity {
                                             addFishStatement.execute();
 
                                             //return the tanks page
-
                                             choose.dismiss();
                                             EditTankActivity.this.finish();
                                             Intent intent = new Intent(EditTankActivity.this, TanksPageActivity.class);
@@ -555,15 +555,16 @@ public class EditTankActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
     public Bitmap makeSmallerImage(Bitmap image, int maximumSize) {
-
+        //get the size of image
         int width = image.getWidth();
         int height = image.getHeight();
-
+        //determine the ratio to keep it same
         float bitmapRatio = (float) width / (float) height;
-
+        //if the image is horizontal
         if (bitmapRatio > 1) {
             width = maximumSize;
             height = (int) (width / bitmapRatio);
+            //if the image is vertical
         } else {
             height = maximumSize;
             width = (int) (height * bitmapRatio);
