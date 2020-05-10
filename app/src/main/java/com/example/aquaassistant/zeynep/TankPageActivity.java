@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.aquaassistant.R;
-import com.example.aquaassistant.sena.NotificationsPage;
+import com.example.aquaassistant.sena.ToDoListPage;
 import com.r0adkll.slidr.Slidr;
 
 import java.util.Calendar;
@@ -107,7 +107,7 @@ public class TankPageActivity extends AppCompatActivity {
                 deleteStatement.execute();
                 //This section deletes the related notifications when a tank is deleted
                 String deleteNotifSQLString = "DELETE FROM notifs WHERE tankName = ?";
-                SQLiteStatement deleteNotifSQLStatement = NotificationsPage.notifDatabase.compileStatement(deleteNotifSQLString);
+                SQLiteStatement deleteNotifSQLStatement = ToDoListPage.notifDatabase.compileStatement(deleteNotifSQLString);
                 deleteNotifSQLStatement.bindString(1, tankName.getText().toString());
                 deleteNotifSQLStatement.execute();
                 //go back from the tanks page

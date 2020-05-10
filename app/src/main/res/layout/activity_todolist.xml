@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sena.NotificationsPage">
+    tools:context=".sena.ToDoListPage">
 
     <ListView
         android:id="@+id/listViewNotif"
@@ -22,7 +22,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="181dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/title_activity_notifications"
+        android:text="To-Do List"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/listViewNotif"
         app:layout_constraintEnd_toEndOf="parent"

@@ -18,7 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.aquaassistant.R;
-import com.example.aquaassistant.sena.NotificationsPage;
+import com.example.aquaassistant.sena.ToDoListPage;
 import com.example.aquaassistant.zulal.AllContainers;
 import com.example.aquaassistant.zulal.AquariumContainer;
 import com.r0adkll.slidr.Slidr;
@@ -122,8 +122,8 @@ public class TanksPageActivity extends AppCompatActivity {
                             tanksAdapter.notifyDataSetChanged();
                             Intent intent = new Intent(TanksPageActivity.this , TanksPageActivity.class);
                             //This section creates the notification to feed the creatures as soon as a tank is created
-                            String notifSQLString = "INSERT INTO notifs (notifText, tankName) VALUES ('It is time to feed your creatures in ', ?)";
-                            SQLiteStatement notifStatement = NotificationsPage.notifDatabase.compileStatement(notifSQLString);
+                            String notifSQLString = "INSERT INTO notifs (notifText, tankName) VALUES ('# It is time to feed your creatures in ', ?)";
+                            SQLiteStatement notifStatement = ToDoListPage.notifDatabase.compileStatement(notifSQLString);
                             notifStatement.bindString(1, tName);
                             notifStatement.execute();
                             //

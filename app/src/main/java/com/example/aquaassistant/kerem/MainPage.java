@@ -9,15 +9,11 @@ import android.widget.Button;
 
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.mustafa.EncyclopediaPage;
-import com.example.aquaassistant.sena.NotificationsPage;
+import com.example.aquaassistant.sena.ToDoListPage;
 import com.example.aquaassistant.sena.SettingsMain;
 import com.example.aquaassistant.zeynep.FavouritePlacesActivity;
-import com.example.aquaassistant.zeynep.MapsActivity;
-import com.example.aquaassistant.zeynep.TankPageActivity;
 import com.example.aquaassistant.zeynep.TanksPageActivity;
-import com.example.aquaassistant.zulal.Faqactivity;
 import com.r0adkll.slidr.Slidr;
-import com.r0adkll.slidr.model.SlidrInterface;
 
 
 public class MainPage extends AppCompatActivity {
@@ -62,7 +58,7 @@ public class MainPage extends AppCompatActivity {
     }
 
     public void openNotif (View view) {
-        Intent intent = new Intent(this, NotificationsPage.class);
+        Intent intent = new Intent(this, ToDoListPage.class);
         startActivity(intent);
     }
 }
