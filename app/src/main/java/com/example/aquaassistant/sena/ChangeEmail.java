@@ -8,16 +8,16 @@ import android.view.View;
 import com.example.aquaassistant.R;
 import com.r0adkll.slidr.Slidr;
 
-public class ChangeEmailPhone extends AppCompatActivity {
+public class ChangeEmail extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_email_phone);
+        setContentView(R.layout.activity_change_email);
         Slidr.attach(this);
     }
 
-    public void saveNewEmailPhoneNumber(View view) {
+    public void saveNewEmail(View view) {
         //yeni girilen phone/email kullanıcıya kaydedilecek butona basılınca
     }
 }

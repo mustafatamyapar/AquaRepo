@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg1"
     tools:context=".MainActivity">
 
     <Button
@@ -52,8 +53,8 @@
         android:id="@+id/button5"
         android:layout_width="324dp"
         android:layout_height="36dp"
-        android:onClick="changeEmailPhoneNumberPage"
-        android:text="Change E-mail/Phone Number"
+        android:onClick="changeEmailPage"
+        android:text="Change E-maıl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,9 +82,10 @@
         android:layout_marginStart="43dp"
         android:layout_marginEnd="43dp"
         android:onClick="changeProfilePicturePage"
-        android:text="Change Profile Picture"
+        android:text="Change Profıle Pıcture"
         app:layout_constraintBottom_toTopOf="@+id/sign_out"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
@@ -115,7 +117,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/sign_out4"
@@ -133,33 +136,27 @@
     <Button
         android:id="@+id/lockSlide"
         android:layout_width="324dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="407dp"
+        android:layout_height="70dp"
         android:onClick="lockSlide"
-        android:text="Lock Slide"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Lock Slıde"
+        app:layout_constraintBottom_toTopOf="@+id/unlockSlide"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_out3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/unlockSlide"
         android:layout_width="324dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginEnd="43dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="240dp"
         android:onClick="unlockSlide"
         android:text="UnlockSlide"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lockSlide"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

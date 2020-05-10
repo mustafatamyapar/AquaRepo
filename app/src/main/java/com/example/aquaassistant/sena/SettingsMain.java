@@ -42,8 +42,8 @@ public class SettingsMain extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), ChangePassword.class);
         startActivity(intent);
     }
-    public void changeEmailPhoneNumberPage(View view) {
-        Intent intent = new Intent(getApplicationContext(), ChangeEmailPhone.class);
+    public void changeEmailPage(View view) {
+        Intent intent = new Intent(getApplicationContext(), ChangeEmail.class);
         startActivity(intent);
     }
     public void changeProfilePicturePage(View view) {
