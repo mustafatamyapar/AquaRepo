@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -50,27 +49,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
+
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapLongClickListener(this);
-
+        mMap.setMyLocationEnabled(true);
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                //prevent the constant update
-                //only if the user enters the map for the first time, move the camera
-                SharedPreferences sharedPreferences = MapsActivity.this.getSharedPreferences("com.example.aquaassistant.zeynep",MODE_PRIVATE);
-                boolean firstTimeCheck = sharedPreferences.getBoolean("notFirstTime",false);
-
-                if (!firstTimeCheck) {
-                    LatLng userLocation = new LatLng(location.getLatitude(),location.getLongitude());
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation,15));
-                    sharedPreferences.edit().putBoolean("notFirstTime",true).apply();
-                }
             }
             @Override
             public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -86,9 +76,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //get the permission to get the location info
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions( new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-        } else {
+        }
+        else {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            System.out.println(lastLocation);
             if ( lastLocation != null) {
                 LatLng userLastLocation = new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude());
                 //show the user's location with marker and move camera to location
@@ -126,8 +118,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
                 Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                System.out.println(lastLocation);
                 if (lastLocation != null) {
                     LatLng lastUserLocation = new LatLng(lastLocation.getLatitude(),lastLocation.getLongitude());
+                    System.out.println(lastUserLocation);
                     mMap.addMarker(new MarkerOptions().title("You are here!").position(lastUserLocation).icon(BitmapDescriptorFactory.defaultMarker(HUE_AZURE)));
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastUserLocation,15));
 

@@ -48,6 +48,7 @@ public class EditTankActivity extends AppCompatActivity {
     String currentPlantNum;
     String currentOtherCreNum;
     SQLiteDatabase creaturesDatabase;
+    AlertDialog.Builder inform;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class EditTankActivity extends AppCompatActivity {
 
         creaturesDatabase = EditTankActivity.this.openOrCreateDatabase("Creatures" ,MODE_PRIVATE, null);
         creaturesDatabase.execSQL("CREATE TABLE IF NOT EXISTS creatures (id INTEGER PRIMARY KEY , type VARCHAR , creaturename VARCHAR, tankname VARCHAR , image BLOB)");
+        inform = new AlertDialog.Builder(EditTankActivity.this);
     }
 
     public void changeTankName(View view){
@@ -94,9 +96,6 @@ public class EditTankActivity extends AppCompatActivity {
                     //return the tanks page
                     Intent intent = new Intent(EditTankActivity.this, TanksPageActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                   // intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                   // intent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                   // intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 } catch (Exception e){
                     System.out.println( "Error = " + e);
@@ -158,8 +157,8 @@ public class EditTankActivity extends AppCompatActivity {
                                 Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                                 startActivityForResult(intentToGallery, 2);
                             }
+
                                 //set another alert builder to show the informing message and insert the fish into database
-                                AlertDialog.Builder inform = new AlertDialog.Builder(EditTankActivity.this);
                                 inform.setTitle("Done!");
                                 inform.setMessage("Picture is added.");
                                 inform.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -208,9 +207,7 @@ public class EditTankActivity extends AppCompatActivity {
                                         }
                                     }
                                 });
-                                inform.show();
-
-                    }
+                                }
                 });
                 setImage.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
@@ -289,7 +286,7 @@ public class EditTankActivity extends AppCompatActivity {
                             Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                             startActivityForResult(intentToGallery, 2);
                             //set another alert builder to show the informing message and insert the plant into database
-                            AlertDialog.Builder inform = new AlertDialog.Builder(EditTankActivity.this);
+                            inform = new AlertDialog.Builder(EditTankActivity.this);
                             inform.setTitle("Done!");
                             inform.setMessage("Picture is added.");
                             inform.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -552,6 +549,7 @@ public class EditTankActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        inform.show();
         super.onActivityResult(requestCode, resultCode, data);
     }
     public Bitmap makeSmallerImage(Bitmap image, int maximumSize) {

@@ -122,6 +122,8 @@ public class TanksPageActivity extends AppCompatActivity {
                             tanksAdapter.notifyDataSetChanged();
                             Intent intent = new Intent(TanksPageActivity.this , TanksPageActivity.class);
                             //This section creates the notification to feed the creatures as soon as a tank is created
+                            ToDoListPage.notifDatabase = TanksPageActivity.this.openOrCreateDatabase("Notifs",MODE_PRIVATE,null);
+                            ToDoListPage.notifDatabase.execSQL("CREATE TABLE IF NOT EXISTS notifs (id INTEGER PRIMARY KEY, notifText VARCHAR, tankName VARCHAR)");
                             String notifSQLString = "INSERT INTO notifs (notifText, tankName) VALUES ('# It is time to feed your creatures in ', ?)";
                             SQLiteStatement notifStatement = ToDoListPage.notifDatabase.compileStatement(notifSQLString);
                             notifStatement.bindString(1, tName);
