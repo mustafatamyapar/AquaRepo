@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.aquaassistant.R;
+import com.example.aquaassistant.sena.NotificationsPage;
 import com.example.aquaassistant.zulal.AllContainers;
 import com.example.aquaassistant.zulal.AquariumContainer;
 import com.r0adkll.slidr.Slidr;
@@ -119,6 +120,7 @@ public class TanksPageActivity extends AppCompatActivity {
                             sqLiteStatement.bindString(8, String.valueOf(newTank.getPictureInteger()));
                             sqLiteStatement.execute();
                             tanksAdapter.notifyDataSetChanged();
+                            NotificationsPage.notifArray.add("Time to feed your creatures in " + tName);
                             Intent intent = new Intent(TanksPageActivity.this , TanksPageActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);

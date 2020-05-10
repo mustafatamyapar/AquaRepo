@@ -19,7 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".sena.NotificationsPage"></activity>
         <activity android:name=".zeynep.FavouritePlacesActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -50,6 +49,7 @@
         <activity android:name=".sena.ChangeEmailPhone" />
         <activity android:name=".sena.ChangePassword" />
         <activity android:name=".sena.ChangeUsername" />
+        <activity android:name=".sena.NotificationsPage" />
         <activity android:name=".zeynep.EditTankActivity" />
         <activity android:name=".mustafa.DiseasesPage" />
         <activity android:name=".mustafa.PlantsPage" />

@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.mustafa.EncyclopediaPage;
+import com.example.aquaassistant.sena.NotificationsPage;
 import com.example.aquaassistant.sena.SettingsMain;
 import com.example.aquaassistant.zeynep.FavouritePlacesActivity;
 import com.example.aquaassistant.zeynep.MapsActivity;
@@ -25,19 +26,19 @@ public class MainPage extends AppCompatActivity {
     private Button profileButton;
     private Button settingButton;
     private Button encyclopediaButton;
-    private Button remindersButton;
+    private Button notifTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+        notifTest = findViewById(R.id.notifTest);
         tanksButton= findViewById(R.id.tankButton);
         profileButton = findViewById(R.id.profileButton);
         settingButton = findViewById(R.id.settingsButton);
         encyclopediaButton = findViewById(R.id.encyclopedia);
-        remindersButton = findViewById(R.id.button7);
         Slidr.attach(this);
-//deneme commiti
+
     }
     public void openSettings(View view){
         Intent intent = new Intent( this, SettingsMain.class);
@@ -57,6 +58,11 @@ public class MainPage extends AppCompatActivity {
     }
     public void goMapPage(View view){
         Intent intent = new Intent( this , FavouritePlacesActivity.class);
+        startActivity(intent);
+    }
+
+    public void openNotif (View view) {
+        Intent intent = new Intent(this, NotificationsPage.class);
         startActivity(intent);
     }
 }
