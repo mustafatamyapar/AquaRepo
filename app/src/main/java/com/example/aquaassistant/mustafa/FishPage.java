@@ -28,7 +28,7 @@ public class FishPage extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerwiew2id);
         RecyclerViewAdapter2 recyclerViewAdapter2 = new RecyclerViewAdapter2(getApplicationContext(),listFish);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         recyclerView.setAdapter(recyclerViewAdapter2);
 
         listFish.add(new Fish("beta","hahahahahah","Difficulty: 5.00",R.drawable.disease8));
