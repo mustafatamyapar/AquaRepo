@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".zeynep.FavouritePlacesActivity"></activity>
+        <activity android:name=".sena.NotificationsPage"></activity>
+        <activity android:name=".zeynep.FavouritePlacesActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -32,15 +33,15 @@
 
         <activity
             android:name=".zeynep.MapsActivity"
-            android:label="@string/title_activity_maps" >
-        </activity>
-        <activity android:name=".kerem.MainPage"
-            android:theme="@style/AppTheme.SlidrActivityTheme"/>
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".kerem.MainPage"
+            android:theme="@style/AppTheme.SlidrActivityTheme" />
         <activity android:name=".kerem.sha1" />
         <activity android:name=".kerem.ProfilePage" />
         <activity android:name=".zeynep.RemoveCreatureActivity" />
         <activity android:name=".zulal.Faqactivity" />
-        <activity android:name=".zulal.Creature"/>
+        <activity android:name=".zulal.Creature" />
         <activity android:name=".sena.ChangeProfilePicture" />
         <activity android:name=".sena.SettingsMain" />
         <activity android:name=".sena.ChangeEmailPhone" />
@@ -63,7 +64,9 @@
         <activity android:name=".zeynep.TanksPageActivity" />
         <activity android:name=".zeynep.TankPageActivity" />
 
-        <uses-library android:name="org.apache.http.legacy" android:required="false"></uses-library>
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
 
 </manifest>
