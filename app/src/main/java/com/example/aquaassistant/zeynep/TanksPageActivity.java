@@ -115,7 +115,7 @@ public class TanksPageActivity extends AppCompatActivity {
                             // according to the tank size
                             AquariumContainer newTank = new AquariumContainer(tName, Integer.parseInt(tSize), R.drawable.aquarium);
                             sqLiteStatement.bindString(6, String.valueOf(newTank.getWaterCheck()));
-                            sqLiteStatement.bindString(7, String.valueOf(newTank.getTimeToFeed()));
+                            sqLiteStatement.bindString(7, "1");
                             sqLiteStatement.bindString(8, String.valueOf(newTank.getPictureInteger()));
                             sqLiteStatement.execute();
                             tanksAdapter.notifyDataSetChanged();

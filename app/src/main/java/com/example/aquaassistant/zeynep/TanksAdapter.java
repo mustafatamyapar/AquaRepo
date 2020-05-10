@@ -75,12 +75,12 @@ public class TanksAdapter extends ArrayAdapter<Integer> {
             String currentTimeToFeed = cursor.getString(timeFeedIndex);
             String updateWater = "UPDATE tanks SET watercheck = ? WHERE id = "  + idArray.get(position) ;
             SQLiteStatement updateWaterT = tanksDatabase.compileStatement(updateWater);
-            String newWaterTime = String.valueOf(Integer.parseInt(currentWaterCheck) + 1);
+            String newWaterTime = String.valueOf(Integer.parseInt(currentWaterCheck) - 1);
             updateWaterT.bindString(1, newWaterTime);
             updateWaterT.execute();
             String updateFeed = "UPDATE tanks SET timetofeed = ? WHERE id = "  + idArray.get(position) ;
             SQLiteStatement updateFeedT = tanksDatabase.compileStatement(updateFeed);
-            String newFeedTime = String.valueOf(Integer.parseInt(currentTimeToFeed) + 1);
+            String newFeedTime = String.valueOf(Integer.parseInt(currentTimeToFeed) - 1);
             updateFeedT.bindString(1,newFeedTime);
             updateWaterT.execute();
         }
