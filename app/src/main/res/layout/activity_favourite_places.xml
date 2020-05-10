@@ -28,11 +28,12 @@
 
     <Button
         android:id="@+id/addNewPlace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="182dp"
+        android:layout_height="66dp"
         android:layout_marginBottom="88dp"
         android:onClick="addNewPlace"
         android:text="Add New Place"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

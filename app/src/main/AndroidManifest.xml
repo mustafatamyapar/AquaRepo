@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.aquaassistant">
 
     <!--
@@ -32,7 +33,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".zeynep.FavouritePlacesActivity" />
+        <activity android:name=".zeynep.FavouritePlacesActivity"
+            tools:ignore="DuplicateActivity" />
         <activity
             android:name=".zeynep.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
@@ -46,6 +48,7 @@
         <activity android:name=".zulal.Creature" />
         <activity android:name=".sena.ChangeProfilePicture" />
         <activity android:name=".sena.SettingsMain" />
+        <activity android:name=".sena.NotificationsPage"></activity>
         <activity android:name=".sena.ChangeEmail" />
         <activity android:name=".sena.ChangePassword" />
         <activity android:name=".sena.ChangeUsername" />

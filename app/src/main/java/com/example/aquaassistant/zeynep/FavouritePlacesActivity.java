@@ -20,6 +20,7 @@ public class FavouritePlacesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite_places);
         arrayAdapter = new ArrayAdapter(FavouritePlacesActivity.this, android.R.layout.simple_list_item_1, placeNames);
+
         favouritesList = findViewById(R.id.favouriteListView);
         favouritesList.setAdapter(arrayAdapter);
 
@@ -28,11 +29,11 @@ public class FavouritePlacesActivity extends AppCompatActivity {
 
         //add the favourite places to places array
         Cursor cursor = MapsActivity.favouritesDatabase.rawQuery("SELECT * FROM places", null);
-        while (cursor.moveToNext()){
-            placeNames.add(cursor.getString(cursor.getColumnIndex("name")));
+        while (cursor.moveToPosition(FavouritePlacesActivity.placeNames.size())){
+            FavouritePlacesActivity.placeNames.add(cursor.getString(cursor.getColumnIndex("name")));
         }
         cursor.close();
-
+        arrayAdapter.notifyDataSetChanged();
         //if the user click on one of the favourite ones
         favouritesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

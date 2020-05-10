@@ -28,6 +28,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.List;
 import java.util.Locale;
+
 import static com.google.android.gms.maps.model.BitmapDescriptorFactory.HUE_AZURE;
 import static com.google.android.gms.maps.model.BitmapDescriptorFactory.HUE_VIOLET;
 
@@ -186,6 +187,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 addStatement.bindString(3, longit);
                 addStatement.execute();
 
+                //add the favourite places to places array
+                Cursor cursor = favouritesDatabase.rawQuery("SELECT * FROM places", null);
+                while (cursor.moveToPosition(FavouritePlacesActivity.placeNames.size())){
+                    FavouritePlacesActivity.placeNames.add(cursor.getString(cursor.getColumnIndex("name")));
+                }
+                cursor.close();
                 FavouritePlacesActivity.arrayAdapter.notifyDataSetChanged();
 
                 //add marker to fav place

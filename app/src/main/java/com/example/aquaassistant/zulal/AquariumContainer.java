@@ -1,6 +1,4 @@
     package com.example.aquaassistant.zulal;
-    import android.os.Parcelable;
-
     import java.io.Serializable;
     import java.util.ArrayList;
     import java.util.Calendar;
