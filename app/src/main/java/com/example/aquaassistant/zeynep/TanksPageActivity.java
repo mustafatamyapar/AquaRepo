@@ -42,6 +42,7 @@ public class TanksPageActivity extends AppCompatActivity {
         TextView myTanks = findViewById(R.id.myTanks);
         myTanks.setText("My Tanks");
 
+        //notifArray = new ArrayList<>();
         addTank = findViewById(R.id.addTank);
         allContainers = new AllContainers();
         idArray = new ArrayList<>();
@@ -119,8 +120,13 @@ public class TanksPageActivity extends AppCompatActivity {
                             sqLiteStatement.bindString(8, String.valueOf(R.drawable.aquarium));
                             sqLiteStatement.execute();
                             tanksAdapter.notifyDataSetChanged();
-                            NotificationsPage.notifArray.add("Time to feed your creatures in " + tName);
                             Intent intent = new Intent(TanksPageActivity.this , TanksPageActivity.class);
+                            //This section creates the notification to feed the creatures as soon as a tank is created
+                            String notifSQLString = "INSERT INTO notifs (notifText, tankName) VALUES ('It is time to feed your creatures in ', ?)";
+                            SQLiteStatement notifStatement = NotificationsPage.notifDatabase.compileStatement(notifSQLString);
+                            notifStatement.bindString(1, tName);
+                            notifStatement.execute();
+                            //
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         }
