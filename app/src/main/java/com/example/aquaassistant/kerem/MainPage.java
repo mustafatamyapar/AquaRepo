@@ -10,6 +10,8 @@ import android.widget.Button;
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.mustafa.EncyclopediaPage;
 import com.example.aquaassistant.sena.SettingsMain;
+import com.example.aquaassistant.zeynep.FavouritePlacesActivity;
+import com.example.aquaassistant.zeynep.MapsActivity;
 import com.example.aquaassistant.zeynep.TankPageActivity;
 import com.example.aquaassistant.zeynep.TanksPageActivity;
 import com.example.aquaassistant.zulal.Faqactivity;
@@ -51,6 +53,10 @@ public class MainPage extends AppCompatActivity {
     }
     public void openProfile(View view){
         Intent intent = new Intent( this, ProfilePage.class);
+        startActivity(intent);
+    }
+    public void goMapPage(View view){
+        Intent intent = new Intent( this , FavouritePlacesActivity.class);
         startActivity(intent);
     }
 }

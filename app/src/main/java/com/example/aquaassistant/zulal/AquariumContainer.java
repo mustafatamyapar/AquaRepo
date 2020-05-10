@@ -46,7 +46,7 @@
             numOfPlant = 0;
             numOfOthers = 0;
             //according to the size of the tank, times to feed and water change
-            if (liter <= 120 && liter >= 40) {
+            if (liter <= 120 ) {
                 timeToFeed = 4;
                 waterCheck = 14;
             } else if (liter <= 200 && liter > 120) {
