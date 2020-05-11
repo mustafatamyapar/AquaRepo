@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.sena.SettingsMain;
@@ -17,6 +18,7 @@ public class ProfilePage extends AppCompatActivity {
     private Button commentsButton;
     private Button logOutButton;
     private Button settingsButton;
+    public static TextView textView6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class ProfilePage extends AppCompatActivity {
         commentsButton= findViewById(R.id.commentsButton);
         logOutButton = findViewById(R.id.logOutButton);
         settingsButton = findViewById(R.id.settingsButton);
+        textView6 = findViewById(R.id.textView6);
         Slidr.attach(this);
     }
     public void openSettings(View view){

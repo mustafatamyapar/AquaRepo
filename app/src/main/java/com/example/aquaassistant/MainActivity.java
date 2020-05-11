@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     EditText user_password;
     String email;
     String password;
-    private FirebaseAuth firebaseauth;
-    FirebaseUser firebaseuser;
+    public static FirebaseAuth firebaseauth;
+    public static FirebaseUser firebaseuser;
 
 
     @Override
