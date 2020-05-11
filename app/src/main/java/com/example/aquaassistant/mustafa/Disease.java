@@ -44,7 +44,7 @@ public class Disease {
         this.symptoms = symptoms;
     }
 
-    public void setImageUrl(int imageUrl) {
+    public void setImage(int image) {
         this.image = image;
     }
 

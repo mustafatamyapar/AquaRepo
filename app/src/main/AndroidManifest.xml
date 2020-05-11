@@ -59,6 +59,7 @@
         <activity android:name=".mustafa.FishPage" />
         <activity android:name=".mustafa.EncyclopediaPage" />
         <activity android:name=".mustafa.DetailsActivity" />
+        <activity android:name=".mustafa.FishDetails" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
