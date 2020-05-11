@@ -7,9 +7,12 @@
 
     <ImageView
         android:id="@+id/bigDiseasePic"
-        android:layout_width="239dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toTopOf="@+id/DiseaseNameBig"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,15 +21,16 @@
 
     <TextView
         android:id="@+id/DiseaseNameBig"
-        android:layout_width="219dp"
-        android:layout_height="0dp"
+        android:layout_width="278dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="19dp"
         android:autoText="false"
         android:background="#FFFFFF"
         android:text="Diseasee"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="#993FB5"
-        android:textSize="32sp"
+        android:textColor="#3F41B5"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/DetailedInfo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,9 +39,11 @@
 
     <TextView
         android:id="@+id/DetailedInfo"
-        android:layout_width="275dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="151dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="149dp"
         android:text="TextView"
         android:textSize="16sp"
         android:textStyle="bold"

@@ -20,7 +20,9 @@ import com.example.aquaassistant.zulal.Fish;
 
 import java.util.List;
 
-public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.MyViewHolder2> {
+public class
+
+RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.MyViewHolder2> {
 
     Context mContext;
     List<Fish> mData;

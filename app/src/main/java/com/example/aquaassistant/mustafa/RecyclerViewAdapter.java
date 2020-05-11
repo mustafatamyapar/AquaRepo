@@ -42,7 +42,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         view = LayoutInflater.from(mContext).inflate(R.layout.disease_row_item,parent,false);
         final MyViewHolder myViewH = new MyViewHolder(view);
 
-
         return myViewH;
     }
 
