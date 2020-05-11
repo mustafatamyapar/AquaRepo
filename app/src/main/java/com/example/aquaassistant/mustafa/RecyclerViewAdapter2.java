@@ -54,12 +54,12 @@ RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.MyViewHol
         holder.Item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(mContext, DetailsActivity.class);
+                Intent i = new Intent(mContext, FishDetails.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 i.putExtra("Name",mData.get(position).getName());
-                i.putExtra("Descriptionn",mData.get(position).getDescription());
-                i.putExtra("Images",mData.get(position).getId());
+                i.putExtra("Description",mData.get(position).getDescription());
+                i.putExtra("Image",mData.get(position).getId());
 
                 mContext.startActivity(i);
             }

@@ -28,8 +28,8 @@ public class FishDetails extends AppCompatActivity{
 
         Intent intent = getIntent();
         String Title = intent.getExtras().getString("Name");
-        String Description = intent.getExtras().getString("Descriptionn");
-        int image = intent.getExtras().getInt("Images ") ;
+        String Description = intent.getExtras().getString("Description");
+        int image = intent.getExtras().getInt("Image") ;
 
         fishTitle.setText(Title);
         fishDetails.setText(Description);
