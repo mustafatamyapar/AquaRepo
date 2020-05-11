@@ -29,7 +29,6 @@ public class ChangeUsername extends AppCompatActivity {
 
     //this method does not update on database!
     public void saveNewUsername(View view) {
-        ProfilePage.textView6.setText(editTextUsername.getText().toString());
-        Toast.makeText(ChangeUsername.this, "New username saved!", Toast.LENGTH_LONG).show();
+
     }
 }

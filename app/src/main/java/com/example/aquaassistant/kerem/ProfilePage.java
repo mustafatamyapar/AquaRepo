@@ -18,7 +18,6 @@ public class ProfilePage extends AppCompatActivity {
     private Button commentsButton;
     private Button logOutButton;
     private Button settingsButton;
-    public static TextView textView6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,6 @@ public class ProfilePage extends AppCompatActivity {
         commentsButton= findViewById(R.id.commentsButton);
         logOutButton = findViewById(R.id.logOutButton);
         settingsButton = findViewById(R.id.settingsButton);
-        textView6 = findViewById(R.id.textView6);
         Slidr.attach(this);
     }
     public void openSettings(View view){
