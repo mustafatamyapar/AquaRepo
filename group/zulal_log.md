@@ -11,7 +11,6 @@ This week I learnt basics of android studio. I have written my creatures page's 
 ### ~ 07.05.2020 ~
 This week I have learned how to use Firebase and how to connect it to my android studio. I have used this cloud for creating user, for the actions sign out and sign in. Moreover, for the interface I started to work on Adobe XD to design our logos and icons.
 
-### ~ date ~
-blah, blah, blah...
-
+### ~ 11.05.2020 ~
+This week I have started to create my creatures page. For this I have learnt how to use Sqlite database. However there were some technical problems with my android studio. It took my time.
 ****
