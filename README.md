@@ -13,7 +13,7 @@ _Include a concise description of your project here. Be sure to include the prop
 + **Group/project Selection:** completed (13/02/2020)
 + **Requirements:** completed (9/03/2020)
 + **UI Design:** completed (31/03/2020)
-+ **Detailed Design:** in progress
++ **Detailed Design:** completed(12/05/2020)
 + **Implementation:** started
 + **Reflections:** not yet!
 
