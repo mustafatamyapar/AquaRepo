@@ -14,7 +14,7 @@ This week I moved on learned more from android studio. I learned a little bit ab
 ### ~ 05.05.2020 ~
 At the weekend I tried JSOUP and JSON. They were complicated, and I could not implement them into my part. So I decided to do the data process with lists and recyclerWievs, as zülal recommended to me. Now I am trying to solve problems with a detailed info page in diseases.
 
-### ~12.05.2020~
+### ~12.05.2020 ~
 Last week I managed to finish a big part of my part in the project. I created two types of recyclerViews, one for row type one for cardView type. Now I could not manage to add a recyclerView or scrollView to detailed info parts(when the user clicks to item this page is shown). Because of that problem user is not able to see all the information. Also, before this week's meeting, we were planning to add comments to every creature. After we did our research, it was harder to add then as we think. Currently, I am trying to solve the detailed info page problem.
 
 ****
