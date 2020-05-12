@@ -19,6 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".kerem.updateButton"></activity>
+        <activity android:name=".zulal.Creaturesample"></activity>
         <activity android:name=".zeynep.FavouritePlacesActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -49,6 +50,8 @@
         <activity android:name=".sena.ChangeProfilePicture" />
         <activity android:name=".sena.SettingsMain" />
         <activity android:name=".sena.ToDoListPage" />
+        <activity android:name=".sena.NotificationsPage" />
+        <activity android:name=".sena.ToDoListPage"></activity>
         <activity android:name=".sena.ChangeEmail" />
         <activity android:name=".sena.ChangePassword" />
         <activity android:name=".sena.ChangeUsername" />
@@ -60,7 +63,7 @@
         <activity android:name=".mustafa.EncyclopediaPage" />
         <activity android:name=".mustafa.DetailsActivity" />
         <activity android:name=".mustafa.FishDetails" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".kaan.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

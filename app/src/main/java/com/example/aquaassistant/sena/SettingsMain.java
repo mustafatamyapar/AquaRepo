@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.aquaassistant.MainActivity;
+import com.example.aquaassistant.kaan.MainActivity;
 import com.example.aquaassistant.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.r0adkll.slidr.Slidr;

@@ -1,4 +1,4 @@
-package com.example.aquaassistant;
+package com.example.aquaassistant.kaan;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.aquaassistant.R;
 import com.example.aquaassistant.kerem.MainPage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

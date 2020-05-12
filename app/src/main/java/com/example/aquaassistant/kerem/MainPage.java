@@ -13,6 +13,8 @@ import com.example.aquaassistant.sena.ToDoListPage;
 import com.example.aquaassistant.sena.SettingsMain;
 import com.example.aquaassistant.zeynep.FavouritePlacesActivity;
 import com.example.aquaassistant.zeynep.TanksPageActivity;
+import com.example.aquaassistant.zulal.Creature;
+import com.example.aquaassistant.zulal.Faqactivity;
 import com.r0adkll.slidr.Slidr;
 
 
@@ -58,7 +60,7 @@ public class MainPage extends AppCompatActivity {
     }
 
     public void openNotif (View view) {
-        Intent intent = new Intent(this, ToDoListPage.class);
+        Intent intent = new Intent(this, NotificationsPage.class);
         startActivity(intent);
     }
 }

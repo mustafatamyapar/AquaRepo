@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#5BAADF"
     android:backgroundTint="#5BAADF"
-    tools:context=".MainActivity">
+    tools:context=".kaan.MainActivity">
 
     <EditText
         android:id="@+id/user_name"

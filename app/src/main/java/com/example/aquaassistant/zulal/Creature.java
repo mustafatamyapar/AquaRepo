@@ -11,23 +11,24 @@ import android.widget.ImageView;
 
 import com.example.aquaassistant.R;
 
+import java.util.ArrayList;
+
 public class Creature extends AppCompatActivity {
-    ImageButton searchBut;
-    ImageView header ;
     GridView creatureGrid;
-    EditText searchBox;
+    ArrayList<Integer> creatureId;
+    GridViewAdapter gridViewAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creature);
-        searchBut =findViewById(R.id.searchButton);
-        header = findViewById(R.id.header_creature);
         creatureGrid =findViewById(R.id.grid_creatures);
-        searchBox = findViewById(R.id.serachBox);
+        creatureId = new ArrayList<Integer>();
+        gridViewAdapter = new GridViewAdapter(creatureId,Creature.this);
+        gridViewAdapter.notifyDataSetChanged();
+        creatureGrid.setAdapter(gridViewAdapter);
 
     }
-    public void searchCreature( View view){
 
-    }
 }
