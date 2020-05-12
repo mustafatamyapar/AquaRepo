@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.aquaassistant">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -19,7 +18,7 @@
         android:roundIcon="@mipmap/logocircle_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".kerem.updateButton"></activity>
         <activity android:name=".zeynep.FavouritePlacesActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -33,11 +32,12 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".zeynep.FavouritePlacesActivity"
+        <activity
+            android:name=".zeynep.FavouritePlacesActivity"
             tools:ignore="DuplicateActivity" />
         <activity
             android:name=".zeynep.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity
             android:name=".kerem.MainPage"
             android:theme="@style/AppTheme.SlidrActivityTheme" />
@@ -48,7 +48,7 @@
         <activity android:name=".zulal.Creature" />
         <activity android:name=".sena.ChangeProfilePicture" />
         <activity android:name=".sena.SettingsMain" />
-        <activity android:name=".sena.ToDoListPage"></activity>
+        <activity android:name=".sena.ToDoListPage" />
         <activity android:name=".sena.ChangeEmail" />
         <activity android:name=".sena.ChangePassword" />
         <activity android:name=".sena.ChangeUsername" />
