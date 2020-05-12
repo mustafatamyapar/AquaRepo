@@ -78,7 +78,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         else {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            System.out.println(lastLocation);
             if ( lastLocation != null) {
                 LatLng userLastLocation = new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude());
                 //show the user's location with marker and move camera to location
@@ -116,10 +115,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
                 Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                System.out.println(lastLocation);
                 if (lastLocation != null) {
                     LatLng lastUserLocation = new LatLng(lastLocation.getLatitude(),lastLocation.getLongitude());
-                    System.out.println(lastUserLocation);
                     mMap.addMarker(new MarkerOptions().title("You are here!").position(lastUserLocation).icon(BitmapDescriptorFactory.defaultMarker(HUE_AZURE)));
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastUserLocation,15));
 
@@ -180,11 +177,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 addStatement.execute();
 
                 //add the favourite places to places array
-                Cursor cursor = favouritesDatabase.rawQuery("SELECT * FROM places", null);
-                while (cursor.moveToPosition(FavouritePlacesActivity.placeNames.size())){
-                    FavouritePlacesActivity.placeNames.add(cursor.getString(cursor.getColumnIndex("name")));
-                }
-                cursor.close();
+                FavouritePlacesActivity.placeNames.add(address);
                 FavouritePlacesActivity.arrayAdapter.notifyDataSetChanged();
 
                 //add marker to fav place

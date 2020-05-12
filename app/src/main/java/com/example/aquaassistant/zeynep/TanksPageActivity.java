@@ -90,8 +90,8 @@ public class TanksPageActivity extends AppCompatActivity {
                     final String tName = name.getText().toString();
                     //second alert to determine the size of the tank
                     AlertDialog.Builder secondAlert = new AlertDialog.Builder(TanksPageActivity.this);
-                    secondAlert.setTitle("Size?");
-                    secondAlert.setMessage(" What is the size of the tank?");
+                    secondAlert.setTitle("New Tank");
+                    secondAlert.setMessage("What is the size of the tank?");
                     // get the liter of the tank from the user
                     final EditText size = new EditText((TanksPageActivity.this));
                     size.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -170,7 +170,7 @@ public class TanksPageActivity extends AppCompatActivity {
             }
             cursor.close();
         } catch (Exception e) {
-            System.out.println("The erroor is " + e);
+            System.out.println("The error is " + e);
         }
     }
 }

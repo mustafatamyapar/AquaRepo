@@ -49,8 +49,8 @@ public class TankPageActivity extends AppCompatActivity {
         editButton = findViewById(R.id.editButton);
         tankImage = findViewById(R.id.tankImage);
 
-        editButton.setText("Edit Tank");
-        deleteButton.setText("Delete Tank");
+        editButton.setText("EDIT TANK");
+        deleteButton.setText("DELETE TANK");
 
         //get the tank id
         Intent intent =getIntent();

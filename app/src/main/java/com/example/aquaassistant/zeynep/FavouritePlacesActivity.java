@@ -1,8 +1,13 @@
 package com.example.aquaassistant.zeynep;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AlertDialogLayout;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,33 +20,55 @@ public class FavouritePlacesActivity extends AppCompatActivity {
     ListView favouritesList;
     static ArrayList<String> placeNames = new ArrayList<>();
     static ArrayAdapter arrayAdapter;
+    ArrayList<Integer> placesIdArray;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite_places);
-        arrayAdapter = new ArrayAdapter(FavouritePlacesActivity.this, android.R.layout.simple_list_item_1, placeNames);
-
         favouritesList = findViewById(R.id.favouriteListView);
-        favouritesList.setAdapter(arrayAdapter);
+        placesIdArray = new ArrayList<> ();
+        arrayAdapter = new ArrayAdapter(FavouritePlacesActivity.this, android.R.layout.simple_list_item_1, placeNames);
 
         MapsActivity.favouritesDatabase = this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
         MapsActivity.favouritesDatabase.execSQL("CREATE TABLE IF NOT EXISTS places (id INTEGER PRIMARY KEY , name VARCHAR , latitude VARCHAR , longitude VARCHAR)");
 
+        placeNames.clear();
         //add the favourite places to places array
         Cursor cursor = MapsActivity.favouritesDatabase.rawQuery("SELECT * FROM places", null);
-        while (cursor.moveToPosition(FavouritePlacesActivity.placeNames.size())){
+        while (cursor.moveToNext()){
             FavouritePlacesActivity.placeNames.add(cursor.getString(cursor.getColumnIndex("name")));
         }
         cursor.close();
-        arrayAdapter.notifyDataSetChanged();
+
+        favouritesList.setAdapter(arrayAdapter);
         //if the user click on one of the favourite ones
         favouritesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(FavouritePlacesActivity.this, MapsActivity.class);
-                intent.putExtra("condition" , "show fav");
-                intent.putExtra("placeName" , placeNames.get(position));
-                startActivity(intent);
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog.Builder choose = new AlertDialog.Builder(FavouritePlacesActivity.this);
+                choose.setMessage("What would you like to do?");
+                choose.setPositiveButton("SHOW ON THE MAP", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(FavouritePlacesActivity.this, MapsActivity.class);
+                        intent.putExtra("condition" , "show fav");
+                        intent.putExtra("placeName" , placeNames.get(position));
+                        startActivity(intent);
+                    }
+                });
+                choose.setNegativeButton("REMOVE FROM THE FAVOURITES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getId();
+                        String deleteStr = "DELETE FROM places WHERE id = " + placesIdArray.get(position);
+                        SQLiteStatement deleteSt = MapsActivity.favouritesDatabase.compileStatement(deleteStr);
+                        deleteSt.execute();
+                        placeNames.remove(placeNames.get(position));
+                        arrayAdapter.notifyDataSetChanged();
+                        System.out.println(placeNames.size());
+                    }
+                });
+                choose.show();
             }
         });
     }
@@ -49,5 +76,16 @@ public class FavouritePlacesActivity extends AppCompatActivity {
         Intent intent2 = new Intent(FavouritePlacesActivity.this, MapsActivity.class);
         intent2.putExtra("condition", "add fav");
         startActivity(intent2);
+    }
+
+    public void getId() {
+        MapsActivity.favouritesDatabase = FavouritePlacesActivity.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
+        Cursor idCur = MapsActivity.favouritesDatabase.rawQuery("SELECT * FROM places", null);
+        if (idCur.getCount() != 0) {
+            while (idCur.moveToNext()) {
+                placesIdArray.add(idCur.getInt(idCur.getColumnIndex("id")));
+            }
+        }
+        idCur.close();
     }
 }

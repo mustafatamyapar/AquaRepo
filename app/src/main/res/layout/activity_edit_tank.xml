@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/removeCreature"
-        android:layout_width="252dp"
-        android:layout_height="70dp"
+        android:layout_width="255dp"
+        android:layout_height="48dp"
         android:layout_marginTop="60dp"
         android:onClick="removeCreature"
         android:text="Button"
