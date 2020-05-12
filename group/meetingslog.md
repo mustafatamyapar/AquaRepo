@@ -55,3 +55,8 @@ Our meeting was with our TA during the lab session. We talked to her about our p
 **ToDo:** Profile creation and signing in pages, comments
 
 ****
+
+### Meeting ~ May 12,2020 (about 20 minutes)
+****
+**Present:** Everyone
+We are almost done with our project. We had some disscusson with our TA about our Detailed Design Report. Because we have created our UML diagrams through android studio. The plan we have for this week is completing the code our project and developing user-Interface. For now, we will not be able to create our comments section due to difficulties we have with Firebase.
