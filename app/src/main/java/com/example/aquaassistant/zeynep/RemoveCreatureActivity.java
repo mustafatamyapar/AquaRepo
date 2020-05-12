@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.widget.GridView;
 
 import com.example.aquaassistant.R;
-import com.example.aquaassistant.zulal.Creature;
 import com.r0adkll.slidr.Slidr;
 
 import java.util.ArrayList;
