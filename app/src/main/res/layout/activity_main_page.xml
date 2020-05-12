@@ -139,9 +139,9 @@
         android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="creatureShown"
-        android:text="Button"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="647dp" />
+        android:onClick="goCreatures"
+        android:text="CREATURES"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="547dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

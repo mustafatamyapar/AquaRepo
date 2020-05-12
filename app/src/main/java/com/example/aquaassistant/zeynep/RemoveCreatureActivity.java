@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.GridView;
 
 import com.example.aquaassistant.R;
+import com.example.aquaassistant.zulal.Creature;
 import com.r0adkll.slidr.Slidr;
 
 import java.util.ArrayList;
@@ -55,5 +56,6 @@ public class RemoveCreatureActivity extends AppCompatActivity {
         //put the tank id as extra
         Intent intent1 = new Intent( RemoveCreatureActivity.this , CreaturesAdapter.class);
         intent1.putExtra("tankId" , tankId);
+
     }
 }

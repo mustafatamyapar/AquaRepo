@@ -39,6 +39,7 @@ public class Creaturesample extends AppCompatActivity {
     }
     public void changeName(View view){
 
+
     }
     public void goEncyclopedia(View view){
 

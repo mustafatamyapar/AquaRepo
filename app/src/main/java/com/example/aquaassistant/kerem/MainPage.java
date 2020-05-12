@@ -59,8 +59,13 @@ public class MainPage extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openNotif (View view) {
-        Intent intent = new Intent(this, NotificationsPage.class);
+//    public void openNotif (View view) {
+//        Intent intent = new Intent(this, NotificationsPage.class);
+//        startActivity(intent);
+//    }
+    public void goCreatures(View view)
+    {
+        Intent intent = new Intent( MainPage.this, Creature.class);
         startActivity(intent);
     }
 }
