@@ -20,7 +20,11 @@ This week I did the followings:
 - I learned alert builder to show alert messages in these steps.
 - I am trying to learn location services and how to use map for the following days to create map activity.
 
-### ~ date ~
-blah, blah, blah...
+### ~ 14.05.2020 ~
+
+-I learned get permissions to use location services and how to get the location of user and show it on the map.
+-I create a page that shows the favourite vets and pet shops. If the user wants to add a favourite, he/she will direct to the map and by long clicking on a location, the place will be added to favourites list and appears on the list.
+-If the user click on the places on the list, an alert message appears that ask whether user wants to remove the place from favourites or see the place on the map. If user chooses to see the map, the map page that shows the user location and favourite location is opened.If user chooses to remove, the place is removed from the places list. 
+-I put the places in a SQL database to ensure that they dont disappear when user close the app.
 
 ****
