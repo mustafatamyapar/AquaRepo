@@ -569,7 +569,6 @@ public class EditTankActivity extends AppCompatActivity {
             height = maximumSize;
             width = (int) (height * bitmapRatio);
         }
-
         return Bitmap.createScaledBitmap(image,width,height,true);
     }
 

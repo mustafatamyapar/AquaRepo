@@ -27,11 +27,15 @@ public class GridViewAdapter extends ArrayAdapter<Integer> {
     private SQLiteDatabase creatureData;
     private SQLiteDatabase tankData;
     private String tankId;
+//    Bitmap selectImage;
+    ImageView creatureImage;
 
     GridViewAdapter( ArrayList <Integer> creatureId,Activity activity) {
         super(activity, R.layout.creature_gridview, creatureId);
         this.creatureId = creatureId;
         this.activity = activity;
+//        selectImage = BitmapFactory.decodeResource(activity.getResources(), R.drawable.aquarium);
+//        creatureImage.setImageBitmap(selectImage);
     }
 
     @NonNull
@@ -40,13 +44,13 @@ public class GridViewAdapter extends ArrayAdapter<Integer> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = activity.getLayoutInflater();
         View customView = layoutInflater.inflate(R.layout.creature_gridview, null, true);
-        ImageView creatureImage = customView.findViewById(R.id.creatureImages);
+         creatureImage = customView.findViewById(R.id.creatureImages);
         TextView creatureName = customView.findViewById(R.id.creatureNames);
         try {
             creatureData = activity.openOrCreateDatabase("Creatures", Context.MODE_PRIVATE, null);
             tankData = activity.openOrCreateDatabase("Tanks", Context.MODE_PRIVATE, null);
-            Intent intent1 = activity.getIntent();
-            tankId = intent1.getStringExtra("tankId");
+            Intent intent3 = activity.getIntent();
+            tankId = intent3.getStringExtra("tankId");
             final Cursor creaturesCursor = creatureData.rawQuery("SELECT * FROM creatures WHERE id = ? ", new String[]{String.valueOf(creatureId.get(position))});
              creatureNameNo = creaturesCursor.getColumnIndex("creaturename");
              creatureImageNo = creaturesCursor.getColumnIndex("image");
@@ -69,10 +73,8 @@ public class GridViewAdapter extends ArrayAdapter<Integer> {
                 Intent intentCreatureInfo = new Intent(activity, Creaturesample.class);
                 intentCreatureInfo.putExtra("nameOfTheCreature",creatureNameNo);
                 intentCreatureInfo.putExtra("idOfTheCreature", creatureImageNo);
-
             }
         });
-
         return customView;
 
     }

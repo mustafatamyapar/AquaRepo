@@ -18,11 +18,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.sena.ToDoListPage;
+import com.example.aquaassistant.zulal.Creature;
+import com.example.aquaassistant.zulal.GridViewAdapter;
 import com.r0adkll.slidr.Slidr;
 
 import java.util.Calendar;
 
 public class TankPageActivity extends AppCompatActivity {
+
     Bitmap bitmap;
     TextView tankName , condCheck, waterCheck;
     Button deleteButton, editButton;
@@ -132,6 +135,8 @@ public class TankPageActivity extends AppCompatActivity {
         Intent intent2 = new Intent(TankPageActivity.this , EditTankActivity.class);
         //put the tank id as extra
         intent2.putExtra("tankId", tankId);
+        Intent intent3 = new Intent (TankPageActivity.this, Creature.class);
+        intent3.putExtra("tankId", tankId);
         startActivity(intent2);
     }
 
