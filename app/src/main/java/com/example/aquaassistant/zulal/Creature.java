@@ -39,16 +39,16 @@ public class Creature extends AppCompatActivity {
         creatureGrid.setAdapter(gridViewAdapter);
         creatureDatabase =Creature.this.openOrCreateDatabase("Creatures" , MODE_PRIVATE, null);
 
-        Intent intent = getIntent();
-        tankId = intent.getStringExtra("tankId");
-        SQLiteDatabase tanksDatabase = Creature.this.openOrCreateDatabase("Tanks" ,MODE_PRIVATE, null);
-        Cursor tankCursor = tanksDatabase.rawQuery("SELECT tankname FROM tanks WHERE id=?", new String[]{tankId});
-        while (tankCursor.moveToNext()){
-            tankName = tankCursor.getString(tankCursor.getColumnIndex("tankname"));
-        }
-        tankCursor.close();
+//        Intent intent = getIntent();
+//        tankId = intent.getStringExtra("tankId");
+//        SQLiteDatabase tanksDatabase = Creature.this.openOrCreateDatabase("Tanks" ,MODE_PRIVATE, null);
+//        Cursor tankCursor = tanksDatabase.rawQuery("SELECT tankname FROM tanks WHERE id=?", new String[]{tankId});
+//        while (tankCursor.moveToNext()){
+//            tankName = tankCursor.getString(tankCursor.getColumnIndex("tankname"));
+//        }
+//        tankCursor.close();
 
-        Cursor creatureCursor = creatureDatabase.rawQuery("SELECT * FROM creatures WHERE tankname = ?" , new String[]{tankName});
+        Cursor creatureCursor = creatureDatabase.rawQuery("SELECT * FROM creatures" , null);
         int idIndex = creatureCursor.getColumnIndex("id");
         if (creatureCursor.getCount() != 0) {
             while (creatureCursor.moveToNext()) {

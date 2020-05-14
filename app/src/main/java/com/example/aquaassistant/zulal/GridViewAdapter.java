@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,9 +49,9 @@ public class GridViewAdapter extends ArrayAdapter<Integer> {
         TextView creatureName = customView.findViewById(R.id.creatureNames);
         try {
             creatureData = activity.openOrCreateDatabase("Creatures", Context.MODE_PRIVATE, null);
-            tankData = activity.openOrCreateDatabase("Tanks", Context.MODE_PRIVATE, null);
-            Intent intent3 = activity.getIntent();
-            tankId = intent3.getStringExtra("tankId");
+//            tankData = activity.openOrCreateDatabase("Tanks", Context.MODE_PRIVATE, null);
+//            Intent intent3 = activity.getIntent();
+//            tankId = intent3.getStringExtra("tankId");
             final Cursor creaturesCursor = creatureData.rawQuery("SELECT * FROM creatures WHERE id = ? ", new String[]{String.valueOf(creatureId.get(position))});
              creatureNameNo = creaturesCursor.getColumnIndex("creaturename");
              creatureImageNo = creaturesCursor.getColumnIndex("image");
@@ -73,6 +74,7 @@ public class GridViewAdapter extends ArrayAdapter<Integer> {
                 Intent intentCreatureInfo = new Intent(activity, Creaturesample.class);
                 intentCreatureInfo.putExtra("nameOfTheCreature",creatureNameNo);
                 intentCreatureInfo.putExtra("idOfTheCreature", creatureImageNo);
+                //GridViewAdapter.this.startActivity(intentCreatureInfo);
             }
         });
         return customView;
