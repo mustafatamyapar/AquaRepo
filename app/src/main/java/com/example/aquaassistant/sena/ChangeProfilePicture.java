@@ -38,7 +38,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class ChangeProfilePicture extends AppCompatActivity {
-    public static Bitmap chosenImageBitmap;
+    Bitmap chosenImageBitmap;
+    public static Uri defaultPicUri;
     Uri chosenImageUri;
     ImageView imageView;
     Button choosePicture;
@@ -78,6 +79,7 @@ public class ChangeProfilePicture extends AppCompatActivity {
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             chosenImageUri = data.getData();
+            defaultPicUri = chosenImageUri;
             try {
                 if (Build.VERSION.SDK_INT >= 28) {
                     ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(), chosenImageUri);

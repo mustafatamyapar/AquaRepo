@@ -43,55 +43,31 @@ public class ProfilePage extends AppCompatActivity {
         } else {
             usernameDisplay.setText("user");
         }
-        if (user.getPhotoUrl() != null) {
-            profilePicture.setImageBitmap(getBitmapFromURL(user.getPhotoUrl().toString()));
-        } else {
-            profilePicture.setImageResource(R.drawable.profilepicture);
-        }
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
-        commentsButton= findViewById(R.id.commentsButton);
+        commentsButton = findViewById(R.id.commentsButton);
         logOutButton = findViewById(R.id.logOutButton);
         settingsButton = findViewById(R.id.settingsButton);
         usernameDisplay = findViewById(R.id.textView6);
         profilePicture = findViewById(R.id.imageView2);
-        //section below is to display the username & profile picture
+        //section below is to display the username
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user.getDisplayName() != null) {
             usernameDisplay.setText(user.getDisplayName().toString());
         } else {
             usernameDisplay.setText("user");
         }
-        if (user.getPhotoUrl() != null) {
-            profilePicture.setImageBitmap(getBitmapFromURL(user.getPhotoUrl().toString()));
-        } else {
-            profilePicture.setImageResource(R.drawable.profilepicture);
-        }
 
         Slidr.attach(this);
     }
-    public void openSettings(View view){
-        Intent intent = new Intent( this, SettingsMain.class);
+
+    public void openSettings(View view) {
+        Intent intent = new Intent(this, SettingsMain.class);
         startActivity(intent);
     }
-
-    public Bitmap getBitmapFromURL(String string) {
-        try {
-            URL url = new URL(string);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            return myBitmap;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
 }

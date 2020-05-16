@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.example.aquaassistant.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.r0adkll.slidr.Slidr;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,7 +24,9 @@ import com.google.firebase.auth.FirebaseUser;
 public class ChangePassword extends AppCompatActivity {
 
     TextView textView2;
-    EditText editText;
+    EditText userEmail;
+    EditText newPassword;
+    EditText oldPassword;
     Button savePassword;
 
     @Override
@@ -32,26 +36,36 @@ public class ChangePassword extends AppCompatActivity {
         Slidr.attach(this);
 
         textView2 = findViewById(R.id.textView2);
-        editText = findViewById(R.id.editText);
+        newPassword = findViewById(R.id.editText);
         savePassword = findViewById(R.id.savePassword);
+        userEmail = findViewById(R.id.editText3);
+        oldPassword = findViewById(R.id.editText4);
     }
 
     //the newly entered password will be saved as the new password when the button is clicked
     public void saveNewPassword(View view) {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null){
-            user.updatePassword(editText.getText().toString())
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(ChangePassword.this, "New password saved!", Toast.LENGTH_LONG ).show();
-                            } else {
-                                Toast.makeText(ChangePassword.this, "Password change failed. Try signing in again before making this change.", Toast.LENGTH_LONG ).show();
-                            }
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String currentPassword = oldPassword.getText().toString();
+        String eMail = userEmail.getText().toString();
+        AuthCredential credential = EmailAuthProvider.getCredential(eMail, currentPassword);
+        user.reauthenticate(credential)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                            user.updatePassword(newPassword.getText().toString())
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(ChangePassword.this, "New password saved!", Toast.LENGTH_LONG ).show();
+                                            } else {
+                                                Toast.makeText(ChangePassword.this, "Password change failed. Reauthentication failed.", Toast.LENGTH_LONG ).show();
+                                            }
 
-                        }
-                    });
-        }
+                                        }
+                                    });
+                    }
+                });
+
     }
 }

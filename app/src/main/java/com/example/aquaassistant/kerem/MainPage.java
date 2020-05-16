@@ -50,11 +50,6 @@ public class MainPage extends AppCompatActivity {
         } else {
             usernameDisplay.setText("user");
         }
-        if (user.getPhotoUrl() != null) {
-            imageButtonProfilePicture.setImageBitmap(getBitmapFromURL(user.getPhotoUrl().toString()));
-        } else {
-            imageButtonProfilePicture.setImageResource(R.drawable.profilepicture);
-        }
     }
 
     @Override
@@ -62,7 +57,7 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         notifTest = findViewById(R.id.notifTest);
-        tanksButton= findViewById(R.id.tankButton);
+        tanksButton = findViewById(R.id.tankButton);
         profileButton = findViewById(R.id.profileButton);
         settingButton = findViewById(R.id.settingsButton);
         encyclopediaButton = findViewById(R.id.encyclopedia);
@@ -75,58 +70,44 @@ public class MainPage extends AppCompatActivity {
         } else {
             usernameDisplay.setText("user");
         }
-        if (user.getPhotoUrl() != null) {
-            imageButtonProfilePicture.setImageBitmap(getBitmapFromURL(user.getPhotoUrl().toString()));
-        } else {
-            imageButtonProfilePicture.setImageResource(R.drawable.profilepicture);
-        }
 
         Slidr.attach(this);
 
     }
-    public void openSettings(View view){
-        Intent intent = new Intent( this, SettingsMain.class);
-        startActivity(intent);
-    }
-    public void openTanks(View view){
-        Intent intent = new Intent( this, TanksPageActivity.class);
-        startActivity(intent);
-    }
-    public void openEncyclopedia(View view){
-        Intent intent = new Intent( this, EncyclopediaPage.class);
-        startActivity(intent);
-    }
-    public void openProfile(View view){
-        Intent intent = new Intent( this, ProfilePage.class);
-        startActivity(intent);
-    }
-    public void goMapPage(View view){
-        Intent intent = new Intent( this , FavouritePlacesActivity.class);
+
+    public void openSettings(View view) {
+        Intent intent = new Intent(this, SettingsMain.class);
         startActivity(intent);
     }
 
-//    public void openNotif (View view) {
+    public void openTanks(View view) {
+        Intent intent = new Intent(this, TanksPageActivity.class);
+        startActivity(intent);
+    }
+
+    public void openEncyclopedia(View view) {
+        Intent intent = new Intent(this, EncyclopediaPage.class);
+        startActivity(intent);
+    }
+
+    public void openProfile(View view) {
+        Intent intent = new Intent(this, ProfilePage.class);
+        startActivity(intent);
+    }
+
+    public void goMapPage(View view) {
+        Intent intent = new Intent(this, FavouritePlacesActivity.class);
+        startActivity(intent);
+    }
+
+    //    public void openNotif (View view) {
 //        Intent intent = new Intent(this, NotificationsPage.class);
 //        startActivity(intent);
 //    }
-    public void goCreatures(View view)
-    {
-        Intent intent = new Intent( MainPage.this, Creature.class);
+    public void goCreatures(View view) {
+        Intent intent = new Intent(MainPage.this, Creature.class);
         startActivity(intent);
     }
-
-    public Bitmap getBitmapFromURL(String string) {
-        try {
-            URL url = new URL(string);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            return myBitmap;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 }
+
+

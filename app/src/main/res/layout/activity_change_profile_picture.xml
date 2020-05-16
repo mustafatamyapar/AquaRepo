@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choosePicture"
-        app:srcCompat="@drawable/emptypicture" />
+        app:srcCompat="@drawable/profilepicture" />
 
     <Button
         android:id="@+id/choosePicture"

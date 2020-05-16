@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.example.aquaassistant.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.r0adkll.slidr.Slidr;
@@ -19,6 +21,8 @@ import com.r0adkll.slidr.Slidr;
 public class ChangeEmail extends AppCompatActivity {
 
     EditText editText2;
+    EditText oldEmail;
+    EditText password;
     Button saveEmail;
 
     @Override
@@ -29,24 +33,34 @@ public class ChangeEmail extends AppCompatActivity {
 
         editText2 = findViewById(R.id.editText2);
         saveEmail = findViewById(R.id.saveEmail);
+        oldEmail = findViewById(R.id.editText5);
+        password = findViewById(R.id.editText6);
     }
 
     //user's registered e-mail adress is being updated
     public void saveNewEmail(View view) {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null){
-            user.updateEmail(editText2.getText().toString())
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(ChangeEmail.this, "New e-mail saved!", Toast.LENGTH_LONG ).show();
-                            } else {
-                                Toast.makeText(ChangeEmail.this, "E-mail change failed. Try signing in again before making this change.", Toast.LENGTH_LONG ).show();
-                            }
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userPassword = password.getText().toString();
+        String currentEMail = oldEmail.getText().toString();
+        AuthCredential credential = EmailAuthProvider.getCredential(currentEMail, userPassword);
+        user.reauthenticate(credential)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        user.updateEmail(editText2.getText().toString())
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(ChangeEmail.this, "New e-mail saved!", Toast.LENGTH_LONG ).show();
+                                        } else {
+                                            Toast.makeText(ChangeEmail.this, "E-mail change failed. Reauthentication failed.", Toast.LENGTH_LONG ).show();
+                                        }
 
-                        }
-                    });
-        }
+                                    }
+                                });
+                    }
+                });
+
     }
 }
