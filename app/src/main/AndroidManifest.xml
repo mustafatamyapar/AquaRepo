@@ -50,7 +50,6 @@
         <activity android:name=".sena.ChangeProfilePicture" />
         <activity android:name=".sena.SettingsMain" />
         <activity android:name=".sena.ToDoListPage" />
-        <activity android:name=".sena.NotificationsPage" />
         <activity android:name=".sena.ToDoListPage"></activity>
         <activity android:name=".sena.ChangeEmail" />
         <activity android:name=".sena.ChangePassword" />
