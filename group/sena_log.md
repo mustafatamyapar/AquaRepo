@@ -13,5 +13,8 @@ I created a Settings project on Android Studio and completed the basic navigatio
 The problem with the navigation to settings page was solved.
 
 ### Week May 4-10,2020
-I could not finish the course the previous week as I planned to, so I am currently watching videos. 
+I could not finish the course the previous week as I planned to, so I am currently watching videos. UPDATE: I completed the To-Do List section. It was modified majorly, but with Zeynep (she worked on the tanks) we came up with an alternative solution to at least demonstrate some functionality.
+
+### Week May 11-17,2020
+At the beginning of this week, I added the code that enables the user to change password and e-mail(log-in credentials). This initial implementation was not completely functional though, because Firebase requires recent sign-in for updating sensitive information of a user. I solved that problem at the end of this week by adding reauthentication requirement for changing e-mail and password - the user will basically have to log in again to update e-mail or password, but it is easier and more user-friendly this way. This week I also completed the sections for changing username and profile picture. They don't require reauthentication and changing the username and profile picture was relatively easy to implement, but for displaying the profile picture I had to create a new alternative solution since some common solutions did not work in our project. I made use of Firebase Storage and GitHub's Glide. I think I completed settings section.
 ****
