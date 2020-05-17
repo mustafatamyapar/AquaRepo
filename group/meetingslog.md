@@ -26,6 +26,8 @@ We decided that we can work in pairs - the members who have closely related part
 ### Meeting ~ April 21,2020 (about 10 minutes)
 ****
 **Present:** Everyone
+
+**Discussion:** 
 We met up with our TA during the lab session and discussed our plans together. She suggested that we start as soon as possible, and we set a goal to write at least some classes until our next meeting with her.
 
 **ToDo:** Get the course if you have not yet, start watching it and try writing the code.
@@ -34,6 +36,8 @@ We met up with our TA during the lab session and discussed our plans together. S
 ### Meeting ~ April 24,2020 (about 15 minutes)
 ****
 **Present:** Everyone
+
+**Discussion:** 
 This meeting was to tell each other about our progress. We showed each other what we have done, and also made sure that our shared repository is working well (our member Zülal created it that day). It took multiple tries, but eventually we managed to do it. We all were continuing to watch the course and learn. We decided to keep our pace steady, contribute little by little but continuously.
 
 **ToDo:** Keep watching the Udemy course videos and update code accordingly.
@@ -42,6 +46,8 @@ This meeting was to tell each other about our progress. We showed each other wha
 ### Meeting ~ May 3,2020 (about 25 minutes)
 ****
 **Present:** Everyone
+
+**Discussion:** 
 Like the previous meeting, we talked to each other about what we are working. We did not have any recent problems with the repository, there were a couple times when some of us had problems with committing and updating, but after they were solved we did not have anything else. Our member had a small problem with Android Studio, her layout component was missing but with rebuilding the project she solved it. Overall, we are constantly updating our code and making progress.
 
 **ToDo:** Keep watching the Udemy course videos and update code accordingly.
@@ -50,6 +56,8 @@ Like the previous meeting, we talked to each other about what we are working. We
 ### Meeting ~ May 5,2020 (about 20 minutes)
 ****
 **Present:** Everyone
+
+**Discussion:** 
 Our meeting was with our TA during the lab session. We talked to her about our progress, showed some sections of our code and how it works. We are aiming to complete our project until next week. Also, if we can have time we will be working on our application's design.
 
 **ToDo:** Profile creation and signing in pages, comments
@@ -58,12 +66,16 @@ Our meeting was with our TA during the lab session. We talked to her about our p
 ### Meeting ~ May 8,2020 (about 10 minutes)
 ****
 **Present:** Everyone
+
+**Discussion:** 
 This meeting was to just get together and see each other's progress. We did not discuss about anything specific. Everyone keeps working on their part of the project.
 
 ****
 ### Meeting ~ May 12,2020 (about 20 minutes)
 ****
 **Present:** Everyone
+
+**Discussion:** 
 We are almost done with our project. We had some disscusson with our TA about our Detailed Design Report. Because we have created our UML diagrams through android studio. The plan we have for this week is completing the code of our project and developing user-Interface. For now, we will not be able to create our comments section due to difficulties we have with Firebase.
 
 ****
