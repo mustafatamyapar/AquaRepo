@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.kerem.MainPage;
 import com.example.aquaassistant.kerem.ProfilePage;
@@ -36,10 +37,10 @@ import com.r0adkll.slidr.Slidr;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.net.URL;
 
 public class ChangeProfilePicture extends AppCompatActivity {
     Bitmap chosenImageBitmap;
-    public static Uri defaultPicUri;
     Uri chosenImageUri;
     ImageView imageView;
     Button choosePicture;
@@ -50,6 +51,23 @@ public class ChangeProfilePicture extends AppCompatActivity {
         setContentView(R.layout.activity_change_profile_picture);
         imageView = findViewById(R.id.imageView);
         choosePicture = findViewById(R.id.choosePicture);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user.getPhotoUrl() != null) {
+            String uid = user.getUid();
+            StorageReference ref = FirebaseStorage.getInstance().getReference()
+                    .child("profilePictures/" + uid + ".jpeg");
+            ref.getDownloadUrl()
+                    .addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task) {
+                            if (task.isSuccessful()) {
+                                Glide.with(getApplicationContext()).load(task.getResult()).into(imageView);
+                            }
+                        }
+                    });
+        } else {
+            imageView.setImageResource(R.drawable.profilepicture);
+        }
 
         Slidr.attach(this);
     }
@@ -77,9 +95,8 @@ public class ChangeProfilePicture extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             chosenImageUri = data.getData();
-            defaultPicUri = chosenImageUri;
             try {
                 if (Build.VERSION.SDK_INT >= 28) {
                     ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(), chosenImageUri);
@@ -113,6 +130,7 @@ public class ChangeProfilePicture extends AppCompatActivity {
                             }
                         }
                     });
+
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

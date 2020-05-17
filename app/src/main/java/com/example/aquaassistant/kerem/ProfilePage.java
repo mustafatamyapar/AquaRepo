@@ -1,11 +1,13 @@
 package com.example.aquaassistant.kerem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,8 +19,12 @@ import com.example.aquaassistant.R;
 import com.example.aquaassistant.sena.ChangeProfilePicture;
 import com.example.aquaassistant.sena.SettingsMain;
 import com.example.aquaassistant.zulal.Faqactivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
@@ -28,7 +34,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ProfilePage extends AppCompatActivity {
-    private Button commentsButton;
     private Button logOutButton;
     private Button settingsButton;
     private TextView usernameDisplay;
@@ -43,14 +48,28 @@ public class ProfilePage extends AppCompatActivity {
         } else {
             usernameDisplay.setText("user");
         }
-
+        if (user.getPhotoUrl() != null) {
+            String uid = user.getUid();
+            StorageReference ref = FirebaseStorage.getInstance().getReference()
+                    .child("profilePictures/" + uid + ".jpeg");
+            ref.getDownloadUrl()
+                    .addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task) {
+                            if (task.isSuccessful()) {
+                                Glide.with(getApplicationContext()).load(task.getResult()).into(profilePicture);
+                            }
+                        }
+                    });
+        } else {
+            profilePicture.setImageResource(R.drawable.profilepicture);
+        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
-        commentsButton = findViewById(R.id.commentsButton);
         logOutButton = findViewById(R.id.logOutButton);
         settingsButton = findViewById(R.id.settingsButton);
         usernameDisplay = findViewById(R.id.textView6);
@@ -62,7 +81,22 @@ public class ProfilePage extends AppCompatActivity {
         } else {
             usernameDisplay.setText("user");
         }
-
+        if (user.getPhotoUrl() != null) {
+            String uid = user.getUid();
+            StorageReference ref = FirebaseStorage.getInstance().getReference()
+                    .child("profilePictures/" + uid + ".jpeg");
+            ref.getDownloadUrl()
+                    .addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task) {
+                            if (task.isSuccessful()) {
+                                Glide.with(getApplicationContext()).load(task.getResult()).into(profilePicture);
+                            }
+                        }
+                    });
+        } else {
+            profilePicture.setImageResource(R.drawable.profilepicture);
+        }
         Slidr.attach(this);
     }
 

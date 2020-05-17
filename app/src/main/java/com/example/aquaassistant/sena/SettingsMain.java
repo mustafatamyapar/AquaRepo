@@ -23,7 +23,7 @@ public class SettingsMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settingsmain);
-        sign_out = findViewById(R.id.sign_out);
+        sign_out = findViewById(R.id.sign_out5);
         firebaseAuth = FirebaseAuth.getInstance();
         slidr = Slidr.attach(this);
     }

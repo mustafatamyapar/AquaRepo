@@ -57,27 +57,29 @@ public class ToDoListPage extends AppCompatActivity {
             listViewNotif.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(ToDoListPage.this);
-                    alert.setTitle("Remove from list");
-                    alert.setMessage("If you completed this task, you can remove it from the list.");
-                    alert.setPositiveButton("Remove", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            String SQLString = "DELETE FROM notifs WHERE id = ?";
-                            SQLiteStatement SQLStatement = notifDatabase.compileStatement(SQLString);
-                            SQLStatement.bindString(1, String.valueOf(position));
-                            SQLStatement.execute();
-                            notifArray.remove(position);
-                            notifAdapter.notifyDataSetChanged();
-                        }
-                    });
-                    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-                    alert.show();
+                    if (position != 0) {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(ToDoListPage.this);
+                        alert.setTitle("Remove from list");
+                        alert.setMessage("If you completed this task, you can remove it from the list.");
+                        alert.setPositiveButton("Remove", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String SQLString = "DELETE FROM notifs WHERE id = ?";
+                                SQLiteStatement SQLStatement = notifDatabase.compileStatement(SQLString);
+                                SQLStatement.bindString(1, String.valueOf(position));
+                                SQLStatement.execute();
+                                notifArray.remove(position);
+                                notifAdapter.notifyDataSetChanged();
+                            }
+                        });
+                        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                        alert.show();
+                    }
                 }
             });
         } catch (Exception e) {

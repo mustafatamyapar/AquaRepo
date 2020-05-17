@@ -32,7 +32,7 @@ public class ChangeEmail extends AppCompatActivity {
         Slidr.attach(this);
 
         editText2 = findViewById(R.id.editText2);
-        saveEmail = findViewById(R.id.saveEmail);
+        saveEmail = findViewById(R.id.button5);
         oldEmail = findViewById(R.id.editText5);
         password = findViewById(R.id.editText6);
     }

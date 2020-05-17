@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg1"
     tools:context=".sena.ChangeProfilePicture">
 
     <TextView
@@ -13,7 +14,8 @@
         android:layout_marginTop="16dp"
         android:text="Change Profile Picture"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,22 +25,26 @@
         android:id="@+id/imageView"
         android:layout_width="273dp"
         android:layout_height="265dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="70dp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choosePicture"
-        app:srcCompat="@drawable/profilepicture" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/backgraund" />
 
     <Button
         android:id="@+id/choosePicture"
-        android:layout_width="207dp"
+        android:layout_width="250dp"
         android:layout_height="41dp"
         android:layout_marginTop="32dp"
+        android:background="#98DCFB"
         android:onClick="chooseNewPicture"
-        android:text="choose and save new picture"
+        android:text="Choose and save new picture"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
