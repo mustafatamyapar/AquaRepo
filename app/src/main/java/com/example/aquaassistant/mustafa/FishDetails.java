@@ -2,6 +2,7 @@ package com.example.aquaassistant.mustafa;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,8 @@ public class FishDetails extends AppCompatActivity{
         fishTitle.setText(Title);
         fishDetails.setText(Description);
         fishImg.setImageResource(image);
+
+        fishDetails.setMovementMethod(new ScrollingMovementMethod());
 
 
     }

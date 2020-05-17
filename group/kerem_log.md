@@ -19,4 +19,10 @@ we could also incorporate some animations...
 I have created a basic outline and layout for the profile page. I am comfortable with using buttons and creating layouts now.
 I was appearently writing my log and code on a non updated version of our repository so from now on i can check in regularly
 
+### ~ 12.05.2020 ~
+I edited the placement of buttons and such
+
+### ~ 07.05.2020 ~
+We tried to implement the exp system with Sena. We tried to use firebase to store a .txt file but we could not manage it. Will try to do it with zülal
+
 ****

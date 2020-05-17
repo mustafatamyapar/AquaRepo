@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,6 +21,8 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     EditText user_password;
     String email;
     String password;
+
     public static FirebaseAuth firebaseauth;
     public static FirebaseUser firebaseuser;
 
@@ -112,6 +116,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, MainPage.class);
                 startActivity(intent);
                 finish();
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                Uri uri = Uri.parse("0,Beginner");
+                StorageReference reference = FirebaseStorage.getInstance().getReference()
+                        .child("userInfo")
+                        .child( userId + ".txt");
+                reference.putFile(uri);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

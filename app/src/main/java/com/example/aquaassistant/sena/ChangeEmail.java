@@ -47,18 +47,20 @@ public class ChangeEmail extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        user.updateEmail(editText2.getText().toString())
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(ChangeEmail.this, "New e-mail saved!", Toast.LENGTH_LONG ).show();
-                                        } else {
-                                            Toast.makeText(ChangeEmail.this, "E-mail change failed. Reauthentication failed.", Toast.LENGTH_LONG ).show();
+                        if (task.isSuccessful()) {
+                            user.updateEmail(editText2.getText().toString())
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(ChangeEmail.this, "New e-mail saved!", Toast.LENGTH_LONG ).show();
+                                            }
                                         }
+                                    });
 
-                                    }
-                                });
+                        } else {
+                            Toast.makeText(ChangeEmail.this, "E-mail change failed. Reauthentication failed.", Toast.LENGTH_LONG ).show();
+                        }
                     }
                 });
 

@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fish_item"
-    android:layout_width="130dp"
+    android:layout_width="150dp"
     android:layout_height="150dp"
     android:layout_margin="5dp"
     cardview:cardCornerRadius="4dp">

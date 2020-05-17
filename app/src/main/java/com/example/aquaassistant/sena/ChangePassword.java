@@ -52,18 +52,19 @@ public class ChangePassword extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
                             user.updatePassword(newPassword.getText().toString())
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(ChangePassword.this, "New password saved!", Toast.LENGTH_LONG ).show();
-                                            } else {
-                                                Toast.makeText(ChangePassword.this, "Password change failed. Reauthentication failed.", Toast.LENGTH_LONG ).show();
                                             }
-
                                         }
                                     });
+                        } else {
+                            Toast.makeText(ChangePassword.this, "Password change failed. Reauthentication failed.", Toast.LENGTH_LONG ).show();
+                        }
                     }
                 });
 
