@@ -2,6 +2,7 @@ package com.example.aquaassistant.mustafa;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,7 +37,7 @@ public class DetailsActivity extends AppCompatActivity {
         diseaseInfo.setText(Description);
         img.setImageResource(image);
 
-
+        diseaseInfo.setMovementMethod(new ScrollingMovementMethod());
     }
 
 }

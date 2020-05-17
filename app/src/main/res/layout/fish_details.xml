@@ -7,9 +7,9 @@
 
     <ImageView
         android:id="@+id/detailsFishImage"
-        android:layout_width="357dp"
-        android:layout_height="213dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="331dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toTopOf="@+id/FishDetails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,13 +18,16 @@
 
     <TextView
         android:id="@+id/detailsFishName"
-        android:layout_width="258dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginBottom="31dp"
+        android:layout_width="290dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="24dp"
         android:text="TextView"
         android:textColor="@color/colorPrimary"
         android:textSize="28sp"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/detailsFishImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,9 +35,11 @@
 
     <TextView
         android:id="@+id/FishDetails"
-        android:layout_width="304dp"
-        android:layout_height="102dp"
-        android:layout_marginBottom="151dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="17dp"
         android:text="TextView"
         android:textColor="@android:color/primary_text_light_nodisable"
         app:layout_constraintBottom_toBottomOf="parent"
