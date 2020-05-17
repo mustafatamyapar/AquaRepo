@@ -9,26 +9,27 @@
     <ImageView
         android:id="@+id/creature_image"
         android:layout_width="170dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="59dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginBottom="90dp"
         android:clickable="true"
         android:onClick="imageClicked"
-        app:layout_constraintBottom_toTopOf="@+id/go_encyclopedia"
+        app:layout_constraintBottom_toBottomOf="@+id/go_encyclopedia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creature_name"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
     <TextView
         android:id="@+id/creature_name"
         android:layout_width="181dp"
         android:layout_height="0dp"
-        android:layout_marginTop="89dp"
-        android:layout_marginBottom="234dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginBottom="33dp"
         android:text="CREATURE NAME"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/change_name"
+        app:layout_constraintBottom_toTopOf="@+id/creature_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,36 +38,31 @@
         android:id="@+id/change_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="298dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="42dp"
         android:onClick="changeName"
         android:text="CHANGE NAME"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/go_encyclopedia"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creature_name" />
+        app:layout_constraintTop_toBottomOf="@+id/creature_image" />
 
     <Button
         android:id="@+id/go_encyclopedia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="109dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="250dp"
         android:onClick="goEncyclopedia"
         android:text="GO ENCYCLOPEDIA"
-        app:layout_constraintBottom_toTopOf="@+id/remove_creature"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/change_name"
-        app:layout_constraintTop_toBottomOf="@+id/creature_image" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/remove_creature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="141dp"
+        android:layout_marginTop="60dp"
         android:onClick="removeCreature"
         android:text="REMOVE CREATURE"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/go_encyclopedia" />

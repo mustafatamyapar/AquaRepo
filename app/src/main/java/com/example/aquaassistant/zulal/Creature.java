@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -22,11 +24,8 @@ import java.util.ArrayList;
 public class Creature extends AppCompatActivity {
     GridView creatureGrid;
     ArrayList<Integer> creatureId;
-    GridViewAdapter gridViewAdapter;
+    static GridViewAdapter gridViewAdapter;
     SQLiteDatabase creatureDatabase;
-    String tankName;
-    String tankId;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +37,6 @@ public class Creature extends AppCompatActivity {
         gridViewAdapter.notifyDataSetChanged();
         creatureGrid.setAdapter(gridViewAdapter);
         creatureDatabase =Creature.this.openOrCreateDatabase("Creatures" , MODE_PRIVATE, null);
-
-//        Intent intent = getIntent();
-//        tankId = intent.getStringExtra("tankId");
-//        SQLiteDatabase tanksDatabase = Creature.this.openOrCreateDatabase("Tanks" ,MODE_PRIVATE, null);
-//        Cursor tankCursor = tanksDatabase.rawQuery("SELECT tankname FROM tanks WHERE id=?", new String[]{tankId});
-//        while (tankCursor.moveToNext()){
-//            tankName = tankCursor.getString(tankCursor.getColumnIndex("tankname"));
-//        }
-//        tankCursor.close();
-
         Cursor creatureCursor = creatureDatabase.rawQuery("SELECT * FROM creatures" , null);
         int idIndex = creatureCursor.getColumnIndex("id");
         if (creatureCursor.getCount() != 0) {
@@ -56,6 +45,15 @@ public class Creature extends AppCompatActivity {
             }
         }
         creatureCursor.close();
+        creatureGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(Creature.this, Creaturesample.class);
+                intent.putExtra("creatureId", String.valueOf(creatureId.get(position)));
+                startActivity(intent);
+
+            }
+        });
     }
 
 }
