@@ -23,6 +23,7 @@ import com.example.aquaassistant.mustafa.FishPage;
 import com.example.aquaassistant.mustafa.PlantsPage;
 import com.example.aquaassistant.mustafa.SnailPage;
 import com.example.aquaassistant.zeynep.RemoveCreatureActivity;
+import com.r0adkll.slidr.Slidr;
 
 public class Creaturesample extends AppCompatActivity {
     //variables
@@ -38,8 +39,7 @@ public class Creaturesample extends AppCompatActivity {
     String type;
     String type2;
     String tankName;
-    String tankData;
-    int tankId;
+
 
 
 
@@ -47,6 +47,7 @@ public class Creaturesample extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creaturesample);
+        Slidr.attach(this);
         creatureImage =findViewById(R.id.creature_image);
         nameOfCreature = findViewById(R.id.creature_name);
         removeCreature =findViewById(R.id.remove_creature);
