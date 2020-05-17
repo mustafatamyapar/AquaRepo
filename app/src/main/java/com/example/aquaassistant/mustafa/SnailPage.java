@@ -5,6 +5,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.zulal.Fish;
@@ -21,9 +24,6 @@ public class SnailPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_snail_page);
 
-        DifficultyExp difficultyExp = new DifficultyExp();
-        difficultyExp.show(getSupportFragmentManager(), "difficulty dialog");
-
         recyclerView = findViewById(R.id.recycler_snail);
         RecyclerViewAdapter2 recyclerViewAdapter2 = new RecyclerViewAdapter2(getApplicationContext(),listCreature);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
@@ -38,5 +38,21 @@ public class SnailPage extends AppCompatActivity {
         listCreature.add(new Fish("Fire-Bellied Toad","It's obvious where these unique-looking amphibians got their name: They're typical toady green on top, but have super-cool orange-red tummies underneath. As amphibians, they require aquariums that offer both water and land. A 50-50 ratio works well, and the tank should definitely not contain less than 25 percent water. As you might expect, the fire-bellied toad's bright coloring indicates that it secretes toxins from its skin. While this should pose no severe danger to you, the toxins will contaminate the aquarium's water, which can harm the toad, so you will need to change the water frequently. ","Difficulty:5.00",R.drawable.creature7));
         listCreature.add(new Fish("Red Cherry Shrimp","The Red Cherry Shrimp (Neocaridina heteropoda) is also known as Cherry Shrimp or RCS, is a dwarf freshwater shrimp native to Taiwan. It is a freshwater Shrimp that is incredibly peaceful and renowned for its algae eating capabilities. Suitable for both beginners and experienced aquarists, it is one of the hardiest and easy to keep Shrimp available. They will add color into any tank which they are placed in and are very undemanding requiring very little upkeep.","Difficulty:2.00",R.drawable.creature8));
         listCreature.add(new Fish("Golden Mystery Snails","Mystery snail is one of the most popular additions to freshwater tanks. These slow-moving, peaceful herbivores let you sit back whilst they do some of the cleanings for you. There are lots of other names for this snail including; golden mystery snail, mystery apple snail, spike topped apple snail and Pomacea australis. The correct scientific name, however, is Pomacea bridgesii. Because they are so common among aquarists, use the following general rule when purchasing snails for your tank. Take a few minutes to observe the group of snails at the store and pick the ones who are moving or attached to a surface; never buy a snail that has a cracked or damaged shell.","Difficulty:1.00",R.drawable.creature9));
+
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.fish_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item1:
+                DifficultyExp difficultyExp = new DifficultyExp();
+                difficultyExp.show(getSupportFragmentManager(), "difficulty dialog");
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

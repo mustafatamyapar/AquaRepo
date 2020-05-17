@@ -22,14 +22,14 @@ public class DifficultyExp extends AppCompatDialogFragment {
         View view = inflater.inflate(R.layout.difficulty_dialog, null);
         builder.setView(view)
                 .setTitle("Difficulty")
-
                 .setPositiveButton("Okay,Thanks", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                     }
                 });
         info = view.findViewById(R.id.info);
-        info.setText("It is a good text");
+        info.setText("Hey, dear aquarium enthusiast" + "\n" + "We created difficulty levels for our creatures to guide you." + "Here is the list of difficulty levels: " + "\n"
+        + "5.0 it needs extra care" + "\n" +"4.0 reasonable care but still hard for new starters" + "\n" + "3.0 normal care  ok for anyone" + "\n" + "2.0 simple care, recommended for new starters." + "\n"+"1.0 easy, good for kids");
         return builder.create();
     }
 }

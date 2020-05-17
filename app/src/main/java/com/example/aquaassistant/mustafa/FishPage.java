@@ -1,12 +1,17 @@
 package com.example.aquaassistant.mustafa;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.zulal.Fish;
@@ -26,8 +31,6 @@ public class FishPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fish_page);
         Slidr.attach(this);
-        DifficultyExp difficultyExp = new DifficultyExp();
-        difficultyExp.show(getSupportFragmentManager(), "difficulty dialog");
         recyclerView = findViewById(R.id.recyclerwiew2id);
         RecyclerViewAdapter2 recyclerViewAdapter2 = new RecyclerViewAdapter2(getApplicationContext(),listFish);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
@@ -105,4 +108,20 @@ public class FishPage extends AppCompatActivity {
                 "\n" +
                 "There are many different varieties of goldfish, and its fine to mix them as long as they aren’t breeds that would compete with each other for food. For example, keep single tailed varieties together and normal eyed goldfish together.","Difficulty:1.00",R.drawable.fish9));
     }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.fish_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item1:
+                DifficultyExp difficultyExp = new DifficultyExp();
+                difficultyExp.show(getSupportFragmentManager(), "difficulty dialog");
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
