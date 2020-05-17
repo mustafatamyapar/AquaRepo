@@ -21,6 +21,9 @@ public class SnailPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_snail_page);
 
+        DifficultyExp difficultyExp = new DifficultyExp();
+        difficultyExp.show(getSupportFragmentManager(), "difficulty dialog");
+
         recyclerView = findViewById(R.id.recycler_snail);
         RecyclerViewAdapter2 recyclerViewAdapter2 = new RecyclerViewAdapter2(getApplicationContext(),listCreature);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));

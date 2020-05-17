@@ -63,7 +63,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 i.putExtra("Image",mData.get(position).getImage());
 
                 mContext.startActivity(i);
-                Toast.makeText(mContext,"Hope Your fish is okay. Aquassitant Team",Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.zulal.Faqactivity;
@@ -46,6 +47,7 @@ private Button faqButton;
     public void openDiseases(View view){
         Intent intent = new Intent( this, DiseasesPage.class);
         startActivity(intent);
+        Toast.makeText(getApplicationContext(),"Hope Your fish is okay. Aquassitant Team",Toast.LENGTH_SHORT).show();
     }
     public void openFaq(View view){
         Intent intent = new Intent( this, Faqactivity.class);
