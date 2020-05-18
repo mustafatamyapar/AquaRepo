@@ -1,15 +1,13 @@
 package com.example.aquaassistant.kerem;
 
 public class Ranks {
-    public String RANK;
     public static int level;
-    public static String BEGINNER = "Begginer";
+    public static String RANK = "Begginer";
     public static String INTERMEDIATE = "Intermediate";
     public static String ADVANCED = "Advanced";
     public static String EXPERT = "Expert";
 
     public Ranks(){
-        RANK = BEGINNER;
         if(level == 2){
             RANK = INTERMEDIATE;
         }

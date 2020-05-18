@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
+import com.example.aquaassistant.kerem.Ranks;
 
 
 public class MainPage extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class MainPage extends AppCompatActivity {
     private Button notifTest;
     private TextView usernameDisplay;
     private ImageButton imageButtonProfilePicture;
-
+    private TextView rankDisplay;
     @Override
     protected void onResume() {
         super.onResume();
@@ -77,6 +78,10 @@ public class MainPage extends AppCompatActivity {
         encyclopediaButton = findViewById(R.id.encyclopedia);
         usernameDisplay = findViewById(R.id.textView8);
         imageButtonProfilePicture = findViewById(R.id.imageButton5);
+        rankDisplay = findViewById(R.id.textView9);
+
+        rankDisplay.setText(Ranks.RANK);
+
         //section below is to display the chosen username
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user.getDisplayName() != null) {

@@ -28,7 +28,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
-
+import com.example.aquaassistant.kerem.Ranks;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -39,6 +39,7 @@ public class ProfilePage extends AppCompatActivity {
     private Button settingsButton;
     private TextView usernameDisplay;
     private ImageView profilePicture;
+    private TextView rankDisplay;
 
     @Override
     protected void onResume() {
@@ -75,6 +76,10 @@ public class ProfilePage extends AppCompatActivity {
         settingsButton = findViewById(R.id.settingsButton);
         usernameDisplay = findViewById(R.id.textView6);
         profilePicture = findViewById(R.id.imageView2);
+        rankDisplay = findViewById(R.id.textView11);
+
+        rankDisplay.setText(Ranks.RANK);
+
         //section below is to display the username
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user.getDisplayName() != null) {
