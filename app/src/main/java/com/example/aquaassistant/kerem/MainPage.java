@@ -35,7 +35,7 @@ public class MainPage extends AppCompatActivity {
     private Button profileButton;
     private Button settingButton;
     private Button encyclopediaButton;
-    private Button notifTest;
+    private Button toDoListButton;
     private TextView usernameDisplay;
     private ImageButton imageButtonProfilePicture;
     private TextView rankDisplay;
@@ -71,7 +71,7 @@ public class MainPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-        notifTest = findViewById(R.id.openToDoList);
+        toDoListButton = findViewById(R.id.openToDoList);
         tanksButton = findViewById(R.id.tankButton);
         profileButton = findViewById(R.id.profileButton);
         settingButton = findViewById(R.id.settingsButton);
