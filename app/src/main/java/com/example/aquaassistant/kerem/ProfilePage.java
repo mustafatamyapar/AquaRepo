@@ -62,7 +62,7 @@ public class ProfilePage extends AppCompatActivity {
                         }
                     });
         } else {
-            profilePicture.setImageResource(R.drawable.profilepicture);
+            profilePicture.setImageResource(R.drawable.emptypicture);
         }
     }
 
@@ -95,7 +95,7 @@ public class ProfilePage extends AppCompatActivity {
                         }
                     });
         } else {
-            profilePicture.setImageResource(R.drawable.profilepicture);
+            profilePicture.setImageResource(R.drawable.emptypicture);
         }
         Slidr.attach(this);
     }

@@ -62,7 +62,7 @@ public class MainPage extends AppCompatActivity {
                         }
                     });
         } else {
-            imageButtonProfilePicture.setImageResource(R.drawable.profilepicture);
+            imageButtonProfilePicture.setImageResource(R.drawable.emptypicture);
         }
     }
 
@@ -99,7 +99,7 @@ public class MainPage extends AppCompatActivity {
                         }
                     });
         } else {
-            imageButtonProfilePicture.setImageResource(R.drawable.profilepicture);
+            imageButtonProfilePicture.setImageResource(R.drawable.emptypicture);
         }
 
         Slidr.attach(this);
