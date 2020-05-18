@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.aquaassistant.R;
+import com.example.aquaassistant.kaan.MainActivity;
 import com.example.aquaassistant.sena.ChangeProfilePicture;
 import com.example.aquaassistant.sena.SettingsMain;
 import com.example.aquaassistant.zulal.Faqactivity;
@@ -103,5 +104,11 @@ public class ProfilePage extends AppCompatActivity {
     public void openSettings(View view) {
         Intent intent = new Intent(this, SettingsMain.class);
         startActivity(intent);
+
+    }
+    public void signOutClicked(View view){
+        FirebaseAuth.getInstance().signOut();
+        Intent intentToMain = new Intent ( ProfilePage.this, MainActivity.class);
+        startActivity(intentToMain);
     }
 }

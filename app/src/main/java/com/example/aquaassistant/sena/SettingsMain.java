@@ -39,11 +39,7 @@ public class SettingsMain extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         slidr = Slidr.attach(this);
     }
-    public void signOutClicked(View view){
-        firebaseAuth.signOut();
-        Intent intentToMain = new Intent ( SettingsMain.this, MainActivity.class);
-        startActivity(intentToMain);
-    }
+
 
     public void changeUsernamePage(View view) {
         Intent intent = new Intent(getApplicationContext(), ChangeUsername.class);
