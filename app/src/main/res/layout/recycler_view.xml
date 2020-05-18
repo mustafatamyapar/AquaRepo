@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="#D2F0FD"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -17,6 +17,7 @@
         android:paddingTop="20dp"
         android:paddingBottom="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#E3009688"
         android:textColorLink="#303F9F"
         android:textSize="24sp"
         android:textStyle="bold|italic" />
@@ -31,6 +32,7 @@
         android:paddingTop="20dp"
         android:paddingBottom="10dp"
         android:scrollbarStyle="insideInset"
+        android:textColor="#CC03A9F4"
         android:textColorHighlight="#0097A7"
         android:textColorLink="#0288D1"
         android:textSize="24sp"

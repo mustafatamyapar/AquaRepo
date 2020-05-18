@@ -10,29 +10,31 @@
     <Button
         android:id="@+id/snailButton"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="170dp"
-        android:layout_height="0dp"
+        android:layout_width="205dp"
+        android:layout_height="68dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/bg1"
         android:ellipsize="marquee"
         android:onClick="openSnailPage"
         android:text="Other Creatures"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/plantsButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/fishButton"
+        app:layout_constraintStart_toStartOf="@+id/plantsButton"
         app:layout_constraintTop_toBottomOf="@+id/fishButton" />
 
     <Button
         android:id="@+id/plantsButton"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="170dp"
-        android:layout_height="0dp"
+        android:layout_width="211dp"
+        android:layout_height="67dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/bg1"
         android:ellipsize="marquee"
         android:onClick="openPlantsPage"
@@ -46,17 +48,17 @@
     <Button
         android:id="@+id/diseasesButton"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="173dp"
-        android:layout_height="0dp"
+        android:layout_width="207dp"
+        android:layout_height="69dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="34dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/bg1"
         android:ellipsize="marquee"
         android:onClick="openDiseases"
         android:text="Dıseases"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/txtt"
+        app:layout_constraintBottom_toTopOf="@+id/faqButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plantsButton" />
@@ -64,11 +66,11 @@
     <Button
         android:id="@+id/fishButton"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="176dp"
-        android:layout_height="0dp"
+        android:layout_width="202dp"
+        android:layout_height="72dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="19dp"
         android:background="@drawable/bg1"
         android:ellipsize="marquee"
         android:onClick="openFishPage"
@@ -89,6 +91,7 @@
         android:layout_marginStart="49dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="49dp"
+        android:layout_marginBottom="21dp"
         android:text="Encyclopedia"
         android:textAlignment="center"
         android:textColor="#14969C"
@@ -96,40 +99,49 @@
         app:layout_constraintBottom_toTopOf="@+id/fishButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
+
+    app:layout_constraintTop_toBottomOf="@+id/diseasesButton" />
+
+
+
+    ]]>
 
     <Button
         android:id="@+id/faqButton"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="289dp"
-        android:layout_height="0dp"
+        android:layout_width="327dp"
+        android:layout_height="66dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="2dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="62dp"
         android:background="@drawable/bg1"
         android:ellipsize="marquee"
         android:onClick="openFaq"
         android:text="F.A.Q."
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txtt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtt" />
+        app:layout_constraintTop_toBottomOf="@+id/diseasesButton" />
 
     <TextView
         android:id="@+id/txtt"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginEnd="61dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="73dp"
         android:onClick="goMapPage"
         android:text="Do you have any further question?"
         android:textColor="?android:attr/colorEdgeEffect"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/faqButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diseasesButton" />
+        app:layout_constraintTop_toBottomOf="@+id/faqButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@
         android:id="@+id/recycler_view1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#D2F0FD"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 

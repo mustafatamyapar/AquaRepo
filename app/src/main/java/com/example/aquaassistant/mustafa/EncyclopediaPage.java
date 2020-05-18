@@ -3,6 +3,7 @@ package com.example.aquaassistant.mustafa;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,7 @@ private TextView txtt;
         diseasesButton = findViewById(R.id.diseasesButton);
         faqButton = findViewById(R.id.faqButton);
         txtt = findViewById(R.id.txtt);
+        txtt.setPaintFlags(txtt.getPaintFlags() |  Paint.UNDERLINE_TEXT_FLAG);
         Slidr.attach(this);
     }
     public void openFishPage(View view){
