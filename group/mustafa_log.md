@@ -15,6 +15,9 @@ This week I moved on learned more from android studio. I learned a little bit ab
 At the weekend I tried JSOUP and JSON. They were complicated, and I could not implement them into my part. So I decided to do the data process with lists and recyclerWievs, as zülal recommended to me. Now I am trying to solve problems with a detailed info page in diseases.
 
 ### ~12.05.2020 ~
-Last week I managed to finish a big part of my part in the project. I created two types of recyclerViews, one for row type one for cardView type. Now I could not manage to add a recyclerView or scrollView to detailed info parts(when the user clicks to item this page is shown). Because of that problem user is not able to see all the information. Also, before this week's meeting, we were planning to add comments to every creature. After we did our research, it was harder to add then as we think. Currently, I am trying to solve the detailed info page problem.
+This week I managed to finish a big part of my part in the project. I created two types of recyclerViews, one for row type one for cardView type. Now I could not manage to add a recyclerView or scrollView to detailed info parts(when the user clicks to item this page is shown). Because of that problem user is not able to see all the information. Also, before this week's meeting, we were planning to add comments to every creature. After we did our research, it was harder to add then as we think. Currently, I am trying to solve the detailed info page problem.
 
+### ~18.05.2020 ~
+This i finished my part. I solved detailed info page problem. I added scrollview to all to these pages. I also thoguht we did not explained how we differed difficulties in fish and creatrue section. I decided to use toolbar to show this. I added a button that looks like graph to right upper corner to show users how we differed difficulties. I read toolbar and dialog documentation and learned them.
+Right now i am trying to make my pages as appealing as possible.
 ****
