@@ -24,7 +24,6 @@ import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
 public class SettingsMain extends AppCompatActivity {
-    Button sign_out;
     Button deleteAccountButton;
     private FirebaseAuth firebaseAuth;
     private SlidrInterface slidr;
@@ -34,12 +33,10 @@ public class SettingsMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settingsmain);
-        sign_out = findViewById(R.id.sign_out5);
         deleteAccountButton = findViewById(R.id.deleteAccountButton);
         firebaseAuth = FirebaseAuth.getInstance();
         slidr = Slidr.attach(this);
     }
-
 
     public void changeUsernamePage(View view) {
         Intent intent = new Intent(getApplicationContext(), ChangeUsername.class);

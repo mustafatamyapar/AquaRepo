@@ -59,23 +59,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/sign_out5"
-        android:layout_width="340dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="100dp"
-        android:background="#ADE6FF"
-        android:onClick="signOutClicked"
-        android:text="Sign-out"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/lockSlide"
         android:layout_width="340dp"
         android:layout_height="68dp"

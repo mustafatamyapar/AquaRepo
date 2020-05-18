@@ -30,7 +30,6 @@ public class ToDoListPage extends AppCompatActivity {
     ArrayAdapter notifAdapter;
     ArrayList<String> notifArray = new ArrayList<String>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
