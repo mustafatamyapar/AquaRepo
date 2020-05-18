@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aquaassistant.R;
+import com.example.aquaassistant.zeynep.FavouritePlacesActivity;
 import com.example.aquaassistant.zulal.Faqactivity;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
@@ -19,7 +21,7 @@ private Button snailButton;
 private Button plantsButton;
 private Button diseasesButton;
 private Button faqButton;
-
+private TextView txtt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ private Button faqButton;
         plantsButton = findViewById(R.id.plantsButton);
         diseasesButton = findViewById(R.id.diseasesButton);
         faqButton = findViewById(R.id.faqButton);
+        txtt = findViewById(R.id.txtt);
         Slidr.attach(this);
     }
     public void openFishPage(View view){
@@ -53,4 +56,10 @@ private Button faqButton;
         Intent intent = new Intent( this, Faqactivity.class);
         startActivity(intent);
     }
+
+    public void goMapPage(View view) {
+        Intent intent = new Intent(this, FavouritePlacesActivity.class);
+        startActivity(intent);
+    }
+
 }
