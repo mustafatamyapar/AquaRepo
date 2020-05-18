@@ -12,134 +12,143 @@
         android:id="@+id/tankButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#CDDC39"
         android:onClick="openTanks"
         android:text="go tanks"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintBottom_toTopOf="@+id/profileButton"
+        app:layout_constraintEnd_toEndOf="@+id/profileButton"
+        app:layout_constraintStart_toStartOf="@+id/openToDoList" />
 
     <Button
         android:id="@+id/settingsTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="#CDDC39"
         android:onClick="openSettings"
         android:text="Settings Test"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/encyclopedia"
         app:layout_constraintTop_toBottomOf="@+id/profileButton" />
 
     <Button
         android:id="@+id/encyclopedia"
         android:layout_width="183dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="7dp"
         android:backgroundTint="#CDDC39"
         android:onClick="openEncyclopedia"
         android:text="encyclopedia test"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsTest"
-        app:layout_constraintVertical_bias="0.055" />
+        app:layout_constraintTop_toBottomOf="@+id/settingsTest" />
 
     <Button
         android:id="@+id/profileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
         android:backgroundTint="#CDDC39"
         android:onClick="openProfile"
         android:text="PROFILE PAGE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tankButton" />
+        app:layout_constraintEnd_toEndOf="@+id/settingsTest"
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="433dp"
         android:layout_height="47dp"
-        android:layout_marginTop="48dp"
         android:background="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/divider_horizontal_textfield" />
 
     <ImageButton
         android:id="@+id/imageButton5"
-        android:layout_width="172dp"
+        android:layout_width="0dp"
         android:layout_height="168dp"
         android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/openToDoList"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/profilepicture" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
+        android:layout_marginStart="55dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="10dp"
         android:scrollbarSize="50dp"
         android:text="usernamewillbedisplayed      "
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="40dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
+        android:layout_marginTop="186dp"
+        android:layout_marginBottom="186dp"
         android:text="RANK"
         android:textColor="@android:color/background_dark"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton5"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/imageButton5"
-        app:layout_constraintTop_toTopOf="@+id/imageButton5"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/profileButton"
+        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintStart_toEndOf="@+id/tankButton"
+        app:layout_constraintTop_toTopOf="@+id/imageButton5" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:onClick="goMapPage"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/imageButton5"
+        app:layout_constraintTop_toTopOf="@+id/imageButton5" />
 
     <Button
         android:id="@+id/openToDoList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="7dp"
         android:onClick="openToDoList"
         android:text="notıf test"
         app:layout_constraintEnd_toStartOf="@+id/imageButton5"
-        app:layout_constraintHorizontal_bias="0.658"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imageButton5" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="107dp"
         android:onClick="goCreatures"
         android:text="CREATURES"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/encyclopedia" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageButton5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

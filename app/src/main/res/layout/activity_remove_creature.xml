@@ -13,6 +13,7 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
+        android:background="#73069FE4"
         android:clickable="false"
         android:numColumns="3"
         app:layout_constraintBottom_toBottomOf="parent"

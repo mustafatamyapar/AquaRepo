@@ -18,6 +18,7 @@ import android.widget.ImageView;
 
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.zeynep.RemoveCreatureActivity;
+import com.r0adkll.slidr.Slidr;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,7 @@ public class Creature extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creature);
+        Slidr.attach(this);
         creatureGrid = findViewById(R.id.grid_creatures);
         creatureId = new ArrayList<>();
         gridViewAdapter = new GridViewAdapter(creatureId, Creature.this);

@@ -13,4 +13,7 @@ This week I have learned how to use Firebase and how to connect it to my android
 
 ### ~ 11.05.2020 ~
 This week I have started to create my creatures page. For this I have learnt how to use Sqlite database. However there were some technical problems with my android studio. It took my time. Moreover, in my creatures page I show the profile pictures of the creatures. My plan was to add an searchbox to search the creatures with their names. However I could not manage to add GridViewLayout and Editable Text at the same time because they overlap each other.
+
+### ~ 18.05.2020 ~
+I am totally done with my part. I have used SQLiteDatabase to show and get secific information about the creature.Firstly in my creature page, I show all pictures of the creatures. The tricky part of using database is getting pictures from gallery and database. Sometmes I could not find the mistake due to the type difference.For instance, I get something integer, but I cannot use it since I have to use string of it. At that point my group member Zeynep helped me to get pictures and other information.When user clicks on the picture, it gives us the creaturesample page where detailed information about the creature listed. When user clicks on the picture, the user can chage the picture or remove the photo. Also there are three buttons for removing the creature, changing name and going to encyclopedia page. When user cliks on the tank name, the tank page appears.
 ****
