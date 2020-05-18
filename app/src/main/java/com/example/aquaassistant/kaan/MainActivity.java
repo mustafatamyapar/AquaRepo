@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aquaassistant.R;
@@ -25,6 +27,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
     Button sign_in;
     Button sign_up;
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     EditText user_password;
     String email;
     String password;
+    TextView link;
 
     public static FirebaseAuth firebaseauth;
     public static FirebaseUser firebaseuser;
@@ -51,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         firebaseuser = firebaseauth.getCurrentUser();
         user_name.addTextChangedListener(buttonTextWatcher);
         user_password.addTextChangedListener(buttonTextWatcher);
+        link = findViewById(R.id.link);
+        link.setPaintFlags(link.getPaintFlags() |  Paint.UNDERLINE_TEXT_FLAG);
         if (firebaseuser != null) {
             Intent intent = new Intent(MainActivity.this, MainPage.class);
             startActivity(intent);
@@ -75,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
             String passwordInput = user_password.getText().toString().trim();
 
             sign_in.setEnabled(!usernameInput.isEmpty()&& !passwordInput.isEmpty());
-            sign_up.setEnabled(!usernameInput.isEmpty()&& !passwordInput.isEmpty());
         }
 
         @Override
@@ -104,33 +110,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-    public void signUp(View view) {
-        String email = user_name.getText().toString();
-        String password = user_password.getText().toString();
-        firebaseauth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                Toast.makeText(MainActivity.this, "User Creates", Toast.LENGTH_LONG).show();
-                Toast.makeText(MainActivity.this,"User Created",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(MainActivity.this, MainPage.class);
-                startActivity(intent);
-                finish();
-                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                Uri uri = Uri.parse("0,Beginner");
-                StorageReference reference = FirebaseStorage.getInstance().getReference()
-                        .child("userInfo")
-                        .child( userId + ".txt");
-                reference.putFile(uri);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MainActivity.this, e.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
-            }
-        });
-
+    public void goSignUp(View view){
+        Intent intent1 = new Intent(MainActivity.this, Main2Activity.class);
+        startActivity(intent1);
     }
+
 }
+
 
 

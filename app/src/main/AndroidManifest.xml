@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/logocircle_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sena.DeleteAccount"></activity>
+        <activity android:name=".kaan.Main2Activity"></activity>
+        <activity android:name=".sena.DeleteAccount" />
         <activity android:name=".kerem.updateButton" />
         <activity android:name=".zulal.Creaturesample" />
         <activity android:name=".zeynep.FavouritePlacesActivity" />
@@ -63,7 +64,6 @@
         <activity android:name=".mustafa.EncyclopediaPage" />
         <activity android:name=".mustafa.DetailsActivity" />
         <activity android:name=".mustafa.FishDetails" />
-
         <activity android:name=".kaan.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,6 +73,7 @@
         </activity>
         <activity android:name=".zeynep.TanksPageActivity" />
         <activity android:name=".zeynep.TankPageActivity" />
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
