@@ -27,4 +27,8 @@ This week I did the followings:
 -If the user click on the places on the list, an alert message appears that ask whether user wants to remove the place from favourites or see the place on the map. If user chooses to see the map, the map page that shows the user location and favourite location is opened.If user chooses to remove, the place is removed from the places list. 
 -I put the places in a SQL database to ensure that they dont disappear when user close the app.
 
+### ~ 21.05.2020 ~
+
+- I changed the logo of the application by using the logo that Zulal has created for the login page. First, logo did not appear on my friends' virtual devices. I download the image in the mipmap file, then it became visible.
+
 ****

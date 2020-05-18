@@ -23,6 +23,7 @@ import com.example.aquaassistant.mustafa.FishPage;
 import com.example.aquaassistant.mustafa.PlantsPage;
 import com.example.aquaassistant.mustafa.SnailPage;
 import com.example.aquaassistant.zeynep.RemoveCreatureActivity;
+import com.r0adkll.slidr.Slidr;
 
 public class Creaturesample extends AppCompatActivity {
     //variables
@@ -38,8 +39,7 @@ public class Creaturesample extends AppCompatActivity {
     String type;
     String type2;
     String tankName;
-    String tankData;
-    int tankId;
+
 
 
 
@@ -47,6 +47,7 @@ public class Creaturesample extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creaturesample);
+        Slidr.attach(this);
         creatureImage =findViewById(R.id.creature_image);
         nameOfCreature = findViewById(R.id.creature_name);
         removeCreature =findViewById(R.id.remove_creature);
@@ -145,16 +146,14 @@ public class Creaturesample extends AppCompatActivity {
                     String numOfFish = "";
                     String numOFPlant ="";
                     String numOfOther = "";
+                    String tankId = "";
                     while (tankCursor.moveToNext()){
                         numOfFish = tankCursor.getString(tankCursor.getColumnIndex("numoffish"));
                         numOfOther = tankCursor.getString(tankCursor.getColumnIndex("numofother"));
                         numOFPlant = tankCursor.getString(tankCursor.getColumnIndex("numofplant"));
+                        tankId = tankCursor.getString(tankCursor.getColumnIndex("id"));
                     }
                     tankCursor.close();
-
-                    String delete = "DELETE FROM creatures WHERE id = " + creatureId;
-                    SQLiteStatement deleteStatement = removeCreature.compileStatement(delete);
-                    deleteStatement.execute();
 
                     Cursor typeFind = removeCreature.rawQuery("SELECT * FROM creatures WHERE id = ?", new String [] {creatureId});
                     while(typeFind.moveToNext()){
@@ -163,7 +162,7 @@ public class Creaturesample extends AppCompatActivity {
                     typeFind.close();
                     if (type2.matches("fish")) {
                         //decrease the number of fish in the tank
-                        String decrease = "UPDATE tanks SET numoffish= ? WHERE tankname  = " + tankName;
+                        String decrease = "UPDATE tanks SET numoffish= ? WHERE id  = " + Integer.parseInt(tankId);
                         SQLiteStatement decreaseFishNum = removeTank.compileStatement(decrease);
                         final String newFishNum = String.valueOf(Integer.parseInt(numOfFish) - 1);
                         decreaseFishNum.bindString(1, newFishNum);
@@ -172,7 +171,7 @@ public class Creaturesample extends AppCompatActivity {
                     //if creature is a plant
                     else if (type2.matches("plant")) {
                         //decrease the number of plant in the tank
-                        String decrease = "UPDATE tanks SET numofplant= ? WHERE tankname =" + tankName;
+                        String decrease = "UPDATE tanks SET numofplant= ? WHERE id  = " + Integer.parseInt(tankId);
                         SQLiteStatement decreasePlantNum = removeTank.compileStatement(decrease);
                         final String newPlantNum = String.valueOf(Integer.parseInt(numOFPlant) - 1);
                         decreasePlantNum.bindString(1, newPlantNum);
@@ -181,12 +180,15 @@ public class Creaturesample extends AppCompatActivity {
                     //if creature is one of the others
                     else if (type2.matches("other")) {
                         //decrease the number of fish in the tank
-                        String decrease = "UPDATE tanks SET numofother= ? WHERE tankname = " + tankName;
+                        String decrease = "UPDATE tanks SET numofother= ? WHERE id  = " + Integer.parseInt(tankId);
                         SQLiteStatement decreaseOtherNum = removeTank.compileStatement(decrease);
                         final String newOtherNum = String.valueOf(Integer.parseInt(numOfOther) - 1);
                         decreaseOtherNum.bindString(1, newOtherNum);
                         decreaseOtherNum.execute();
                     }
+                    String delete = "DELETE FROM creatures WHERE id = " + creatureId;
+                    SQLiteStatement deleteStatement = removeCreature.compileStatement(delete);
+                    deleteStatement.execute();
                     Intent intent6 = new Intent(Creaturesample.this , Creature.class);
                     intent6.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent6);
