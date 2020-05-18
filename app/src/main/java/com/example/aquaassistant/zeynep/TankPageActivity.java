@@ -55,7 +55,7 @@ public class TankPageActivity extends AppCompatActivity {
         deleteButton.setText("Delete");
 
         creatureDatabase = TankPageActivity.this.openOrCreateDatabase("Creatures", MODE_PRIVATE,null);
-
+        creatureDatabase.execSQL("CREATE TABLE IF NOT EXISTS creatures (id INTEGER PRIMARY KEY , type VARCHAR , creaturename VARCHAR, tankId VARCHAR , image BLOB)");
         //get the tank id
         Intent intent =getIntent();
         tankId = intent.getStringExtra("tankId");

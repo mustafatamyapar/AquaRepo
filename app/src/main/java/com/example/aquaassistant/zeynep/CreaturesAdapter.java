@@ -46,6 +46,7 @@ public class CreaturesAdapter extends ArrayAdapter<Integer> {
 
         try {
             creaturesDatabase = context.openOrCreateDatabase("Creatures", Context.MODE_PRIVATE, null);
+            creaturesDatabase.execSQL("CREATE TABLE IF NOT EXISTS creatures (id INTEGER PRIMARY KEY , type VARCHAR , creaturename VARCHAR, tankId VARCHAR , image BLOB)");
             tanksDatabase = context.openOrCreateDatabase("Tanks", Context.MODE_PRIVATE, null);
 
             //get the creatures' count

@@ -30,7 +30,7 @@ public class RemoveCreatureActivity extends AppCompatActivity {
         Intent intent = getIntent();
         tankId = intent.getStringExtra("tankId");
         SQLiteDatabase creaturesDatabase = RemoveCreatureActivity.this.openOrCreateDatabase("Creatures" , MODE_PRIVATE, null);
-
+        creaturesDatabase.execSQL("CREATE TABLE IF NOT EXISTS creatures (id INTEGER PRIMARY KEY , type VARCHAR , creaturename VARCHAR, tankId VARCHAR , image BLOB)");
 
         //put the creatures' ids
         Cursor creatureCursor = creaturesDatabase.rawQuery("SELECT * FROM creatures WHERE tankId= ?" , new String[]{tankId});
