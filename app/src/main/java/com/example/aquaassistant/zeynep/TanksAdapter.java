@@ -62,8 +62,8 @@ public class TanksAdapter extends ArrayAdapter<Integer> {
         while(cursor.moveToNext()) {
             //set the texts by getting the data from tanks database
             nameOfTank.setText(cursor.getString(tankNameIndex));
-            timeFeed.setText("Time until feeding: " + cursor.getString(timeFeedIndex));
-            timeWater.setText("Time until water check: " + cursor.getString(timeWaterIndex));
+            timeFeed.setText("Time until feeding: " + cursor.getString(timeFeedIndex) + " day" );
+            timeWater.setText("Time until water check: " + cursor.getString(timeWaterIndex) + " days");
             numOfFish.setText("Fish Count: " + cursor.getString(numOfFishIndex));
             numOfPlant.setText("Plant Count: " + cursor.getString(numOfPlantIndex));
             numOfOthers.setText("Other Creatures Count: " + cursor.getString(numOfOtherIndex));

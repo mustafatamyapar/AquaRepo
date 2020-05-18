@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#D2F0FD">
 
     <Button
         android:id="@+id/editButton"
@@ -12,8 +13,11 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="50dp"
+        android:backgroundTint="#2EADBD"
         android:onClick="editTankBut"
         android:text="Button"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.659"
@@ -28,6 +32,7 @@
         android:layout_marginTop="35dp"
         android:text="TextView"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,6 +54,7 @@
         android:layout_marginTop="30dp"
         android:text="TextView"
         android:textSize="24sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tankImage" />
@@ -70,8 +76,11 @@
         android:layout_height="72dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="150dp"
+        android:backgroundTint="#E36A61"
         android:onClick="deleteTankBut"
         android:text="Button"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tankImage"

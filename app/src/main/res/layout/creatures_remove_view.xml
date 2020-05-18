@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#D2F0FD">
 
     <ImageButton
         android:id="@+id/creatureImage"
@@ -24,6 +25,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="10dp"
         android:text="TextView"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/creatureImage"
         app:layout_constraintStart_toStartOf="@+id/creatureImage"

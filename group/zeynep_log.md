@@ -11,10 +11,10 @@ This week I have learnt the main structure of android studio like how can I crea
 ### ~ 08.05.2020 ~
 This week I did the followings:
 - I learned how to create SQLite database( Adding, updating, deleting data bby using SQliteStatement; using cursor to get the data from it...)
--I created tanks database (with columns: id, tankname, tanksize, numoffish(fishcount), numofplant, numofothers, watercheck(time until watercheck), timetofeed(time until feeding) and pictureint) and enable users to add tanks in this database with name and size of tank.According to tank size that user enters watercheck and feeding terms are changing. If the time will be 23.59, these day counts are decreasing one by one.
+-I created tanks database and enable users to add tanks in this database with name and size of tank.According to tank size that user enters watercheck and feeding terms are changing. If the time will be 23.59, these day counts are decreasing one by one(I cannot test whether this part is working or not).
 - I enabled users to delete tank completely and edit tank by changing tank name, adding creatures in it and removing creatures from the tank 
 - I first created database of creatures separately (fish,plant,others) .However since some problems occur I combined them in only one creatures database(with columns id, type(fish,plant or other), tankname(which creature belongs to), creaturename, image). 
-- When users click on the add creature button there is three choices: fish, plant and others. User will choose one of them and set the name. Then if the user wants to add a photo of the creature, application directs the user to the gallery and user chooses one of them. 
+- When users click on the add creature button ,user will choose one of them : fish,plant,other and set the name. Then if the user wants to add a photo of the creature, application directs the user to the gallery. 
 - I learned how to get permissions from the user for the gallery part to be able to access the gallery
 - If the user wants to remove creature, there is a gridview layout to list the creatures in the tank with names and pictures and selected creature will be removed from tank, creatures database will be updated and number of creature in the tank will be decreased. I learned how to use gridview for this part
 - I learned alert builder to show alert messages in these steps.
@@ -29,6 +29,7 @@ This week I did the followings:
 
 ### ~ 21.05.2020 ~
 
-- I changed the logo of the application by using the logo that Zulal has created for the login page. First, logo did not appear on my friends' virtual devices. I download the image in the mipmap file, then it became visible.
+- I changed the logo of the application by using the logo that Zülal has created for the login page. First, logo did not appear on my friends' virtual devices. I download the image in the mipmap file, then it became visible.
+- Some database problems occured when tankname is changed. I solve these by changing the creatures database.
 
 ****

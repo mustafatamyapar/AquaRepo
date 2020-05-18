@@ -12,7 +12,7 @@
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="312dp"
         android:ems="10"
         android:hint="E-mail address"
         android:inputType="textPersonName"
@@ -37,28 +37,15 @@
         android:id="@+id/sign_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginBottom="76dp"
         android:background="#CD1A5988"
+        android:enabled="false"
         android:onClick="signIn"
         android:text="SIGN IN"
-        android:enabled="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="65dp"
-        android:background="#CD1A5988"
-        android:onClick="signUp"
-        android:text="SIGN UP"
-        android:enabled="false"
-        app:layout_constraintBottom_toBottomOf="@+id/sign_in"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sign_in" />
 
     <ImageView
         android:id="@+id/logo"
@@ -70,5 +57,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="17dp"
+        android:onClick="goSignUp"
+        android:text="Create A New Account"
+        app:layout_constraintStart_toStartOf="@+id/user_password"
+        app:layout_constraintTop_toBottomOf="@+id/user_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
