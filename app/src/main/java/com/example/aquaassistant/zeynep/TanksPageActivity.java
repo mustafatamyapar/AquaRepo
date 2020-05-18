@@ -46,6 +46,7 @@ public class TanksPageActivity extends AppCompatActivity {
         addTank = findViewById(R.id.addTank);
         allContainers = new AllContainers();
         idArray = new ArrayList<>();
+        addTank.setText("Add New Tank");
 
         // a database to store the tanks that have been created by user
         tanksDatabase = TanksPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);

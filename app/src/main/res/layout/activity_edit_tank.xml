@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D2F0FD"
     tools:context=".zeynep.EditTankActivity">
 
     <Button
         android:id="@+id/removeCreature"
         android:layout_width="255dp"
-        android:layout_height="48dp"
+        android:layout_height="70dp"
         android:layout_marginTop="60dp"
+        android:backgroundTint="#2EADBD"
         android:onClick="removeCreature"
         android:text="Button"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCreature" />
@@ -20,10 +25,14 @@
     <Button
         android:id="@+id/addCreature"
         android:layout_width="255dp"
-        android:layout_height="48dp"
+        android:layout_height="70dp"
         android:layout_marginTop="60dp"
+        android:backgroundTint="#2EADBD"
         android:onClick="addCreature"
         android:text="Button"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeName" />
@@ -35,6 +44,7 @@
         android:layout_marginTop="30dp"
         android:text="TextView"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -42,10 +52,14 @@
     <Button
         android:id="@+id/changeName"
         android:layout_width="255dp"
-        android:layout_height="48dp"
+        android:layout_height="70dp"
         android:layout_marginTop="60dp"
+        android:backgroundTint="#2EADBD"
         android:onClick="changeTankName"
         android:text="Button"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTankText" />

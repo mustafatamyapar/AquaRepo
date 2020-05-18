@@ -58,8 +58,8 @@ public class EditTankActivity extends AppCompatActivity {
 
         editTank.setText("Edit Tank");
         changeName.setText("Change The Tank Name");
-        addCreature.setText("Add a New Creature");
-        removeCreature.setText("Remove a Creature");
+        addCreature.setText("Add New Creature");
+        removeCreature.setText("Remove Creature");
 
         creaturesDatabase = EditTankActivity.this.openOrCreateDatabase("Creatures" ,MODE_PRIVATE, null);
         creaturesDatabase.execSQL("CREATE TABLE IF NOT EXISTS creatures (id INTEGER PRIMARY KEY , type VARCHAR , creaturename VARCHAR, tankId VARCHAR , image BLOB)");

@@ -51,8 +51,8 @@ public class TankPageActivity extends AppCompatActivity {
         editButton = findViewById(R.id.editButton);
         tankImage = findViewById(R.id.tankImage);
 
-        editButton.setText("EDIT TANK");
-        deleteButton.setText("DELETE TANK");
+        editButton.setText("Edit");
+        deleteButton.setText("Delete");
 
         creatureDatabase = TankPageActivity.this.openOrCreateDatabase("Creatures", MODE_PRIVATE,null);
 
@@ -77,8 +77,8 @@ public class TankPageActivity extends AppCompatActivity {
                 //get the info and put them into text views
                 tankImage.setImageBitmap(bitmap);
                 tankName.setText(cursor.getString(tankNameIndex));
-                condCheck.setText("Time until feeding: " + cursor.getString(condCheckIndex));
-                waterCheck.setText("Time until water check: " + cursor.getString(waterCheckIndex));
+                condCheck.setText("Time until feeding: " + cursor.getString(condCheckIndex) + " day");
+                waterCheck.setText("Time until water check: " + cursor.getString(waterCheckIndex) + " days");
             }
             //update the database day by day
             if (hourOfDay == 23 && minute == 59) {
@@ -100,8 +100,8 @@ public class TankPageActivity extends AppCompatActivity {
     public void deleteTankBut(View view){
         //show an alert message
         AlertDialog.Builder sureDialog = new AlertDialog.Builder(TankPageActivity.this);
-        sureDialog.setTitle("This tank will be deleted!");
-        sureDialog.setMessage("Are you sure?");
+        sureDialog.setMessage("This tank will be deleted!");
+        sureDialog.setTitle("Are you sure?");
         sureDialog.setPositiveButton( "YES" , new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
