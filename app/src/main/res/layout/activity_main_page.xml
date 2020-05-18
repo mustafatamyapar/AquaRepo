@@ -5,7 +5,7 @@
     android:id="@+id/creatures"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg1"
+    android:background="#D2F0FD"
     tools:context=".kerem.MainPage">
 
     <Button
