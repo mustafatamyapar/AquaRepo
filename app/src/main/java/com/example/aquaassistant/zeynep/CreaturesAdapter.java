@@ -51,6 +51,7 @@ public class CreaturesAdapter extends ArrayAdapter<Integer> {
             //get the creatures' count
             Intent intent = context.getIntent();
             tankId = intent.getStringExtra("tankId");
+
             Cursor tanksCursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id= ?", new String[]{tankId});
             while (tanksCursor.moveToNext()) {
                 int fishIndex = tanksCursor.getColumnIndex("numoffish");

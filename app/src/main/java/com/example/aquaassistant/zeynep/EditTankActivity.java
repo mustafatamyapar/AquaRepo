@@ -35,7 +35,7 @@ import java.io.IOException;
 public class EditTankActivity extends AppCompatActivity {
     TextView editTank;
     Button changeName, addCreature ,removeCreature ;
-    String tankName ,tName ,tankId ,currentFishNum ,currentPlantNum , currentOtherCreNum;
+    String tName ,tankId ,currentFishNum ,currentPlantNum , currentOtherCreNum;
     SQLiteDatabase tanksDatabase;
     Bitmap selectedImage;
     AlertDialog choose;
@@ -61,7 +61,7 @@ public class EditTankActivity extends AppCompatActivity {
         removeCreature.setText("Remove a Creature");
 
         creaturesDatabase = EditTankActivity.this.openOrCreateDatabase("Creatures" ,MODE_PRIVATE, null);
-        creaturesDatabase.execSQL("CREATE TABLE IF NOT EXISTS creatures (id INTEGER PRIMARY KEY , type VARCHAR , creaturename VARCHAR, tankname VARCHAR , image BLOB)");
+        creaturesDatabase.execSQL("CREATE TABLE IF NOT EXISTS creatures (id INTEGER PRIMARY KEY , type VARCHAR , creaturename VARCHAR, tankId VARCHAR , image BLOB)");
         inform = new AlertDialog.Builder(EditTankActivity.this);
 
         Bitmap empty = BitmapFactory.decodeResource(EditTankActivity.this.getResources() , R.drawable.emptypicture);
@@ -172,17 +172,16 @@ public class EditTankActivity extends AppCompatActivity {
                                             tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks" , MODE_PRIVATE ,null);
                                             Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
                                             while (cursor.moveToNext()) {
-                                                tankName = cursor.getString(cursor.getColumnIndex("tankname"));
                                                 currentFishNum = cursor.getString(cursor.getColumnIndex("numoffish"));
                                             }
                                             cursor.close();
 
                                             //put the info into the fish database
-                                            String sqlString = "INSERT INTO creatures ( type , creaturename , tankname , image) VALUES (?, ?,?, ?) ";
+                                            String sqlString = "INSERT INTO creatures ( type , creaturename , tankId , image) VALUES (?, ?,?, ?) ";
                                             SQLiteStatement addStatement = creaturesDatabase.compileStatement(sqlString);
                                             addStatement.bindString(1,"fish");
                                             addStatement.bindString(2, fishName);
-                                            addStatement.bindString(3, tankName);
+                                            addStatement.bindString(3, tankId);
                                             addStatement.bindBlob(4, byteArray);
                                             addStatement.execute();
 
@@ -215,18 +214,17 @@ public class EditTankActivity extends AppCompatActivity {
                             tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks" , MODE_PRIVATE ,null);
                             Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
                             while (cursor.moveToNext()) {
-                                tankName = cursor.getString(cursor.getColumnIndex("tankname"));
                                 currentFishNum = cursor.getString(cursor.getColumnIndex("numoffish"));
                             }
                             cursor.close();
 
 
                             //put the info into the fish database
-                            String sqlString = "INSERT INTO creatures ( type, creaturename , tankname ,image) VALUES (?, ?,? ,? ) ";
+                            String sqlString = "INSERT INTO creatures ( type, creaturename , tankId ,image) VALUES (?, ?,? ,? ) ";
                             SQLiteStatement addStatement = creaturesDatabase.compileStatement(sqlString);
                             addStatement.bindString(1,"fish");
                             addStatement.bindString(2, fishName);
-                            addStatement.bindString(3, tankName);
+                            addStatement.bindString(3, tankId);
                             addStatement.bindBlob(4,emptyByteArray);
                             addStatement.execute();
 
@@ -302,17 +300,16 @@ public class EditTankActivity extends AppCompatActivity {
                                         tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks" , MODE_PRIVATE ,null);
                                         Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
                                         while (cursor.moveToNext()) {
-                                            tankName = cursor.getString(cursor.getColumnIndex("tankname"));
                                             currentPlantNum = cursor.getString(cursor.getColumnIndex("numofplant"));
                                         }
                                         cursor.close();
 
                                         //put the info into the plant database
-                                        String sqlString = "INSERT INTO creatures ( type, creaturename , tankname , image) VALUES (?, ?,?,?) ";
+                                        String sqlString = "INSERT INTO creatures ( type, creaturename , tankId , image) VALUES (?, ?,?,?) ";
                                         SQLiteStatement addStatement = creaturesDatabase.compileStatement(sqlString);
                                         addStatement.bindString(1,"plant");
                                         addStatement.bindString(2, plantName);
-                                        addStatement.bindString(3, tankName);
+                                        addStatement.bindString(3, tankId);
                                         addStatement.bindBlob(4, byteArray);
                                         addStatement.execute();
 
@@ -347,18 +344,17 @@ public class EditTankActivity extends AppCompatActivity {
                             tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks" , MODE_PRIVATE ,null);
                             Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
                             while (cursor.moveToNext()) {
-                                tankName = cursor.getString(cursor.getColumnIndex("tankname"));
                                 currentPlantNum = cursor.getString(cursor.getColumnIndex("numofplant"));
                             }
                             cursor.close();
 
                             //put the info into the plant database
-                            String sqlString = "INSERT INTO creatures ( type,  creaturename , tankname , image) VALUES ( ?,?,?,? ) ";
+                            String sqlString = "INSERT INTO creatures ( type,  creaturename , tankId , image) VALUES ( ?,?,?,? ) ";
                             SQLiteStatement addStatement = creaturesDatabase.compileStatement(sqlString);
                             addStatement.bindString(1,"plant");
                             addStatement.bindString(2, plantName);
-                            addStatement.bindString(3, tankName);
-                            addStatement.bindBlob(4,emptyByteArray);
+                            addStatement.bindString(3, tankId);
+                            addStatement.bindBlob(4, emptyByteArray);
                             addStatement.execute();
 
                             //update the number of plant in the tank
@@ -433,17 +429,16 @@ public class EditTankActivity extends AppCompatActivity {
                                         tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks" , MODE_PRIVATE ,null);
                                         Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
                                         while (cursor.moveToNext()) {
-                                            tankName = cursor.getString(cursor.getColumnIndex("tankname"));
                                             currentOtherCreNum = cursor.getString(cursor.getColumnIndex("numofother"));
                                         }
                                         cursor.close();
 
                                         //put the info into the others database
-                                        String sqlString = "INSERT INTO creatures (type, creaturename , tankname , image) VALUES (?, ?,?,?) ";
+                                        String sqlString = "INSERT INTO creatures (type, creaturename , tankId , image) VALUES (?, ?,?,?) ";
                                         SQLiteStatement addStatement = creaturesDatabase.compileStatement(sqlString);
                                         addStatement.bindString(1,"other");
                                         addStatement.bindString(2, otherName);
-                                        addStatement.bindString(3, tankName);
+                                        addStatement.bindString(3, tankId);
                                         addStatement.bindBlob(4, byteArray);
                                         addStatement.execute();
 
@@ -478,17 +473,16 @@ public class EditTankActivity extends AppCompatActivity {
                             tanksDatabase = EditTankActivity.this.openOrCreateDatabase("Tanks" , MODE_PRIVATE ,null);
                             Cursor cursor = tanksDatabase.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
                             while (cursor.moveToNext()) {
-                                tankName = cursor.getString(cursor.getColumnIndex("tankname"));
                                 currentOtherCreNum = cursor.getString(cursor.getColumnIndex("numofother"));
                             }
                             cursor.close();
 
                             //put the info into the others database
-                            String sqlString = "INSERT INTO creatures ( type, creaturename , tankname ,image) VALUES ( ?,?,?,?) ";
+                            String sqlString = "INSERT INTO creatures ( type, creaturename , tankId ,image) VALUES ( ?,?,?,?) ";
                             SQLiteStatement addStatement = creaturesDatabase.compileStatement(sqlString);
                             addStatement.bindString(1, "other");
                             addStatement.bindString(2, otherName);
-                            addStatement.bindString(3, tankName);
+                            addStatement.bindString(3, tankId);
                             addStatement.bindBlob(4, emptyByteArray);
                             addStatement.execute();
 

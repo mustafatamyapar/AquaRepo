@@ -1,20 +1,17 @@
 package com.example.aquaassistant.zeynep;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.GridView;
-
 import com.example.aquaassistant.R;
 import com.r0adkll.slidr.Slidr;
-
 import java.util.ArrayList;
 
 public class RemoveCreatureActivity extends AppCompatActivity {
-    String tankId , tankName;
+    String tankId ;
     ArrayList<Integer> creaturesId;
     CreaturesAdapter creaturesAdapter;
     @Override
@@ -32,18 +29,11 @@ public class RemoveCreatureActivity extends AppCompatActivity {
         //get the tank name
         Intent intent = getIntent();
         tankId = intent.getStringExtra("tankId");
-        SQLiteDatabase tanksDatabase = RemoveCreatureActivity.this.openOrCreateDatabase("Tanks" ,MODE_PRIVATE, null);
-        Cursor tankCursor = tanksDatabase.rawQuery("SELECT tankname FROM tanks WHERE id=?", new String[]{tankId});
-        while (tankCursor.moveToNext()){
-            tankName = tankCursor.getString(tankCursor.getColumnIndex("tankname"));
-        }
-        tankCursor.close();
-
         SQLiteDatabase creaturesDatabase = RemoveCreatureActivity.this.openOrCreateDatabase("Creatures" , MODE_PRIVATE, null);
 
 
         //put the creatures' ids
-        Cursor creatureCursor = creaturesDatabase.rawQuery("SELECT * FROM creatures WHERE tankname = ?" , new String[]{tankName});
+        Cursor creatureCursor = creaturesDatabase.rawQuery("SELECT * FROM creatures WHERE tankId= ?" , new String[]{tankId});
         int idIndex = creatureCursor.getColumnIndex("id");
         if (creatureCursor.getCount() != 0) {
             while (creatureCursor.moveToNext()) {

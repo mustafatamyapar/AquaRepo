@@ -56,7 +56,7 @@ public class Creaturesample extends AppCompatActivity {
     String tname;
     String type;
     String type2;
-    String tankName;
+    String tankId;
     byte[] emptyByteArray;
     Bitmap selectedImage;
     AlertDialog.Builder inform;
@@ -81,7 +81,7 @@ public class Creaturesample extends AppCompatActivity {
         while (cursor.moveToNext()) {
             creatureName = cursor.getString(cursor.getColumnIndex("creaturename"));
             imageNo = cursor.getColumnIndex("image");
-            tankName = cursor.getString(cursor.getColumnIndex("tankname"));
+            tankId = cursor.getString(cursor.getColumnIndex("tankId"));
             if (cursor.getBlob(imageNo) != null) {
                 byte[] bytes = cursor.getBlob(imageNo);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
@@ -168,16 +168,14 @@ public class Creaturesample extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 try {
-                    Cursor tankCursor = removeTank.rawQuery("SELECT * FROM tanks WHERE tankname = ?", new String[]{tankName});
+                    Cursor tankCursor = removeTank.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
                     String numOfFish = "";
                     String numOFPlant = "";
                     String numOfOther = "";
-                    String tankId = "";
                     while (tankCursor.moveToNext()) {
                         numOfFish = tankCursor.getString(tankCursor.getColumnIndex("numoffish"));
                         numOfOther = tankCursor.getString(tankCursor.getColumnIndex("numofother"));
                         numOFPlant = tankCursor.getString(tankCursor.getColumnIndex("numofplant"));
-                        tankId = tankCursor.getString(tankCursor.getColumnIndex("id"));
                     }
                     tankCursor.close();
 
@@ -379,6 +377,7 @@ public class Creaturesample extends AppCompatActivity {
         startActivity(intentGo);
     }
     String type3;
+    String nameTank;
     public void showInfo() {
         nameOfTank = findViewById(R.id.nameOfTank);
         typeOFCreature = findViewById(R.id.nameOfType);
@@ -388,7 +387,13 @@ public class Creaturesample extends AppCompatActivity {
             type3 = cursortype.getString(cursortype.getColumnIndex("type"));
         }
         getType.close();
-        nameOfTank.setText("NAME OF TANK: " + tankName);
+
+        SQLiteDatabase tanksDat = Creaturesample.this.openOrCreateDatabase("Tanks",MODE_PRIVATE,null);
+        Cursor cursortname = tanksDat.rawQuery("SELECT * FROM tanks WHERE id = ?", new String[]{tankId});
+        while (cursortname.moveToNext()){
+            nameTank = cursortname.getString(cursortname.getColumnIndex("tankname"));
+        }
+        nameOfTank.setText("NAME OF TANK: " + nameTank);
         typeOFCreature.setText("TYPE OF CREATURE: " + type3);
     }
 

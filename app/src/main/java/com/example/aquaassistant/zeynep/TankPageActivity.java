@@ -19,7 +19,6 @@ import android.widget.TextView;
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.sena.ToDoListPage;
 import com.example.aquaassistant.zulal.Creature;
-import com.example.aquaassistant.zulal.GridViewAdapter;
 import com.r0adkll.slidr.Slidr;
 
 import java.util.Calendar;
@@ -31,7 +30,7 @@ public class TankPageActivity extends AppCompatActivity {
     Button deleteButton, editButton;
     ImageView tankImage;
     String tankId;
-    SQLiteDatabase tanksDatabase;
+    SQLiteDatabase tanksDatabase , creatureDatabase;
     Calendar calendar = Calendar.getInstance();
     private int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
     private int minute = calendar.get(Calendar.MINUTE);
@@ -54,6 +53,8 @@ public class TankPageActivity extends AppCompatActivity {
 
         editButton.setText("EDIT TANK");
         deleteButton.setText("DELETE TANK");
+
+        creatureDatabase = TankPageActivity.this.openOrCreateDatabase("Creatures", MODE_PRIVATE,null);
 
         //get the tank id
         Intent intent =getIntent();
@@ -104,20 +105,32 @@ public class TankPageActivity extends AppCompatActivity {
         sureDialog.setPositiveButton( "YES" , new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //delete the tank from database
-                String deleteString = "DELETE FROM tanks WHERE id = " + tankId;
-                SQLiteStatement deleteStatement = tanksDatabase.compileStatement(deleteString);
-                deleteStatement.execute();
-                //This section deletes the related notifications when a tank is deleted
-                String deleteNotifSQLString = "DELETE FROM notifs WHERE tankName = ?";
-                SQLiteStatement deleteNotifSQLStatement = ToDoListPage.notifDatabase.compileStatement(deleteNotifSQLString);
-                deleteNotifSQLStatement.bindString(1, tankName.getText().toString());
-                deleteNotifSQLStatement.execute();
-                //go back from the tanks page
-                Intent intent = new Intent (TankPageActivity.this , TanksPageActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                try {
+                    //delete the tank from database
+                    String deleteString = "DELETE FROM tanks WHERE id = " + tankId;
+                    SQLiteStatement deleteStatement = tanksDatabase.compileStatement(deleteString);
+                    deleteStatement.execute();
+
+                    String deleteFromCreatures = " DELETE FROM creatures WHERE tankId= ? ";
+                    SQLiteStatement deleteCreature = creatureDatabase.compileStatement(deleteFromCreatures);
+                    deleteCreature.bindString(1, tankId);
+                    deleteCreature.execute();
+
+                    //This section deletes the related notifications when a tank is deleted
+                    String deleteNotifSQLString = "DELETE FROM notifs WHERE tankName = ?";
+                    SQLiteStatement deleteNotifSQLStatement = ToDoListPage.notifDatabase.compileStatement(deleteNotifSQLString);
+                    deleteNotifSQLStatement.bindString(1, tankName.getText().toString());
+                    deleteNotifSQLStatement.execute();
+
+                    //go back from the tanks page
+                    Intent intent = new Intent(TankPageActivity.this, TanksPageActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+
         });
         sureDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             @Override
