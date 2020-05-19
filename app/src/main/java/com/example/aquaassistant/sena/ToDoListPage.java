@@ -28,31 +28,38 @@ import java.util.ArrayList;
  * ToDoListPage Class - the activity that displays To-Do List
  * @author Fatma Sena Genç
  * @version 1.0 (May 10, 2020) - partially complete
- * @version 2.0 (May 11, 2020) - completed
+ * @version 2.0 (May 11, 2020)
+ * @version 3.0 (May 19, 2020) - completed
  */
 
 public class ToDoListPage extends AppCompatActivity {
 
-    public static SQLiteDatabase notifDatabase;
+    public static SQLiteDatabase notifDatabase; //the SQLite database for the to-do list
     ListView listViewNotif;
     ArrayAdapter notifAdapter;
     ArrayList<String> notifArray = new ArrayList<String>();
 
     @Override
+    /**
+     * onCreate - called when the activity is started
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todolist);
 
         try {
+            //Array adapter is set
             listViewNotif = findViewById(R.id.listViewNotif);
             notifAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, notifArray);
             listViewNotif.setAdapter(notifAdapter);
             notifAdapter.notifyDataSetChanged();
             notifArray.add("Here is your To-Do list!");
 
+            //database created
             notifDatabase = this.openOrCreateDatabase("Notifs", MODE_PRIVATE, null);
             notifDatabase.execSQL("CREATE TABLE IF NOT EXISTS notifs (id INTEGER PRIMARY KEY, notifText VARCHAR, tankName VARCHAR)");
 
+            //cursor gets the data from the database
             Cursor cursor = notifDatabase.rawQuery("SELECT * FROM notifs", null);
             int notifTextIndex = cursor.getColumnIndex("notifText");
             int tankNameIndex = cursor.getColumnIndex("tankName");
@@ -60,7 +67,8 @@ public class ToDoListPage extends AppCompatActivity {
                 notifArray.add(cursor.getString(notifTextIndex) + cursor.getString(tankNameIndex));
             }
             cursor.close();
-            //Following section allows the user to remove a task if they have done it
+
+            //Following section allows the user to remove a task if they have completed it
             listViewNotif.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
@@ -84,6 +92,7 @@ public class ToDoListPage extends AppCompatActivity {
                                     currentExperience = cursor.getString(cursor.getColumnIndex("experience"));
                                 }
                                 cursor.close();
+
                                 newExperience = String.valueOf(Integer.parseInt(currentExperience)+50);
                                 Ranks.Experience = newExperience;
                                 String sqlSta = "UPDATE experience SET experience = ? WHERE id = 1";
@@ -94,6 +103,7 @@ public class ToDoListPage extends AppCompatActivity {
                                 notifArray.remove(position);
                                 notifAdapter.notifyDataSetChanged();
 
+                                //rank & experience updating
                                 if(newExperience.matches("50")){
                                     System.out.println(newExperience);
                                     Ranks.Experience = newExperience;

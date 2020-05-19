@@ -21,10 +21,11 @@ import com.r0adkll.slidr.Slidr;
 import es.dmoral.toasty.Toasty;
 
 /**
- * ChangeEmail Class - the activity to change user e-mail
+ * ChangeEmail Class - the activity to change e-mail
  * @author Fatma Sena Genç
- * @version 1.0 (April 30, 2020)
- * @version 2.0 (
+ * @version 1.0 (May 12, 2020)
+ * @version 2.0 (May 16, 2020) - reauthentication added
+ * @version 3.0 (May 17, 2020) - completed, reauthentication working fine
  */
 
 public class ChangeEmail extends AppCompatActivity {
@@ -35,6 +36,9 @@ public class ChangeEmail extends AppCompatActivity {
     Button saveEmail;
 
     @Override
+    /**
+     * onCreate - called when the activity is started
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_email);
@@ -46,17 +50,20 @@ public class ChangeEmail extends AppCompatActivity {
         password = findViewById(R.id.editText6);
     }
 
-    //user's registered e-mail adress is being updated
+    /**
+     * saveNewEmail - updates user's e-mail
+     * @param view
+     */
     public void saveNewEmail(View view) {
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userPassword = password.getText().toString();
         String currentEMail = oldEmail.getText().toString();
         AuthCredential credential = EmailAuthProvider.getCredential(currentEMail, userPassword);
-        user.reauthenticate(credential)
+        user.reauthenticate(credential) //reauthentication required
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
+                        if (task.isSuccessful()) { //e-mail change allowed only when reauthentication is successful
                             user.updateEmail(editText2.getText().toString())
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
