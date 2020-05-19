@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.r0adkll.slidr.Slidr;
 
+import es.dmoral.toasty.Toasty;
+
 /**
  * ChangeEmail Class - the activity to change user e-mail
  * @author Fatma Sena Genç
@@ -66,7 +68,7 @@ public class ChangeEmail extends AppCompatActivity {
                                     });
 
                         } else {
-                            Toast.makeText(ChangeEmail.this, "E-mail change failed. Reauthentication failed.", Toast.LENGTH_LONG ).show();
+                            Toasty.error(ChangeEmail.this, "E-mail change failed. Reauthentication failed.", Toast.LENGTH_LONG ).show();
                         }
                     }
                 });

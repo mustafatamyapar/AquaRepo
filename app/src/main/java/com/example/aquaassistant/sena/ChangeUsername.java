@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.r0adkll.slidr.Slidr;
 
+import es.dmoral.toasty.Toasty;
+
 public class ChangeUsername extends AppCompatActivity {
 
     EditText editTextUsername;
@@ -48,9 +50,9 @@ public class ChangeUsername extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(ChangeUsername.this, "New username saved!", Toast.LENGTH_LONG ).show();
+                            Toasty.success(ChangeUsername.this, "New username saved!", Toast.LENGTH_LONG).show();
                         } else {
-                            Toast.makeText(ChangeUsername.this, "Username change failed. Try signing in again before making this change.", Toast.LENGTH_LONG ).show();
+                            Toasty.info(ChangeUsername.this, "Username change failed. Try signing in again before making this change.", Toast.LENGTH_LONG ).show();
                         }
                     }
                 });

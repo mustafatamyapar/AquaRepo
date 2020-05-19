@@ -25,6 +25,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
 
+import es.dmoral.toasty.Toasty;
+
 public class DeleteAccount extends AppCompatActivity {
     Button deleteButton;
     EditText getEmail;
@@ -67,7 +69,7 @@ public class DeleteAccount extends AppCompatActivity {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
                                                             if (task.isSuccessful()) {
-                                                                Toast.makeText(getApplicationContext(), "Account deleted.", Toast.LENGTH_LONG).show();
+                                                                Toasty.success(getApplicationContext(), "Account deleted.", Toast.LENGTH_LONG).show();
                                                                 Intent intentToMain = new Intent(DeleteAccount.this, MainActivity.class);
                                                                 startActivity(intentToMain);
                                                                 StorageReference ref = FirebaseStorage.getInstance().getReference()
@@ -77,13 +79,13 @@ public class DeleteAccount extends AppCompatActivity {
                                                                             @Override
                                                                             public void onComplete(@NonNull Task<Void> task) {
                                                                                 if (task.isSuccessful()) {
-                                                                                    Toast.makeText(getApplicationContext(), "User data deleted.", Toast.LENGTH_LONG).show();
+                                                                                    Toasty.success(getApplicationContext(), "User data deleted.", Toast.LENGTH_LONG).show();
                                                                                 }
                                                                             }
                                                                         });
                                                             } else {
                                                                 dialog.cancel();
-                                                                Toast.makeText(getApplicationContext(), "An error eccurred.", Toast.LENGTH_LONG).show();
+                                                                Toasty.error(getApplicationContext(), "An error eccurred.", Toast.LENGTH_LONG).show();
                                                             }
                                                         }
                                                     });
@@ -98,7 +100,7 @@ public class DeleteAccount extends AppCompatActivity {
                             });
                             alert.show();
                         } else {
-                            Toast.makeText(getApplicationContext(), "Account cannot be deleted. Authentication failed.", Toast.LENGTH_LONG).show();
+                            Toasty.info(getApplicationContext(), "Account cannot be deleted. Authentication failed.", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

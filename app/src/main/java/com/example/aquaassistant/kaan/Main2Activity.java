@@ -22,6 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import es.dmoral.toasty.Toasty;
+
 public class Main2Activity extends AppCompatActivity {
     EditText signUpEmail;
     EditText signUpPass;
@@ -58,7 +60,7 @@ public class Main2Activity extends AppCompatActivity {
         firebaseauth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                Toast.makeText(Main2Activity.this,"User Created",Toast.LENGTH_LONG).show();
+                Toasty.success(Main2Activity.this, "User Created", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Main2Activity.this, MainPage.class);
                 startActivity(intent);
                 finish();
@@ -73,12 +75,13 @@ public class Main2Activity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(Main2Activity.this, e.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
+                Toasty.error(Main2Activity.this, e.getLocalizedMessage().toString(), Toast.LENGTH_SHORT).show();
+
             }
         });
         }
         else {
-            Toast.makeText(Main2Activity.this, "Incorrect Password", Toast.LENGTH_LONG).show();
+            Toasty.warning(this, "Incorrect password!", Toast.LENGTH_SHORT).show();
         }
     }
 

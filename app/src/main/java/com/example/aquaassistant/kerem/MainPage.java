@@ -33,6 +33,8 @@ import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
 import com.example.aquaassistant.kerem.Ranks;
 
+import es.dmoral.toasty.Toasty;
+
 
 public class MainPage extends AppCompatActivity {
     private Button tanksButton;
@@ -124,7 +126,7 @@ public class MainPage extends AppCompatActivity {
             super.onBackPressed();
             return;
         } else {
-            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast = Toasty.info(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
             backToast.show();
         }
         backPressedTime = System.currentTimeMillis();

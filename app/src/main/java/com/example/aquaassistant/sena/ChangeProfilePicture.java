@@ -39,6 +39,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
 
+import es.dmoral.toasty.Toasty;
+
 public class ChangeProfilePicture extends AppCompatActivity {
     Bitmap chosenImageBitmap;
     Uri chosenImageUri;
@@ -124,9 +126,9 @@ public class ChangeProfilePicture extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(ChangeProfilePicture.this, "New profile picture saved!", Toast.LENGTH_LONG ).show();
+                                Toasty.success(ChangeProfilePicture.this, "New profile picture saved!", Toast.LENGTH_LONG).show();
                             } else {
-                                Toast.makeText(ChangeProfilePicture.this, "Profile picture change failed. Try signing in again before making this change.", Toast.LENGTH_LONG ).show();
+                                Toasty.info(ChangeProfilePicture.this, "Profile picture change failed. Try signing in again before making this change.", Toast.LENGTH_LONG ).show();
                             }
                         }
                     });

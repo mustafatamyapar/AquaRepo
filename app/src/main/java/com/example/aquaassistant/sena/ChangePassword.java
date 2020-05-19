@@ -20,6 +20,8 @@ import com.r0adkll.slidr.Slidr;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import es.dmoral.toasty.Toasty;
+
 
 public class ChangePassword extends AppCompatActivity {
 
@@ -58,12 +60,12 @@ public class ChangePassword extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
-                                                Toast.makeText(ChangePassword.this, "New password saved!", Toast.LENGTH_LONG ).show();
+                                                Toasty.success(ChangePassword.this, "New password saved!", Toast.LENGTH_LONG).show();
                                             }
                                         }
                                     });
                         } else {
-                            Toast.makeText(ChangePassword.this, "Password change failed. Reauthentication failed.", Toast.LENGTH_LONG ).show();
+                            Toasty.error(ChangePassword.this, "Password change failed. Reauthentication failed.", Toast.LENGTH_LONG ).show();
                         }
                     }
                 });

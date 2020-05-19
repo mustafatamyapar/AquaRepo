@@ -28,7 +28,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
 
+
+
 import org.w3c.dom.Text;
+
+import es.dmoral.toasty.Toasty;
 
 public class MainActivity extends AppCompatActivity {
     Button sign_in;
@@ -129,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MainActivity.this, e.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
+                Toasty.error(MainActivity.this, e.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
             }
         });
 
