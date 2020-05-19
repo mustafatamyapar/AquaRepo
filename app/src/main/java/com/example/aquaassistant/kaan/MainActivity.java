@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     String email;
     String password;
     TextView link;
-    MediaPlayer mysong;
+
 
     public static FirebaseAuth firebaseauth;
     public static FirebaseUser firebaseuser;
@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Slidr.attach(this);
         setContentView(R.layout.activity_main);
-        mysong = MediaPlayer.create(MainActivity.this, R.raw.dangerous);
-        mysong.start();
+
         FirebaseApp.initializeApp(MainActivity.this);
         sign_in = findViewById(R.id.sign_in);
         sign_up = findViewById(R.id.sign_up);
