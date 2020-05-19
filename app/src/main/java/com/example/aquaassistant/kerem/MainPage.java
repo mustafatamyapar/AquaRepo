@@ -1,5 +1,6 @@
 package com.example.aquaassistant.kerem;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,7 +37,11 @@ import es.dmoral.toasty.Toasty;
 
 import es.dmoral.toasty.Toasty;
 
-
+/**
+ * Main Page - The hub for all the buttons and also shows some information
+ * @author Kerem Tayhan
+ * @version 1.0 (May 19, 2020) - completed
+ */
 public class MainPage extends AppCompatActivity {
 
     private Button tanksButton;
@@ -49,7 +54,6 @@ public class MainPage extends AppCompatActivity {
     private TextView rankDisplay;
 
     public static SQLiteDatabase experienceDatabase;
-
 
     @Override
     protected void onResume() {
@@ -92,7 +96,6 @@ public class MainPage extends AppCompatActivity {
         encyclopediaButton = findViewById(R.id.encyclopedia);
         usernameDisplay = findViewById(R.id.textView8);
         imageButtonProfilePicture = findViewById(R.id.imageButton5);
-        rankDisplay = findViewById(R.id.textView9);
 
         experienceDatabase = MainPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
         experienceDatabase.execSQL("CREATE TABLE IF NOT EXISTS experience (id INTEGER PRIMARY KEY , experience VARCHAR)");
@@ -133,36 +136,50 @@ public class MainPage extends AppCompatActivity {
         Slidr.attach(this);
 
     }
-
+    /**
+     * this method is responsible for the button for opening the settings
+     */
     public void openSettings(View view) {
         Intent intent = new Intent(this, SettingsMain.class);
         startActivity(intent);
     }
-
+    /**
+     * this method is responsible for the button for opening the tank page
+     */
     public void openTanks(View view) {
         Intent intent = new Intent(this, TanksPageActivity.class);
         startActivity(intent);
     }
-
+    /**
+     * this method is responsible for the button for opening the encyclopedia page
+     */
     public void openEncyclopedia(View view) {
         Intent intent = new Intent(this, EncyclopediaPage.class);
         startActivity(intent);
     }
-
+    /**
+     * this method is responsible for the button for opening the profile page
+     */
     public void openProfile(View view) {
         Intent intent = new Intent(this, ProfilePage.class);
         startActivity(intent);
     }
-
+    /**
+     * this method is responsible for the button for opening the map page
+     */
     public void goMapPage(View view) {
         Intent intent = new Intent(this, FavouritePlacesActivity.class);
         startActivity(intent);
     }
-
+    /**
+     * this method is responsible for the button for opening the to-do list
+     */
     public void openToDoList (View view) {
         Intent intent = new Intent(this, ToDoListPage.class);
         startActivity(intent);
-    }
+    }/**
+     * this method is responsible for the button for opening the creature page
+     */
     public void goCreatures(View view) {
         Intent intent = new Intent(MainPage.this, Creature.class);
         startActivity(intent);
