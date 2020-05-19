@@ -77,6 +77,7 @@ public class SettingsMain extends AppCompatActivity {
 
     public void lockSlide(View v) {
         slidr.lock();
+
     }
 
     public void unlockSlide(View v) {
