@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private TextWatcher buttonTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -93,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+    public void openActivity2(View view) {
+        Intent intent = new Intent(this, MainPage.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
 
 
     public void signIn(View view) {
