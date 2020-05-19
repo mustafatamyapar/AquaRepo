@@ -1,6 +1,8 @@
 package com.example.aquaassistant.kerem;
+
 /**
  * Ranks - This page holds the information for the experience points and the ranks
+ *
  * @author Kerem Tayhan
  * @version 1.0 (May 19, 2020) - completed
  */

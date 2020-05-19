@@ -37,6 +37,7 @@ import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 import com.example.aquaassistant.kerem.Ranks;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -45,6 +46,7 @@ import java.net.URL;
 /**
  * Profile Page - The page where the personal information of the user is shown with the addition of experience and ranks. There are buttons for settings, creatures, tanks, the map
  * and the log out button
+ *
  * @author Kerem Tayhan
  * @version 1.0 (May 19, 2020) - completed
  */
@@ -99,11 +101,11 @@ public class ProfilePage extends AppCompatActivity {
         experienceDisplay.setText(Ranks.Experience);
         rankDisplay.setText(Ranks.RANK);
 
-        experienceDatabase = ProfilePage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
+        experienceDatabase = ProfilePage.this.openOrCreateDatabase("Experience", MODE_PRIVATE, null);
         Cursor cursor = experienceDatabase.rawQuery("SELECT * FROM experience WHERE id = 1", null);
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             Ranks.Experience = cursor.getString(cursor.getColumnIndex("experience"));
-            System.out.println( cursor.getString(cursor.getColumnIndex("experience")));
+            System.out.println(cursor.getString(cursor.getColumnIndex("experience")));
         }
         cursor.close();
         //section below is to display the username
@@ -131,6 +133,7 @@ public class ProfilePage extends AppCompatActivity {
         }
         Slidr.attach(this);
     }
+
     /**
      * this method is responsible for the button for opening the settings
      */
@@ -139,14 +142,16 @@ public class ProfilePage extends AppCompatActivity {
         startActivity(intent);
 
     }
+
     /**
      * this method is responsible for the button for logging out
      */
-    public void signOutClicked(View view){
+    public void signOutClicked(View view) {
         FirebaseAuth.getInstance().signOut();
-        Intent intentToMain = new Intent ( ProfilePage.this, MainActivity.class);
+        Intent intentToMain = new Intent(ProfilePage.this, MainActivity.class);
         startActivity(intentToMain);
     }
+
     /**
      * this method is responsible for the button for opening the creature page
      */
@@ -154,6 +159,7 @@ public class ProfilePage extends AppCompatActivity {
         Intent intent = new Intent(this, Creature.class);
         startActivity(intent);
     }
+
     /**
      * this method is responsible for the button for opening the tank page
      */

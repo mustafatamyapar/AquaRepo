@@ -34,9 +34,9 @@ import com.r0adkll.slidr.Slidr;
 import com.example.aquaassistant.kerem.Ranks;
 
 
-
 /**
  * Main Page - The hub for all the buttons and also shows some information
+ *
  * @author Kerem Tayhan
  * @version 1.0 (May 19, 2020) - completed
  */
@@ -79,7 +79,7 @@ public class MainPage extends AppCompatActivity {
         } else {
             imageButtonProfilePicture.setImageResource(R.drawable.emptypicture);
         }
-        experienceDatabase = MainPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
+        experienceDatabase = MainPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE, null);
         experienceDatabase.execSQL("CREATE TABLE IF NOT EXISTS experience (id INTEGER PRIMARY KEY , experience VARCHAR)");
     }
 
@@ -95,16 +95,13 @@ public class MainPage extends AppCompatActivity {
         usernameDisplay = findViewById(R.id.textView8);
         imageButtonProfilePicture = findViewById(R.id.imageButton5);
 
-        experienceDatabase = MainPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
+        experienceDatabase = MainPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE, null);
         experienceDatabase.execSQL("CREATE TABLE IF NOT EXISTS experience (id INTEGER PRIMARY KEY , experience VARCHAR)");
         String sqlString = "INSERT INTO experience (experience) VALUES (?)";
-        SQLiteStatement sqLiteStatement =experienceDatabase.compileStatement(sqlString);
+        SQLiteStatement sqLiteStatement = experienceDatabase.compileStatement(sqlString);
         sqLiteStatement.bindString(1, "0");
         sqLiteStatement.execute();
-
-
-
-        rankDisplay.setText(Ranks.RANK);
+        rankDisplay.setText(Ranks.RANK); //YES WE DID IT!!!!
 
         //section below is to display the chosen username
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -134,6 +131,7 @@ public class MainPage extends AppCompatActivity {
         Slidr.attach(this);
 
     }
+
     /**
      * this method is responsible for the button for opening the settings
      */
@@ -141,6 +139,7 @@ public class MainPage extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsMain.class);
         startActivity(intent);
     }
+
     /**
      * this method is responsible for the button for opening the tank page
      */
@@ -148,6 +147,7 @@ public class MainPage extends AppCompatActivity {
         Intent intent = new Intent(this, TanksPageActivity.class);
         startActivity(intent);
     }
+
     /**
      * this method is responsible for the button for opening the encyclopedia page
      */
@@ -155,6 +155,7 @@ public class MainPage extends AppCompatActivity {
         Intent intent = new Intent(this, EncyclopediaPage.class);
         startActivity(intent);
     }
+
     /**
      * this method is responsible for the button for opening the profile page
      */
@@ -162,6 +163,7 @@ public class MainPage extends AppCompatActivity {
         Intent intent = new Intent(this, ProfilePage.class);
         startActivity(intent);
     }
+
     /**
      * this method is responsible for the button for opening the map page
      */
@@ -169,13 +171,16 @@ public class MainPage extends AppCompatActivity {
         Intent intent = new Intent(this, FavouritePlacesActivity.class);
         startActivity(intent);
     }
+
     /**
      * this method is responsible for the button for opening the to-do list
      */
-    public void openToDoList (View view) {
+    public void openToDoList(View view) {
         Intent intent = new Intent(this, ToDoListPage.class);
         startActivity(intent);
-    }/**
+    }
+
+    /**
      * this method is responsible for the button for opening the creature page
      */
     public void goCreatures(View view) {
