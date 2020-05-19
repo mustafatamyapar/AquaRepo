@@ -64,7 +64,7 @@ public class SettingsMain extends AppCompatActivity {
                 + "*Aquarium Creatures (https://www.aquariumcreation.com/blogs/news/freshwater-shrimp-diseases)\n*Aquarium Adviser (https://aquariumadviser.com/10-best-plants-for-freshwater-aquarium/)\n"
                 + "*Fishlore (https://www.fishlore.com/Disease.htm)\n*ModestFish (https://modestfish.com/fish-disease-guide/)\n"
                 + "*Fishkeeping World (https://www.fishkeepingworld.com/17-most-popular-freshwater-fish/)\n\nOPENING MUSIC\nOcean Wave Sound Effect (https://www.partnersinrhyme.com/soundfx/water_sounds/water_ocean-wave4_wav.shtml)\n\n"
-                + "QUESTIONS & ANSWERS AT FAQ SECTION\nZülal link atacak\n\nThank you, Şukufe.");
+                + "QUESTIONS & ANSWERS AT FAQ SECTION\nhttps://aquariuminfo.org/faq.html\n\nThank you, Şukufe.");
 
         alert.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                     @Override
