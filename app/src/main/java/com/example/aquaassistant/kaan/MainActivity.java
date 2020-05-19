@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.kerem.MainPage;
+import com.example.aquaassistant.kerem.ProfilePage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
@@ -46,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     private Toast backToast;
 
 
-
     public static FirebaseAuth firebaseauth;
     public static FirebaseUser firebaseuser;
 
@@ -68,82 +68,85 @@ public class MainActivity extends AppCompatActivity {
         user_name.addTextChangedListener(buttonTextWatcher);
         user_password.addTextChangedListener(buttonTextWatcher);
         link = findViewById(R.id.link);
-        link.setPaintFlags(link.getPaintFlags() |  Paint.UNDERLINE_TEXT_FLAG);
+        link.setPaintFlags(link.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         if (firebaseuser != null) {
             Intent intent = new Intent(MainActivity.this, MainPage.class);
             startActivity(intent);
             finish();
         }
 
-        password = user_password.getText().toString();
-        email = user_name.getText().toString();
+            password = user_password.getText().toString();
+            email = user_name.getText().toString();
 
-
-    }
-    public void onBackPressed() {
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            backToast.cancel();
-            super.onBackPressed();
-            return;
-        } else {
-            backToast = Toasty.info(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
-            backToast.show();
-        }
-        backPressedTime = System.currentTimeMillis();
-    }
-
-
-    private TextWatcher buttonTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
         }
 
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            String usernameInput = user_name.getText().toString().trim();
-            String passwordInput = user_password.getText().toString().trim();
-
-            sign_in.setEnabled(!usernameInput.isEmpty()&& !passwordInput.isEmpty());
+        public void onBackPressed () {
+            if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                backToast.cancel();
+                super.onBackPressed();
+                return;
+            } else {
+                backToast = Toasty.info(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+                backToast.show();
+            }
+            backPressedTime = System.currentTimeMillis();
         }
 
-        @Override
-        public void afterTextChanged(Editable s) {
 
-        }
-    };
-    public void openActivity2(View view) {
-        Intent intent = new Intent(this, MainPage.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
-
-
-    public void signIn(View view) {
-        String email = user_name.getText().toString();
-        String password = user_password.getText().toString();
-        firebaseauth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+        private TextWatcher buttonTextWatcher = new TextWatcher() {
             @Override
-            public void onSuccess(AuthResult authResult) {
-                Intent intent = new Intent(MainActivity.this, MainPage.class);
-                startActivity(intent);
-                finish();
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
-        }).addOnFailureListener(new OnFailureListener() {
+
             @Override
-            public void onFailure(@NonNull Exception e) {
-                Toasty.error(MainActivity.this, e.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String usernameInput = user_name.getText().toString().trim();
+                String passwordInput = user_password.getText().toString().trim();
+
+                sign_in.setEnabled(!usernameInput.isEmpty() && !passwordInput.isEmpty());
             }
-        });
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        };
+        public void openActivity2 (View view){
+            Intent intent = new Intent(this, MainPage.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
+
+
+        public void signIn (View view){
+            String email = user_name.getText().toString();
+            String password = user_password.getText().toString();
+            firebaseauth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    Intent intent = new Intent(MainActivity.this, MainPage.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toasty.error(MainActivity.this, e.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
+                }
+            });
+
+        }
+        public void goSignUp (View view){
+            Intent intent1 = new Intent(MainActivity.this, Main2Activity.class);
+            startActivity(intent1);
+        }
 
     }
-    public void goSignUp(View view){
-        Intent intent1 = new Intent(MainActivity.this, Main2Activity.class);
-        startActivity(intent1);
-    }
 
-}
+
 
 
 
