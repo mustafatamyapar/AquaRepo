@@ -25,6 +25,8 @@ import com.example.aquaassistant.R;
 import com.example.aquaassistant.kaan.MainActivity;
 import com.example.aquaassistant.sena.ChangeProfilePicture;
 import com.example.aquaassistant.sena.SettingsMain;
+import com.example.aquaassistant.zeynep.TanksPageActivity;
+import com.example.aquaassistant.zulal.Creature;
 import com.example.aquaassistant.zulal.Faqactivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -121,6 +123,14 @@ public class ProfilePage extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
         Intent intentToMain = new Intent ( ProfilePage.this, MainActivity.class);
         startActivity(intentToMain);
+    }
+    public void openTanks(View view) {
+        Intent intent = new Intent(this, TanksPageActivity.class);
+        startActivity(intent);
+    }
+    public void goCreatures(View view) {
+        Intent intent = new Intent(this, Creature.class);
+        startActivity(intent);
     }
 
 }
