@@ -31,5 +31,6 @@ This week I did the followings:
 
 - I changed the logo of the application by using the logo that Zülal has created for the login page. First, logo did not appear on my friends' virtual devices. I download the image in the mipmap file, then it became visible.
 - Some database problems occured when tankname is changed. I solve these by changing the creatures database.
+- I arranged my page designs and added javadocs to my code.
 
 ****
