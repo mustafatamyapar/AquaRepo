@@ -12,6 +12,12 @@ import com.example.aquaassistant.R;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
+/**This activity creates a detailed information page
+ *when user clicks on item. Items such as fish,creature,plant and disease.
+ * @author Mustafa Efe Tamyapar
+ * @version 1.0 I tried to use JSoup in here, i created a website to get information but it did not work.
+ * @version 2.0 I used intent Getextra to get information from other activity.
+ */
 public class DetailsActivity extends AppCompatActivity {
 
     private TextView diseaseTitle;
@@ -31,7 +37,7 @@ public class DetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String Title = intent.getExtras().getString("Title");
         String Description = intent.getExtras().getString("Description");
-        int image = intent.getExtras().getInt("Image") ;
+        int image = intent.getExtras().getInt("Image");
 
         diseaseTitle.setText(Title);
         diseaseInfo.setText(Description);

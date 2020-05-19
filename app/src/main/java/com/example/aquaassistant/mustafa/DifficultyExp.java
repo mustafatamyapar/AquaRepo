@@ -11,10 +11,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.aquaassistant.R;
-
+/**
+ *
+ * @author
+ * @version
+ */
 public class DifficultyExp extends AppCompatDialogFragment {
 
     TextView info;
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -29,7 +34,7 @@ public class DifficultyExp extends AppCompatDialogFragment {
                 });
         info = view.findViewById(R.id.info);
         info.setText("Hey, dear aquarium enthusiast" + "\n" + "We created difficulty levels for our creatures to guide you." + "Here is the list of difficulty levels: " + "\n"
-        + "5.0 it needs extra care" + "\n" +"4.0 reasonable care but still hard for new starters" + "\n" + "3.0 normal care  ok for anyone" + "\n" + "2.0 simple care, recommended for new starters." + "\n"+"1.0 easy, good for kids");
+                + "5.0 it needs extra care" + "\n" + "4.0 reasonable care but still hard for new starters" + "\n" + "3.0 normal care  ok for anyone" + "\n" + "2.0 simple care, recommended for new starters." + "\n" + "1.0 easy, good for kids");
         return builder.create();
     }
 }

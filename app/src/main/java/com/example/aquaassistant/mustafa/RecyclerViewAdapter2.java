@@ -19,10 +19,12 @@ import com.example.aquaassistant.R;
 import com.example.aquaassistant.zulal.Fish;
 
 import java.util.List;
-
-public class
-
-RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.MyViewHolder2> {
+/**
+ *
+ * @author
+ * @version
+ */
+public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.MyViewHolder2> {
 
     Context mContext;
     List<Fish> mData;
@@ -38,7 +40,7 @@ RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.MyViewHol
     public RecyclerViewAdapter2.MyViewHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view;
-        view = LayoutInflater.from(mContext).inflate(R.layout.fish_encyclopedia_item,parent,false);
+        view = LayoutInflater.from(mContext).inflate(R.layout.fish_encyclopedia_item, parent, false);
         final RecyclerViewAdapter2.MyViewHolder2 myViewH = new RecyclerViewAdapter2.MyViewHolder2(view);
 
         return myViewH;
@@ -57,9 +59,9 @@ RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.MyViewHol
                 Intent i = new Intent(mContext, FishDetails.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                i.putExtra("Name",mData.get(position).getName());
-                i.putExtra("Description",mData.get(position).getDescription());
-                i.putExtra("Image",mData.get(position).getId());
+                i.putExtra("Name", mData.get(position).getName());
+                i.putExtra("Description", mData.get(position).getDescription());
+                i.putExtra("Image", mData.get(position).getId());
 
                 mContext.startActivity(i);
             }
@@ -73,14 +75,14 @@ RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.MyViewHol
     }
 
 
-    public static class MyViewHolder2 extends RecyclerView.ViewHolder{
+    public static class MyViewHolder2 extends RecyclerView.ViewHolder {
         private CardView Item;
         private TextView fishName;
         private TextView difficulty;
         private ImageView img;
 
 
-        public MyViewHolder2(View itemView){
+        public MyViewHolder2(View itemView) {
 
             super(itemView);
 

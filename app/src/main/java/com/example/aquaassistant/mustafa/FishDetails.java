@@ -5,13 +5,18 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aquaassistant.R;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
-
-public class FishDetails extends AppCompatActivity{
+/**
+ *
+ * @author
+ * @version
+ */
+public class FishDetails extends AppCompatActivity {
     private TextView fishTitle;
     private TextView fishDetails;
     private ImageView fishImg;
@@ -30,7 +35,7 @@ public class FishDetails extends AppCompatActivity{
         Intent intent = getIntent();
         String Title = intent.getExtras().getString("Name");
         String Description = intent.getExtras().getString("Description");
-        int image = intent.getExtras().getInt("Image") ;
+        int image = intent.getExtras().getInt("Image");
 
         fishTitle.setText(Title);
         fishDetails.setText(Description);

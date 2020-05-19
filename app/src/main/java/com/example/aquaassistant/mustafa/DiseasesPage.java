@@ -12,7 +12,11 @@ import com.r0adkll.slidr.model.SlidrInterface;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ *
+ * @author
+ * @version
+ */
 public class DiseasesPage extends AppCompatActivity {
 
     private List<Disease> listDisease = new ArrayList<>();
@@ -24,12 +28,12 @@ public class DiseasesPage extends AppCompatActivity {
         setContentView(R.layout.activity_diseases_page);
 
         recyclerView = findViewById(R.id.recyclerwiewid);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getApplicationContext(),listDisease);
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getApplicationContext(), listDisease);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(recyclerViewAdapter);
         Slidr.attach(this);
 
-        listDisease.add(new Disease("Cotton Mouth","Potential Causes\n" +
+        listDisease.add(new Disease("Cotton Mouth", "Potential Causes\n" +
                 "Columnaris is common where high bioloads or stressful conditions exist. These can be due to overcrowding, injury, inadequate diet, poor water quality, and unstable pH.\n" +
                 "\n" +
                 "The bacteria can stay active in your tank for up to 32 days if the hardness is 50 ppm or more.\n" +
@@ -41,8 +45,8 @@ public class DiseasesPage extends AppCompatActivity {
                 "\n" +
                 "Another option would be to buy an antibiotic that treats gram-negative bacterial infections. Oxytetracycline is regarded as a very effective option.\n" +
                 "\n" +
-                "To prevent the spread, remove any dead fish ASAP. This will stop surviving fish from picking at the infected fish, which can result in internal infection.","Cottony growth near jaws and loss of appetite",R.drawable.disease1));
-        listDisease.add(new Disease("Dropsy","Potential Causes\n" +
+                "To prevent the spread, remove any dead fish ASAP. This will stop surviving fish from picking at the infected fish, which can result in internal infection.", "Cottony growth near jaws and loss of appetite", R.drawable.disease1));
+        listDisease.add(new Disease("Dropsy", "Potential Causes\n" +
                 "In most cases, Dropsy is the caused by the bacteria Aeromonas. Now, this bacteria is commonly found in most fish tanks, however, it’s likely to infect fish that are stressed due to overcrowding or poor water conditions.\n" +
                 "\n" +
                 "\n" +
@@ -68,8 +72,8 @@ public class DiseasesPage extends AppCompatActivity {
                 " \n" +
                 "\n" +
                 "You should also feed the affected fish with antibacterial food if it’s still eating. Adding Maracyn Two to the tank can also help, as it treats gram negative bacterial infections like Aeromonas.\n" +
-                "\n","Bloat, scales stick out",R.drawable.disease2));
-        listDisease.add(new Disease("Fin/Tail Rot","Potential Causes\n" +
+                "\n", "Bloat, scales stick out", R.drawable.disease2));
+        listDisease.add(new Disease("Fin/Tail Rot", "Potential Causes\n" +
                 "Fish TB is caused by one of the several species of Mycobacteria:\n" +
                 "\n" +
                 "M. fortuitum, M. flavescens, M. chelonae, M. gordonae, M. terrae, M. triviale, M. diernhoferi, M. celatum, M. kansasii, M. intracellulare, and M. marinum.\n" +
@@ -83,8 +87,8 @@ public class DiseasesPage extends AppCompatActivity {
                 "\n" +
                 "Once a population of fish is infected, the most likely scenario is euthanasia, followed by disinfecting your tank. It makes little sense to attempt to maintain a population with the illness.\n" +
                 "\n" +
-                "They’ll have chronic health problems, poor growth, and feed conversion rates. Infected fish will be a constant source of infection.","Erosion at edges of fins",R.drawable.disease3));
-        listDisease.add(new Disease("Hole in the Head","Potential Causes\n" +
+                "They’ll have chronic health problems, poor growth, and feed conversion rates. Infected fish will be a constant source of infection.", "Erosion at edges of fins", R.drawable.disease3));
+        listDisease.add(new Disease("Hole in the Head", "Potential Causes\n" +
                 "Causes of this disease have been long debated, and nobody can say with certainty what the main trigger is.\n" +
                 "\n" +
                 " \n" +
@@ -112,8 +116,8 @@ public class DiseasesPage extends AppCompatActivity {
                 "\n" +
                 " \n" +
                 "\n" +
-                "Improvements in nutrition have also been shown to benefit the fish.","Pale ulcerated area around head",R.drawable.disease4));
-        listDisease.add(new Disease("Fish Fungus","Potential Causes\n" +
+                "Improvements in nutrition have also been shown to benefit the fish.", "Pale ulcerated area around head", R.drawable.disease4));
+        listDisease.add(new Disease("Fish Fungus", "Potential Causes\n" +
                 "Poor water quality, decomposing material, and not maintaining your tank properly can lead to Cotton Fin.\n" +
                 "\n" +
                 " \n" +
@@ -129,8 +133,8 @@ public class DiseasesPage extends AppCompatActivity {
                 "\n" +
                 " \n" +
                 "\n" +
-                "Malachite green is readily available and is known to be effective. You can also add aquarium salt to your tank at a low level of 1-3 grams per litre.","Whitish, fur-like growths",R.drawable.disease5));
-        listDisease.add(new Disease("Camallanus Worms","Potential Causes\n" +
+                "Malachite green is readily available and is known to be effective. You can also add aquarium salt to your tank at a low level of 1-3 grams per litre.", "Whitish, fur-like growths", R.drawable.disease5));
+        listDisease.add(new Disease("Camallanus Worms", "Potential Causes\n" +
                 "It’s caused by adding fish into your aquarium which is already carrying the parasite or plants that have larvae on them.\n" +
                 "\n" +
                 "Possible Treatments\n" +
@@ -150,15 +154,15 @@ public class DiseasesPage extends AppCompatActivity {
                 "\n" +
                 " \n" +
                 "\n" +
-                "If the parasite has burrowed deep into your fish this may not be a good idea. Pulling it out could cause more trauma than leaving it in and treating it.","Red or pink worm protruding from the anus, fish may become listless and bloated, fish refuse to eat",R.drawable.disease6));
-        listDisease.add(new Disease("Ammonia Poisoning","Causes of Ammonia Poisoning\n" +
+                "If the parasite has burrowed deep into your fish this may not be a good idea. Pulling it out could cause more trauma than leaving it in and treating it.", "Red or pink worm protruding from the anus, fish may become listless and bloated, fish refuse to eat", R.drawable.disease6));
+        listDisease.add(new Disease("Ammonia Poisoning", "Causes of Ammonia Poisoning\n" +
                 "Ammonia can enter the tank through a number of different ways. The first way is through chemically treated tap water. Some water treatment companies use a chemical called chloramine—chlorine bonded to ammonia—as a more stable disinfectant for city water systems. Using tap water that's been treated with this chemical is a recipe to aquarium disaster. The decomposition of organic matter—aquarium plants, fish excrement, and uneaten fish food—is another way ammonia levels rise in tanks.Overfeeding and lack of cleaning add to a buildup of the bacteria that feed on this superfluous matter, resulting in an ammonia byproduct. (So, clean your tank regularly!) Fish, themselves, also contribute to rising ammonia levels in tanks. When a fish eats food, the protein-building process that ensues (in order for them to grow larger) can produce a byproduct that enters their blood. This results in the seepage of ammonia through their gills and into the tank.\n" +
                 "\n" +
                 "Treatment\n" +
                 "If the ammonia level in your tank rises above 1 ppm (part per million) on a standard test kit, begin treatment immediately. Lowering the pH of the water will provide immediate relief, as will a 50 percent water change (be sure the water added is the same temperature as the aquarium). Several water changes within a short period of time may be required to drop the ammonia below 1 ppm.\n" +
                 "\n" +
-                "If the fish appear to be severely distressed, use a chemical pH control product to neutralize the ammonia. At this point, restrict feedings so that additional waste is reduced. In cases of very high ammonia levels, feedings need to be discontinued for several days. And obviously, no new fish should be added to the tank until both the ammonia and nitrite levels have fallen to zero.","Red or inflamed gills, fish are gasping for air at the surface",R.drawable.disease7));
-        listDisease.add(new Disease("Vorticella","Vorticella is actually a protozoa of 16 known species, not a fungus at all. Vorticella are aquatic organisms, most commonly found in freshwater habitats. They attach themselves to plant detritus, rocks, algae, or animals (particularly crustaceans).\n" +
+                "If the fish appear to be severely distressed, use a chemical pH control product to neutralize the ammonia. At this point, restrict feedings so that additional waste is reduced. In cases of very high ammonia levels, feedings need to be discontinued for several days. And obviously, no new fish should be added to the tank until both the ammonia and nitrite levels have fallen to zero.", "Red or inflamed gills, fish are gasping for air at the surface", R.drawable.disease7));
+        listDisease.add(new Disease("Vorticella", "Vorticella is actually a protozoa of 16 known species, not a fungus at all. Vorticella are aquatic organisms, most commonly found in freshwater habitats. They attach themselves to plant detritus, rocks, algae, or animals (particularly crustaceans).\n" +
                 "\n" +
                 "Vorticella are heterotrophic organisms. They prey on bacteria. Vorticella use their cilia to create a current of water (vortex) to direct food towards its mouth.\n" +
                 "\n" +
@@ -175,9 +179,7 @@ public class DiseasesPage extends AppCompatActivity {
                 "Ick and fungus cure medicines don't work on Vorticella.\n" +
                 "Seachem Paraguard could work as well at the full recommended dosage, since this is a parasitic med. But Seachem have admitted Paraguard isn't invertebrate-safe. So only try paraguard as a last resort and drip it into the tank premixed from a bucket of tank water slowly .\n" +
                 "\n" +
-                "This treatment is in no way a replacement for good tank husbandry.","Cilia like white organisms on mouth of the shrimp",R.drawable.disease8));
-
-
+                "This treatment is in no way a replacement for good tank husbandry.", "Cilia like white organisms on mouth of the shrimp", R.drawable.disease8));
 
 
     }

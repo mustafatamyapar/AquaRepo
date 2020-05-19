@@ -15,14 +15,18 @@ import com.example.aquaassistant.zeynep.FavouritePlacesActivity;
 import com.example.aquaassistant.zulal.Faqactivity;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
-
+/**
+ *
+ * @author
+ * @version
+ */
 public class EncyclopediaPage extends AppCompatActivity {
-private Button fishButton;
-private Button snailButton;
-private Button plantsButton;
-private Button diseasesButton;
-private Button faqButton;
-private TextView txtt;
+    private Button fishButton;
+    private Button snailButton;
+    private Button plantsButton;
+    private Button diseasesButton;
+    private Button faqButton;
+    private TextView txtt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,28 +38,33 @@ private TextView txtt;
         diseasesButton = findViewById(R.id.diseasesButton);
         faqButton = findViewById(R.id.faqButton);
         txtt = findViewById(R.id.txtt);
-        txtt.setPaintFlags(txtt.getPaintFlags() |  Paint.UNDERLINE_TEXT_FLAG);
+        txtt.setPaintFlags(txtt.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         Slidr.attach(this);
     }
-    public void openFishPage(View view){
-        Intent intent = new Intent( this, FishPage.class);
+
+    public void openFishPage(View view) {
+        Intent intent = new Intent(this, FishPage.class);
         startActivity(intent);
     }
-    public void openSnailPage(View view){
-        Intent intent = new Intent( this, SnailPage.class);
+
+    public void openSnailPage(View view) {
+        Intent intent = new Intent(this, SnailPage.class);
         startActivity(intent);
     }
-    public void openPlantsPage(View view){
-        Intent intent = new Intent( this, PlantsPage.class);
+
+    public void openPlantsPage(View view) {
+        Intent intent = new Intent(this, PlantsPage.class);
         startActivity(intent);
     }
-    public void openDiseases(View view){
-        Intent intent = new Intent( this, DiseasesPage.class);
+
+    public void openDiseases(View view) {
+        Intent intent = new Intent(this, DiseasesPage.class);
         startActivity(intent);
-        Toast.makeText(getApplicationContext(),"Hope Your fish is okay. Aquassitant Team",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Hope Your fish is okay. Aquassitant Team", Toast.LENGTH_SHORT).show();
     }
-    public void openFaq(View view){
-        Intent intent = new Intent( this, Faqactivity.class);
+
+    public void openFaq(View view) {
+        Intent intent = new Intent(this, Faqactivity.class);
         startActivity(intent);
     }
 
