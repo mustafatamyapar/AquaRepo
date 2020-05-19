@@ -24,7 +24,6 @@ import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
 public class SettingsMain extends AppCompatActivity {
-    Button deleteAccountButton;
     private FirebaseAuth firebaseAuth;
     private SlidrInterface slidr;
 
@@ -33,7 +32,6 @@ public class SettingsMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settingsmain);
-        deleteAccountButton = findViewById(R.id.deleteAccountButton);
         firebaseAuth = FirebaseAuth.getInstance();
         slidr = Slidr.attach(this);
     }
@@ -57,6 +55,20 @@ public class SettingsMain extends AppCompatActivity {
     public void deleteAccountPage (View view) {
         Intent intent = new Intent(getApplicationContext(), DeleteAccount.class);
         startActivity(intent);
+    }
+
+    public void openCredits(View view) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(SettingsMain.this);
+        alert.setTitle("Credits");
+        alert.setMessage("If you completed this task, you can remove it from the list.");
+        alert.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }
+        );
+        alert.show();
     }
 
     public void lockSlide(View v) {

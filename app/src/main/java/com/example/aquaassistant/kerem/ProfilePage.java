@@ -46,7 +46,6 @@ public class ProfilePage extends AppCompatActivity {
     private TextView usernameDisplay;
     private ImageView profilePicture;
     private TextView rankDisplay;
-    public static SQLiteDatabase experienceDatabase;
 
     @Override
     protected void onResume() {
@@ -73,7 +72,6 @@ public class ProfilePage extends AppCompatActivity {
         } else {
             profilePicture.setImageResource(R.drawable.emptypicture);
         }
-        rankDisplay.setText(Ranks.RANK);
     }
 
     @Override
@@ -88,13 +86,6 @@ public class ProfilePage extends AppCompatActivity {
 
         rankDisplay.setText(Ranks.RANK);
 
-        experienceDatabase = ProfilePage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
-        Cursor cursor = experienceDatabase.rawQuery("SELECT * FROM experience", null);
-        while(cursor.moveToNext()){
-            Ranks.Experience = cursor.getString(cursor.getColumnIndex("experience"));
-            System.out.println( cursor.getString(cursor.getColumnIndex("experience")));
-        }
-        cursor.close();
         //section below is to display the username
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user.getDisplayName() != null) {

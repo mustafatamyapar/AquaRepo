@@ -34,7 +34,6 @@ import com.example.aquaassistant.kerem.Ranks;
 
 
 public class MainPage extends AppCompatActivity {
-
     private Button tanksButton;
     private Button profileButton;
     private Button settingButton;
@@ -43,9 +42,6 @@ public class MainPage extends AppCompatActivity {
     private TextView usernameDisplay;
     private ImageButton imageButtonProfilePicture;
     private TextView rankDisplay;
-
-    public static SQLiteDatabase experienceDatabase;
-
 
     @Override
     protected void onResume() {
@@ -73,8 +69,6 @@ public class MainPage extends AppCompatActivity {
         } else {
             imageButtonProfilePicture.setImageResource(R.drawable.emptypicture);
         }
-        experienceDatabase = MainPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
-        experienceDatabase.execSQL("CREATE TABLE IF NOT EXISTS experience (id INTEGER PRIMARY KEY , experience VARCHAR)");
     }
 
     @Override
@@ -89,15 +83,6 @@ public class MainPage extends AppCompatActivity {
         usernameDisplay = findViewById(R.id.textView8);
         imageButtonProfilePicture = findViewById(R.id.imageButton5);
         rankDisplay = findViewById(R.id.textView9);
-
-        experienceDatabase = MainPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
-        experienceDatabase.execSQL("CREATE TABLE IF NOT EXISTS experience (id INTEGER PRIMARY KEY , experience VARCHAR)");
-        String sqlString = "INSERT INTO experience (experience) VALUES (?)";
-        SQLiteStatement sqLiteStatement =experienceDatabase.compileStatement(sqlString);
-        sqLiteStatement.bindString(1, "0");
-        sqLiteStatement.execute();
-
-
 
         rankDisplay.setText(Ranks.RANK);
 

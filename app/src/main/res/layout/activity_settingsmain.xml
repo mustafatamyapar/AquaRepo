@@ -108,9 +108,10 @@
 
     <Button
         android:id="@+id/deleteAccountButton"
-        android:layout_width="340dp"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="32dp"
         android:background="#F4BBBB"
         android:onClick="deleteAccountPage"
         android:text="Delete account"
@@ -118,8 +119,21 @@
         android:textAllCaps="false"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:background="#E8DADA"
+        android:onClick="openCredits"
+        android:text="Credits"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="522dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

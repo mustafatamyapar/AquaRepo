@@ -76,21 +76,6 @@ public class ToDoListPage extends AppCompatActivity {
                                 SQLStatement.bindString(1, String.valueOf(position));
                                 SQLStatement.execute();
 
-                                String currentExperience = "";
-                                String newExperience;
-                                SQLiteDatabase experienceDatabase = ToDoListPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
-                                Cursor cursor = experienceDatabase.rawQuery("SELECT * FROM experience", null);
-                                while(cursor.moveToNext()){
-                                   currentExperience = cursor.getString(cursor.getColumnIndex("experience"));
-                                }
-                                cursor.close();
-                                newExperience = String.valueOf(Integer.parseInt(currentExperience)+50);
-                                Ranks.Experience = newExperience;
-                                String sqlSta = "UPDATE experience SET experience = ? WHERE id = 1";
-                                SQLiteStatement update = experienceDatabase.compileStatement(sqlSta);
-                                update.bindString(1,newExperience);
-                                update.execute();
-
                                 notifArray.remove(position);
                                 notifAdapter.notifyDataSetChanged();
                             }
