@@ -60,11 +60,15 @@ public class SettingsMain extends AppCompatActivity {
     public void openCredits(View view) {
         AlertDialog.Builder alert = new AlertDialog.Builder(SettingsMain.this);
         alert.setTitle("Credits");
-        alert.setMessage("If you completed this task, you can remove it from the list.");
+        alert.setMessage("ENCYCLOPEDIA\n*Mom.com (https://mom.com/momlife/17983-10-non-fish-aquarium-pets)\n"
+                + "*Aquarium Creatures (https://www.aquariumcreation.com/blogs/news/freshwater-shrimp-diseases)\n*Aquarium Adviser (https://aquariumadviser.com/10-best-plants-for-freshwater-aquarium/)\n"
+                + "*Fishlore (https://www.fishlore.com/Disease.htm)\n*ModestFish (https://modestfish.com/fish-disease-guide/)\n"
+                + "*Fishkeeping World (https://www.fishkeepingworld.com/17-most-popular-freshwater-fish/)\n\nOPENING MUSIC\nOcean Wave Sound Effect (https://www.partnersinrhyme.com/soundfx/water_sounds/water_ocean-wave4_wav.shtml)\n\n"
+                + "QUESTIONS & ANSWERS AT FAQ SECTION\nZülal link atacak\n\nThank you, Şukufe.");
+
         alert.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                     }
                 }
         );
