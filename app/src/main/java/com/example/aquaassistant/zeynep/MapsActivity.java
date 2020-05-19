@@ -28,6 +28,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.List;
 import java.util.Locale;
 
+import es.dmoral.toasty.Toasty;
+
 import static com.google.android.gms.maps.model.BitmapDescriptorFactory.HUE_AZURE;
 import static com.google.android.gms.maps.model.BitmapDescriptorFactory.HUE_VIOLET;
 /**
@@ -209,14 +211,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 //add marker to fav place
                 mMap.addMarker((new MarkerOptions().title("Your Favourite Place").position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.heart))));
-                Toast.makeText(MapsActivity.this, "Added to favourites", Toast.LENGTH_LONG).show();
+                Toasty.success(MapsActivity.this, "Added to favourites", Toast.LENGTH_LONG).show();
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         else if ( intent.getStringExtra("condition").matches("show fav")){
-            Toast.makeText(MapsActivity.this, "There is already a favourite place!",Toast.LENGTH_LONG).show();
+            Toasty.warning(MapsActivity.this, "There is already a favourite place!", Toast.LENGTH_LONG).show();
         }
     }
 }
