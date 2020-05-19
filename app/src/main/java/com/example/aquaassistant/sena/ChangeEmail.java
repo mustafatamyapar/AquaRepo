@@ -18,6 +18,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.r0adkll.slidr.Slidr;
 
+/**
+ * ChangeEmail Class - the activity to change user e-mail
+ * @author Fatma Sena Genç
+ * @version 1.0 (April 30, 2020)
+ * @version 2.0 (
+ */
+
 public class ChangeEmail extends AppCompatActivity {
 
     EditText editText2;

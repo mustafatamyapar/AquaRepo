@@ -22,6 +22,12 @@ import com.example.aquaassistant.zulal.AquariumContainer;
 
 import java.util.ArrayList;
 
+/**
+ * ToDoListPage Class - the activity that displays To-Do List
+ * @author Fatma Sena Genç
+ * @version 1.0 (May 10, 2020) - partially complete
+ * @version 2.0 (May 11, 2020) - completed
+ */
 
 public class ToDoListPage extends AppCompatActivity {
 

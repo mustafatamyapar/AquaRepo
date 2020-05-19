@@ -117,9 +117,9 @@ public class TankPageActivity extends AppCompatActivity {
                     deleteCreature.execute();
 
                     //This section deletes the related notifications when a tank is deleted
-                    String deleteNotifSQLString = "DELETE FROM notifs WHERE tankName = ?";
+                    String deleteNotifSQLString = "DELETE FROM notifs WHERE id = ? ";
                     SQLiteStatement deleteNotifSQLStatement = ToDoListPage.notifDatabase.compileStatement(deleteNotifSQLString);
-                    deleteNotifSQLStatement.bindString(1, tankName.getText().toString());
+                    deleteNotifSQLStatement.bindString(1, tankId);
                     deleteNotifSQLStatement.execute();
 
                     //go back from the tanks page

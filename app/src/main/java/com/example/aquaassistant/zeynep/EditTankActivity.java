@@ -92,6 +92,11 @@ public class EditTankActivity extends AppCompatActivity {
                     SQLiteStatement changeStatement = tanksDatabase.compileStatement(changeName);
                     changeStatement.bindString(1, tName);
                     changeStatement.execute();
+                    String updateNotif = "UPDATE notifs SET tankname = ? WHERE id = " + tankId ;
+                    //existing to-do list elements are also updated
+                    SQLiteStatement updateNotifStatement = ToDoListPage.notifDatabase.compileStatement(updateNotif);
+                    updateNotifStatement.bindString(1, tName);
+                    updateNotifStatement.execute();
                     //return the tanks page
                     Intent intent = new Intent(EditTankActivity.this, TanksPageActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
