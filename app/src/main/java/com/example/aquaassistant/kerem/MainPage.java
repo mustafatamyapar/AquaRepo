@@ -101,7 +101,6 @@ public class MainPage extends AppCompatActivity {
         SQLiteStatement sqLiteStatement = experienceDatabase.compileStatement(sqlString);
         sqLiteStatement.bindString(1, "0");
         sqLiteStatement.execute();
-        rankDisplay.setText(Ranks.RANK); //YES WE DID IT!!!!
 
         //section below is to display the chosen username
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
