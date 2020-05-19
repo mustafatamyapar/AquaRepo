@@ -15,6 +15,9 @@ import com.example.aquaassistant.zeynep.FavouritePlacesActivity;
 import com.example.aquaassistant.zulal.Faqactivity;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
+
+import es.dmoral.toasty.Toasty;
+
 /**
  * Encyclopedia page which has buttons for all categories
  * @author Mustafa Efe Tamyapar
@@ -86,7 +89,7 @@ public class EncyclopediaPage extends AppCompatActivity {
     public void openDiseases(View view) {
         Intent intent = new Intent(this, DiseasesPage.class);
         startActivity(intent);
-        Toast.makeText(getApplicationContext(), "Hope Your fish is okay. Aquassitant Team", Toast.LENGTH_SHORT).show();
+        Toasty.info(getApplicationContext(), "Hope Your fish is okay. Aquassitant Team", Toast.LENGTH_SHORT).show();
     }
 
     /**
