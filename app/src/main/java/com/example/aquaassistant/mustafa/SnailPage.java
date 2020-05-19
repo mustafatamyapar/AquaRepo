@@ -14,17 +14,21 @@ import com.example.aquaassistant.zulal.Fish;
 
 import java.util.ArrayList;
 import java.util.List;
-/**Other creatures in the encyclopedia page. List will be shown
+/**Other creatures in the encyclopedia page. Creature List will be shown
  * in cardView items.
  * @author Mustafa Efe Tamyapar
- * @version 1.0
+ * @version 1.0 27.04.2020
+ * @version 2.0 12.05.2020 Added all the information about other creatures.
+ * @version 3.0 18.05.2020 Added a difficulty explanation page to the bar.
  */
 public class SnailPage extends AppCompatActivity {
     private List<Fish> listCreature = new ArrayList<>();
     private RecyclerView recyclerView;
     /**
-     * Oncreate method of the other creature page.
-     * List of creatures will be shown in cardview items
+     * This method creates other creatures page.
+     * List of creatures will be shown in cardView items
+     * @param savedInstanceState
+     * @return void
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +53,19 @@ public class SnailPage extends AppCompatActivity {
     }
     /**
      * Method for creating a menu
-     *
+     * @param menu
+     * @return is boolean
      */
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.fish_menu, menu);
         return true;
     }
-
+    /**
+     * Method for showing dialog about difficulty.
+     * @param item
+     * @return is boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

@@ -21,15 +21,23 @@ import com.r0adkll.slidr.model.SlidrInterface;
 import java.util.ArrayList;
 import java.util.List;
 /**
- *
- * @author
- * @version
+ * Fish page which has various kind of fish. They are shown in cardView.Also they have difficulty level for amount of care they need.
+ * Difficulty information will be shown as a dialog after using a button.
+ * @author Mustafa Efe Tamyapar
+ * @version 1.0 27.04.2020 Created activity.
+ * @version 2.0 09.05.2020 Solved problems about grid layout.
+ * @version 3.0 12.05.2020 Added all the information about fish.
+ * @version 4.0 18.05.2020 Added a difficulty explanation bar to the bar.
  */
 public class FishPage extends AppCompatActivity {
     private List<Fish> listFish = new ArrayList<>();
     private RecyclerView recyclerView;
 
-
+    /**
+     * This method creates fish page.
+     * @param savedInstanceState
+     * @return void
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,12 +121,22 @@ public class FishPage extends AppCompatActivity {
                 "There are many different varieties of goldfish, and its fine to mix them as long as they aren’t breeds that would compete with each other for food. For example, keep single tailed varieties together and normal eyed goldfish together.", "Difficulty:1.00", R.drawable.fish9));
     }
 
+    /**
+     * This method is used for difficulty explanation button at the bar.
+     * @param menu
+     * @return is boolean
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.fish_menu, menu);
         return true;
     }
 
+    /**
+     * This method is used for showing dialog when user clicks to the button.
+     * @param item
+     * @return is boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

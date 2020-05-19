@@ -1,15 +1,15 @@
 package com.example.aquaassistant.mustafa;
 /**
- *
- * @author
- * @version
+ * Disease class for disease object.
+ * @author Mustafa Efe Tamyapar
+ * @version 1.0 02.05.2020 Created class
  */
 public class Disease {
     private String name;
     private String description;
     private String symptoms;
     private int image;
-
+    //Constructors
     public Disease() {
     }
 
@@ -20,6 +20,7 @@ public class Disease {
         this.image = image;
     }
 
+    //Getter and Setter methods
     public String getName() {
 
         return name;

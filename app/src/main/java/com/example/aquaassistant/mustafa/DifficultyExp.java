@@ -12,14 +12,18 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.aquaassistant.R;
 /**
- *
- * @author
- * @version
+ * A class for difficulty dialog. Which will show how we differed 5 difficulty segments.
+ * @author Mustafa Efe Tamyapar
+ * @version 1.0 18.05.2020 Created activity
  */
 public class DifficultyExp extends AppCompatDialogFragment {
 
     TextView info;
-
+    /**
+     * We are using this method to create a dialog.
+     * @param savedInstanceState
+     * @return is a Dialog
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

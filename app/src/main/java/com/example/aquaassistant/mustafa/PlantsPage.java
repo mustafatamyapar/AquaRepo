@@ -13,14 +13,19 @@ import java.util.List;
 
 import com.r0adkll.slidr.Slidr;
 /**
- *
- * @author
- * @version
+ * Plants page, various kind of freshwater plant is shown.
+ * @author Mustafa Efe Tamyapar
+ * @version 1.0 27.04.2020 Created activity.
+ * @version 2.0 12.05.2020 Added all the information about plants.
  */
 public class PlantsPage extends AppCompatActivity {
     private List<Disease> listPlants = new ArrayList<>();
     private RecyclerView recyclerView;
-
+    /**
+     * This method creates plants page.
+     * @param savedInstanceState
+     * @return void
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

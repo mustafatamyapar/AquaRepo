@@ -13,15 +13,23 @@ import com.r0adkll.slidr.model.SlidrInterface;
 import java.util.ArrayList;
 import java.util.List;
 /**
- *
- * @author
- * @version
+ * Disease page which has various diseases that shown in row style
+ * @author Mustafa Efe Tamyapar
+ * @version 1.0 27.04.2020 Created activity.
+ * @version 2.0 02.05.2020 trying JSOUP
+ * @version 3.0 03.05.2020 trying JSON and Glide, created a gits website to get data
+ * @version 4.0 04.05.2020 Created a local database and using it.
+ * @version 5.0 12.05.2020 Added all the information about diseases.
  */
 public class DiseasesPage extends AppCompatActivity {
 
     private List<Disease> listDisease = new ArrayList<>();
     private RecyclerView recyclerView;
-
+    /**
+     * This method crates items on the diseases page
+     * @param savedInstanceState
+     * @return void
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
