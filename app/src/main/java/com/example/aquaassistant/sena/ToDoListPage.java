@@ -86,7 +86,7 @@ public class ToDoListPage extends AppCompatActivity {
                                 cursor.close();
                                 newExperience = String.valueOf(Integer.parseInt(currentExperience)+50);
                                 Ranks.Experience = newExperience;
-                                String sqlSta = "UPDATE experience SET experience = ? ";
+                                String sqlSta = "UPDATE experience SET experience = ? WHERE id = 1";
                                 SQLiteStatement update = experienceDatabase.compileStatement(sqlSta);
                                 update.bindString(1,newExperience);
                                 update.execute();
