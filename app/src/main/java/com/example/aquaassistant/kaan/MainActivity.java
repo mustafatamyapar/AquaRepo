@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     String email;
     String password;
     TextView link;
+    private long backPressedTime;
+    private Toast backToast;
+
 
 
     public static FirebaseAuth firebaseauth;
@@ -72,6 +75,17 @@ public class MainActivity extends AppCompatActivity {
         email = user_name.getText().toString();
 
 
+    }
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 
 

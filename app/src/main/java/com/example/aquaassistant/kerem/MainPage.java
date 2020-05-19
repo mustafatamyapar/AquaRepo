@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.aquaassistant.R;
@@ -42,6 +43,8 @@ public class MainPage extends AppCompatActivity {
     private TextView usernameDisplay;
     private ImageButton imageButtonProfilePicture;
     private TextView rankDisplay;
+    private long backPressedTime;
+    private Toast backToast;
 
     @Override
     protected void onResume() {
@@ -113,6 +116,18 @@ public class MainPage extends AppCompatActivity {
 
         Slidr.attach(this);
 
+    }
+
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 
     public void openSettings(View view) {
