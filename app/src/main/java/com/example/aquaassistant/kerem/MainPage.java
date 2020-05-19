@@ -35,6 +35,8 @@ import com.example.aquaassistant.kerem.Ranks;
 
 import es.dmoral.toasty.Toasty;
 
+import es.dmoral.toasty.Toasty;
+
 
 public class MainPage extends AppCompatActivity {
     private Button tanksButton;
