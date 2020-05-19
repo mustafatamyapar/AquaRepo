@@ -23,6 +23,8 @@ import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
+import es.dmoral.toasty.Toasty;
+
 /**
  * SettingsMain Class - settings page
  * @author Fatma Sena Genç
@@ -121,6 +123,7 @@ public class SettingsMain extends AppCompatActivity {
      */
     public void lockSlide(View v) {
         slidr.lock();
+        Toasty.success(SettingsMain.this, "Slider feature is locked!", Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -130,5 +133,7 @@ public class SettingsMain extends AppCompatActivity {
 
     public void unlockSlide(View v) {
         slidr.unlock();
+        Toasty.success(SettingsMain.this, "Slider feature is unlocked!", Toast.LENGTH_LONG).show();
+
     }
 }
