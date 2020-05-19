@@ -13,8 +13,10 @@ import android.widget.Toast;
 
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.kerem.MainPage;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -83,6 +85,22 @@ public class Main2Activity extends AppCompatActivity {
         else {
             Toasty.warning(this, "Incorrect password!", Toast.LENGTH_SHORT).show();
         }
+    }
+    public void sendEmailVerification() {
+        // [START send_email_verification]
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
+        user.sendEmailVerification()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toasty.success(Main2Activity.this, "E-mail verification link sent!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+        // [END send_email_verification]
     }
 
 }
