@@ -47,8 +47,8 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="96dp"
-        android:layout_height="30dp"
+        android:layout_width="121dp"
+        android:layout_height="28dp"
         android:gravity="center"
         android:text="Rank"
         android:textSize="18sp"
