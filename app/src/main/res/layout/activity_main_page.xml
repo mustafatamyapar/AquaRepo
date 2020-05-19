@@ -106,6 +106,7 @@
         android:layout_height="27dp"
         android:layout_marginTop="186dp"
         android:layout_marginBottom="186dp"
+        android:gravity="center"
         android:text="RANK"
         android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="@+id/profileButton"
