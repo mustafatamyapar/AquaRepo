@@ -52,7 +52,7 @@ public class ChangeUsername extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toasty.success(ChangeUsername.this, "New username saved!", Toast.LENGTH_LONG).show();
                         } else {
-                            Toasty.info(ChangeUsername.this, "Username change failed. Try signing in again before making this change.", Toast.LENGTH_LONG ).show();
+                            Toasty.error(ChangeUsername.this, "Username change failed. Try signing in again before making this change.", Toast.LENGTH_LONG ).show();
                         }
                     }
                 });

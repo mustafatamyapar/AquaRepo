@@ -33,7 +33,9 @@ import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
 import com.example.aquaassistant.kerem.Ranks;
 
-import es.moral.toasty.Toasty;
+import es.dmoral.toasty.Toasty;
+
+import es.dmoral.toasty.Toasty;
 
 
 public class MainPage extends AppCompatActivity {

@@ -23,7 +23,8 @@
         <activity android:name=".kerem.updateButton" />
         <activity android:name=".zulal.Creaturesample" />
         <activity android:name=".zeynep.FavouritePlacesActivity" />
-        <activity android:name=".kaan.SplashActivity">
+        <activity android:name=".kaan.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
