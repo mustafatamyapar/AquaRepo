@@ -3,12 +3,18 @@ package com.example.aquaassistant.kerem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.BaseColumns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -40,6 +46,7 @@ public class ProfilePage extends AppCompatActivity {
     private TextView usernameDisplay;
     private ImageView profilePicture;
     private TextView rankDisplay;
+    public static SQLiteDatabase experienceDatabase;
 
     @Override
     protected void onResume() {
@@ -66,6 +73,7 @@ public class ProfilePage extends AppCompatActivity {
         } else {
             profilePicture.setImageResource(R.drawable.emptypicture);
         }
+        rankDisplay.setText(Ranks.RANK);
     }
 
     @Override
@@ -80,6 +88,13 @@ public class ProfilePage extends AppCompatActivity {
 
         rankDisplay.setText(Ranks.RANK);
 
+        experienceDatabase = ProfilePage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
+        Cursor cursor = experienceDatabase.rawQuery("SELECT * FROM experience", null);
+        while(cursor.moveToNext()){
+            Ranks.Experience = cursor.getString(cursor.getColumnIndex("experience"));
+            System.out.println( cursor.getString(cursor.getColumnIndex("experience")));
+        }
+        cursor.close();
         //section below is to display the username
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user.getDisplayName() != null) {
@@ -116,4 +131,5 @@ public class ProfilePage extends AppCompatActivity {
         Intent intentToMain = new Intent ( ProfilePage.this, MainActivity.class);
         startActivity(intentToMain);
     }
+
 }

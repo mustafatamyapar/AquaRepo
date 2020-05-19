@@ -2,24 +2,22 @@ package com.example.aquaassistant.kerem;
 
 public class Ranks {
     public static int level;
-    public static String RANK = "Begginer";
+    public static String Experience = "0";
+    public static String RANK = "Beginner";
     public static String INTERMEDIATE = "Intermediate";
     public static String ADVANCED = "Advanced";
     public static String EXPERT = "Expert";
 
     public Ranks(){
-        if(level == 2){
+        if(Experience == "50"){
             RANK = INTERMEDIATE;
         }
-        if(level == 3){
+        if(Experience == "100"){
             RANK = ADVANCED;
         }
-        if(level == 4){
+        if(Experience == "150"){
             RANK = EXPERT;
         }
-    }
-    public void changeRank(){
-
     }
 
 }

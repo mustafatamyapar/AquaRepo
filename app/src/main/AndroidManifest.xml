@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/logocircle_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".kaan.Main2Activity"></activity>
+        <activity android:name=".kaan.Main2Activity" />
         <activity android:name=".sena.DeleteAccount" />
         <activity android:name=".kerem.updateButton" />
         <activity android:name=".zulal.Creaturesample" />

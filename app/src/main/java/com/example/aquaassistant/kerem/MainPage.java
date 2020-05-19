@@ -4,8 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.BaseColumns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -39,6 +43,10 @@ public class MainPage extends AppCompatActivity {
     private TextView usernameDisplay;
     private ImageButton imageButtonProfilePicture;
     private TextView rankDisplay;
+
+    public static SQLiteDatabase experienceDatabase;
+
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -65,6 +73,8 @@ public class MainPage extends AppCompatActivity {
         } else {
             imageButtonProfilePicture.setImageResource(R.drawable.emptypicture);
         }
+        experienceDatabase = MainPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
+        experienceDatabase.execSQL("CREATE TABLE IF NOT EXISTS experience (id INTEGER PRIMARY KEY , experience VARCHAR)");
     }
 
     @Override
@@ -79,6 +89,15 @@ public class MainPage extends AppCompatActivity {
         usernameDisplay = findViewById(R.id.textView8);
         imageButtonProfilePicture = findViewById(R.id.imageButton5);
         rankDisplay = findViewById(R.id.textView9);
+
+        experienceDatabase = MainPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
+        experienceDatabase.execSQL("CREATE TABLE IF NOT EXISTS experience (id INTEGER PRIMARY KEY , experience VARCHAR)");
+        String sqlString = "INSERT INTO experience (experience) VALUES (?)";
+        SQLiteStatement sqLiteStatement =experienceDatabase.compileStatement(sqlString);
+        sqLiteStatement.bindString(1, "0");
+        sqLiteStatement.execute();
+
+
 
         rankDisplay.setText(Ranks.RANK);
 
@@ -144,6 +163,7 @@ public class MainPage extends AppCompatActivity {
         Intent intent = new Intent(MainPage.this, Creature.class);
         startActivity(intent);
     }
+
 }
 
 

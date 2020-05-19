@@ -30,7 +30,7 @@ public class TankPageActivity extends AppCompatActivity {
     Button deleteButton, editButton;
     ImageView tankImage;
     String tankId;
-    SQLiteDatabase tanksDatabase , creatureDatabase;
+    SQLiteDatabase tanksDatabase , creatureDatabase , experienceDatabase;
     Calendar calendar = Calendar.getInstance();
     private int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
     private int minute = calendar.get(Calendar.MINUTE);
@@ -53,6 +53,7 @@ public class TankPageActivity extends AppCompatActivity {
 
         editButton.setText("Edit");
         deleteButton.setText("Delete");
+
 
         creatureDatabase = TankPageActivity.this.openOrCreateDatabase("Creatures", MODE_PRIVATE,null);
         creatureDatabase.execSQL("CREATE TABLE IF NOT EXISTS creatures (id INTEGER PRIMARY KEY , type VARCHAR , creaturename VARCHAR, tankId VARCHAR , image BLOB)");
