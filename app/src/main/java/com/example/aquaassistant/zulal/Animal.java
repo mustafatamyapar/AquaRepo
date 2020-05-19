@@ -1,7 +1,8 @@
 package com.example.aquaassistant.zulal;
-/*This class creates an animal with getName and setName methods
- * Zülal Nur Hıdıroğlu
- * 26.04.2020
+/**
+ * This class is an abstract class that inclused man methods of animal
+ * @author Zülal Nur Hıdıroğlu
+ * @version 1.0 (April 26, 2020) - completed
  */
 public abstract class Animal {
     public abstract String getName();

@@ -1,8 +1,9 @@
 package com.example.aquaassistant.zulal;
 
-/*This class creates a fifferent creature in the aquarium
- * Zülal Nur Hıdıroğlu
- * 26.04.2020
+/**
+ *This class lists the specific information about the other creatures
+ * @author Zülal Nur Hıdıroğlu
+ * @version 1.0 (April 26, 2020) - completed
  */
 public class OtherCreatures extends Animal implements Selectable {
     //properties

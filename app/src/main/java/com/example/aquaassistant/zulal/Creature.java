@@ -22,6 +22,11 @@ import com.example.aquaassistant.zeynep.RemoveCreatureActivity;
 import com.r0adkll.slidr.Slidr;
 
 import java.util.ArrayList;
+/**
+*This activity lists all creatures and their photos with the help of SQLite Database
+ * @author Zülal Nur Hıdıroğlu
+ * @version 1.0 (May 17, 2020) - completed
+ */
 
 public class Creature extends AppCompatActivity {
     GridView creatureGrid;
@@ -33,6 +38,11 @@ public class Creature extends AppCompatActivity {
     ImageButton searchButton;
     String boxContent;
     String idCreature;
+    /**
+     *In this method, tools are listed. Also the ids of the creatures are added to Arraylist
+     * with the help of Cursor of Database. And clickListener is added to items in gridVew.
+     * @param savedInstanceState this method is used by a view.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +75,13 @@ public class Creature extends AppCompatActivity {
             }
         });
     }
+    /**
+     * With this method, when user clicks on the search button in Creature activity,
+     * it takes the content of the TextView which is a name of a creature and finds the
+     * id of the creature in Creature database. This method sends this id to Creaturesample class
+     * via intent.
+     * @param view this method is used by a view.
+     */
     public void searchBut(View view){
         boxContent = searchBox.getText().toString();
         SQLiteDatabase searchData = Creature.this.openOrCreateDatabase("Creatures", MODE_PRIVATE, null);
