@@ -38,6 +38,13 @@ import org.w3c.dom.Text;
 
 import es.dmoral.toasty.Toasty;
 
+/**
+ * Main Activity - Login screen is here to allow user to log on with their account.
+ *
+ * @author Kaan Özkan
+ * @version 1.0 (May 19, 2020) - completed
+ */
+
 public class MainActivity extends AppCompatActivity {
     Button sign_in;
     Button sign_up;
@@ -83,7 +90,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-
+    /**
+     * this method is to make user go back with double tapping
+     */
         public void onBackPressed () {
             if (backPressedTime + 2000 > System.currentTimeMillis()) {
                 backToast.cancel();
@@ -96,7 +105,9 @@ public class MainActivity extends AppCompatActivity {
             backPressedTime = System.currentTimeMillis();
         }
 
-
+    /**
+     * this method disables buttons when there is no user entries in EditTexts
+     */
         private TextWatcher buttonTextWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -116,13 +127,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
+    /**
+     * this method is an animation works when travelling in between pages
+     */
         public void openActivity2 (View view){
             Intent intent = new Intent(this, MainPage.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
-
+    /**
+     * This method is to sing the user in
+     */
         public void signIn (View view){
             String email = user_name.getText().toString();
             String password = user_password.getText().toString();
@@ -142,7 +158,9 @@ public class MainActivity extends AppCompatActivity {
             });
 
         }
-
+    /**
+     * this method is a gateway to SignUp page
+     */
         public void goSignUp (View view){
             Intent intent1 = new Intent(MainActivity.this, Main2Activity.class);
             startActivity(intent1);

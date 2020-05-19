@@ -8,6 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aquaassistant.R;
 
+/**
+ * Splash Activity - Created to salute user with a simple photograph and sound.
+ *
+ * @author Kaan Özkan
+ * @version 1.0 (May 19, 2020) - completed
+ */
+
 public class SplashActivity extends AppCompatActivity {
 
     MediaPlayer mysong;

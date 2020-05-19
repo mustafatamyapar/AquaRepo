@@ -26,6 +26,14 @@ import com.google.firebase.storage.StorageReference;
 
 import es.dmoral.toasty.Toasty;
 
+/**
+ * Main 2 Activity - Second main activity to successfully sign-up the user.
+ *
+ * @author Kaan Özkan
+ * @version 1.0 (May 19, 2020) - completed
+ */
+
+
 public class Main2Activity extends AppCompatActivity {
     EditText signUpEmail;
     EditText signUpPass;
@@ -54,7 +62,9 @@ public class Main2Activity extends AppCompatActivity {
 
         }
         }
-
+    /**
+     * this method is used to successfully complete signing up
+     */
     public void signUp(View view) {
         if (signUpPass.getText().toString().matches(signUpConf.getText().toString())) {
         password = signUpPass.getText().toString();
@@ -86,6 +96,10 @@ public class Main2Activity extends AppCompatActivity {
             Toasty.warning(this, "Incorrect password!", Toast.LENGTH_SHORT).show();
         }
     }
+
+    /**
+     * this method is used to send a verification e-mail to the user
+     */
     public void sendEmailVerification() {
         // [START send_email_verification]
         FirebaseAuth auth = FirebaseAuth.getInstance();
