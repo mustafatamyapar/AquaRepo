@@ -128,7 +128,7 @@ public class ChangeProfilePicture extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Toasty.success(ChangeProfilePicture.this, "New profile picture saved!", Toast.LENGTH_LONG).show();
                             } else {
-                                Toasty.info(ChangeProfilePicture.this, "Profile picture change failed. Try signing in again before making this change.", Toast.LENGTH_LONG ).show();
+                                Toasty.error(ChangeProfilePicture.this, "Profile picture change failed. Try signing in again before making this change.", Toast.LENGTH_LONG ).show();
                             }
                         }
                     });

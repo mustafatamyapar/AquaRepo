@@ -62,7 +62,7 @@ public class ChangeEmail extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
-                                                Toast.makeText(ChangeEmail.this, "New e-mail saved!", Toast.LENGTH_LONG ).show();
+                                                Toasty.success(ChangeEmail.this, "New e-mail saved!", Toast.LENGTH_LONG ).show();
                                             }
                                         }
                                     });

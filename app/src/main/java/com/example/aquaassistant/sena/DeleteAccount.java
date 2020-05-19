@@ -100,7 +100,7 @@ public class DeleteAccount extends AppCompatActivity {
                             });
                             alert.show();
                         } else {
-                            Toasty.info(getApplicationContext(), "Account cannot be deleted. Authentication failed.", Toast.LENGTH_LONG).show();
+                            Toasty.error(getApplicationContext(), "Account cannot be deleted. Authentication failed.", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
