@@ -10,17 +10,17 @@ import com.example.aquaassistant.R;
 
 public class SplashActivity extends AppCompatActivity {
 
+    MediaPlayer mysong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        MediaPlayer ring= MediaPlayer.create(SplashActivity.this,R.raw.wave);
-        ring.start();
+        mysong = MediaPlayer.create(SplashActivity.this, R.raw.wave);
+        mysong.start();
         Thread timerThread = new Thread(){
             public void run(){
                 try{
-                    sleep(5000);
+                    sleep(3000);
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{
