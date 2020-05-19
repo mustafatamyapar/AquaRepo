@@ -22,7 +22,13 @@ I was appearently writing my log and code on a non updated version of our reposi
 ### ~ 12.05.2020 ~
 I edited the placement of buttons and such
 
-### ~ 07.05.2020 ~
+### ~ 15.05.2020 ~
 We tried to implement the exp system with Sena. We tried to use firebase to store a .txt file but we could not manage it. Will try to do it with zülal
+
+### ~ 18.05.2020 ~
+We tried to do sql but i could not manage
+
+### ~ 19.05.2020 ~
+TODAY IS A GLORIOUS DAY. TODAY WE MANAGED TO IMPLEMENT THE EXP AND RANK SYSTEM WITH THE HELP OF SENA ZEYNEP AND ZULAL. I LOVE ALL OF YOU SO MUCH.
 
 ****

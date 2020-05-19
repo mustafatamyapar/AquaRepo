@@ -4,7 +4,10 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
-
+/**
+ * sha1 - there is no need for this page but i'm DETERMINED to keep it here for its memories <33
+ * @version 0.0 (You will be missed)
+ */
 public class sha1 {
 
     public static void main(String[] args){

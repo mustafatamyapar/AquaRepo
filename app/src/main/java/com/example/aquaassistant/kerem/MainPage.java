@@ -33,9 +33,7 @@ import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
 import com.example.aquaassistant.kerem.Ranks;
 
-import es.dmoral.toasty.Toasty;
 
-import es.dmoral.toasty.Toasty;
 
 /**
  * Main Page - The hub for all the buttons and also shows some information

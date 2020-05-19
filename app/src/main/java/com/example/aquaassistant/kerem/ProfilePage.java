@@ -42,6 +42,12 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * Profile Page - The page where the personal information of the user is shown with the addition of experience and ranks. There are buttons for settings, creatures, tanks, the map
+ * and the log out button
+ * @author Kerem Tayhan
+ * @version 1.0 (May 19, 2020) - completed
+ */
 public class ProfilePage extends AppCompatActivity {
     private Button logOutButton;
     private Button settingsButton;
@@ -125,21 +131,32 @@ public class ProfilePage extends AppCompatActivity {
         }
         Slidr.attach(this);
     }
-
+    /**
+     * this method is responsible for the button for opening the settings
+     */
     public void openSettings(View view) {
         Intent intent = new Intent(this, SettingsMain.class);
         startActivity(intent);
 
     }
+    /**
+     * this method is responsible for the button for logging out
+     */
     public void signOutClicked(View view){
         FirebaseAuth.getInstance().signOut();
         Intent intentToMain = new Intent ( ProfilePage.this, MainActivity.class);
         startActivity(intentToMain);
     }
+    /**
+     * this method is responsible for the button for opening the creature page
+     */
     public void goCreatures(View view) {
         Intent intent = new Intent(this, Creature.class);
         startActivity(intent);
     }
+    /**
+     * this method is responsible for the button for opening the tank page
+     */
     public void openTanks(View view) {
         Intent intent = new Intent(this, TanksPageActivity.class);
         startActivity(intent);
