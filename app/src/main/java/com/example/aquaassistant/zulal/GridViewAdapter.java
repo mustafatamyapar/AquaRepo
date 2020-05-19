@@ -21,7 +21,12 @@ import androidx.annotation.Nullable;
 import com.example.aquaassistant.R;
 
 import java.util.ArrayList;
-
+/**
+ *This adapter helps for using gridView in Creature class. In this adapter,
+ * information can be taken from database and photos can be listed.
+ * @author Zülal Nur Hıdıroğlu
+ * @version 1.0 (May 17, 2020) - completed
+ */
 public class GridViewAdapter extends ArrayAdapter<Integer> {
     private ArrayList <Integer> creatureId;
     private Activity activity;
@@ -33,6 +38,13 @@ public class GridViewAdapter extends ArrayAdapter<Integer> {
         this.activity = activity;
     }
 
+    /**
+     * This method takes the image byte arrays from database and list them as a grid layout.
+     * @param position this method is used by a view.
+     * @param convertView
+     * @param parent
+     * @return customView which the images and their names are binded
+     */
     @NonNull
     int creatureNameNo;
     int creatureImageNo;

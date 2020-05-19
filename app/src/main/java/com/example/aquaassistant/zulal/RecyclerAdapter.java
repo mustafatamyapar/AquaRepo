@@ -11,7 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.aquaassistant.R;
 
 import java.util.ArrayList;
-
+/**
+ *This adapter helps for using recyclerView in FAQ class. In this adapter,
+ * questions and their answers are listed
+ * @author Zülal Nur Hıdıroğlu
+ * @version 1.0 (April 30, 2020) - completed
+ */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.PostHolder> {
 private ArrayList<String> questionList;
 private ArrayList<String> contentList;
@@ -43,7 +48,9 @@ public void onBindViewHolder(@NonNull PostHolder holder, int position) {
 public int getItemCount() {
     return questionList.size();
 }
-
+    /**
+     * This inner class initialize the tools which are used in layouts of the Faqactivity
+     */
 class PostHolder extends RecyclerView.ViewHolder {
     TextView questionText;
     TextView contentText;

@@ -1,8 +1,9 @@
 package com.example.aquaassistant.zulal;
-/*This class creates a fish
-* Zülal Nur Hıdıroğlu
-* 26.04.2020
-*/
+/**
+ *This class lists the specific information about the creature fish
+ * @author Zülal Nur Hıdıroğlu
+ * @version 1.0 (April 26, 2020) - completed
+ */
 public class Fish extends Animal implements Selectable {
     private String nameOfFish;
     private boolean selected;
@@ -30,19 +31,30 @@ public void setName(String name) {
     this.nameOfFish =name;
 
 }
-
+    /**
+     * This method gves the descrption about fish
+     * @return description
+     */
     public String getDescription() {
         return description;
     }
-
+    /**
+     * This method set a description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
-
+    /**
+     * This method gves the difficulty
+     * @return difficulty
+     */
     public String getDifficulty() {
         return difficulty;
     }
-
+    /**
+     * This method set difficulty
+     * @return numOfOther
+     */
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
