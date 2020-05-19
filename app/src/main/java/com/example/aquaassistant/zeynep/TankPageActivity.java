@@ -22,7 +22,13 @@ import com.example.aquaassistant.zulal.Creature;
 import com.r0adkll.slidr.Slidr;
 
 import java.util.Calendar;
-
+/**
+ * TankPageActivity Class - the activity that shows the tank information and
+ * provide user to delete the tank and go to edit tank page
+ * @author Zeynep Berber
+ * @contributor Fatma Sena Genç
+ * @version 1.0 (May 18, 2020) - completed
+ */
 public class TankPageActivity extends AppCompatActivity {
 
     Bitmap bitmap;
@@ -97,7 +103,12 @@ public class TankPageActivity extends AppCompatActivity {
         }
 
     }
-    //delete the tank when the user click o the delete button
+    /**
+     * This method is called when the user click on the delete button
+     * The tank is deleted by delete it from the database and also the notifs about this tank
+     * and the creatures in this tank is deleted from their databases
+     * @param view ensures that this method used by a view
+     */
     public void deleteTankBut(View view){
         //show an alert message
         AlertDialog.Builder sureDialog = new AlertDialog.Builder(TankPageActivity.this);
@@ -142,7 +153,11 @@ public class TankPageActivity extends AppCompatActivity {
         sureDialog.show();
     }
 
-    //edit the tank when the user click on the edit button
+    /**
+     * This method is called when the user click on the edit button and
+     * directs the user to the edit tank page.
+     * @param view ensures that this method used by a view
+     */
     public void editTankBut(View view){
         Intent intent = getIntent();
         String tankId = intent.getStringExtra("tankId");

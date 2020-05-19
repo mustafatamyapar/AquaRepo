@@ -16,7 +16,11 @@ import androidx.annotation.Nullable;
 import com.example.aquaassistant.R;
 import java.util.ArrayList;
 import java.util.Calendar;
-
+/**
+ * TanksAdapter Class - the adapter that shows the information of the tanks in the listview
+ * @author Zeynep Berber
+ * @version 1.0 (May 18, 2020) - completed
+ */
 public class TanksAdapter extends ArrayAdapter<Integer> {
     private ArrayList <Integer> idArray;
     private Activity context;
@@ -36,6 +40,14 @@ public class TanksAdapter extends ArrayAdapter<Integer> {
     @SuppressLint({"ViewHolder", "SetTextI18n","InflateParams"})
     @NonNull
     @Override
+    /**
+     * This method gets the information of the tank from database and shows them on the listview.
+     * If the hour is 23.59 the remaining days to water check is decreasing
+     * @param position the position of the grid
+     * @param convertView is the view
+     * @param parent the parent view
+     * @return the tanksView that inflates a view of the tank info
+     */
     public View getView( int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         //get the tanks view
         LayoutInflater layoutInflater = context.getLayoutInflater();

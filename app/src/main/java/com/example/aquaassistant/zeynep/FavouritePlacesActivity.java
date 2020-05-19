@@ -13,7 +13,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.example.aquaassistant.R;
 import java.util.ArrayList;
-
+/**
+ * FavouritePlacesActivity Class - the activity that lists the favourite places added by user
+ * and enable user to see these places on the map, remove them or add a new one
+ * @author Zeynep Berber
+ * @version 1.0 (May 13, 2020) - completed
+ */
 public class FavouritePlacesActivity extends AppCompatActivity {
     ListView favouritesList;
     static ArrayList<String> placeNames = new ArrayList<>();
@@ -70,12 +75,18 @@ public class FavouritePlacesActivity extends AppCompatActivity {
             }
         });
     }
+    /**
+     * This method directs the user to the map page to add a new place
+     * @param view ensures that this method used by a view
+     * */
     public void addNewPlace(View view){
         Intent intent2 = new Intent(FavouritePlacesActivity.this, MapsActivity.class);
         intent2.putExtra("condition", "add fav");
         startActivity(intent2);
     }
-
+    /**
+     * This method gets the id of the places from the database and put them into an arraylist
+     * */
     public void getId() {
         MapsActivity.favouritesDatabase = FavouritePlacesActivity.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
         Cursor idCur = MapsActivity.favouritesDatabase.rawQuery("SELECT * FROM places", null);

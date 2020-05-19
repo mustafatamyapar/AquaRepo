@@ -32,7 +32,12 @@ import com.r0adkll.slidr.Slidr;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
+/**
+ * EditTankActivity Class - the activity that provides buttons to edit tank
+ * by changing name, adding creature and removing creature
+ * @author Zeynep Berber
+ * @version 1.0 (May 18, 2020) - completed
+ */
 public class EditTankActivity extends AppCompatActivity {
     TextView editTank;
     Button changeName, addCreature ,removeCreature ;
@@ -71,7 +76,10 @@ public class EditTankActivity extends AppCompatActivity {
         smallImage.compress(Bitmap.CompressFormat.PNG,50,outputStream);
         emptyByteArray = outputStream.toByteArray();
     }
-
+    /**
+     * This method changes the tank name by updating the tanks database and notifs database
+     * @param view ensures that this method used by a view
+     */
     public void changeTankName(View view){
         AlertDialog.Builder changeName = new AlertDialog.Builder(EditTankActivity.this);
         changeName.setTitle("Change The Tank Name");
@@ -114,12 +122,24 @@ public class EditTankActivity extends AppCompatActivity {
         });
         changeName.show();
     }
+
+    /**
+     * This method is being called from the "Remove Creature" button and
+     * directs the user to the removeCreatureActivity page
+     * @param view ensures that this method used by a view
+     */
     public void removeCreature(View view){
         Intent intent = new Intent(EditTankActivity.this , RemoveCreatureActivity.class);
         intent.putExtra("tankId", tankId);
         startActivity(intent);
     }
     @SuppressLint("SetTextI18n")
+    /**
+     * This method is being called from the "Add Creature" button and
+     * opens an alertDialog that shows the options - fish,plant and other-
+     * to choose one of them and add it to tank
+     * @param view ensures that this method used by a view
+     */
     public void addCreature(View view){
         //show the window to choose a creature to be added
         AlertDialog.Builder chooseCreature = new AlertDialog.Builder(EditTankActivity.this);
@@ -133,7 +153,14 @@ public class EditTankActivity extends AppCompatActivity {
             choose.dismiss();
         }
     }
-
+    /**
+     * This method is being called from the "Fish" button which is in the alertDialog
+     * that addCrature method created and adds a "fish" type creature in the creature database by
+     * getting the name and picture of the fish and
+     * increases the current fish count in the tank by updating tanks database
+     * If user does not want to add a picture, the image of the fish is arranged as a default picture
+     * @param view ensures that this method used by a view
+     */
     public void addFishBut(View view){
         AlertDialog.Builder setName = new AlertDialog.Builder(EditTankActivity.this);
         setName.setTitle("Fish Name");
@@ -263,6 +290,14 @@ public class EditTankActivity extends AppCompatActivity {
         });
         setName.show();
     }
+    /**
+     * This method is being called from the "Plant" button which is in the alertDialog
+     * that addCrature method created and adds a "plant" type creature in the creature database by
+     * getting the name and picture of the plant and
+     * increases the current plant count in the tank by updating tanks database
+     * If user does not want to add a picture, the image of the plant is arranged as a default picture
+     * @param view ensures that this method used by a view
+     */
     public void addPlantBut(View view){
         AlertDialog.Builder setName = new AlertDialog.Builder(EditTankActivity.this);
         setName.setTitle("Plant Name");
@@ -392,6 +427,14 @@ public class EditTankActivity extends AppCompatActivity {
         });
         setName.show();
     }
+    /**
+     * This method is being called from the "Other" button which is in the alertDialog
+     * that addCrature method created and adds a "other" type creature in the creature database by
+     * getting the name and picture of the other creature and
+     * increases the current other creatures count in the tank by updating tanks database
+     * If user does not want to add a picture, the image of the creature is arranged as a default picture
+     * @param view ensures that this method used by a view
+     */
     public void addOtherBut(View view){
         AlertDialog.Builder setName = new AlertDialog.Builder(EditTankActivity.this);
         setName.setTitle("Creature Name");
@@ -522,6 +565,12 @@ public class EditTankActivity extends AppCompatActivity {
         setName.show();
     }
     @Override
+    /**
+     * This method opens the gallery is the permission is granted from the user
+     * @param requestCode is the code that we determine for the permission
+     * @param permissions is the permissions that application wants
+     * @param grantResults is the result of the granting
+     */
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         // go to the gallery if the permission granted
         if (requestCode == 1) {
@@ -534,6 +583,12 @@ public class EditTankActivity extends AppCompatActivity {
     }
 
     @Override
+    /**
+     * This method gets the image that user have chosen from the gallery
+     * @param requestCode is the code that we determine for the permission
+     * @param resultCode is whether the user chose an image or not
+     * @param grantResults data the image that user have chosen
+     */
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         //get the selected image when the galery open
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
@@ -554,6 +609,11 @@ public class EditTankActivity extends AppCompatActivity {
         inform.show();
         super.onActivityResult(requestCode, resultCode, data);
     }
+    /**
+     * This method makes the images smaller to ensure that it does not lead to a problem in database
+     * @param image is the image that will be made smaller
+     * @param maximumSize is the maximum size of image
+     * */
     public Bitmap makeSmallerImage(Bitmap image, int maximumSize) {
         //get the size of image
         int width = image.getWidth();

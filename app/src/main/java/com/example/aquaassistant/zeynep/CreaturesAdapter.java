@@ -21,7 +21,12 @@ import androidx.annotation.Nullable;
 import com.example.aquaassistant.R;
 import java.util.ArrayList;
 import static androidx.core.content.ContextCompat.startActivities;
-
+/**
+ * CreaturesAdapter Class - the Adapter class that show the creatures in the tank
+ * and remove them if user click on the creature
+ * @author Zeynep Berber
+ * @version 1.0 (May 10, 2020) - completed
+ */
 public class CreaturesAdapter extends ArrayAdapter<Integer> {
     private ArrayList<Integer> creatureIdArray;
     private Activity context;
@@ -37,6 +42,16 @@ public class CreaturesAdapter extends ArrayAdapter<Integer> {
 
     @NonNull
     @Override
+    /**
+     * This method gets the name and image of the creatures, puts them on a gridview and set a
+     * clicklistener to the imagebutton of the creature that enables user to remove the creature
+     * from the tank when the user click on the image by deleting it from the creature database and
+     * updating tanks database by decreasing the creature count depending on the creature type.
+     * @param position the position of the grid
+     * @param convertView is the view
+     * @param parent the parent view
+     * @return the creatureRemoveView that inflates a view of one creature image and name
+     */
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         //get the tanks view
         LayoutInflater layoutInflater = context.getLayoutInflater();

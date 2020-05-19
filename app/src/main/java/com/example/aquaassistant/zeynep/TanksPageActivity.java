@@ -24,7 +24,13 @@ import com.example.aquaassistant.zulal.AquariumContainer;
 import com.r0adkll.slidr.Slidr;
 
 import java.util.ArrayList;
-
+/**
+ * TanksPageActivity Class - the activity that shows the list view and provide
+ * user to add a new tank
+ * @author Zeynep Berber
+ * @contributor Fatma Sena Genç
+ * @version 1.0 (May 18, 2020) - completed
+ */
 public class TanksPageActivity extends AppCompatActivity {
     ListView listView;
     AllContainers allContainers;
@@ -72,7 +78,14 @@ public class TanksPageActivity extends AppCompatActivity {
         //get the id numbers and put them into arraylist
         getData();
     }
-
+    /**
+     * This method is called when the user click on the add tank button
+     * and ask for the name and size of tank.
+     * Tank is added to the database with the default creature count values and the
+     * remaining times to the water check and feeding
+     * Also a notif is added to the notifs database
+     * @param view ensures that this method used by a view
+     */
     public void addTankBut(View view) {
         try {
             AlertDialog.Builder alert = new AlertDialog.Builder(TanksPageActivity.this);
@@ -121,7 +134,7 @@ public class TanksPageActivity extends AppCompatActivity {
                             sqLiteStatement.bindString(8, String.valueOf(R.drawable.aquarium));
                             sqLiteStatement.execute();
                             tanksAdapter.notifyDataSetChanged();
-                            Intent intent = new Intent(TanksPageActivity.this , TanksPageActivity.class);
+
                             //This section creates the notification to feed the creatures as soon as a tank is created
                             ToDoListPage.notifDatabase = TanksPageActivity.this.openOrCreateDatabase("Notifs",MODE_PRIVATE,null);
                             ToDoListPage.notifDatabase.execSQL("CREATE TABLE IF NOT EXISTS notifs (id INTEGER PRIMARY KEY, notifText VARCHAR, tankName VARCHAR)");
@@ -129,7 +142,8 @@ public class TanksPageActivity extends AppCompatActivity {
                             SQLiteStatement notifStatement = ToDoListPage.notifDatabase.compileStatement(notifSQLString);
                             notifStatement.bindString(1, tName);
                             notifStatement.execute();
-                            //
+
+                            Intent intent = new Intent(TanksPageActivity.this , TanksPageActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         }
@@ -156,7 +170,10 @@ public class TanksPageActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
+    /**
+     * This method gets the id of the tanks and put them into an arraylist to be able to
+     * show them on a listview
+     */
     public void getData() {
         try {
             SQLiteDatabase tanksDatabase = TanksPageActivity.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);

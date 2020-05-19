@@ -9,7 +9,12 @@ import android.widget.GridView;
 import com.example.aquaassistant.R;
 import com.r0adkll.slidr.Slidr;
 import java.util.ArrayList;
-
+/**
+ * RemoveCreatureActivity Class - the activity that sends the creature database info via an arraylist
+ * to the creaturesAdapter to be able to show and remove.
+ * @author Zeynep Berber
+ * @version 1.0 (May 18, 2020) - completed
+ */
 public class RemoveCreatureActivity extends AppCompatActivity {
     String tankId ;
     ArrayList<Integer> creaturesId;

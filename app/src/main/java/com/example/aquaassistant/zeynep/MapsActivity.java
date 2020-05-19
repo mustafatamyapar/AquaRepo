@@ -30,7 +30,12 @@ import java.util.Locale;
 
 import static com.google.android.gms.maps.model.BitmapDescriptorFactory.HUE_AZURE;
 import static com.google.android.gms.maps.model.BitmapDescriptorFactory.HUE_VIOLET;
-
+/**
+ * MapsActivity Class - the map activity that shows the user location and
+ * add a new favourite when the user click on the map long
+ * @author Zeynep Berber
+ * @version 1.0 (May 13, 2020) - completed
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
     private GoogleMap mMap;
@@ -53,6 +58,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
+    /**
+     * This method is used when the map is ready.
+     * By this method, the location of the user is found and a marker is putted on this location and
+     * zoom on the location.
+     * If user enters the map to show a favourite place, map shows the favourite location by a heart marker
+     * @param googleMap is used map services
+     */
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapLongClickListener(this);
@@ -110,6 +122,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     @Override
+    /**
+     * This method is called when the location permission granted
+     * By this method, the location of the user is found and marker is putted on this location and
+     * zoom on the location.
+     * If user enters the map to show a favourite place, map shows the favourite location by a heart marker
+     * @param requestCode is the code that we determine for the permission
+     * @param permissions is the permissions that application wants
+     * @param grantResults is the result of the granting
+     */
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (grantResults.length > 0 && requestCode == 1) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -146,6 +167,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     @Override
+    /**
+     * This method is called when the user long click on a location.
+     * The location is saved as a favourite by inserting into places database and places arraylist.
+     * If the map is already showing a favourite place, user cannot add another place on this map.
+     * @param latLng is the location that user long clicked on.
+     */
     public void onMapLongClick(LatLng latLng) {
         Geocoder geocoder = new Geocoder(MapsActivity.this, Locale.getDefault());
         intent = getIntent();
