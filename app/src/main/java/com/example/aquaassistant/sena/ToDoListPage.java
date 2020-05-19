@@ -76,8 +76,44 @@ public class ToDoListPage extends AppCompatActivity {
                                 SQLStatement.bindString(1, String.valueOf(position));
                                 SQLStatement.execute();
 
+                                String currentExperience = "";
+                                String newExperience;
+                                SQLiteDatabase experienceDatabase = ToDoListPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
+                                Cursor cursor = experienceDatabase.rawQuery("SELECT * FROM experience WHERE id = 1", null);
+                                while(cursor.moveToNext()){
+                                    currentExperience = cursor.getString(cursor.getColumnIndex("experience"));
+                                }
+                                cursor.close();
+                                newExperience = String.valueOf(Integer.parseInt(currentExperience)+50);
+                                Ranks.Experience = newExperience;
+                                String sqlSta = "UPDATE experience SET experience = ? WHERE id = 1";
+                                SQLiteStatement update = experienceDatabase.compileStatement(sqlSta);
+                                update.bindString(1,newExperience);
+                                update.execute();
+                                System.out.println(newExperience);
                                 notifArray.remove(position);
                                 notifAdapter.notifyDataSetChanged();
+
+                                if(newExperience.matches("50")){
+                                    System.out.println(newExperience);
+                                    Ranks.Experience = newExperience;
+                                    Ranks.RANK = "Intermediate";
+                                }
+                                else if(newExperience.matches("100")){
+                                    Ranks.Experience = newExperience;
+                                    System.out.println(newExperience);
+                                    Ranks.RANK = "Advanced";
+                                }
+                                else if(newExperience.matches("150")){
+                                    Ranks.Experience = newExperience;
+                                    System.out.println(newExperience);
+                                    Ranks.RANK = "Expert";
+                                }
+                                else{
+                                    Ranks.Experience = newExperience;
+                                    System.out.println(newExperience+ " YEEHA");
+                                    Ranks.RANK = "Fish";
+                                }
                             }
                         });
                         alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -95,4 +131,3 @@ public class ToDoListPage extends AppCompatActivity {
         }
     }
 }
-

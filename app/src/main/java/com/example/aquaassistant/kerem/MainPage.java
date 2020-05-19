@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.aquaassistant.R;
@@ -39,6 +38,7 @@ import es.dmoral.toasty.Toasty;
 
 
 public class MainPage extends AppCompatActivity {
+
     private Button tanksButton;
     private Button profileButton;
     private Button settingButton;
@@ -47,8 +47,9 @@ public class MainPage extends AppCompatActivity {
     private TextView usernameDisplay;
     private ImageButton imageButtonProfilePicture;
     private TextView rankDisplay;
-    private long backPressedTime;
-    private Toast backToast;
+
+    public static SQLiteDatabase experienceDatabase;
+
 
     @Override
     protected void onResume() {
@@ -76,6 +77,8 @@ public class MainPage extends AppCompatActivity {
         } else {
             imageButtonProfilePicture.setImageResource(R.drawable.emptypicture);
         }
+        experienceDatabase = MainPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
+        experienceDatabase.execSQL("CREATE TABLE IF NOT EXISTS experience (id INTEGER PRIMARY KEY , experience VARCHAR)");
     }
 
     @Override
@@ -90,6 +93,15 @@ public class MainPage extends AppCompatActivity {
         usernameDisplay = findViewById(R.id.textView8);
         imageButtonProfilePicture = findViewById(R.id.imageButton5);
         rankDisplay = findViewById(R.id.textView9);
+
+        experienceDatabase = MainPage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
+        experienceDatabase.execSQL("CREATE TABLE IF NOT EXISTS experience (id INTEGER PRIMARY KEY , experience VARCHAR)");
+        String sqlString = "INSERT INTO experience (experience) VALUES (?)";
+        SQLiteStatement sqLiteStatement =experienceDatabase.compileStatement(sqlString);
+        sqLiteStatement.bindString(1, "0");
+        sqLiteStatement.execute();
+
+
 
         rankDisplay.setText(Ranks.RANK);
 
@@ -120,18 +132,6 @@ public class MainPage extends AppCompatActivity {
 
         Slidr.attach(this);
 
-    }
-
-    public void onBackPressed() {
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            backToast.cancel();
-            super.onBackPressed();
-            return;
-        } else {
-            backToast = Toasty.info(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
-            backToast.show();
-        }
-        backPressedTime = System.currentTimeMillis();
     }
 
     public void openSettings(View view) {

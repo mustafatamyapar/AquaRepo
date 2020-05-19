@@ -47,7 +47,9 @@ public class ProfilePage extends AppCompatActivity {
     private Button settingsButton;
     private TextView usernameDisplay;
     private ImageView profilePicture;
-    private TextView rankDisplay;
+    public static TextView rankDisplay;
+    public static TextView experienceDisplay;
+    public static SQLiteDatabase experienceDatabase;
 
     @Override
     protected void onResume() {
@@ -74,6 +76,7 @@ public class ProfilePage extends AppCompatActivity {
         } else {
             profilePicture.setImageResource(R.drawable.emptypicture);
         }
+        rankDisplay.setText(Ranks.RANK);
     }
 
     @Override
@@ -85,9 +88,18 @@ public class ProfilePage extends AppCompatActivity {
         usernameDisplay = findViewById(R.id.textView6);
         profilePicture = findViewById(R.id.imageView2);
         rankDisplay = findViewById(R.id.textView11);
+        experienceDisplay = findViewById(R.id.textView5);
 
+        experienceDisplay.setText(Ranks.Experience);
         rankDisplay.setText(Ranks.RANK);
 
+        experienceDatabase = ProfilePage.this.openOrCreateDatabase("Experience", MODE_PRIVATE,null);
+        Cursor cursor = experienceDatabase.rawQuery("SELECT * FROM experience WHERE id = 1", null);
+        while(cursor.moveToNext()){
+            Ranks.Experience = cursor.getString(cursor.getColumnIndex("experience"));
+            System.out.println( cursor.getString(cursor.getColumnIndex("experience")));
+        }
+        cursor.close();
         //section below is to display the username
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user.getDisplayName() != null) {
@@ -124,12 +136,12 @@ public class ProfilePage extends AppCompatActivity {
         Intent intentToMain = new Intent ( ProfilePage.this, MainActivity.class);
         startActivity(intentToMain);
     }
-    public void openTanks(View view) {
-        Intent intent = new Intent(this, TanksPageActivity.class);
-        startActivity(intent);
-    }
     public void goCreatures(View view) {
         Intent intent = new Intent(this, Creature.class);
+        startActivity(intent);
+    }
+    public void openTanks(View view) {
+        Intent intent = new Intent(this, TanksPageActivity.class);
         startActivity(intent);
     }
 
