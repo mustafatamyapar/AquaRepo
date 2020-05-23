@@ -41,6 +41,13 @@ import java.net.URL;
 
 import es.dmoral.toasty.Toasty;
 
+/**
+ * ChangeProfilePicture Class - the activity to change profile picture
+ * @author Fatma Sena Genç
+ * @version 1.0 (May 16, 2020)
+ * @version 2.0 (May 17, 2020) - completed
+ */
+
 public class ChangeProfilePicture extends AppCompatActivity {
     Bitmap chosenImageBitmap;
     Uri chosenImageUri;
@@ -48,6 +55,9 @@ public class ChangeProfilePicture extends AppCompatActivity {
     Button choosePicture;
 
     @Override
+    /**
+     * onCreate - called when the activity is started
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_profile_picture);
@@ -74,7 +84,12 @@ public class ChangeProfilePicture extends AppCompatActivity {
         Slidr.attach(this);
     }
 
+    /**
+     * chooseNewPicture - navigates user to gallery to choose a picture
+     * @param view
+     */
     public void chooseNewPicture(View view) {
+        //asks for permission for accessing gallery
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         } else {
@@ -83,6 +98,7 @@ public class ChangeProfilePicture extends AppCompatActivity {
         }
     }
 
+    //related to permission & opening gallery
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == 1) {
@@ -94,9 +110,11 @@ public class ChangeProfilePicture extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    //related to permission & opening gallery
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
+            //makes the image view the chosen image
             final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             chosenImageUri = data.getData();
             try {
@@ -111,6 +129,7 @@ public class ChangeProfilePicture extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            //putting the profile picture to the firebase storage, using the uid
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
             StorageReference reference = FirebaseStorage.getInstance().getReference()
@@ -121,6 +140,7 @@ public class ChangeProfilePicture extends AppCompatActivity {
                     .setPhotoUri(chosenImageUri)
                     .build();
 
+            //updating user profile page
             user.updateProfile(profilePictureChangeRequest)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

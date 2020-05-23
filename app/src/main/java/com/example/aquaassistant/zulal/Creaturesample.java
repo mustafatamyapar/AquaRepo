@@ -40,7 +40,13 @@ import com.r0adkll.slidr.Slidr;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
+/**
+ *This activity lists the specific information about the creature and there are
+ * buttons to make changes about the creatures. User can update the profle photo of the
+ * creature with this activity
+ * @author Zülal Nur Hıdıroğlu
+ * @version 1.0 (May 19, 2020) - completed
+ */
 public class Creaturesample extends AppCompatActivity {
     //variables
     ImageView creatureImage;
@@ -61,6 +67,12 @@ public class Creaturesample extends AppCompatActivity {
     Bitmap selectedImage;
     AlertDialog.Builder inform;
 
+    /**
+     * In this method, tools are initialized. Also the picture of the creature is added
+     * to imageView with the help of byteArrays and SQLite Database.
+     *  In extra, an empty picture which is used when user remove creature is put into byte Array.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +111,11 @@ public class Creaturesample extends AppCompatActivity {
         showInfo();
 
     }
-
+    /**
+     * This method shows a Alert Dialog to user taht user can write the new name
+     * of the creature. After writng the new name, it is updated in creatures database.
+     * @param view this method is used by a view.
+     */
     public void changeName(View view) {
         AlertDialog.Builder alert = new AlertDialog.Builder(Creaturesample.this);
         alert.setTitle("Change name");
@@ -134,7 +150,11 @@ public class Creaturesample extends AppCompatActivity {
         });
         alert.show();
     }
-
+    /**
+     * This method, takes user to the enecylopedia page according to the type of the creature
+     * that is found with SQLite Database
+     * @param view this method is used by a view.
+     */
     public void goEncyclopedia(View view) {
         try {
             SQLiteDatabase goEncycDb = Creaturesample.this.openOrCreateDatabase("Creatures", MODE_PRIVATE, null);
@@ -157,7 +177,10 @@ public class Creaturesample extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Ths method removes the creature from creature and tank database with updating numbers.
+     * @param view this method is used by a view.
+     */
     public void removeCreature(View view) {
         final SQLiteDatabase removeCreature = Creaturesample.this.openOrCreateDatabase("Creatures", MODE_PRIVATE, null);
         final SQLiteDatabase removeTank = Creaturesample.this.openOrCreateDatabase("Tanks", MODE_PRIVATE, null);
@@ -233,7 +256,12 @@ public class Creaturesample extends AppCompatActivity {
         remove.show();
 
     }
-
+    /**
+     * With the help of this method, when user clicks on the picture of the creature, the profile
+     * picture can be updated. Or when user clicks on remove, with the help of SQLite DAtabase ,
+     * empty picture can be used.
+     * @param view this method is used by a view.
+     */
     public void imageClicked(View view) {
         AlertDialog.Builder imageChange = new AlertDialog.Builder(Creaturesample.this);
         imageChange.setTitle("Change photo");
@@ -322,7 +350,12 @@ public class Creaturesample extends AppCompatActivity {
         });
         imageChange.show();
     }
-
+    /**
+     * This method helps user to go to gallery
+     * @param requestCode that is created accoring to the answer that user has given
+     * @param permissions
+     * @param grantResults
+     */
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         // go to the gallery if the permission granted
         if (requestCode == 1) {
@@ -354,6 +387,11 @@ public class Creaturesample extends AppCompatActivity {
         inform.show();
         super.onActivityResult(requestCode, resultCode, data);
     }
+    /**
+     * This method makes the picture smaller that s taken from gallery
+     * @param maximumSize thah user wants to see the image
+     * @param image which is uploaded by the user
+     */
 
     public Bitmap makeSmallerImage(Bitmap image, int maximumSize) {
         //get the size of image

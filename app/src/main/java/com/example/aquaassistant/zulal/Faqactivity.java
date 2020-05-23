@@ -10,13 +10,21 @@ import com.example.aquaassistant.R;
 import com.r0adkll.slidr.Slidr;
 
 import java.util.ArrayList;
-
+/**
+ *This activity lists FAQ with the help of the recycler View
+ * @author Zülal Nur Hıdıroğlu
+ * @version 1.0 (April 30, 2020) - completed
+ */
 public class Faqactivity extends AppCompatActivity {
 ArrayList<String> faqArrayList;
 ArrayList<String> questions;
 RecyclerAdapter myAdapter;
 RecyclerView recyclerView;
 
+    /**
+     * This method lists FAQ through ArrayList
+     * @param savedInstanceState
+     */
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {

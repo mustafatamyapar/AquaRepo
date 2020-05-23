@@ -22,6 +22,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 import es.dmoral.toasty.Toasty;
 
+/**
+ * ChangePassword Class - the activity to change password
+ * @author Fatma Sena Genç
+ * @version 1.0 (May 12, 2020)
+ * @version 2.0 (May 16, 2020) - reauthentication added
+ * @version 3.0 (May 17, 2020) - completed, reauthentication working fine
+ */
 
 public class ChangePassword extends AppCompatActivity {
 
@@ -32,6 +39,9 @@ public class ChangePassword extends AppCompatActivity {
     Button savePassword;
 
     @Override
+    /**
+     * onCreate - called when the activity is started
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
@@ -44,7 +54,10 @@ public class ChangePassword extends AppCompatActivity {
         oldPassword = findViewById(R.id.editText4);
     }
 
-    //the newly entered password will be saved as the new password when the button is clicked
+    /**
+     * saveNewPassword - updates user's password
+     * @param view
+     */
     public void saveNewPassword(View view) {
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentPassword = oldPassword.getText().toString();

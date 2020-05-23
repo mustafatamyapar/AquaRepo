@@ -4,10 +4,11 @@
     import java.util.Calendar;
     import java.util.Iterator;
 
-    /*This class creates a tank with fish, plant and other creatures
-     * Zülal Nur Hıdıroğlu
-     * 26.04.2020
-     */
+/**
+ *This class creates a tank with fish, plant and other creatures
+ * @author Zülal Nur Hıdıroğlu
+ * @version 1.0 (April 26, 2020) - completed
+ */
     public class AquariumContainer extends Animal implements Serializable {
 
         //Properties
@@ -33,6 +34,7 @@
             this.oneTank = new ArrayList<>();
             iterator = oneTank.iterator();
         }
+
         public AquariumContainer( String name , int size , int pictureInteger)
         {
             super();
@@ -59,15 +61,21 @@
             selected = false;
         }
 
-            //methods
-            //set the tank size
-            public void setSize ( int liter){
+    /**
+     * This method sets the size of the tank
+     * @param liter capacity of the tank
+     */
+
+            public void setSize ( int liter) {
                 this.liter = liter;
             }
-            //get the tank size
-            public int getSize () {
-                return liter;
-            }
+    /**
+     * This method gives the size of the tank
+     * @return  liter
+     */
+    public int getSize () {
+        return liter;
+    }
             //set tank name
             public void setTankName (String tankName){
                 name = tankName;
@@ -137,19 +145,25 @@
                     }
                 }
             }
-            //add plant to the tank
-            public void addPlant (Plant plant)
-            {
+    /**
+     * This method adds a new plant to tank
+     */
+    public void addPlant (Plant plant) {
                 oneTank.add(plant);
                 numOfPlant++;
             }
-            //add fish to the tank
-            public void addFish (Fish fish){
+    /**
+     * This method adds a new fish to tank
+
+     */
+    public void addFish (Fish fish){
                 oneTank.add(fish);
                 numOfFish++;
             }
-            //add other creatures to the tank
-            public void addOther (OtherCreatures other){
+    /**
+     * This method adds an other creature into tank
+     */
+    public void addOther (OtherCreatures other){
                 oneTank.add(other);
                 numOfOthers++;
             }
@@ -178,9 +192,10 @@
                 return id;
             }
 
-            //remove all the animals
-            public void removeAll ()
-            {
+    /**
+     * This method removes the selected creatures from the tank
+     */
+    public void removeAll () {
                 Selectable temp;
                 for (int i = 0; i < oneTank.size(); i++) {
                     temp = (Selectable) oneTank.get(i);
@@ -189,9 +204,11 @@
                     }
                 }
             }
-            // number of all fishes in the tank
-            public int allFishes ()
-            {
+    /**
+     * This method returns the number of other fish inthe tank
+     * @return numOfFishes
+     */
+    public int allFishes () {
                 int numOfFishes = 0;
                 for (int i = 0; i < oneTank.size(); i++) {
                     if (oneTank.get(i).typeOfCreature().equals("fish"))
@@ -199,9 +216,11 @@
                 }
                 return numOfFishes;
             }
-            //number of all plants in the tank
-            public int allPlants ()
-            {
+    /**
+     * This method returns the number of plants in the tank
+     * @return numOfPlant
+     */
+    public int allPlants () {
                 int numOfPlants = 0;
                 for (int i = 0; i < oneTank.size(); i++) {
                     if (oneTank.get(i).typeOfCreature().equals("Plant"))
@@ -209,8 +228,11 @@
                 }
                 return numOfPlants;
             }
-            //number of all other creature in the tank
-            public int allOthers ()
+    /**
+     * This method returns the number of other creatures
+     * @return numOfOther
+     */
+    public int allOthers ()
             {
                 int numOfOthers = 0;
                 for (int i = 0; i < oneTank.size(); i++) {

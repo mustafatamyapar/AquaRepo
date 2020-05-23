@@ -21,6 +21,12 @@ import com.r0adkll.slidr.Slidr;
 
 import es.dmoral.toasty.Toasty;
 
+/**
+ * ChangeUsername Class - the activity to change username
+ * @author Fatma Sena Genç
+ * @version 1.0 (May 16, 2020)
+ */
+
 public class ChangeUsername extends AppCompatActivity {
 
     EditText editTextUsername;
@@ -28,6 +34,9 @@ public class ChangeUsername extends AppCompatActivity {
     String username = null;
 
     @Override
+    /**
+     * onCreate - called when the activity is started
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_username);
@@ -37,14 +46,17 @@ public class ChangeUsername extends AppCompatActivity {
         saveUsername = findViewById(R.id.saveUsername);
     }
 
-    //this method updates the username
+    /**
+     * saveNewUsername - updates username
+     * @param view
+     */
     public void saveNewUsername(View view) {
         username = editTextUsername.getText().toString();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         UserProfileChangeRequest usernameRequest = new UserProfileChangeRequest.Builder()
                 .setDisplayName(username)
                 .build();
-
+        //requests a change in user profile
         user.updateProfile(usernameRequest)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

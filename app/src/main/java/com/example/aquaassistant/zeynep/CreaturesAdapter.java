@@ -33,7 +33,6 @@ public class CreaturesAdapter extends ArrayAdapter<Integer> {
     private SQLiteDatabase creaturesDatabase, tanksDatabase;
     private String tankId, numOfFish, numOFPlant, numOfOther;
 
-
     CreaturesAdapter(ArrayList<Integer> creatureIdArray, Activity context) {
         super(context, R.layout.creatures_remove_view, creatureIdArray);
         this.context = context;

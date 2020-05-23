@@ -27,6 +27,12 @@ import com.r0adkll.slidr.Slidr;
 
 import es.dmoral.toasty.Toasty;
 
+/**
+ * DeleteAccount Class - the activity to delete account
+ * @author Fatma Sena Genç
+ * @version 1.0 (May 17, 2020)
+ */
+
 public class DeleteAccount extends AppCompatActivity {
     Button deleteButton;
     EditText getEmail;
@@ -35,6 +41,9 @@ public class DeleteAccount extends AppCompatActivity {
     TextView textView12;
 
     @Override
+    /**
+     * onCreate - called when the activity is started
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_account);
@@ -47,13 +56,18 @@ public class DeleteAccount extends AppCompatActivity {
         textView12 = findViewById(R.id.textView12);
     }
 
+    /**
+     * deleteAccount - deletes the account from database, also deletes its saved information on database
+     * @param view
+     */
+
     public void deleteAccount(View view) {
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String uid = user.getUid();
         String userPassword = getPassword.getText().toString();
         String userEMail = getEmail.getText().toString();
         AuthCredential credential = EmailAuthProvider.getCredential(userEMail, userPassword);
-        user.reauthenticate(credential)
+        user.reauthenticate(credential) //reauthentication required
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -69,6 +83,7 @@ public class DeleteAccount extends AppCompatActivity {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
                                                             if (task.isSuccessful()) {
+                                                                //deletes profile picture from the database
                                                                 Toasty.success(getApplicationContext(), "Account deleted.", Toast.LENGTH_LONG).show();
                                                                 Intent intentToMain = new Intent(DeleteAccount.this, MainActivity.class);
                                                                 startActivity(intentToMain);

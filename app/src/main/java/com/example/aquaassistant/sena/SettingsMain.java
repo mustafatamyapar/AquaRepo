@@ -23,12 +23,24 @@ import com.google.firebase.storage.StorageReference;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
+import es.dmoral.toasty.Toasty;
+
+/**
+ * SettingsMain Class - settings page
+ * @author Fatma Sena Genç
+ * @version 1.0 (April 30, 2020) - partially complete, buttons available
+ * @version 2.0 (May 16, 2020) - profile update functions working
+ * @version 3.0 (May 19, 2020) - completed
+ */
+
 public class SettingsMain extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private SlidrInterface slidr;
 
-
     @Override
+    /**
+     * onCreate - called when the activity is started
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settingsmain);
@@ -36,27 +48,57 @@ public class SettingsMain extends AppCompatActivity {
         slidr = Slidr.attach(this);
     }
 
+    //following moments are for navigation
+
+    /**
+     * changeUsernamePage - navigates to the activity for changing username
+     * @param view
+     */
     public void changeUsernamePage(View view) {
         Intent intent = new Intent(getApplicationContext(), ChangeUsername.class);
         startActivity(intent);
     }
+
+    /**
+     * changePasswordPage - navigates to the activity for changing password
+     * @param view
+     */
     public void changePasswordPage(View view) {
         Intent intent = new Intent(getApplicationContext(), ChangePassword.class);
         startActivity(intent);
     }
+
+    /**
+     * changeEmailPage - navigates to the activity for changing e-mail
+     * @param view
+     */
     public void changeEmailPage(View view) {
         Intent intent = new Intent(getApplicationContext(), ChangeEmail.class);
         startActivity(intent);
     }
+
+    /**
+     * changeProfilePicturePage - navigates to the activity for changing profile picture
+     * @param view
+     */
     public void changeProfilePicturePage(View view) {
         Intent intent = new Intent(getApplicationContext(), ChangeProfilePicture.class);
         startActivity(intent);
     }
+
+    /**
+     * deleteAccountPage - navigated to the activity for deleting account
+     * @param view
+     */
     public void deleteAccountPage (View view) {
         Intent intent = new Intent(getApplicationContext(), DeleteAccount.class);
         startActivity(intent);
     }
 
+    /**
+     * openCredits - opens an alert dialog that includes credits information
+     * @param view
+     */
     public void openCredits(View view) {
         AlertDialog.Builder alert = new AlertDialog.Builder(SettingsMain.this);
         alert.setTitle("Credits");
@@ -75,12 +117,23 @@ public class SettingsMain extends AppCompatActivity {
         alert.show();
     }
 
+    /**
+     * lockSlide - disables slide feature
+     * @param v
+     */
     public void lockSlide(View v) {
         slidr.lock();
-
+        Toasty.success(SettingsMain.this, "Slider feature is locked!", Toast.LENGTH_LONG).show();
     }
+
+    /**
+     * unlockSlide - enables slide feature
+     * @param v
+     */
 
     public void unlockSlide(View v) {
         slidr.unlock();
+        Toasty.success(SettingsMain.this, "Slider feature is unlocked!", Toast.LENGTH_LONG).show();
+
     }
 }
