@@ -9,7 +9,7 @@ The information and code in this repository are submitted in partial fulfillment
 ## Project Description
 AquAssistant,android mobile application for Android, aims to help people who have aquariums
 or who want to have aquariums. Our application provides help and guidance to the users through
-their experience.It reminds users about feeding schedule,water change schedule,finding a vet and finding useful information about some freshwater species.
+their experience.It helps users about feeding schedule,water change schedule,finding a vet, listing user's species,listing user's tanks and finding useful information about freshwater species.
    
 ## Project Status
 + **Group/project Selection:** completed (13/02/2020)
