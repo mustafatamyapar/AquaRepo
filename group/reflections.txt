@@ -1,0 +1,35 @@
+****
+Reflections
+****
+While collaborating with others obviously makes the whole thing so much easier, you trade that ease with the outcome 
+not %100 being yours. There are obviously some disagreements that needed to be taken care of and we believe we accomplished 
+that. At times, we can compare ourselves with the other members of the group and get disappointed in ourselves. Having to 
+have meetings in a previously appointed time has been weird in the context of zoom. Also sometimes, having a whole group 
+depending on a person to finish a certain part of the project to keep going is stressful and even more so when one of us 
+can’t seem to do what they are asked to do in the first place. As a group, we got along well and we were prone to being 
+distracted sometimes but we managed to handle it throughout the project.
+
+The project was useful in plenty ways. First, we have learned the basics of Android Studio such as how to create a project, 
+how to use views such as recycler view and grid view and how to interact the pages with each other. Then accordingly we 
+have improved our skills in terms of getting used to other integrated development environments rather than DrJava and 
+cooperating with other people. This process also provided us with enhanced problem-solving capabilities, for example, in 
+case of conflict over the code written by different group members. It also has improved our individual learning skills 
+since we have learned the path to develop an android application individually. Thus, we benefit from this group project 
+to a great extent.
+
+We have spent almost 5 weeks for completing our project. Two or three weeks of the preparation of the project was used 
+for learning the basics of the Android Studio through Udemy. Also, before learning everything though Udemy, we have 
+started to create our codes with OOP, however, we have realized that we should use the database to store our information. 
+Therefore, we have lost almost 1 week for this. The most challenging part of our project was to figure out creating an 
+application by using Android Studio since it was the most time consuming aspect.
+
+While finalising the code, we got some troubles with databases. We could’ve add tanks and creatures to an online database 
+at the beginning, but we couldn’t initialize that structure while writing the code for that. Also, in to do list section, 
+it would be better if we did not use SQL to execute its actions. In design, to make our application visually more 
+appealing, we could’ve add real-time aquarium animation which changes visually by fishes added by the user.
+
+As our project group, we are pretty much proud of what we accomplished. At the start of the project, we were not expecting 
+what we have now. We worked as much as we can. As a group, we always were in contact with each other. It makes us feel 
+great that we made our users' lives more comfortable and that our users will be less concerned about their creatures' 
+lives. Furthermore, as freshmen students, it gives us confidence that we can learn anything we want in the tech field by 
+ourselves.
