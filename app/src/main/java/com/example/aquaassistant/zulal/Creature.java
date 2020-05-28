@@ -16,6 +16,7 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.aquaassistant.R;
 import com.example.aquaassistant.zeynep.RemoveCreatureActivity;
@@ -84,15 +85,24 @@ public class Creature extends AppCompatActivity {
      */
     public void searchBut(View view){
         boxContent = searchBox.getText().toString();
-        SQLiteDatabase searchData = Creature.this.openOrCreateDatabase("Creatures", MODE_PRIVATE, null);
-        Cursor cursor = searchData.rawQuery("SELECT * FROM creatures WHERE creaturename = ?", new String[]{boxContent});
-        while(cursor.moveToNext()){
-            idCreature = cursor.getString(cursor.getColumnIndex("id"));
+        if(!boxContent.matches("")) {
+            SQLiteDatabase searchData = Creature.this.openOrCreateDatabase("Creatures", MODE_PRIVATE, null);
+            Cursor cursor = searchData.rawQuery("SELECT * FROM creatures WHERE creaturename = ?", new String[]{boxContent});
+            while (cursor.moveToNext()) {
+                idCreature = cursor.getString(cursor.getColumnIndex("id"));
+            }
+            cursor.close();
+            if(idCreature!=null) {
+                Intent intent1 = new Intent(Creature.this, Creaturesample.class);
+                intent1.putExtra("creatureId", idCreature);
+                startActivity(intent1);
+            }
+            else if(idCreature==null){
+                Toast.makeText(getApplicationContext(),"There is no such a creature in the tank", Toast.LENGTH_LONG).show();            }
         }
-        cursor.close();
-        Intent intent1 = new Intent (Creature.this,Creaturesample.class);
-        intent1.putExtra("creatureId",idCreature);
-        startActivity(intent1);
+        else if(boxContent.matches("")){
+            Toast.makeText(getApplicationContext(),"Please write name of the creature", Toast.LENGTH_LONG).show();
+        }
 
     }
 }
