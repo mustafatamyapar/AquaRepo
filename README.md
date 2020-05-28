@@ -7,7 +7,9 @@ The information and code in this repository are submitted in partial fulfillment
 ### ~ group 2D ~
 
 ## Project Description
-_Include a concise description of your project here. Be sure to include the proposed users, the architecture (eg. desktop, web, mobile, embedded, etc.) & screenshots when available._
+AquAssistant,android mobile application for Android, aims to help people who have aquariums
+or who want to have aquariums. Our application provides help and guidance to the users through
+their experience.It reminds users about feeding schedule,water change schedule,finding a vet and finding useful information about some freshwater species.
    
 ## Project Status
 + **Group/project Selection:** completed (13/02/2020)
